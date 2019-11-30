@@ -7,8 +7,32 @@
     </url>
 
     <url>
-        <loc>http://www.chenxindaaa.com/article/hexo-theme-huweihuang/</loc>
-        <lastmod>2019-11-30T14:26:30.193Z</lastmod>
+        <loc>http://www.chenxindaaa.com/article/MachinLearning_DecisionTree/</loc>
+        <lastmod>2019-11-30T15:50:04.807Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachineLearning_LogisticsRegression/</loc>
+        <lastmod>2019-11-30T15:45:57.962Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachineLearning_NoiveBayes/</loc>
+        <lastmod>2019-11-30T15:45:40.589Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachineLearning_K-NN/</loc>
+        <lastmod>2019-11-30T13:04:26.970Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

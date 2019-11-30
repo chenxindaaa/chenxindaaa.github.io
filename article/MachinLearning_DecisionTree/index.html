@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/MachinLearning_DecisionTree/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2019-11-30
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="什么是决策树">什么是决策树？</h2>
+<p>下图是一个是否是好瓜的决策树，其中长方形代表判断模块，椭圆代表终止模块，箭头表示分支<br>
+<img src="https://img-blog.csdnimg.cn/20191116172831597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">表格表示为：<br>
+<img src="https://img-blog.csdnimg.cn/20191116173408756.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="信息熵">信息熵</h2>
+<p>==信息熵是度量样本集和纯度最常用的一种指标==，假定样本集合D中第k类样本所占比例为pk(k=1, 2, 3…, m)<br>
+则信息熵定义为<br>
+<img src="https://img-blog.csdnimg.cn/20191116150024446.jpg" alt="在这里插入图片描述"><br>
+==H(X)越小，D的纯的越高==<br>
+本例中好西瓜的概率为8/17，坏西瓜的概率为9/17，所以根节点的信息熵为：<br>
+H(X) = -(8/17 * log2 8/17 + 9/17 * log2 9/17) = 0.998<br>
+下面我们用西瓜的色泽来进行划分，由<strong>条件概率</strong>我们知道<br>
+==P(好西瓜|色泽青绿) = P(色泽青绿并且是好西瓜)/P(色泽青绿)==<br>
+由表可知，<br>
+P(色泽青绿并且是好西瓜) = n(色泽青绿并且是好西瓜) / n(西瓜总数) = 3/17<br>
+P(色泽青绿) = n(色泽青绿) / n(西瓜总数) = 6 / 17<br>
+所以P(好西瓜|色泽青绿) = 3 / 6<br>
+由表我们也可以验证上面的答案：在六个色泽青绿的西瓜中有三个好的三个坏的<br>
+同理P(坏西瓜|色泽青绿) = 3 / 6<br>
+所以H(X|色泽青绿) = -(3/6 * log2 3/6 + 3/6 * log2 3/6) = 1.0<br>
+同理H(X|色泽乌黑) = -(4/6 * log2 4/6 + 2/6 * log2 2/6) = 0.918<br>
+H(X|色泽浅白) = -(1/5 * log2 1/5 + 4/5 * log2 4/5) = 0.722<br>
+X为西瓜的好坏<br>
+<strong>由全概率公式可得</strong><br>
+P(X|色泽) = P(色泽青绿) *  P(X|色泽青绿) + P(色泽乌黑) * P(X|色泽乌黑) + P(色泽浅白) * P(X|色泽浅白)<br>
+==注意：这里的公式与课本稍有不同是因为概率空间不同的原因==<br>
+所以可以得出H(X|色泽) = P(色泽青绿) *  H(X|色泽青绿) + P(色泽乌黑) * H(X|色泽乌黑) + P(色泽浅白) * H(X|色泽浅白) = 0.889<br>
+定义<strong>信息增益</strong>为Gain(X, a) = H(X) - H(X|a)<br>
+本例的信息增益Gain(X, 色泽) = 0.998 - 0.889 =0.109<br>
+==一般而言， 信息增益越大，意味着使用属性a来进行划分所获得的“纯度提升越大”==</p>
+<h2 id="python构建决策树">python构建决策树：</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trees</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">(self)</span>:</span> <span class="comment"># 创建数据</span></span><br><span class="line">        dataSet = [[<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>], [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>], [<span class="number">1</span>, <span class="number">0</span>, <span class="string">'no'</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="string">'maybe'</span>]]</span><br><span class="line">        labels = [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</span><br><span class="line">        <span class="keyword">return</span> dataSet, labels</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(self, dataSet)</span>:</span> <span class="comment"># 极算香农熵,熵越高，混合的数据越多</span></span><br><span class="line">        numEntries = len(dataSet) <span class="comment"># 样本数</span></span><br><span class="line">        labelCounts = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">            currentLabel = featVec[<span class="number">-1</span>]  <span class="comment"># 标签</span></span><br><span class="line">            <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">                labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">            labelCounts[currentLabel] += <span class="number">1</span> <span class="comment"># 标签与对应数量</span></span><br><span class="line">        shannonEnt = <span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">            prob = float(labelCounts[key]) / numEntries <span class="comment"># 概率ｐ(xi)</span></span><br><span class="line">            shannonEnt -= prob * log(prob, <span class="number">2</span>) <span class="comment"># H log(prob, 2) &lt; 0 所以Ｈ大于０</span></span><br><span class="line">        <span class="keyword">return</span> shannonEnt</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">splitDataSet</span><span class="params">(self, dataSet, axis, value)</span>:</span> <span class="comment"># 按照指定特征划分数据集,　axis划分数据集的特征, value需要返回的特征的值</span></span><br><span class="line">        retDataSet = []</span><br><span class="line">        <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">            <span class="keyword">if</span> featVec[axis] == value:</span><br><span class="line">                <span class="comment"># 把featVec[axis] 提取出去</span></span><br><span class="line">                reducedFeatVec= featVec[:axis]</span><br><span class="line">                reducedFeatVec.extend(featVec[axis+<span class="number">1</span>:])</span><br><span class="line">                retDataSet.append(reducedFeatVec)</span><br><span class="line">        <span class="keyword">return</span> retDataSet</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">chooseBestFeatureToSplit</span><span class="params">(self, dataSet)</span>:</span></span><br><span class="line">        numFeatures = len(dataSet[<span class="number">0</span>]) - <span class="number">1</span>  <span class="comment"># 最后一行是ｌａｂｅｌ</span></span><br><span class="line">        baseEntropy = self.calcShannonEnt(dataSet) <span class="comment"># 计算熵</span></span><br><span class="line">        bestInfoGain = <span class="number">0.0</span>; bestFeature = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(numFeatures):  <span class="comment"># 遍历所有特征</span></span><br><span class="line">            featList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]  <span class="comment"># dataSet的第ｉ列即所有样本的第ｉ个特征</span></span><br><span class="line">            uniqueVals = set(featList)  <span class="comment"># 去除相同的特征</span></span><br><span class="line">            newEntropy = <span class="number">0.0</span></span><br><span class="line">            <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">                subDataSet = self.splitDataSet(dataSet, i, value) <span class="comment"># 提取value这个特征</span></span><br><span class="line">                prob = len(subDataSet) / float(len(dataSet)) <span class="comment"># 计算这个特征占所有特征的比例即权重</span></span><br><span class="line">                newEntropy += prob * self.calcShannonEnt(subDataSet)</span><br><span class="line">            infoGain = baseEntropy - newEntropy  <span class="comment"># 计算ne信息增益, 信息增益越大意味着用第i种属性划分获得纯度提升最大</span></span><br><span class="line">            <span class="keyword">if</span> (infoGain &gt; bestInfoGain):  <span class="comment"># compare this to the best gain so far</span></span><br><span class="line">                bestInfoGain = infoGain  <span class="comment"># if better than current best, set to best</span></span><br><span class="line">                bestFeature = i</span><br><span class="line">        <span class="keyword">return</span> bestFeature  <span class="comment"># returns an integer</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityCnt</span><span class="params">(classList)</span>:</span></span><br><span class="line">        classCount = &#123;&#125; <span class="comment"># 创建一个集合</span></span><br><span class="line">        <span class="keyword">for</span> vote <span class="keyword">in</span> classList:</span><br><span class="line">            <span class="keyword">if</span> vote <span class="keyword">not</span> <span class="keyword">in</span> classCount.keys(): classCount[vote] = <span class="number">0</span></span><br><span class="line">            classCount[vote] += <span class="number">1</span></span><br><span class="line">        sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)</span><br><span class="line">        <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>] <span class="comment"># 与kNN.classify0相似，返回出现次数最多的分类的名称</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">createTree</span><span class="params">(self, dataSet, labels)</span>:</span></span><br><span class="line">        classList = [example[<span class="number">-1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet] <span class="comment"># 获得类label</span></span><br><span class="line">        <span class="keyword">if</span> classList.count(classList[<span class="number">0</span>]) == len(classList): <span class="comment"># 当所有类别都一样时停止分支</span></span><br><span class="line">            <span class="keyword">return</span> classList[<span class="number">0</span>]</span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        这里可以进行优化</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">if</span> len(dataSet[<span class="number">0</span>]) == <span class="number">1</span>:  <span class="comment"># 当没有更多特征的时候停止分支</span></span><br><span class="line">            <span class="keyword">return</span> self.majorityCnt(classList) <span class="comment"># 返回出现次数最多的类别</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        bestFeat = self.chooseBestFeatureToSplit(dataSet) <span class="comment"># 第i个特征的信息增益最大即使用第i个特征划分</span></span><br><span class="line">        bestFeatLabel = labels[bestFeat]</span><br><span class="line">        myTree = &#123;bestFeatLabel: &#123;&#125;&#125;</span><br><span class="line">        <span class="keyword">del</span> (labels[bestFeat])</span><br><span class="line">        featValues = [example[bestFeat] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">        uniqueVals = set(featValues) <span class="comment"># 获得bestfeat的可能取值</span></span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">            subLabels = labels[:]  <span class="comment"># copy all of labels, so trees don't mess up existing labels</span></span><br><span class="line">            myTree[bestFeatLabel][value] = self.createTree(self.splitDataSet(dataSet, bestFeat, value), subLabels)</span><br><span class="line">        <span class="keyword">return</span> myTree</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    t = Trees()</span><br><span class="line">    myDat, labels = t.createDataSet()</span><br><span class="line">    myTree = t.createTree(myDat, labels)</span><br><span class="line">    print(myTree)</span><br></pre></td></tr></table></figure>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/MachineLearning_K-NN/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2019 
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

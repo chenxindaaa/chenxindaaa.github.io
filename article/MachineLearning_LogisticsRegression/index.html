@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://www.chenxindaaa.com/">
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/MachineLearning_LogisticsRegression/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/home.jpg') 
-            /*config*/
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
         
     }
     
@@ -85,10 +85,16 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>chenxindaaa</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">个人博客</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2019-11-30
+                        </span>
                     </div>
                 
 
@@ -191,283 +197,190 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <p>分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。</p>
+<h2 id="逻辑回归logistic-regression">逻辑回归（Logistic Regression）</h2>
+<p>逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合任务，而对于分类任务，我们同样需要一条线，但不是去拟合每个数据点，而是把不同类别的样本区分开来。</p>
+<p><strong>预测函数</strong><br>
+对于二分类问题，y∈{0,1}，1表示正例，0表示负例。逻辑回归是在线性函数θTx 输出预测实际值的基础上，寻找一个假设函数hθ(x)=g(θTx)，将实际值映射到到0，1之间，如果hθ(x)&gt;=0.5，则预测y=1，及y属于正例；如果hθ(x)&lt;0.5，则预测y=0，即y属于负例。</p>
+<p>逻辑回归中选择对数几率函数（logistic function）作为激活函数，对数几率函数是Sigmoid函数（形状为S的函数）的重要代表：<br>
+<img src="https://img-blog.csdnimg.cn/20191130200713461.png" alt="在这里插入图片描述"><br>
+则逻辑回归输出的预测函数数学表达式为：<br>
+<img src="https://img-blog.csdnimg.cn/2019113020104627.png" alt="在这里插入图片描述"><br>
+其中θ是参数向量。对于hθ(x)的直观解释是：对于给定的输入x，hθ(x)表示其对应类标y=1，即属于正例的概率。<br>
+对于输入x分类结果为类别1和类别0的概率分别为：<br>
+<img src="https://img-blog.csdnimg.cn/20191130201320119.png" alt="在这里插入图片描述"><br>
+<strong>损失函数</strong></p>
+<p>由于y只能取0或1，服从伯努利分布，hθ(x)即事件y=1发生概率，则概率质量函数为：<br>
+<img src="https://img-blog.csdnimg.cn/20191130201710974.png" alt="在这里插入图片描述"><br>
+对于m个独立同分布的训练样本x，其似然函数取对数后写作：<br>
+<img src="https://img-blog.csdnimg.cn/20191130202228806.png" alt="在这里插入图片描述"><br>
+根据“最大似然估计”，求l(θ)取最大值时的θ，定义损失函数J(θ)为：<br>
+<img src="https://img-blog.csdnimg.cn/20191130202057116.png" alt="在这里插入图片描述"><br>
+所以最后目标变成取J(θ)最小值时的θ为最佳参数。<br>
+<img src="https://img-blog.csdnimg.cn/20191130202446205.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0OTU3Mzg4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
-<div class="post-preview">
+                
 
-    <a href="/article/MachineLearning_NoiveBayes/">
-        <h2 class="post-title">
-                                 
-            Untitled
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            朴素贝叶斯（Naive Bayes）是一种简单的分类算法。
-一、朴素贝叶斯的理论基础
-给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,…,xn)，类标记集合含有k种类别，即y=(y1,y2,…,yk)。
-如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x),P(y......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-30
-        </p>
-        <div class="tags">
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/MachineLearning_LogisticsRegression/">
-        <h2 class="post-title">
-                                 
-            Untitled
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。
-逻辑回归（Logistic Regression）
-逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-30
-        </p>
-        <div class="tags">
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/MachineLearning_K-NN/">
-        <h2 class="post-title">
-                                 
-            Untitled
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            什么是机器学习？
-在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。
-机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-30
-        </p>
-        <div class="tags">
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/MachinLearning_DecisionTree/">
-        <h2 class="post-title">
-                                 
-            Untitled
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            什么是决策树？
-下图是一个是否是好瓜的决策树，其中长方形代表判断模块，椭圆代表终止模块，箭头表示分支
-表格表示为：
-
-信息熵
-==信息熵是度量样本集和纯度最常用的一种指标==，假定样本集合D中第k类样本所占比例为pk(k=1, 2, 3…, m)
-则信息熵定义为
-
-==H(X)越小，D的纯的越高==
-本例中好西瓜的概率为8/17，坏西瓜的概率为9/17，所以根节点的信息熵为：
-H(X) = ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-30
-        </p>
-        <div class="tags">
-            
-        </div>
-    
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/MachineLearning_NoiveBayes/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/MachineLearning_K-NN/" data-toggle="tooltip" data-placement="top" title="">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/avatar/ironman.png" />
-        
 
-        
-            <p>Stay hungry,Stay foolish</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/chenxindaaa">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/article/MachineLearning_NoiveBayes/">(no title)</a>
-        </li>
-      
-        <li>
-          <a href="/article/MachineLearning_LogisticsRegression/">(no title)</a>
-        </li>
-      
-        <li>
-          <a href="/article/MachineLearning_K-NN/">(no title)</a>
-        </li>
-      
-        <li>
-          <a href="/article/MachinLearning_DecisionTree/">(no title)</a>
-        </li>
-      
-    </ul>
-  </div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        <hr>
-    
-        <!-- Friends Blog -->
 
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
 
 
     <!-- Footer -->

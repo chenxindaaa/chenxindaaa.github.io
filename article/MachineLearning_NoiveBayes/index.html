@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/MachineLearning_NoiveBayes/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2019-11-30
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><strong>朴素贝叶斯（Naive Bayes）是一种简单的分类算法。</strong></p>
+<h2 id="一-朴素贝叶斯的理论基础">一、朴素贝叶斯的理论基础</h2>
+<p>给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,…,xn)，类标记集合含有k种类别，即y=(y1,y2,…,yk)。</p>
+<p>如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x),P(y2|x),…,P(yk|x)中最大的那个，即求后验概率最大的。</p>
+<p>P(yk|x)根据贝叶斯定理和全概率公式可以求出。分子中的P(yk)是先验概率，根据训练集就可以简单地计算出来。<br>
+<strong>贝叶斯公式：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130192327601.png" alt="在这里插入图片描述"><br>
+<strong>全概率公式：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130192243876.png" alt="在这里插入图片描述"><br>
+朴素贝叶斯算法对条件概率分布作出了独立性的假设，假设各个维度的特征x1,x2,…,xn互相独立。</p>
+<p><strong>那么条件概率公式可以化为：</strong><br>
+<img src="https://img-blog.csdnimg.cn/2019113019270736.png" alt="在这里插入图片描述"><br>
+<strong>于是朴素贝叶斯分类器可表示为：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130193041870.png" alt="在这里插入图片描述"><br>
+因为对所有的yk，上式中的分母的值都是一样的，所以可以忽略分母部分。<strong>朴素贝叶斯分类器最终表示为：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130192858965.png" alt="在这里插入图片描述"></p>
+<h2 id="二-三种常见模型">二、三种常见模型</h2>
+<p><strong>2.1.1多项式模型</strong><br>
+当特征是离散的时候，使用多项式模型。多项式模型在计算先验概率P(yk)和条件概率P(xi|yk)时，会做一些平滑处理，具体公式为：<br>
+<img src="https://img-blog.csdnimg.cn/20191130193612402.png" alt="在这里插入图片描述"><br>
+N是总的样本个数，k是总的类别个数，Nyk是类别为yk的样本个数，α是平滑值。<br>
+<img src="https://img-blog.csdnimg.cn/20191130193713201.png" alt="在这里插入图片描述"><br>
+Nyk是类别为yk的样本个数，n是特征的维数，Nyk,xi是类别为yk的样本中，第i维特征的值是xi的样本个数，α是平滑值。</p>
+<p>当α=1时，称作Laplace平滑，当0&lt;α&lt;1时，称作Lidstone平滑，α=0时不做平滑。如果不做平滑，当某一维特征的值xi没在训练样本中出现过时，会导致P(xi|yk)=0，从而导致后验概率为0。加上平滑就可以克服这个问题。<br>
+<strong>2.1.2编程实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">class MultinomialNB(object):</span><br><span class="line">    def __init__(self,alpha=1.0,fit_prior=True,class_prior=None):</span><br><span class="line">        self.alpha = alpha</span><br><span class="line">        self.fit_prior = fit_prior</span><br><span class="line">        self.class_prior = class_prior</span><br><span class="line">        self.classes = None</span><br><span class="line">        self.conditional_prob = None</span><br><span class="line">        </span><br><span class="line">    def _calculate_feature_prob(self,feature):</span><br><span class="line">        values = np.unique(feature)</span><br><span class="line">        total_num = float(len(feature))</span><br><span class="line">        value_prob = &#123;&#125;</span><br><span class="line">        for v in values:</span><br><span class="line">            value_prob[v] = (( np.sum(np.equal(feature,v)) + self.alpha ) /( total_num + len(values)*self.alpha))</span><br><span class="line">        return value_prob</span><br><span class="line"></span><br><span class="line">    def fit(self, X, y):</span><br><span class="line">        self.classes = np.unique(y)</span><br><span class="line">        # calculate class prior probabilities: P(y=ck)</span><br><span class="line">        if self.class_prior == None:</span><br><span class="line">            class_num = len(self.classes)</span><br><span class="line">            if not self.fit_prior:</span><br><span class="line">                self.class_prior = [1.0 / class_num for _ in range(class_num)]  # uniform prior</span><br><span class="line">            else:</span><br><span class="line">                self.class_prior = []</span><br><span class="line">                sample_num = float(len(y))</span><br><span class="line">                for c in self.classes:</span><br><span class="line">                    c_num = np.sum(np.equal(y, c))</span><br><span class="line">                    self.class_prior.append((c_num + self.alpha) / (sample_num + class_num * self.alpha))</span><br><span class="line">        self.conditional_prob = &#123;&#125;  # like &#123; c0:&#123; x0:&#123; value0:0.2, value1:0.8 &#125;, x1:&#123;&#125; &#125;, c1:&#123;...&#125; &#125;</span><br><span class="line">        for c in self.classes:</span><br><span class="line">            self.conditional_prob[c] = &#123;&#125;</span><br><span class="line">            for i in range(len(X[0])):  # for each feature</span><br><span class="line">                feature = X[np.equal(y, c)][:, i]</span><br><span class="line">                self.conditional_prob[c][i] = self._calculate_feature_prob(feature)</span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line">    def _get_xj_prob(self, values_prob, target_value):</span><br><span class="line">        return values_prob[target_value]</span><br><span class="line">        </span><br><span class="line">    def _predict_single_sample(self,x):</span><br><span class="line">	    label = -1</span><br><span class="line">	    max_posterior_prob = 0</span><br><span class="line">	    #for each category, calculate its posterior probability: class_prior * conditional_prob</span><br><span class="line">	    for c_index in range(len(self.classes)):</span><br><span class="line">	        current_class_prior = self.class_prior[c_index]</span><br><span class="line">	        current_conditional_prob = 1.0</span><br><span class="line">	        feature_prob = self.conditional_prob[self.classes[c_index]]</span><br><span class="line">	        j = 0</span><br><span class="line">	        for feature_i in feature_prob.keys():</span><br><span class="line">	            current_conditional_prob *= self._get_xj_prob(feature_prob[feature_i],x[j])</span><br><span class="line">	            j += 1</span><br><span class="line">	</span><br><span class="line">	        #compare posterior probability and update max_posterior_prob, label</span><br><span class="line">	        if current_class_prior * current_conditional_prob &gt; max_posterior_prob:</span><br><span class="line">	            max_posterior_prob = current_class_prior * current_conditional_prob</span><br><span class="line">	            label = self.classes[c_index]</span><br><span class="line">	    return label</span><br><span class="line">		 </span><br><span class="line">    def predict(self,X):</span><br><span class="line">	    if X.ndim == 1:</span><br><span class="line">	        return self._predict_single_sample(X)</span><br><span class="line">	    else:</span><br><span class="line">	        #classify each sample</span><br><span class="line">	        labels = []</span><br><span class="line">	        for i in range(X.shape[0]):</span><br><span class="line">	                label = self._predict_single_sample(X[i])</span><br><span class="line">	                labels.append(label)</span><br><span class="line">	        return labels</span><br></pre></td></tr></table></figure>
+<p><strong>2.2.1高斯模型</strong></p>
+<p>当特征是连续变量的时候，运用多项式模型就会导致很多P(xi|yk)=0（不做平滑的情况下），此时即使做平滑，所得到的条件概率也难以描述真实情况。所以处理连续的特征变量，应该采用高斯模型</p>
+<p>高斯模型假设每一维特征都服从高斯分布（正态分布）：<br>
+<img src="https://img-blog.csdnimg.cn/20191130195539110.png" alt="在这里插入图片描述"><br>
+μyk,i表示类别为yk的样本中，第i维特征的均值。<br>
+σ2yk,i表示类别为yk的样本中，第i维特征的方差。</p>
+<p><strong>2.2.2编程实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class GaussianNB(MultinomialNB):</span><br><span class="line">        #calculate mean(mu) and standard deviation(sigma) of the given feature</span><br><span class="line">        def _calculate_feature_prob(self,feature):</span><br><span class="line">                mu = np.mean(feature)</span><br><span class="line">                sigma = np.std(feature)</span><br><span class="line">                return (mu,sigma)</span><br><span class="line"></span><br><span class="line">        #the probability density for the Gaussian distribution </span><br><span class="line">        def _prob_gaussian(self,mu,sigma,x):</span><br><span class="line">                return ( 1.0/(sigma * np.sqrt(2 * np.pi)) *</span><br><span class="line">                        np.exp( - (x - mu)**2 / (2 * sigma**2)) )</span><br><span class="line"></span><br><span class="line">        #given mu and sigma , return Gaussian distribution probability for target_value</span><br><span class="line">        def _get_xj_prob(self,mu_sigma,target_value):</span><br><span class="line">                return self._prob_gaussian(mu_sigma[0],mu_sigma[1],target_value)</span><br></pre></td></tr></table></figure>
+<p><strong>2.3.1伯努利模型</strong></p>
+<p>与多项式模型一样，伯努利模型适用于离散特征的情况，所不同的是，伯努利模型中每个特征的取值只能是1和0(以文本分类为例，某个单词在文档中出现过，则其特征值为1，否则为0).伯努利模型中，条件概率P(xi|yk的计算方式是：当特征值xi为1时，P(xi|yk)=P(xi=1|yk)；当特征值xi为0时，P(xi|yk)=1−P(xi=1|yk)</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/MachineLearning_LogisticsRegression/" data-toggle="tooltip" data-placement="top" title="">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2019 
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
