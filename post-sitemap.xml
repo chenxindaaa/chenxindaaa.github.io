@@ -7,24 +7,8 @@
     </url>
 
     <url>
-        <loc>http://www.chenxindaaa.com/article/MachinLearning_DecisionTree/</loc>
-        <lastmod>2019-11-30T17:24:01.406Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/article/MachineLearning_NoiveBayes/</loc>
-        <lastmod>2019-11-30T17:23:52.341Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/article/MachineLearning_LogisticsRegression/</loc>
-        <lastmod>2019-11-30T17:23:44.269Z</lastmod>
+        <loc>http://www.chenxindaaa.com/article/BlueBridgeCup11.17/</loc>
+        <lastmod>2019-12-01T14:00:15.754Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +16,31 @@
 
     <url>
         <loc>http://www.chenxindaaa.com/article/MachineLearning_K-NN/</loc>
-        <lastmod>2019-11-30T17:23:35.488Z</lastmod>
+        <lastmod>2019-12-01T14:00:09.205Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachineLearning_LogisticsRegression/</loc>
+        <lastmod>2019-12-01T13:59:54.700Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachineLearning_NoiveBayes/</loc>
+        <lastmod>2019-12-01T13:59:45.660Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachinLearning_DecisionTree/</loc>
+        <lastmod>2019-12-01T13:59:38.704Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
