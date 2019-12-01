@@ -3,7 +3,7 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,13 +60,13 @@
     <![endif]-->
 
     <!-- ga & ba script hoook -->
-    <script></script>
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
-	<!-- Modified by Yu-Hsuan Yen -->
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -215,24 +215,9 @@
                 <p>分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。</p>
 <h2 id="逻辑回归logistic-regression">逻辑回归（Logistic Regression）</h2>
 <p>逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合任务，而对于分类任务，我们同样需要一条线，但不是去拟合每个数据点，而是把不同类别的样本区分开来。</p>
-<p><strong>预测函数</strong><br>
-对于二分类问题，y∈{0,1}，1表示正例，0表示负例。逻辑回归是在线性函数θTx 输出预测实际值的基础上，寻找一个假设函数hθ(x)=g(θTx)，将实际值映射到到0，1之间，如果hθ(x)&gt;=0.5，则预测y=1，及y属于正例；如果hθ(x)&lt;0.5，则预测y=0，即y属于负例。</p>
-<p>逻辑回归中选择对数几率函数（logistic function）作为激活函数，对数几率函数是Sigmoid函数（形状为S的函数）的重要代表：<br>
-<img src="https://img-blog.csdnimg.cn/20191130200713461.png" alt="在这里插入图片描述"><br>
-则逻辑回归输出的预测函数数学表达式为：<br>
-<img src="https://img-blog.csdnimg.cn/2019113020104627.png" alt="在这里插入图片描述"><br>
-其中θ是参数向量。对于hθ(x)的直观解释是：对于给定的输入x，hθ(x)表示其对应类标y=1，即属于正例的概率。<br>
-对于输入x分类结果为类别1和类别0的概率分别为：<br>
-<img src="https://img-blog.csdnimg.cn/20191130201320119.png" alt="在这里插入图片描述"><br>
-<strong>损失函数</strong></p>
-<p>由于y只能取0或1，服从伯努利分布，hθ(x)即事件y=1发生概率，则概率质量函数为：<br>
-<img src="https://img-blog.csdnimg.cn/20191130201710974.png" alt="在这里插入图片描述"><br>
-对于m个独立同分布的训练样本x，其似然函数取对数后写作：<br>
-<img src="https://img-blog.csdnimg.cn/20191130202228806.png" alt="在这里插入图片描述"><br>
-根据“最大似然估计”，求l(θ)取最大值时的θ，定义损失函数J(θ)为：<br>
-<img src="https://img-blog.csdnimg.cn/20191130202057116.png" alt="在这里插入图片描述"><br>
-所以最后目标变成取J(θ)最小值时的θ为最佳参数。<br>
-<img src="https://img-blog.csdnimg.cn/20191130202446205.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0OTU3Mzg4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>预测函数</strong> 对于二分类问题，y∈{0,1}，1表示正例，0表示负例。逻辑回归是在线性函数θTx 输出预测实际值的基础上，寻找一个假设函数hθ(x)=g(θTx)，将实际值映射到到0，1之间，如果hθ(x)&gt;=0.5，则预测y=1，及y属于正例；如果hθ(x)&lt;0.5，则预测y=0，即y属于负例。</p>
+<p>逻辑回归中选择对数几率函数（logistic function）作为激活函数，对数几率函数是Sigmoid函数（形状为S的函数）的重要代表： <img src="https://img-blog.csdnimg.cn/20191130200713461.png" alt="在这里插入图片描述"> 则逻辑回归输出的预测函数数学表达式为： <img src="https://img-blog.csdnimg.cn/2019113020104627.png" alt="在这里插入图片描述"> 其中θ是参数向量。对于hθ(x)的直观解释是：对于给定的输入x，hθ(x)表示其对应类标y=1，即属于正例的概率。 对于输入x分类结果为类别1和类别0的概率分别为： <img src="https://img-blog.csdnimg.cn/20191130201320119.png" alt="在这里插入图片描述"> <strong>损失函数</strong></p>
+<p>由于y只能取0或1，服从伯努利分布，hθ(x)即事件y=1发生概率，则概率质量函数为： <img src="https://img-blog.csdnimg.cn/20191130201710974.png" alt="在这里插入图片描述"> 对于m个独立同分布的训练样本x，其似然函数取对数后写作： <img src="https://img-blog.csdnimg.cn/20191130202228806.png" alt="在这里插入图片描述"> 根据“最大似然估计”，求l(θ)取最大值时的θ，定义损失函数J(θ)为： <img src="https://img-blog.csdnimg.cn/20191130202057116.png" alt="在这里插入图片描述"> 所以最后目标变成取J(θ)最小值时的θ为最佳参数。 <img src="https://img-blog.csdnimg.cn/20191130202446205.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0OTU3Mzg4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 
@@ -532,6 +517,22 @@
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 

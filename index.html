@@ -3,7 +3,7 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,13 +60,13 @@
     <![endif]-->
 
     <!-- ga & ba script hoook -->
-    <script></script>
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
-	<!-- Modified by Yu-Hsuan Yen -->
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
@@ -134,14 +134,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -253,8 +253,8 @@
         <div class="post-content-preview">
             朴素贝叶斯（Naive Bayes）是一种简单的分类算法。
 一、朴素贝叶斯的理论基础
-给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,…,xn)，类标记集合含有k种类别，即y=(y1,y2,…,yk)。
-如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x),P(y......
+给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,...,xn)，类标记集合含有k种类别，即y=(y1,y2,...,yk)。
+如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x)......
         </div>
     </a>
     
@@ -280,27 +280,13 @@
             BlueBridgeCup11.17
         </h2>
         <h3 class="post-subtitle">
-            K-NN
+            BlueBridgeCup"
         </h3>
         <div class="post-content-preview">
             问题描述
-给定两个字符串，寻找这两个字串之间的最长公共子序列。
-输入格式
-输入两行，分别包含一个字符串，仅含有小写字母。
-输出格式
-最长公共子序列的长度。
-样例输入
-abcdgh
-aedfhb
-样例输出
-3
-样例说明
-最长公共子序列为a，d，h。
-数据规模和约定
-字串长度1~1000。
+给定两个字符串，寻找这两个字串之间的最长公共子序列。 输入格式 输入两行，分别包含一个字符串，仅含有小写字母。 输出格式 最长公共子序列的长度。 样例输入 abcdgh aedfhb 样例输出 3 样例说明 最长公共子序列为a，d，h。 数据规模和约定 字串长度1~1000。
 分析
-这题是一道典型的动态规划题，设text1 = ‘abcdgh’, text2 = 'aedfhb’
-......
+这题是一道典型的动态规划题，设text1 = ‘abcdgh’, text2 = 'aedfhb' ......
         </div>
     </a>
     
@@ -330,16 +316,7 @@ aedfhb
         </h3>
         <div class="post-content-preview">
             什么是决策树？
-下图是一个是否是好瓜的决策树，其中长方形代表判断模块，椭圆代表终止模块，箭头表示分支
-表格表示为：
-
-信息熵
-==信息熵是度量样本集和纯度最常用的一种指标==，假定样本集合D中第k类样本所占比例为pk(k=1, 2, 3…, m)
-则信息熵定义为
-
-==H(X)越小，D的纯的越高==
-本例中好西瓜的概率为8/17，坏西瓜的概率为9/17，所以根节点的信息熵为：
-H(X) = ......
+下图是一个是否是好瓜的决策树，其中长方形代表判断模块，椭圆代表终止模块，箭头表示分支 表格表示为：  ## 信息熵 ==信息熵是度量样本集和纯度最常用的一种指标==，假定样本集合D中第k类样本所占比例为pk(k=1, 2, 3..., m) 则信息熵定义为  ==H(X)越小，D的纯的越高== 本例中好西瓜的概率为8/17，坏西瓜的概率为9/17，所以根节点的信息熵为： H(......
         </div>
     </a>
     
@@ -425,15 +402,11 @@ H(X) = ......
     <div class="tags">
         
             
-        
+            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
             
             <a href="/tags/#MachineLearning" title="MachineLearning" rel="4">MachineLearning</a>
-            
-        
-            
-            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
     </div>
@@ -689,6 +662,22 @@ H(X) = ......
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
 <!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 
