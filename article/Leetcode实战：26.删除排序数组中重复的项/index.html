@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          BlueBridgeCup11.17 - chenxindaaa | Blog
+          Leetcode实战：26.删除排序数组中重复的项 - chenxindaaa | Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.chenxindaaa.com/article/BlueBridgeCup11.17/">
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/Leetcode实战：26.删除排序数组中重复的项/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/5.jpg')
+            background-image: url('/img/article_header/4.jpg')
             /*post*/
         
     }
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BlueBridgeCup" title="BlueBridgeCup">BlueBridgeCup</a>
+                              <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
                             
                         </div>
-                        <h1>BlueBridgeCup11.17</h1>
-                        <h2 class="subheading">BlueBridgeCup&#34;</h2>
+                        <h1>Leetcode实战：26.删除排序数组中重复的项</h1>
+                        <h2 class="subheading">Leetcode</h2>
                         <span class="meta">
                             Posted by Xinda Chen on
-                            2019-11-18
+                            2019-09-08
                         </span>
                     </div>
                 
@@ -212,20 +212,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="问题描述">问题描述</h2>
-<p>给定两个字符串，寻找这两个字串之间的最长公共子序列。 输入格式 输入两行，分别包含一个字符串，仅含有小写字母。 输出格式 最长公共子序列的长度。 样例输入 abcdgh aedfhb 样例输出 3 样例说明 最长公共子序列为a，d，h。 数据规模和约定 字串长度1~1000。</p>
-<h2 id="分析">分析</h2>
-<p>这题是一道典型的动态规划题，设text1 = ‘abcdgh’, text2 = 'aedfhb' 我们先用text2的第一个字母与text1做最长公共子序列 | |a|b|c|d|g|h| |--|--|--|--|--|--|--| |a|1|1|1|1|1|1| 再用text2的第二个字母与text1做最长公共子序列 | |a|b|c|d|g|h| |--|--|--|--|--|--|--| |a|1|1|1|1|1|1| |e|1|1|1|1|1|1| ... ... 最后得出表格： | |a|b|c|d|g|h| |--|--|--|--|--|--|--| |a|1|1|1|1|1|1| |e|1|1|1|1|1|1| |d|1|1|1|2|2|2| |f|1|1|1|2|2|2| |h|1|1|1|2|2|3| |b|1|2|2|2|2|3| <strong>由此可以得出转移方程：</strong></p>
-<ul>
-<li>if text1[i] = text2[j] : dp[i][j] = dp[i - 1][j - 1] + 1]</li>
-<li>else dp[i][j] = max(dp[i][j - 1], dp[i - 1][j - 1])</li>
-</ul>
-<p>由于当text1[0] = text2[j] 或text1[i] = text2[0]时下标越界，所以优化表格如下所示： | |#|a|b|c|d|g|h| |--|--|--|--|--|--|--|--| |#|0|0|0|0|0|0|0| |a|0|1|1|1|1|1|1| |e|0|1|1|1|1|1|1| |d|0|1|1|1|2|2|2| |f|0|1|1|1|2|2|2| |h|0|1|1|1|2|2|3| |b|0|1|2|2|2|2|3|</p>
-<h2 id="算法实现">算法实现</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestCommonSubsequence</span><span class="params">(self, text1: str, text2: str)</span> -&gt; int:</span></span><br><span class="line">        m = len(text1) + <span class="number">1</span></span><br><span class="line">        n = len(text2) + <span class="number">1</span></span><br><span class="line">        text1 = <span class="string">'#'</span> + text1</span><br><span class="line">        text2 = <span class="string">'#'</span> + text2</span><br><span class="line">        dp = [[<span class="number">0</span> <span class="keyword">for</span> each <span class="keyword">in</span> range(m)]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            old = text2[i]</span><br><span class="line">            dp.append([<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">                <span class="keyword">if</span> text1[j] == old:</span><br><span class="line">                    dp[i].append(dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i].append(max(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]))</span><br><span class="line">        <span class="keyword">return</span> dp[i][j]</span><br></pre></td></tr></table></figure>
-<h2 id="算法优化">算法优化</h2>
-<p>由于我们每次计算只用到最后的一行，所以可以将二维列表优化成一维： 初始列表： | 0|0|0|0|0|0| |--|--|--|--|--|--| 第一次循环后： | 1|1|1|1|1|1| |--|--|--|--|--|--| 第二次循环后： | 1|1|1|1|1|1| |--|--|--|--|--|--| 第三次： | 1|1|1|2|2|2| |--|--|--|--|--|--| ... ... 结果： | 1|2|2|2|2|3| |--|--|--|--|--|--|</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestCommonSubsequence</span><span class="params">(self, text1: str, text2: str)</span> -&gt; int:</span></span><br><span class="line">        m = len(text1) + <span class="number">1</span></span><br><span class="line">        n = len(text2) + <span class="number">1</span></span><br><span class="line">        text1 = <span class="string">'#'</span> + text1</span><br><span class="line">        text2 = <span class="string">'#'</span> + text2</span><br><span class="line">        dp = [<span class="number">0</span> <span class="keyword">for</span> each <span class="keyword">in</span> range(m)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            old = text2[i]</span><br><span class="line">            temp = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">                now = dp[j]</span><br><span class="line">                <span class="keyword">if</span> text1[j] == old:</span><br><span class="line">                    dp[j] = temp + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[j] = max(dp[j], dp[j - <span class="number">1</span>])</span><br><span class="line">                temp = now</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+                <h2 id="题目">题目：</h2>
+<p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p>示例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="算法实现">算法实现：</h2>
+<h2 id="方法一集合">方法一：集合</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def removeDuplicates(self, nums: List[int]) -&gt; int:</span><br><span class="line">        a = list(set(tuple(nums)))</span><br><span class="line">        a.sort()</span><br><span class="line">        for each in range(len(a)):</span><br><span class="line">            nums[each] = a[each]</span><br><span class="line">        return len(a)</span><br></pre></td></tr></table></figure>
+<h2 id="结果">结果：</h2>
+<p>没有想象中那么慢 <img src="https://img-blog.csdnimg.cn/20190908155001801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="方法二双指针">方法二：双指针</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if not nums:</span><br><span class="line">    return 0</span><br><span class="line">each1 = 0</span><br><span class="line">for each2 in range(1, len(nums)):</span><br><span class="line">    if nums[each1] != nums[each2]:</span><br><span class="line">        each1 += 1</span><br><span class="line">        nums[each1] = nums[each2]</span><br><span class="line">return each1 + 1</span><br></pre></td></tr></table></figure>
+<h2 id="结果">结果：</h2>
+<div class="figure">
+<img src="https://img-blog.csdnimg.cn/20190908160119547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+<p class="caption">在这里插入图片描述</p>
+</div>
 
                 
 
@@ -234,12 +243,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/MachineLearning_NoiveBayes/" data-toggle="tooltip" data-placement="top" title="MachineLearning_NoiveBayes">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：33.搜索旋转排序数组/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：33.搜索旋转排序数组">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/MachinLearning_DecisionTree/" data-toggle="tooltip" data-placement="top" title="MachineLearning_DecisionTree">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：23.合并K个排序链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：23.合并K个排序链表">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -297,7 +306,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BlueBridgeCup" title="BlueBridgeCup">BlueBridgeCup</a>
+                          <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
                         
                     </div>
                 </section>
