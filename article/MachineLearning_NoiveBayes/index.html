@@ -476,7 +476,7 @@
 <p><strong>首先我们估计类先验概率P(c)，显然有</strong></p>
 <p><span class="math inline">\(P(好瓜 = 是) = \frac{8} {17}\approx 0.471\)</span>, <span class="math inline">\(P(好瓜 = 否) = \frac{9} {17}\approx 0.529\)</span>,</p>
 <p><strong>然后，为每个属性估计条件概率<span class="math inline">\(P(X_i|C):\)</span></strong></p>
-<p><span class="math inline">\(P_{青绿|是} = P(色泽 = 青绿 | 好瓜 = 是) = \frac{3} {8}= 0.375\)</span>, <span class="math inline">\(P_{青绿|否} = P(色泽 = 青绿 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{蜷缩|是} = P(根蒂 = 蜷缩 | 好瓜 = 是) = \frac{5} {8} = 0.625\)</span>, <span class="math inline">\(P_{蜷缩|否} = P(根蒂 = 蜷缩 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{浊响|是} = P(敲声 = 浊响 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{浊响|否} = P(敲声 = 浊响 | 好瓜 = 否) = \frac{4} {9}\approx 0.444\)</span>, <span class="math inline">\(P_{清晰|是} = P(纹理 = 清晰 | 好瓜 = 是) = \frac{7} {8} = 0.875\)</span>, <span class="math inline">\(P_{清晰|否} = P(纹理 = 清晰 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{凹陷|是} = P(脐部 = 凹陷 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{凹陷|否} = P(脐部 = 凹陷 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{硬滑|是} = P(触感 = 硬滑 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{硬滑|否} = P(触感 = 硬滑 | 好瓜 = 否) = \frac{6} {9}\approx 0.667\)</span>, <span class="math inline">\(P_{密度:0.697|是} = P(密度 = 0.697 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.129}exp(-\frac{(0.697-0.574)^2}{2\cdot0.129^2})\approx1.959\)</span>, <span class="math inline">\(P_{密度:0.697|否} = P(密度 = 0.697 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.195}exp(-\frac{(0.697-0.496)^2}{2\cdot0.0.195^2})\approx1.203\)</span>, <span class="math inline">\(P_{含糖率:0.460|是} = P(含糖率 = 0.460 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.101}exp(-\frac{(0.460-0.279)^2}{2\cdot0.101^2})\approx0.788\)</span>, <span class="math inline">\(P_{含糖率:0.460|否} = P(含糖率 = 0.460 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.108}exp(-\frac{(0.460-0.154)^2}{2\cdot0.108^2})\approx0.066\)</span>.</p>
+<p><span class="math display">\[P_{青绿|是} = P(色泽 = 青绿 | 好瓜 = 是)  = \frac{3} {8}= 0.375,\]</span> <span class="math inline">\(P_{青绿|否} = P(色泽 = 青绿 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{蜷缩|是} = P(根蒂 = 蜷缩 | 好瓜 = 是) = \frac{5} {8} = 0.625\)</span>, <span class="math inline">\(P_{蜷缩|否} = P(根蒂 = 蜷缩 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{浊响|是} = P(敲声 = 浊响 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{浊响|否} = P(敲声 = 浊响 | 好瓜 = 否) = \frac{4} {9}\approx 0.444\)</span>, <span class="math inline">\(P_{清晰|是} = P(纹理 = 清晰 | 好瓜 = 是) = \frac{7} {8} = 0.875\)</span>, <span class="math inline">\(P_{清晰|否} = P(纹理 = 清晰 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{凹陷|是} = P(脐部 = 凹陷 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{凹陷|否} = P(脐部 = 凹陷 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{硬滑|是} = P(触感 = 硬滑 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{硬滑|否} = P(触感 = 硬滑 | 好瓜 = 否) = \frac{6} {9}\approx 0.667\)</span>, <span class="math inline">\(P_{密度:0.697|是} = P(密度 = 0.697 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.129}exp(-\frac{(0.697-0.574)^2}{2\cdot0.129^2})\approx1.959\)</span>, <span class="math inline">\(P_{密度:0.697|否} = P(密度 = 0.697 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.195}exp(-\frac{(0.697-0.496)^2}{2\cdot0.0.195^2})\approx1.203\)</span>, <span class="math inline">\(P_{含糖率:0.460|是} = P(含糖率 = 0.460 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.101}exp(-\frac{(0.460-0.279)^2}{2\cdot0.101^2})\approx0.788\)</span>, <span class="math inline">\(P_{含糖率:0.460|否} = P(含糖率 = 0.460 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.108}exp(-\frac{(0.460-0.154)^2}{2\cdot0.108^2})\approx0.066\)</span>.</p>
 <p><strong>于是，有：</strong> <span class="math inline">\(P(好瓜 = 是) \times P_{青绿|是} \times P_{蜷缩|是} \times P_{浊响|是} \times P_{清晰|是} \times P_{凹陷|是} \times P_{硬滑|是} \times P_{密度:0.697|是} \times P_{含糖:0.460|是}\approx0.063\)</span></p>
 <p><span class="math inline">\(P(好瓜 = 否) \times P_{青绿|否} \times P_{蜷缩|否} \times P_{浊响|否} \times P_{清晰|否} \times P_{凹陷|否} \times P_{硬滑|否} \times P_{密度:0.697|否} \times P_{含糖:0.460|否}\approx6.80\times10^{-5}\)</span></p>
 <p>由于 0.063 &gt; <span class="math inline">\(6.80\times10^{-5}\)</span>， 因此，朴素贝叶斯分类器将测试样本“测1”判别为“好瓜”</p>
@@ -599,17 +599,7 @@
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
+
 
 
 <!-- chrome Firefox 中文锚点定位失效-->

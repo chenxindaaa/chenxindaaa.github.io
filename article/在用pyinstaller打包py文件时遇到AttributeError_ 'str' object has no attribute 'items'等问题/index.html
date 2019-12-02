@@ -212,7 +212,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>一、AttributeError: ‘str’ object has no attribute ‘items’<br>1.可能是你的setuptools版本比较老,更新一下seetuptools:pip install —upgrade setuptools<br>如果还没解决的话,下一步<br>2.pip uninstall enum34  卸载掉这个<br>二、然后遇到这个问题<img src="https://img-blog.csdnimg.cn/2019060811382472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解决办法一：修改生成的spac文件，在hiddenimports里输入模块名<br><img src="https://img-blog.csdnimg.cn/20190608113947258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">然后以此spec文件打包python<br><img src="https://img-blog.csdnimg.cn/20190613025649406.png" alt="在这里插入图片描述"><br>解决办法二：在用pyinstaller打包py文件时加入–hidden-import numpy.core._dtype._ctypes(这部分填写缺少的模块名)<br>完整代码：pyinstaller —hidden-import numpy.core._dtype._ctypes（这里填你缺少的模块名） -F<br>yourfilename.py(yourfilename.py即你想打包的文件名)<br>最后就可以顺利打开exe文件了</p>
+                <p>一、AttributeError: 'str' object has no attribute 'items' 1.可能是你的setuptools版本比较老,更新一下seetuptools:pip install --upgrade setuptools 如果还没解决的话,下一步 2.pip uninstall enum34 卸载掉这个 二、然后遇到这个问题<img src="https://img-blog.csdnimg.cn/2019060811382472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解决办法一：修改生成的spac文件，在hiddenimports里输入模块名 <img src="https://img-blog.csdnimg.cn/20190608113947258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">然后以此spec文件打包python <img src="https://img-blog.csdnimg.cn/20190613025649406.png" alt="在这里插入图片描述"> 解决办法二：在用pyinstaller打包py文件时加入–hidden-import numpy.core._dtype._ctypes(这部分填写缺少的模块名) 完整代码：pyinstaller --hidden-import numpy.core._dtype._ctypes（这里填你缺少的模块名） -F yourfilename.py(yourfilename.py即你想打包的文件名) 最后就可以顺利打开exe文件了</p>
 
                 
 
@@ -322,17 +322,7 @@
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
+
 
 
 <!-- chrome Firefox 中文锚点定位失效-->
