@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          GitOperation - chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/GitOperation/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/6.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Github" title="Github">Github</a>
+                            
+                        </div>
+                        <h1>GitOperation</h1>
+                        <h2 class="subheading">Github</h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2019-12-06
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="一修改email和name">一.修改email和name</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> user.email <span class="string">"邮箱"</span></span><br><span class="line">$ git config --<span class="keyword">global</span> user.name <span class="string">"用户名"</span></span><br></pre></td></tr></table></figure>
+<p><strong>附1.git config</strong> 1. 仓库级的配置文件：在仓库的 .git/.gitconfig，该配置文件只对所在的仓库有效。</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>全局配置文件：Mac 系统在 ~/.gitconfig，Windows 系统在 C:&lt;用户名&gt;.gitconfig。</p></li>
+<li><p>系统级的配置文件：在 Git 的安装目录下（Mac 系统下安装目录在 /usr/local/git）的 etc 文件夹中的 gitconfig。</p></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看配置信息</span></span><br><span class="line"><span class="comment"># --local：仓库级，--global：全局级，--system：系统级</span></span><br><span class="line">$ git config &lt;--local | --<span class="keyword">global</span> | --system&gt; -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前生效的配置信息</span></span><br><span class="line">$ git config -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑配置文件</span></span><br><span class="line"><span class="comment"># --local：仓库级，--global：全局级，--system：系统级</span></span><br><span class="line">$ git config &lt;--local | --<span class="keyword">global</span> | --system&gt; -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加配置项</span></span><br><span class="line"><span class="comment"># --local：仓库级，--global：全局级，--system：系统级</span></span><br><span class="line">$ git config &lt;--local | --<span class="keyword">global</span> | --system&gt; --add &lt;name&gt; &lt;value&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取配置项</span></span><br><span class="line">$ git config &lt;--local | --<span class="keyword">global</span> | --system&gt; --get &lt;name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除配置项</span></span><br><span class="line">$ git config &lt;--local | --<span class="keyword">global</span> | --system&gt; --unset &lt;name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置提交记录中的用户信息</span></span><br><span class="line">$ git config --<span class="keyword">global</span> user.name &lt;用户名&gt;</span><br><span class="line">$ git config --<span class="keyword">global</span> user.email &lt;邮箱地址&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改Git缓存区的大小</span></span><br><span class="line"><span class="comment"># 如果提交的内容较大，默认缓存较小，提交会失败</span></span><br><span class="line"><span class="comment"># 缓存大小单位：B，例如：524288000（500MB）</span></span><br><span class="line">$ git config --<span class="keyword">global</span> http.postBuffer &lt;缓存大小&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 git status/git diff 命令时以高亮或彩色方式显示改动状态</span></span><br><span class="line">$ git config --<span class="keyword">global</span> color.ui true</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置可以缓存密码，默认缓存时间15分钟</span></span><br><span class="line">$ git config --<span class="keyword">global</span> credential.helper cache</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置密码的缓存时间</span></span><br><span class="line"><span class="comment"># 缓存时间单位：秒</span></span><br><span class="line">$ git config --<span class="keyword">global</span> credential.helper <span class="string">'cache --timeout=&lt;缓存时间&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置长期存储密码</span></span><br><span class="line">$ git config --<span class="keyword">global</span> credential.helper store</span><br></pre></td></tr></table></figure>
+<p><strong>附2.git clone</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认在当前目录下创建和版本库名相同的文件夹并下载版本到该文件夹下</span></span><br><span class="line">$ git clone &lt;远程仓库的网址&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定本地仓库的目录</span></span><br><span class="line">$ git clone &lt;远程仓库的网址&gt; &lt;本地目录&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># -b 指定要克隆的分支，默认是master分支</span></span><br><span class="line">$ git clone &lt;远程仓库的网址&gt; -b &lt;分支名称&gt; &lt;本地目录&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="二创建版本库">二.创建版本库</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p><strong>1.添加新文件或被修改文件到暂存区</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add <span class="string">"文件名"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>2.提交文件</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"注释"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>3.查看状态</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.显示日志</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+<p><strong>5.查看不同</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure></p>
+<p><strong>附1.git add</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把指定的文件添加到暂存区中</span></span><br><span class="line">$ git add &lt;文件路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加所有修改、已删除的文件到暂存区中</span></span><br><span class="line">$ git add -u [&lt;文件路径&gt;]</span><br><span class="line">$ git add --update [&lt;文件路径&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加所有修改、已删除、新增的文件到暂存区中，省略 &lt;文件路径&gt; 即为当前目录</span></span><br><span class="line">$ git add -A [&lt;文件路径&gt;]</span><br><span class="line">$ git add --all [&lt;文件路径&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有修改、已删除但没有提交的文件，进入一个子命令系统</span></span><br><span class="line">$ git add -i [&lt;文件路径&gt;]</span><br><span class="line">$ git add --interactive [&lt;文件路径&gt;]</span><br></pre></td></tr></table></figure>
+<p><strong>附2.git commit</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把暂存区中的文件提交到本地仓库，调用文本编辑器输入该次提交的描述信息</span></span><br><span class="line">$ git commit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把暂存区中的文件提交到本地仓库中并添加描述信息</span></span><br><span class="line">$ git commit -m <span class="string">"&lt;提交的描述信息&gt;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把所有修改、已删除的文件提交到本地仓库中</span></span><br><span class="line"><span class="comment"># 不包括未被版本库跟踪的文件，等同于先调用了 "git add -u"</span></span><br><span class="line">$ git commit -a -m <span class="string">"&lt;提交的描述信息&gt;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改上次提交的描述信息</span></span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+<p><strong>附3.git diff</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 比较当前文件和暂存区中文件的差异，显示没有暂存起来的更改</span></span><br><span class="line">$ git diff</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比较暂存区中的文件和上次提交时的差异</span></span><br><span class="line">$ git diff --cached</span><br><span class="line">$ git diff --staged</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比较当前文件和上次提交时的差异</span></span><br><span class="line">$ git diff HEAD</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看从指定的版本之后改动的内容</span></span><br><span class="line">$ git diff &lt;commit ID&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比较两个分支之间的差异</span></span><br><span class="line">$ git diff &lt;分支名称&gt; &lt;分支名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看两个分支分开后各自的改动内容</span></span><br><span class="line">$ git diff &lt;分支名称&gt;...&lt;分支名称&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附4.git log</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印所有的提交记录</span></span><br><span class="line">$ git log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印从第一次提交到指定的提交的记录</span></span><br><span class="line">$ git log &lt;commit ID&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印指定数量的最新提交的记录</span></span><br><span class="line">$ git log -&lt;指定的数量&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印树形提交记录</span></span><br><span class="line">$ git log --oneline --graph</span><br></pre></td></tr></table></figure>
+<p><strong>附5.git tag</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印所有的标签</span></span><br><span class="line">$ git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加轻量标签，指向提交对象的引用，可以指定之前的提交记录</span></span><br><span class="line">$ git tag &lt;标签名称&gt; [&lt;commit ID&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加带有描述信息的附注标签，可以指定之前的提交记录</span></span><br><span class="line">$ git tag -a &lt;标签名称&gt; -m &lt;标签描述信息&gt; [&lt;commit ID&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到指定的标签</span></span><br><span class="line">$ git checkout &lt;标签名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看标签的信息</span></span><br><span class="line">$ git show &lt;标签名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定的标签</span></span><br><span class="line">$ git tag -d &lt;标签名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将指定的标签提交到远程仓库</span></span><br><span class="line">$ git push &lt;远程仓库的别名&gt; &lt;标签名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地所有的标签全部提交到远程仓库</span></span><br><span class="line">$ git push &lt;远程仓库的别名&gt; –tags</span><br></pre></td></tr></table></figure>
+<p><strong>附6.git mv</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重命名指定的文件或者文件夹</span></span><br><span class="line">$ git mv &lt;源文件/文件夹&gt; &lt;目标文件/文件夹&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附7.git rm</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 移除跟踪指定的文件，并从本地仓库的文件夹中删除</span></span><br><span class="line">$ git rm &lt;文件路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除跟踪指定的文件夹，并从本地仓库的文件夹中删除</span></span><br><span class="line">$ git rm -r &lt;文件夹路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除跟踪指定的文件，在本地仓库的文件夹中保留该文件</span></span><br><span class="line">$ git rm --cached</span><br></pre></td></tr></table></figure></p>
+<h2 id="三重置版本">三.重置版本</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>) git reset --hard HEAD ^ <span class="comment"># 回到上个版本</span></span><br><span class="line">(<span class="number">2</span>) git reset --hard HEAD ~<span class="number">100</span> <span class="comment"># 回到第一百个版本</span></span><br><span class="line">(<span class="number">3</span>) git reset</span><br></pre></td></tr></table></figure>
+<p><strong>附1git reset</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重置暂存区，但文件不受影响</span></span><br><span class="line"><span class="comment"># 相当于将用 "git add" 命令更新到暂存区的内容撤出暂存区，可以指定文件</span></span><br><span class="line"><span class="comment"># 没有指定 commit ID 则默认为当前 HEAD</span></span><br><span class="line">$ git reset [&lt;文件路径&gt;]</span><br><span class="line">$ git reset --mixed [&lt;文件路径&gt;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 HEAD 的指向改变，撤销到指定的提交记录，文件未修改</span></span><br><span class="line">$ git reset &lt;commit ID&gt;</span><br><span class="line">$ git reset --mixed &lt;commit ID&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 HEAD 的指向改变，撤销到指定的提交记录，文件未修改</span></span><br><span class="line"><span class="comment"># 相当于调用 "git reset --mixed" 命令后又做了一次 "git add"</span></span><br><span class="line">$ git reset --soft &lt;commit ID&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 HEAD 的指向改变，撤销到指定的提交记录，文件也修改了</span></span><br><span class="line">$ git reset --hard &lt;commit ID&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附2.git revert</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成一个新的提交来撤销某次提交</span></span><br><span class="line">$ git revert &lt;commit ID&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="四分支">四.分支：</h2>
+<p><strong>创建分支：</strong> 创建一个叫dev的分支 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch dev</span><br></pre></td></tr></table></figure></p>
+<p>创建并将HEAD移动到到分支 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看分支</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></p>
+<p>将HEAD移动到分支dev <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure></p>
+<p><strong>合支</strong> 合支并留下注释</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m <span class="string">"注释"</span> dev</span><br></pre></td></tr></table></figure>
+<p><strong>分支冲突</strong> 如果将dev合并到master时，master本身就已经做了修改，就会产生分支冲突，当出现分支冲突时，会在冲突文件里有相应的注释，在修改完文件后重新提交就完成了合支操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git merge dev</span><br><span class="line">修改文件</span><br><span class="line">git commit -am <span class="string">'注释'</span></span><br></pre></td></tr></table></figure>
+<p><strong>附1.git brach</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出本地的所有分支，当前所在分支以 "*" 标出</span></span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出本地的所有分支并显示最后一次提交，当前所在分支以 "*" 标出</span></span><br><span class="line">$ git branch -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建新分支，新的分支基于上一次提交建立</span></span><br><span class="line">$ git branch &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改分支名称</span></span><br><span class="line"><span class="comment"># 如果不指定原分支名称则为当前所在分支</span></span><br><span class="line">$ git branch -m [&lt;原分支名称&gt;] &lt;新的分支名称&gt;</span><br><span class="line"><span class="comment"># 强制修改分支名称</span></span><br><span class="line">$ git branch -M [&lt;原分支名称&gt;] &lt;新的分支名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定的本地分支</span></span><br><span class="line">$ git branch -d &lt;分支名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制删除指定的本地分支</span></span><br><span class="line">$ git branch -D &lt;分支名称&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附2.git checkout</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到已存在的指定分支</span></span><br><span class="line">$ git checkout &lt;分支名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建并切换到指定的分支，保留所有的提交记录</span></span><br><span class="line"><span class="comment"># 等同于 "git branch" 和 "git checkout" 两个命令合并</span></span><br><span class="line">$ git checkout -b &lt;分支名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建并切换到指定的分支，删除所有的提交记录</span></span><br><span class="line">$ git checkout --orphan &lt;分支名称&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换掉本地的改动，新增的文件和已经添加到暂存区的内容不受影响</span></span><br><span class="line">$ git checkout &lt;文件路径&gt;</span><br></pre></td></tr></table></figure>
+<p>附3.git cherry-pick</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把已经提交的记录合并到当前分支</span></span><br><span class="line">$ git cherry-pick &lt;commit ID&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="五提交到github">五.提交到github</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin https://github.com/<span class="string">"用户名"</span>/<span class="string">"你的Repositories名称"</span></span><br><span class="line">.git</span><br><span class="line">$ git push -u origin master <span class="comment"># 这里master可以改成分支名称</span></span><br></pre></td></tr></table></figure>
+<p><strong>附1.git remote</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出已经存在的远程仓库</span></span><br><span class="line">$ git remote</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出远程仓库的详细信息，在别名后面列出URL地址</span></span><br><span class="line">$ git remote -v</span><br><span class="line">$ git remote --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加远程仓库</span></span><br><span class="line">$ git remote add &lt;远程仓库的别名&gt; &lt;远程仓库的URL地址&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改远程仓库的别名</span></span><br><span class="line">$ git remote rename &lt;原远程仓库的别名&gt; &lt;新的别名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定名称的远程仓库</span></span><br><span class="line">$ git remote remove &lt;远程仓库的别名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改远程仓库的 URL 地址</span></span><br><span class="line">$ git remote set-url &lt;远程仓库的别名&gt; &lt;新的远程仓库URL地址&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附2.git fetch</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将远程仓库所有分支的最新版本全部取回到本地</span></span><br><span class="line">$ git fetch &lt;远程仓库的别名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将远程仓库指定分支的最新版本取回到本地</span></span><br><span class="line">$ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附3. git pull</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从远程仓库获取最新版本。</span></span><br><span class="line"><span class="comment">#首先会执行 git fetch，然后执行 git merge，把获取的分支的 HEAD 合并到当前分支。</span></span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure></p>
+<p><strong>附4.git push</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把本地仓库的分支推送到远程仓库的指定分支</span></span><br><span class="line">$ git push &lt;远程仓库的别名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定的远程仓库的分支</span></span><br><span class="line">$ git push &lt;远程仓库的别名&gt; :&lt;远程分支名&gt;</span><br><span class="line">$ git push &lt;远程仓库的别名&gt; --delete &lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>附5.多人合作开发时，如果远程的分支被其他开发删除掉，在本地执行 git branch --all 依然会显示该远程分支，可使用下列的命令进行删除：</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 pull 命令，添加 -p 参数</span></span><br><span class="line">$ git pull -p</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等同于下面的命令</span></span><br><span class="line">$ git fetch -p</span><br><span class="line">$ git fetch --prune origin</span><br></pre></td></tr></table></figure></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/MachinLearning_SVM/" data-toggle="tooltip" data-placement="top" title="MachineLearning_SVM">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Github" title="Github">Github</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2019 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>

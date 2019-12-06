@@ -23,8 +23,15 @@
     </url>
 
     <url>
+        <loc>http://www.chenxindaaa.com/tags/Github/</loc>
+        <lastmod>2019-12-06T13:56:20.254Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
-        <lastmod>2019-12-02T14:39:46.546Z</lastmod>
+        <lastmod>2019-12-06T13:58:13.978Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
