@@ -274,19 +274,18 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachineLearning_NoiveBayes/">
+    <a href="/article/MachineLearning_LogisticsRegression/">
         <h2 class="post-title">
                                  
-            MachineLearning_NoiveBayes
+            MachineLearning_LogisticsRegression
         </h2>
         <h3 class="post-subtitle">
-            NoiveBayes
+            LogisticsRegression
         </h3>
         <div class="post-content-preview">
-            朴素贝叶斯（Naive Bayes）是一种简单的分类算法。
-一、朴素贝叶斯的理论基础
-给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,...,xn)，类标记集合含有k种类别，即y=(y1,y2,...,yk)。
-如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x)......
+            分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。
+逻辑回归（Logistic Regression）
+逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合......
         </div>
     </a>
     
@@ -306,18 +305,19 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachineLearning_LogisticsRegression/">
+    <a href="/article/MachineLearning_NoiveBayes/">
         <h2 class="post-title">
                                  
-            MachineLearning_LogisticsRegression
+            MachineLearning_NoiveBayes
         </h2>
         <h3 class="post-subtitle">
-            LogisticsRegression
+            NoiveBayes
         </h3>
         <div class="post-content-preview">
-            分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。
-逻辑回归（Logistic Regression）
-逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合......
+            朴素贝叶斯（Naive Bayes）是一种简单的分类算法。
+一、朴素贝叶斯的理论基础
+给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,...,xn)，类标记集合含有k种类别，即y=(y1,y2,...,yk)。
+如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x)......
         </div>
     </a>
     
@@ -430,28 +430,37 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：33.搜索旋转排序数组/">
+    <a href="/article/matlab基础11.matlab在微积分中的应用/">
         <h2 class="post-title">
                                  
-            Leetcode实战：33.搜索旋转排序数组
+            matlab基础11.matlab在微积分中的应用
         </h2>
         <h3 class="post-subtitle">
-            Leetcode
+            Matlab
         </h3>
         <div class="post-content-preview">
-            题目：
-假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1。 你可以假设数组中不存在重复的元素。 你的算法时间复杂度必须是 O(log n) 级别。 示例1：
-12输入: nums = [4,5,6,7,0,1,2......
+            一.差分与近似微分
+ diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分 近似微商：diff(Y)./diff(X)
+二.微分计算
+
+
+在这里插入图片描述
+
+三.不定积分与定积分计算
+ 
+四.数值积分
+1.梯形积分法   2.递推的辛普森积分法 
+...
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-09-10
+            2019-11-07
         </p>
         <div class="tags">
             
-              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
             
         </div>
     
@@ -461,31 +470,50 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：26.删除排序数组中重复的项/">
+    <a href="/article/matlab基础10.线性代数/">
         <h2 class="post-title">
                                  
-            Leetcode实战：26.删除排序数组中重复的项
+            matlab基础10.线性代数
         </h2>
         <h3 class="post-subtitle">
-            Leetcode
+            Matlab
         </h3>
         <div class="post-content-preview">
-            题目：
-给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
-不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
-示例1：
-12345给定数组 nums = [1,1,2], 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 你不需要考虑数组中超出新长度后面的元素。
-示例2......
+            一.数组的表示，冒号的用法
+1.a : b  2.a : b : c b为步长 
+二.矩阵的大小size()
+1.二维数组  2.三维数组  ## 三.矩阵的秩rank() 
+四.向量范数norm()
+
+
+在这里插入图片描述
+
+五.矩阵的逆inv()
+
+
+在这里插入图片描述
+
+六.矩阵的转置'
+
+
+在这里插入图片描述
+
+七.矩阵的特征值和特征向量eig()
+
+
+在这里插入图片描述
+
+八.矩阵......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-09-08
+            2019-11-04
         </p>
         <div class="tags">
             
-              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
             
         </div>
     
@@ -495,30 +523,36 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：23.合并K个排序链表/">
+    <a href="/article/Matlab基础09. 图形属性设置及习题/">
         <h2 class="post-title">
                                  
-            Leetcode实战：23.合并K个排序链表
+            Matlab基础09.图形属性设置及习题
         </h2>
         <h3 class="post-subtitle">
-            Leetcode
+            Matlab
         </h3>
         <div class="post-content-preview">
-            题目：
-合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。 示例：
-1234567输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
-算法实现：
-1234567891011121314151617class ListNode:    de......
+            一.图形属性设置view：
+    
+二.习题
+
+  
+  
+   4   
+  
+  
+
+...
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-09-07
+            2019-11-01
         </p>
         <div class="tags">
             
-              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
             
         </div>
     
@@ -567,15 +601,23 @@
     <div class="tags">
         
             
+            <a href="/tags/#Leetcode" title="Leetcode" rel="50">Leetcode</a>
+            
+        
+            
             <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
             
-            <a href="/tags/#Leetcode" title="Leetcode" rel="15">Leetcode</a>
+            <a href="/tags/#MachineLearning" title="MachineLearning" rel="5">MachineLearning</a>
             
         
             
-            <a href="/tags/#MachineLearning" title="MachineLearning" rel="5">MachineLearning</a>
+            <a href="/tags/#Matlab" title="Matlab" rel="11">Matlab</a>
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="6">Python</a>
             
         
             
@@ -647,11 +689,11 @@
         </li>
       
         <li>
-          <a href="/article/MachineLearning_LogisticsRegression/">MachineLearning_LogisticsRegression</a>
+          <a href="/article/MachineLearning_NoiveBayes/">MachineLearning_NoiveBayes</a>
         </li>
       
         <li>
-          <a href="/article/MachineLearning_NoiveBayes/">MachineLearning_NoiveBayes</a>
+          <a href="/article/MachineLearning_LogisticsRegression/">MachineLearning_LogisticsRegression</a>
         </li>
       
         <li>
@@ -678,7 +720,7 @@
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
