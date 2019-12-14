@@ -213,23 +213,21 @@
                 post-container">
 
                 <h2 id="题目">题目：</h2>
-<p>给定 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 说明：你不能倾斜容器，且 n 的值至少为 2。 <img src="https://img-blog.csdnimg.cn/2019090118022528.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。 示例：</p>
+<p>给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。<br>
+说明：你不能倾斜容器，且 n 的值至少为 2。<br>
+<img src="https://img-blog.csdnimg.cn/2019090118022528.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。<br>
+示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,8,6,2,5,4,8,3,7]</span><br><span class="line">输出: 49</span><br></pre></td></tr></table></figure>
 <h2 id="算法实现">算法实现：</h2>
 <h2 id="方法一暴力法">方法一:暴力法</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxArea(self, height):</span><br><span class="line">        result = 0</span><br><span class="line">        n = len(height)</span><br><span class="line">        while n &gt;= 2:</span><br><span class="line">            for each in range(n - 1):</span><br><span class="line">                result = max(min(height[each], height[n - 1]) * (n - each - 1), result)</span><br><span class="line">            n -= 1</span><br><span class="line">        return result</span><br><span class="line">s = Solution()</span><br><span class="line">print(s.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<div class="figure">
-<img src="https://img-blog.csdnimg.cn/20190901180454230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
-<p class="caption">在这里插入图片描述</p>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/20190901180454230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="方法二双指针">方法二：双指针</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxArea(self, height):</span><br><span class="line">        start = 0</span><br><span class="line">        end = len(height) - 1</span><br><span class="line">        result = 0</span><br><span class="line">        while start &lt; end:</span><br><span class="line">            result = max(result, min(height[start], height[end]) * (end - start))</span><br><span class="line">            if height[start] &gt;= height[end]:</span><br><span class="line">                end -= 1</span><br><span class="line">            else:</span><br><span class="line">                start += 1</span><br><span class="line">        return result</span><br><span class="line">s = Solution()</span><br><span class="line">print(s.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<div class="figure">
-<img src="https://img-blog.csdnimg.cn/20190901180415284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
-<p class="caption">在这里插入图片描述</p>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/20190901180415284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 

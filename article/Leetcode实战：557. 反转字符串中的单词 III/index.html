@@ -213,16 +213,14 @@
                 post-container">
 
                 <h2 id="题目">题目：</h2>
-<p>给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。 注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。</p>
+<p>给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。<br>
+注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。</p>
 <p>示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="string">"Let's take LeetCode contest"</span></span><br><span class="line">输出: <span class="string">"s'teL ekat edoCteeL tsetnoc"</span></span><br></pre></td></tr></table></figure>
 <h2 id="算法实现">算法实现：</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseWords</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        s = s.split(<span class="string">' '</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            s[i] = list(s[i])</span><br><span class="line">            self.reverseString(s[i])</span><br><span class="line">            s[i] = <span class="string">''</span>.join(s[i])</span><br><span class="line">        s = <span class="string">' '</span>.join(s)</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        a = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            a.append(s.pop())</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> a:</span><br><span class="line">            s.append(j)</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<div class="figure">
-<img src="https://img-blog.csdnimg.cn/20191008232704354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
-<p class="caption">在这里插入图片描述</p>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/20191008232704354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 
@@ -231,7 +229,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：238. 除自身以外数组的乘积/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：238. 除自身以外数组的乘积">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：235.二叉搜索树的最近公共祖先/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：235.二叉搜索树的最近公共祖先">&larr; Previous Post</a>
                         </li>
                     
                     

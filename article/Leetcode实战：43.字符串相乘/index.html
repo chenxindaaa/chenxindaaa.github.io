@@ -213,17 +213,15 @@
                 post-container">
 
                 <h2 id="题目">题目：</h2>
-<p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。 示例1：</p>
+<p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。<br>
+示例1：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: num1 = &quot;2&quot;, num2 = &quot;3&quot;</span><br><span class="line">输出: &quot;6&quot;</span><br></pre></td></tr></table></figure>
 <p>示例2:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: num1 = &quot;123&quot;, num2 = &quot;456&quot;</span><br><span class="line">输出: &quot;56088&quot;</span><br></pre></td></tr></table></figure>
 <h2 id="算法实现">算法实现：</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def multiply(self, num1: str, num2: str) -&gt; str:</span><br><span class="line">        count1 = len(num1) - 1</span><br><span class="line">        result1 = 0</span><br><span class="line">        count2 = len(num2) - 1</span><br><span class="line">        result2 = 0</span><br><span class="line">        for each1 in num1:</span><br><span class="line">            result1 += int(each1) * (10 ** count1)</span><br><span class="line">            count1 -= 1</span><br><span class="line">        for each2 in num2:</span><br><span class="line">            result2 += int(each2) * (10 ** count2)</span><br><span class="line">            count2 -= 1</span><br><span class="line">        return str(result1 * result2)</span><br><span class="line">s = Solution()</span><br><span class="line">print(s.multiply(&quot;123&quot;,&quot;456&quot;))</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<div class="figure">
-<img src="https://img-blog.csdnimg.cn/20190910094755811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
-<p class="caption">在这里插入图片描述</p>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/20190910094755811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 
@@ -232,12 +230,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：33.搜索旋转排序数组/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：33.搜索旋转排序数组">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：46.全排列/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：46.全排列">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战：26.删除排序数组中重复的项/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：26.删除排序数组中重复的项">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：33.搜索旋转排序数组/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：33.搜索旋转排序数组">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

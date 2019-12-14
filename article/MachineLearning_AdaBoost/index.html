@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          MachineLearning_AdaBoost - chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/MachineLearning_AdaBoost/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/8.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+                            
+                        </div>
+                        <h1>MachineLearning_AdaBoost</h1>
+                        <h2 class="subheading">AdaBoost</h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2019-12-14
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="adaboost基本原理介绍">AdaBoost基本原理介绍</h2>
+<h4 id="一-adaboost分类问题">一. AdaBoost分类问题</h4>
+<p>以二分类为例，假设给定一个二类分类的训练数据集$\chi = \left { (x_{1}, y_{1}), (x_{2}, y_{2}),…,(x_{n}, y_{n})\right }，$其中$x_{i}$表示样本点，$y_{i}$表示样本对应的类别，其可取值为｛-1，1｝。AdaBoost算法利用如下的算法，从训练数据中串行的学习一系列的弱学习器，并将这些弱学习器线性组合为一个强学习器。AdaBoost算法描述如下：<br>
+输入：训练数据集$\chi = \left { (x_{1}, y_{1}), (x_{2}, y_{2}),…,(x_{n}, y_{n})\right }$</p>
+<p>输出：最终的强分类器G(x)</p>
+<p>(1) 初始化训练数据的权重分布值：（ $D_m$表示第m个弱学习器的样本点的权值N为样本总数）<br>
+$$  D_{1}=(w_{11},…,w_{1i},…,w_{1N}),       w_{1i}=1/N,     i=1,2,…,N$$</p>
+<p>(2) 对M个弱学习器，m=1，2，…，M：</p>
+<p>(a)使用具有权值分布$D_m$的训练数据集进行学习，得到基本分类器$G_m(x)$，其输出值为｛-1，1｝；<br>
+(b)计算弱分类器在训练数据集上的分类误差率，其值越小的基分类器在最终分类器中的作用越大。<br>
+$$e_m=P(G_m(x_i)\neq y_i)=$$<br>
+$\displaystyle \sum^{N}<em>{i=1}{w</em>{mi}I(G_m(x_i)\neq y_i)}$<br>
+其中，$I(G{<em>{m}}(x{</em>{i}})\neq y{<em>{i}})$取值为0或1，取0表示分类正确，取1表示分类错误。<br>
+（c）计算弱分类器$G{</em>{m}}(x)$的权重系数$\alpha {_{m}}$：（这里的对数是自然对数）</p>
+<p>$$  \alpha {<em>{m}}=\frac{1}{2}ln{\frac{1-e{</em>{m}}}{e{<em>{m}}}}$$<br>
+一般情况下$e_m$的取值应该小于0.5，因为若不进行学习随机分类的话，由于是二分类错误率等于0.5，当进行学习的时候，错误率应该略低于0.5。当$c_m$减小的时候$\alpha_m$的值增大，而我们希望得到的是分类误差率越小的弱分类器的权值越大，对最终的预测产生的影响也就越大，所以将弱分类器的权值设为该方程式从直观上来说是合理地，具体的证明$alpha_m$为上式请继续往下读。<br>
+（d）更新训练数据集的样本权值分布：<br>
+$$D</em>{m+1}=(w_{m+1,1},w_{m+1,2}…w_{m+1,i}…,w_{m+1,N}),\  w_{m+1,i}=\frac{w_{mi}}{Z_m}exp(-\alpha_my_iG_m(x_i)), i=1, 2, …N$$<br>
+对于二分类，弱分类器$G{<em>{m}}(x)$的输出值取值为｛-1，1｝，$y{</em>{i}}$的取值为｛-1，1｝，所以对于正确的分类 $y{<em>{i}}G{</em>{m}}(x)$&gt;0，对于错误的分类$y{<em>{i}}G{</em>{m}}(x)$&lt;0，由于样本权重值在[0，1]之间，当分类正确时$w{<em>{m+1,i}}$取值较小，而分类错误时$w{</em>{m+1,i}}$取值较大，而我们希望得到的是权重值高的训练样本点在后面的弱学习器中会得到更多的重视，所以该上式从直观上感觉也是合理地，具体怎样合理，请往下读。<br>
+其中，$Z{<em>{m}}$是规范化因子，主要作用是将$W{</em>{mi}}$的值规范到0-1之间，使得$\displaystyle \sum_{i=1}^{N}{W{_{mi}}}$= 1。</p>
+<p>$$Z_m=\displaystyle \sum_{i=1}^{N}w_{mi}exp(-\alpha_my_iG_m(x_i))$$</p>
+<p>(3) 上面我们介绍了弱学习器的权重系数α如何计算，样本的权重系数W如何更新，学习的误差率e如何计算，接下来是最后一个问题，各个弱学习器采用何种结合策略了，AdaBoost对于分类问题的结合策略是加权平均法。如下，利用加权平均法构建基本分类器的线性组合：<br>
+$$f(x) = \displaystyle \sum_{m=1}^M \alpha_mG_M(x)$$<br>
+得到最终的分类器：<br>
+$$G(x)=sign(f(x))=sign(\displaystyle \sum_{m=1}^M\alpha_mG_m(x))$$<br>
+以上就是对于AdaBoost分类问题的介绍，接下来是对AdaBoost的回归问题的介绍。</p>
+<h4 id="二adaboost回归问题">二.AdaBoost回归问题</h4>
+<p>AdaBoost回归问题有许多变种，这里我们以AdaBoost R2算法为准。</p>
+<p>（1）我们先看看回归问题的误差率问题，对于第m个弱学习器，计算他在训练集上的最大误差：<br>
+$$E_m=max|y_i-G_m(x_i)|\quad i=1,2,…,N$$<br>
+然后计算每个样本的相对误差：（计算相对误差的目的是将误差规范化到[0，1]之间）<br>
+$$e_{mi}=\frac{|y_i-G_m(x_i)|}{E_m}, \quad 显然0 \leq e_{mi}\leq1$$<br>
+这里是误差损失为线性时的情况，如果我们用平方误差，则$e{<em>{mi}}=\frac{|y{</em>{i}}-G{<em>{m}}(x{</em>{i}})|}{E{<em>{m}}^2}^2$，如果我们用指数误差，则$e{</em>{mi}}=1-exp(\frac{-y{<em>{i}}+G{</em>{m}}(x{<em>{i}})}{E{</em>{m}}})$</p>
+<p>最终得到第k个弱学习器的误差率为：<br>
+$e{<em>{m}}=\sum</em>{i=1}^{N}{w{<em>{mi}}e{</em>{mi}}}$，表示每个样本点的加权误差的总和即为该弱学习器的误差。</p>
+<p>（2）我们再来看看弱学习器的权重系数α，如下公式：<br>
+$$\alpha_m=\frac{e_m}{1-e_m}$$<br>
+（3）对于如何更新回归问题的样本权重，第k+1个弱学习器的样本权重系数为：<br>
+$$w_{m_1,i}=\frac{w_{mi}}{Z_m}\alpha_m^{1-e_m}$$<br>
+其中Z{<em>{k}}是规范化因子：$Z{</em>{m}}=\sum_{i=1}^{N}{w{<em>{mi}}\alpha {</em>{m}}^{1-e{<em>{mi}}}}$<br>
+（4）最后是结合策略，和分类问题不同，回归问题的结合策略采用的是对加权弱学习器取中位数的方法，最终的强回归器为：<br>
+$G(x)=\sum</em>{m=1}^{M}{g(x)ln\frac{1}{\alpha {<em>{m}}}}$，其中$g(x)$是所有$\alpha {</em>{m}}G{_{m}}(x)$的中位数（m=1，2，…，M）。<br>
+这就是AdaBoost回归问题的算法介绍。</p>
+<h2 id="代码实现">代码实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Created on Nov 28, 2010</span></span><br><span class="line"><span class="string">Adaboost is short for Adaptive Boosting</span></span><br><span class="line"><span class="string">@author: Peter</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadSimpData</span><span class="params">()</span>:</span></span><br><span class="line">    datMat = matrix([[ <span class="number">1.</span> ,  <span class="number">2.1</span>],</span><br><span class="line">        [ <span class="number">2.</span> ,  <span class="number">1.1</span>],</span><br><span class="line">        [ <span class="number">1.3</span>,  <span class="number">1.</span> ],</span><br><span class="line">        [ <span class="number">1.</span> ,  <span class="number">1.</span> ],</span><br><span class="line">        [ <span class="number">2.</span> ,  <span class="number">1.</span> ]])</span><br><span class="line">    classLabels = [<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">-1.0</span>, <span class="number">-1.0</span>, <span class="number">1.0</span>]</span><br><span class="line">    <span class="keyword">return</span> datMat,classLabels</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadDataSet</span><span class="params">(fileName)</span>:</span>      <span class="comment">#general function to parse tab -delimited floats</span></span><br><span class="line">    numFeat = len(open(fileName).readline().split(<span class="string">'\t'</span>)) <span class="comment">#get number of fields </span></span><br><span class="line">    dataMat = []; labelMat = []</span><br><span class="line">    fr = open(fileName)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">        lineArr =[]</span><br><span class="line">        curLine = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(numFeat<span class="number">-1</span>):</span><br><span class="line">            lineArr.append(float(curLine[i]))</span><br><span class="line">        dataMat.append(lineArr)</span><br><span class="line">        labelMat.append(float(curLine[<span class="number">-1</span>]))</span><br><span class="line">    <span class="keyword">return</span> dataMat,labelMat</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stumpClassify</span><span class="params">(dataMatrix,dimen,threshVal,threshIneq)</span>:</span><span class="comment">#just classify the data</span></span><br><span class="line">    retArray = ones((shape(dataMatrix)[<span class="number">0</span>],<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">if</span> threshIneq == <span class="string">'lt'</span>:</span><br><span class="line">        retArray[dataMatrix[:,dimen] &lt;= threshVal] = <span class="number">-1.0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        retArray[dataMatrix[:,dimen] &gt; threshVal] = <span class="number">-1.0</span></span><br><span class="line">    <span class="keyword">return</span> retArray</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buildStump</span><span class="params">(dataArr,classLabels,D)</span>:</span></span><br><span class="line">    dataMatrix = mat(dataArr); labelMat = mat(classLabels).T</span><br><span class="line">    m,n = shape(dataMatrix)</span><br><span class="line">    numSteps = <span class="number">10.0</span>; bestStump = &#123;&#125;; bestClasEst = mat(zeros((m,<span class="number">1</span>)))</span><br><span class="line">    minError = inf <span class="comment">#init error sum, to +infinity</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):<span class="comment">#loop over all dimensions</span></span><br><span class="line">        rangeMin = dataMatrix[:,i].min(); rangeMax = dataMatrix[:,i].max();</span><br><span class="line">        stepSize = (rangeMax-rangeMin)/numSteps</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">-1</span>,int(numSteps)+<span class="number">1</span>):<span class="comment">#loop over all range in current dimension</span></span><br><span class="line">            <span class="keyword">for</span> inequal <span class="keyword">in</span> [<span class="string">'lt'</span>, <span class="string">'gt'</span>]: <span class="comment">#go over less than and greater than</span></span><br><span class="line">                threshVal = (rangeMin + float(j) * stepSize)</span><br><span class="line">                predictedVals = stumpClassify(dataMatrix,i,threshVal,inequal)<span class="comment">#call stump classify with i, j, lessThan</span></span><br><span class="line">                errArr = mat(ones((m,<span class="number">1</span>)))</span><br><span class="line">                errArr[predictedVals == labelMat] = <span class="number">0</span></span><br><span class="line">                weightedError = D.T*errArr  <span class="comment">#calc total error multiplied by D</span></span><br><span class="line">                <span class="comment">#print "split: dim %d, thresh %.2f, thresh ineqal: %s, the weighted error is %.3f" % (i, threshVal, inequal, weightedError)</span></span><br><span class="line">                <span class="keyword">if</span> weightedError &lt; minError:</span><br><span class="line">                    minError = weightedError</span><br><span class="line">                    bestClasEst = predictedVals.copy()</span><br><span class="line">                    bestStump[<span class="string">'dim'</span>] = i</span><br><span class="line">                    bestStump[<span class="string">'thresh'</span>] = threshVal</span><br><span class="line">                    bestStump[<span class="string">'ineq'</span>] = inequal</span><br><span class="line">    <span class="keyword">return</span> bestStump,minError,bestClasEst</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adaBoostTrainDS</span><span class="params">(dataArr,classLabels,numIt=<span class="number">40</span>)</span>:</span></span><br><span class="line">    weakClassArr = []</span><br><span class="line">    m = shape(dataArr)[<span class="number">0</span>]</span><br><span class="line">    D = mat(ones((m,<span class="number">1</span>))/m)   <span class="comment">#init D to all equal</span></span><br><span class="line">    aggClassEst = mat(zeros((m,<span class="number">1</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(numIt):</span><br><span class="line">        bestStump,error,classEst = buildStump(dataArr,classLabels,D)<span class="comment">#build Stump</span></span><br><span class="line">        <span class="comment">#print "D:",D.T</span></span><br><span class="line">        alpha = float(<span class="number">0.5</span>*log((<span class="number">1.0</span>-error)/max(error,<span class="number">1e-16</span>)))<span class="comment">#calc alpha, throw in max(error,eps) to account for error=0</span></span><br><span class="line">        bestStump[<span class="string">'alpha'</span>] = alpha  </span><br><span class="line">        weakClassArr.append(bestStump)                  <span class="comment">#store Stump Params in Array</span></span><br><span class="line">        <span class="comment">#print "classEst: ",classEst.T</span></span><br><span class="line">        expon = multiply(<span class="number">-1</span>*alpha*mat(classLabels).T,classEst) <span class="comment">#exponent for D calc, getting messy</span></span><br><span class="line">        D = multiply(D,exp(expon))                              <span class="comment">#Calc New D for next iteration</span></span><br><span class="line">        D = D/D.sum()</span><br><span class="line">        <span class="comment">#calc training error of all classifiers, if this is 0 quit for loop early (use break)</span></span><br><span class="line">        aggClassEst += alpha*classEst</span><br><span class="line">        <span class="comment">#print "aggClassEst: ",aggClassEst.T</span></span><br><span class="line">        aggErrors = multiply(sign(aggClassEst) != mat(classLabels).T,ones((m,<span class="number">1</span>)))</span><br><span class="line">        errorRate = aggErrors.sum()/m</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"total error: "</span>,errorRate</span><br><span class="line">        <span class="keyword">if</span> errorRate == <span class="number">0.0</span>: <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> weakClassArr,aggClassEst</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adaClassify</span><span class="params">(datToClass,classifierArr)</span>:</span></span><br><span class="line">    dataMatrix = mat(datToClass)<span class="comment">#do stuff similar to last aggClassEst in adaBoostTrainDS</span></span><br><span class="line">    m = shape(dataMatrix)[<span class="number">0</span>]</span><br><span class="line">    aggClassEst = mat(zeros((m,<span class="number">1</span>)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(classifierArr)):</span><br><span class="line">        classEst = stumpClassify(dataMatrix,classifierArr[i][<span class="string">'dim'</span>],\</span><br><span class="line">                                 classifierArr[i][<span class="string">'thresh'</span>],\</span><br><span class="line">                                 classifierArr[i][<span class="string">'ineq'</span>])<span class="comment">#call stump classify</span></span><br><span class="line">        aggClassEst += classifierArr[i][<span class="string">'alpha'</span>]*classEst</span><br><span class="line">        <span class="keyword">print</span> aggClassEst</span><br><span class="line">    <span class="keyword">return</span> sign(aggClassEst)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotROC</span><span class="params">(predStrengths, classLabels)</span>:</span></span><br><span class="line">    <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">    cur = (<span class="number">1.0</span>,<span class="number">1.0</span>) <span class="comment">#cursor</span></span><br><span class="line">    ySum = <span class="number">0.0</span> <span class="comment">#variable to calculate AUC</span></span><br><span class="line">    numPosClas = sum(array(classLabels)==<span class="number">1.0</span>)</span><br><span class="line">    yStep = <span class="number">1</span>/float(numPosClas); xStep = <span class="number">1</span>/float(len(classLabels)-numPosClas)</span><br><span class="line">    sortedIndicies = predStrengths.argsort()<span class="comment">#get sorted index, it's reverse</span></span><br><span class="line">    fig = plt.figure()</span><br><span class="line">    fig.clf()</span><br><span class="line">    ax = plt.subplot(<span class="number">111</span>)</span><br><span class="line">    <span class="comment">#loop through all the values, drawing a line segment at each point</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> sortedIndicies.tolist()[<span class="number">0</span>]:</span><br><span class="line">        <span class="keyword">if</span> classLabels[index] == <span class="number">1.0</span>:</span><br><span class="line">            delX = <span class="number">0</span>; delY = yStep;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            delX = xStep; delY = <span class="number">0</span>;</span><br><span class="line">            ySum += cur[<span class="number">1</span>]</span><br><span class="line">        <span class="comment">#draw line from cur to (cur[0]-delX,cur[1]-delY)</span></span><br><span class="line">        ax.plot([cur[<span class="number">0</span>],cur[<span class="number">0</span>]-delX],[cur[<span class="number">1</span>],cur[<span class="number">1</span>]-delY], c=<span class="string">'b'</span>)</span><br><span class="line">        cur = (cur[<span class="number">0</span>]-delX,cur[<span class="number">1</span>]-delY)</span><br><span class="line">    ax.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>],<span class="string">'b--'</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'False positive rate'</span>); plt.ylabel(<span class="string">'True positive rate'</span>)</span><br><span class="line">    plt.title(<span class="string">'ROC curve for AdaBoost horse colic detection system'</span>)</span><br><span class="line">    ax.axis([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"the Area Under the Curve is: "</span>,ySum*xStep</span><br></pre></td></tr></table></figure>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/GitOperation/" data-toggle="tooltip" data-placement="top" title="GitOperation">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2019 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>

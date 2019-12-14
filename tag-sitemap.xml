@@ -23,13 +23,6 @@
     </url>
 
     <url>
-        <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
-        <lastmod>2019-12-06T13:58:13.978Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.chenxindaaa.com/tags/Python/</loc>
         <lastmod>2019-12-07T17:47:17.129Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -46,6 +39,13 @@
     <url>
         <loc>http://www.chenxindaaa.com/tags/Matlab/</loc>
         <lastmod>2019-12-07T18:28:49.003Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
+        <lastmod>2019-12-14T05:01:23.630Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

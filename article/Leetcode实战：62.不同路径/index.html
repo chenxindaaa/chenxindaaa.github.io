@@ -215,8 +215,11 @@
                 <h2 id="题目">题目：</h2>
 <p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
 <p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
-<p>问总共有多少条不同的路径？ <img src="https://img-blog.csdnimg.cn/2019091419145053.png" alt="在这里插入图片描述"> 例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
-<p>说明：m 和 n 的值均不超过 100。 示例1：</p>
+<p>问总共有多少条不同的路径？<br>
+<img src="https://img-blog.csdnimg.cn/2019091419145053.png" alt="在这里插入图片描述"><br>
+例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
+<p>说明：m 和 n 的值均不超过 100。<br>
+示例1：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: m = 3, n = 2</span><br><span class="line">输出: 3</span><br><span class="line">解释:</span><br><span class="line">从左上角开始，总共有 3 条路径可以到达右下角。</span><br><span class="line">1. 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line">2. 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line">3. 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
 <p>示例2：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: m = 7, n = 3</span><br><span class="line">输出: 28</span><br></pre></td></tr></table></figure>
@@ -226,10 +229,7 @@
 <h2 id="思路">思路：</h2>
 <p>设网格为m * n，那么到达终点需要向由走m - 1格，向下走n - 1格，路径数即为m - 1与n - 1的组合</p>
 <h2 id="结果">结果：</h2>
-<div class="figure">
-<img src="https://img-blog.csdnimg.cn/20190914191318928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
-<p class="caption">在这里插入图片描述</p>
-</div>
+<p><img src="https://img-blog.csdnimg.cn/20190914191318928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="方法二">方法二：</h2>
 <p>递归</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">        def fun(m, n):</span><br><span class="line">            nonlocal a</span><br><span class="line">            if m == 1 or n == 1:</span><br><span class="line">                a += 1</span><br><span class="line">            else:</span><br><span class="line">                fun(m, n - 1)</span><br><span class="line">                fun(m - 1, n)</span><br><span class="line">        a = 0</span><br><span class="line">        fun(m, n)</span><br><span class="line">        return a</span><br></pre></td></tr></table></figure>
@@ -243,12 +243,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：70.爬楼梯/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：70.爬楼梯">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：61.旋转链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：61.旋转链表">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战：61.旋转链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：61.旋转链表">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：59.螺旋矩阵二/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：59.螺旋矩阵二">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
