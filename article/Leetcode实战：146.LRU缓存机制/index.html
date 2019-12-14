@@ -213,9 +213,8 @@
                 post-container">
 
                 <h2 id="题目">题目：</h2>
-<p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。</p>
-<p>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。<br>
-写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用的数据值，从而为新的数据值留出空间。</p>
+<p>运用你所掌握的数据结构，设计和实现一个 LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。</p>
+<p>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。 写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用的数据值，从而为新的数据值留出空间。</p>
 <p>进阶:</p>
 <p>你是否可以在 O(1) 时间复杂度内完成这两种操作？</p>
 <p>示例：</p>
@@ -223,7 +222,9 @@
 <h2 id="算法实现队列">算法实现：队列</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class LRUCache(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, capacity):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type capacity: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.capacity = capacity</span><br><span class="line">        self.dictionary = &#123;&#125;</span><br><span class="line">        self.QueQue = []</span><br><span class="line"></span><br><span class="line">    def get(self, key):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type key: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if self.dictionary.get(key, 0):</span><br><span class="line">            self.QueQue.remove(key)</span><br><span class="line">            self.QueQue.insert(0, key)</span><br><span class="line">            return self.dictionary[key]</span><br><span class="line">        else:</span><br><span class="line">            return -1</span><br><span class="line"></span><br><span class="line">    def put(self, key, value):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type key: int</span><br><span class="line">        :type value: int</span><br><span class="line">        :rtype: None</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if key in self.dictionary:</span><br><span class="line">            self.QueQue.remove(key)</span><br><span class="line">            self.QueQue.insert(0, key)</span><br><span class="line">            self.dictionary[key] = value</span><br><span class="line">        elif self.capacity &gt; 0:</span><br><span class="line">            self.QueQue.insert(0, key)</span><br><span class="line">            self.dictionary[key] = value</span><br><span class="line">            self.capacity -= 1</span><br><span class="line">        else:</span><br><span class="line">            del self.dictionary[self.QueQue.pop()]</span><br><span class="line">            self.QueQue.insert(0, key)</span><br><span class="line">            self.dictionary[key] = value</span><br><span class="line">obj = LRUCache(2)</span><br><span class="line">obj.put(2, 1)</span><br><span class="line">obj.put(2, 2)</span><br><span class="line">print(obj.get(2))</span><br><span class="line">obj.put(1, 1)</span><br><span class="line">obj.put(4, 1)</span><br><span class="line">print(obj.get(2))</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果:</h2>
-<p><img src="https://img-blog.csdnimg.cn/20190927211614981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20190927211614981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
 
@@ -232,12 +233,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：148.排序链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：148.排序链表">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：142.环形链表II/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：142.环形链表II">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战：142.环形链表II/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：142.环形链表II">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：141.环形链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：141.环形链表">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

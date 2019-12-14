@@ -213,16 +213,16 @@
                 post-container">
 
                 <h2 id="题目">题目：</h2>
-<p>给定一个正整数 n，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。<br>
-示例：</p>
+<p>给定一个正整数 n，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。 示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: 3</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 8, 9, 4 ],</span><br><span class="line"> [ 7, 6, 5 ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <h2 id="算法实现">算法实现：</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def generateMatrix(self, n):</span><br><span class="line">        a = []</span><br><span class="line">        temp1 = 1</span><br><span class="line">        k = n</span><br><span class="line">        for each in range(n):</span><br><span class="line">            a.append([])</span><br><span class="line">        for i in range((k + 1) // 2):</span><br><span class="line">            temp2 = temp1 + 4 * (n - 1) if n != 1 else temp1 + 1</span><br><span class="line">            m = i</span><br><span class="line">            y = i</span><br><span class="line">            for j in range(temp1, temp2):</span><br><span class="line">                if j &lt; temp1 + n:</span><br><span class="line">                    a[i].insert(y, j)</span><br><span class="line">                    y += 1</span><br><span class="line">                elif j &lt; temp1 + 2 * n - 1:</span><br><span class="line">                    m += 1</span><br><span class="line">                    a[m].insert(i, j)</span><br><span class="line">                elif j &lt; temp1 + 3 * n - 2:</span><br><span class="line">                    a[m].insert(i, j)</span><br><span class="line">                else:</span><br><span class="line">                    m -= 1</span><br><span class="line">                    a[m].insert(i, j)</span><br><span class="line">            n -= 2</span><br><span class="line">            temp1 = temp2</span><br><span class="line">        return a</span><br></pre></td></tr></table></figure>
 <h2 id="思路">思路：</h2>
-<p>假设要求n维螺旋矩阵，则需要循环(n + 1) // 2次，即矩阵由(n + 1) // 2个圈构成<br>
-每个圈有4 * (n - 1)个数，当n为1的时候有一个数。</p>
+<p>假设要求n维螺旋矩阵，则需要循环(n + 1) // 2次，即矩阵由(n + 1) // 2个圈构成 每个圈有4 * (n - 1)个数，当n为1的时候有一个数。</p>
 <h2 id="结果">结果:</h2>
-<p><img src="https://img-blog.csdnimg.cn/20190914122839570.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20190914122839570.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
 
@@ -231,7 +231,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：61.旋转链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：61.旋转链表">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：62.不同路径/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：62.不同路径">&larr; Previous Post</a>
                         </li>
                     
                     

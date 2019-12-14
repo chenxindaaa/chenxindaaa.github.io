@@ -224,17 +224,17 @@
 <h2 id="方法一递归">方法一：递归</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        a = 0</span><br><span class="line">        def fun(n):</span><br><span class="line">            nonlocal a</span><br><span class="line">            if n == 1 or n == 0:</span><br><span class="line">                a += 1</span><br><span class="line">            else:</span><br><span class="line">                fun(n - 1)</span><br><span class="line">                fun(n - 2)</span><br><span class="line">        fun(n)</span><br><span class="line">        return a</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<p>由于重复步骤太多，导致超出时间限制<br>
-<img src="https://img-blog.csdnimg.cn/20190917194622311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>由于重复步骤太多，导致超出时间限制 <img src="https://img-blog.csdnimg.cn/20190917194622311.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="方法二记忆化递归">方法二：记忆化递归</h2>
 <p>利用字典保存每次递归的结果，再下次递归时直接调用结果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        m = &#123;1: 1, 0: 1&#125;</span><br><span class="line">        def helper(n):</span><br><span class="line">            if n in m:</span><br><span class="line">                return m[n]</span><br><span class="line">            a = helper(n - 1) + helper(n - 2)</span><br><span class="line">            m.setdefault(n, a)</span><br><span class="line">            return a</span><br><span class="line">        return helper(n)</span><br></pre></td></tr></table></figure>
-<p>结果：<br>
-<img src="https://img-blog.csdnimg.cn/20190917194829538.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>结果： <img src="https://img-blog.csdnimg.cn/20190917194829538.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="方法三排列组合">方法三：排列组合</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        i = 0</span><br><span class="line">        a = 0</span><br><span class="line">        while i &lt;= n:</span><br><span class="line">            a += int(math.factorial(n)/(math.factorial(i) * math.factorial(n - i)))</span><br><span class="line">            i += 1</span><br><span class="line">            n -= 1</span><br><span class="line">        return a</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果:</h2>
-<p><img src="https://img-blog.csdnimg.cn/20190917194924495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20190917194924495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
 
@@ -248,7 +248,7 @@
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战：62.不同路径/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：62.不同路径">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：61.旋转链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：61.旋转链表">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

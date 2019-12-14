@@ -211,62 +211,25 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：148.排序链表/">
+    <a href="/article/Leetcode实战：155.最小栈/">
         <h2 class="post-title">
                                  
-            Leetcode实战：148.排序链表
+            Leetcode实战：155.最小栈
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
-示例1：
-12输入: 4-&gt;2-&gt;1-&gt;3输出: 1-&gt;2-&gt;3-&gt;4
-示例2：
-12输入: -1-&gt;5-&gt;3-&gt;4-&gt;0输出: -1-&gt;0-&gt;3-&gt;4-&gt;5
-算法实现：
-合并排序 + 递归
-12345678910111213......
+设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。
+push(x) -- 将元素 x 推入栈中。 pop() -- 删除栈顶的元素。 top() -- 获取栈顶元素。 getMin() -- 检索栈中的最小元素。 示例：
+12345678MinStack minStack = new MinStack();minStack.push(-2);minSt......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
             2019-09-28
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/Leetcode实战：146.LRU缓存机制/">
-        <h2 class="post-title">
-                                 
-            Leetcode实战：146.LRU缓存机制
-        </h2>
-        <h3 class="post-subtitle">
-            Leetcode
-        </h3>
-        <div class="post-content-preview">
-            题目：
-运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。
-获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。
-写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-09-27
         </p>
         <div class="tags">
             
@@ -314,6 +277,37 @@
 
 <div class="post-preview">
 
+    <a href="/article/Leetcode实战：146.LRU缓存机制/">
+        <h2 class="post-title">
+                                 
+            Leetcode实战：146.LRU缓存机制
+        </h2>
+        <h3 class="post-subtitle">
+            Leetcode
+        </h3>
+        <div class="post-content-preview">
+            题目：
+运用你所掌握的数据结构，设计和实现一个 LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。
+获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。 写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-09-27
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/Leetcode实战：141.环形链表/">
         <h2 class="post-title">
                                  
@@ -328,8 +322,10 @@
 示例1：
 123输入：head = [3,2,0,-4], pos = 1输出：true解释：链表中有一个环，其尾部连接到第二个节点。
 
+在这里插入图片描述
+
 示例2：
-123输入：head = [1,2], pos = 0输出：true......
+123输入：head = [1,2], pos......
         </div>
     </a>
     
@@ -422,21 +418,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：121.买卖股票的最佳时机/">
+    <a href="/article/Leetcode实战：122.买卖股票的最佳时机II/">
         <h2 class="post-title">
                                  
-            Leetcode实战：121.买卖股票的最佳时机
+            Leetcode实战：122.买卖股票的最佳时机II
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
-如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。
-注意你不能在买入股票前卖出股票。
-示例1：
-1234输入: [7,1,5,3,6,4]输出: 5解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。......
+给定一个数组，它的第i个元素是一支给定股票第i天的价格。
+设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
+注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。 示例1：
+1234输入: [7, 1, 5, 3, 6, 4]输出: 7解释: 在第2天（股票价格 = 1）的时候买入，在第3天（股票价格 = 5）的时候卖出, 这笔......
         </div>
     </a>
     
@@ -456,21 +451,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：122.买卖股票的最佳时机II/">
+    <a href="/article/Leetcode实战：121.买卖股票的最佳时机/">
         <h2 class="post-title">
                                  
-            Leetcode实战：122.买卖股票的最佳时机II
+            Leetcode实战：121.买卖股票的最佳时机
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个数组，它的第i个元素是一支给定股票第i天的价格。
-设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
-注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
-示例1：
-1234输入: [7, 1, 5, 3, 6, 4]输出: 7解释: 在第2天（股票价格 = 1）的时候买入，在第3天（股票价格 = 5）的时候卖出, 这笔......
+给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。
+注意你不能在买入股票前卖出股票。 示例1：
+1234输入: [7,1,5,3,6,4]输出: 5解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。......
         </div>
     </a>
     
@@ -502,8 +496,7 @@
             题目：
 给定一个二叉树，找出其最大深度。
 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
-说明: 叶子节点是指没有子节点的节点。
-示例：
+说明: 叶子节点是指没有子节点的节点。 示例：
 123456789给定二叉树 [3,9,20,null,null,15,7]，    3   / \  9  20    /  \   15   7返回它的最大深度 3 。
 算法实现：递归
 1234567891011121314151617181......
@@ -602,6 +595,10 @@
     <div class="tags">
         
             
+            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
+            
+        
+            
             <a href="/tags/#Leetcode" title="Leetcode" rel="50">Leetcode</a>
             
         
@@ -623,10 +620,6 @@
         
             
             <a href="/tags/#Github" title="Github" rel="1">Github</a>
-            
-        
-            
-            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
     </div>

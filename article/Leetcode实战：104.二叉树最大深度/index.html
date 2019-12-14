@@ -215,13 +215,14 @@
                 <h2 id="题目">题目：</h2>
 <p>给定一个二叉树，找出其最大深度。</p>
 <p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
-<p>说明: 叶子节点是指没有子节点的节点。<br>
-示例：</p>
+<p>说明: 叶子节点是指没有子节点的节点。 示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">给定二叉树 [3,9,20,null,null,15,7]，</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br><span class="line"></span><br><span class="line">返回它的最大深度 3 。</span><br></pre></td></tr></table></figure>
 <h2 id="算法实现递归">算法实现：递归</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class TreeNode:</span><br><span class="line">    def __init__(self, x):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.left = None</span><br><span class="line">        self.right = None</span><br><span class="line">class Solution:</span><br><span class="line">    def maxDepth(self, root):</span><br><span class="line">        n = 0</span><br><span class="line">        def helper(root):</span><br><span class="line">            nonlocal n</span><br><span class="line">            if not root:</span><br><span class="line">                return n</span><br><span class="line">            n += 1</span><br><span class="line">            root.val = n</span><br><span class="line">            a = helper(root.left)</span><br><span class="line">            n = root.val</span><br><span class="line">            b = helper(root.right)</span><br><span class="line">            return max(a, b)</span><br><span class="line">        return helper(root)</span><br></pre></td></tr></table></figure>
 <h2 id="结果这次是从开始到现在通过速度最快的一次">结果：这次是从开始到现在通过速度最快的一次</h2>
-<p><img src="https://img-blog.csdnimg.cn/20190921234222417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20190921234222417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
 
@@ -230,7 +231,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：122.买卖股票的最佳时机II/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：122.买卖股票的最佳时机II">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：121.买卖股票的最佳时机/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：121.买卖股票的最佳时机">&larr; Previous Post</a>
                         </li>
                     
                     

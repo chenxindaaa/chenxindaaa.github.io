@@ -221,30 +221,7 @@
         </h3>
         <div class="post-content-preview">
             一.matlab条件语句
-语法：
-1.if/end
-if 逻辑表达式
-程序语句
-end
-2.if/else/end
-if 逻辑表达式
-程序语句
-else
-程序语句
-end
-3.if/elseif…/else/end
-if 逻辑表达式
-程序语句
-elseif 逻辑表达式
-程序语句
-…
-else
-程序语句
-end
-二.matlab循环语句
-语法
-1.for/end
-for 变量 = 起点:增量:......
+语法： 1.if/end if 逻辑表达式 程序语句 end 2.if/else/end if 逻辑表达式 程序语句 else 程序语句 end 3.if/elseif.../else/end if 逻辑表达式 程序语句 elseif 逻辑表达式 程序语句 ... else 程序语句 end ## 二.matlab循环语句 语法 1.for/end for 变量 =......
         </div>
     </a>
     
@@ -264,22 +241,19 @@ for 变量 = 起点:增量:......
 
 <div class="post-preview">
 
-    <a href="/article/Matlab基础01. .m文件/">
+    <a href="/article/Python基础02. 条件与循环/">
         <h2 class="post-title">
                                  
-            Matlab基础01. .m文件
+            Python基础02. 条件与循环
         </h2>
         <h3 class="post-subtitle">
-            Matlab
+            Python
         </h3>
         <div class="post-content-preview">
-            1. .m文件的用处：
-1.matlab脚本文件，将代码集合起来，用来执行重复的工作，并且能将代码保存在计算机里，方便下次调用
-2.matlab函数文件，以function开头，用来定义一个函数，当调用matlab函数时，在命令窗口输入函数名，则该函数的程序及被调用并执行
-2. 创建并运行.m脚本文件：
-
-点击左上角新建脚本，然后点击保存即可创建.m文件
-写好代码，我这里写的是计算[1 2 ......
+            Python3条件语句
+基本语法： 1.if语句 12if variable1 &gt; variable2: # 这里variable1 &gt; variable2可替换成任意逻辑表达式,注意最后的冒号    pass # 这里输入将要执行的语句块，注意缩进
+pass不做任何事情，一般用做占位语句 2.if else语句
+1234if variable1 &gt; variable2: ......
         </div>
     </a>
     
@@ -289,7 +263,7 @@ for 变量 = 起点:增量:......
         </p>
         <div class="tags">
             
-              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+              <a href="/tags/#Python" title="Python">Python</a>
             
         </div>
     
@@ -309,51 +283,13 @@ for 变量 = 起点:增量:......
         </h3>
         <div class="post-content-preview">
             一.Python变量：
-标识符
-1.第一个字符必须是字母表中字母或下划线 _ 。
-2.标识符的其他的部分由字母、数字和下划线组成。
-3.标识符对大小写敏感。
-4.在使用变量前，需要对其先赋值。
-注意：在 Python 3 中，可以用中文作为变量名，非 ASCII 标识符也是允许的了。
-
-保留字
-保留字即关键字，我们不能把它们用作任何标识符名称。Python 的标准库提供了一个 keyword......
+标识符 1.第一个字符必须是字母表中字母或下划线 _ 。 2.标识符的其他的部分由字母、数字和下划线组成。 3.标识符对大小写敏感。 4.在使用变量前，需要对其先赋值。 注意：在 Python 3 中，可以用中文作为变量名，非 ASCII 标识符也是允许的了。  保留字 保留字即关键字，我们不能把它们用作任何标识符名称。Python 的标准库提供了一个 keyword......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
             2019-10-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Python" title="Python">Python</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/python解决哲学家就餐问题（and型信号量）/">
-        <h2 class="post-title">
-                                 
-            python解决哲学家就餐问题（and型信号量）
-        </h2>
-        <h3 class="post-subtitle">
-            Philosopher
-        </h3>
-        <div class="post-content-preview">
-            最近操作系统刚学完这部分内容，老师要求下去自己实践一下，在网上看了看发现用python解决该问题的博文很少，而且好多都是错的，于是就自己写了一段代码
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859# and型信号量解决哲学......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-10-10
         </p>
         <div class="tags">
             
@@ -376,8 +312,36 @@ for 变量 = 起点:增量:......
             Consumer
         </h3>
         <div class="post-content-preview">
-            实现一边做酱香饼一边吃酱香饼
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647import timeimport threadingimport queueclass Proceducer():    def __init__(self, key, full):     ......
+            实现一边做酱香饼一边吃酱香饼 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647import timeimport threadingimport queueclass Proceducer():    def __init__(self, key, full):     ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Python" title="Python">Python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/python解决哲学家就餐问题（and型信号量）/">
+        <h2 class="post-title">
+                                 
+            python解决哲学家就餐问题（and型信号量）
+        </h2>
+        <h3 class="post-subtitle">
+            Philosopher
+        </h3>
+        <div class="post-content-preview">
+            最近操作系统刚学完这部分内容，老师要求下去自己实践一下，在网上看了看发现用python解决该问题的博文很少，而且好多都是错的，于是就自己写了一段代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859# and型信号量解决哲学......
         </div>
     </a>
     
@@ -408,11 +372,10 @@ for 变量 = 起点:增量:......
         <div class="post-content-preview">
             题目：
 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
-现有一个链表 – head = [4,5,1,9]，它可以表示为:
-
+现有一个链表 -- head = [4,5,1,9]，它可以表示为: 
 示例1：
 123输入: head = [4,5,1,9], node = 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
-示例......
+示......
         </div>
     </a>
     
@@ -432,22 +395,21 @@ for 变量 = 起点:增量:......
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：557. 反转字符串中的单词 III/">
+    <a href="/article/Leetcode实战：238. 除自身以外数组的乘积/">
         <h2 class="post-title">
                                  
-            Leetcode实战：557. 反转字符串中的单词 III
+            Leetcode实战：238. 除自身以外数组的乘积
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
-注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。
+给定长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。
 示例：
-12输入: "Let's take LeetCode contest"输出: "s'teL ekat edoCteeL tsetnoc"
+12输入: [1,2,3,4]输出: [24,12,8,6]
 算法实现：
-1234567891011121314151617181920......
+12345678910111213141516171819class Solution(object):    def pr......
         </div>
     </a>
     
@@ -467,22 +429,23 @@ for 变量 = 起点:增量:......
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：235.二叉搜索树的最近公共祖先/">
+    <a href="/article/Leetcode实战：344. 反转字符串/">
         <h2 class="post-title">
                                  
-            Leetcode实战：235.二叉搜索树的最近公共祖先
+            Leetcode实战：344. 反转字符串
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
-百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
-例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]
-
+编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
+不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
+你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。
 示例1：
-123输入: ro......
+12输入：["h","e","l","l","o"]输出：["o","l","l","e","h"]
+示例2：
+12......
         </div>
     </a>
     
@@ -535,22 +498,21 @@ for 变量 = 起点:增量:......
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：236.二叉树的最近公共祖先/">
+    <a href="/article/Leetcode实战：235.二叉搜索树的最近公共祖先/">
         <h2 class="post-title">
                                  
-            Leetcode实战：236.二叉树的最近公共祖先
+            Leetcode实战：235.二叉搜索树的最近公共祖先
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
-例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
-
+例如，给定如下二叉搜索树: root = [6,2,8,0,4,7,9,null,null,3,5] 
 示例1：
-123输入: root =......
+123输入: roo......
         </div>
     </a>
     
@@ -613,6 +575,10 @@ for 变量 = 起点:增量:......
     <div class="tags">
         
             
+            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
+            
+        
+            
             <a href="/tags/#Leetcode" title="Leetcode" rel="50">Leetcode</a>
             
         
@@ -634,10 +600,6 @@ for 变量 = 起点:增量:......
         
             
             <a href="/tags/#Github" title="Github" rel="1">Github</a>
-            
-        
-            
-            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
     </div>
