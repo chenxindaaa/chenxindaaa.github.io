@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <url>
         <loc>http://www.chenxindaaa.com</loc>
         <changefreq>daily</changefreq>
@@ -8,7 +9,31 @@
 
     <url>
         <loc>http://www.chenxindaaa.com/article/MachineLearning_AdaBoost/</loc>
-        <lastmod>2019-12-14T05:01:23.630Z</lastmod>
+        <lastmod>2019-12-14T09:07:15.569Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/GitOperation/</loc>
+        <lastmod>2019-12-14T06:04:27.281Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/MachineLearning_NoiveBayes/</loc>
+        <lastmod>2019-12-14T05:33:51.882Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/article/BlueBridgeCup11.17/</loc>
+        <lastmod>2019-12-14T05:21:18.167Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -439,30 +464,6 @@
     </url>
 
     <url>
-        <loc>http://www.chenxindaaa.com/article/GitOperation/</loc>
-        <lastmod>2019-12-06T13:56:20.254Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/article/MachineLearning_NoiveBayes/</loc>
-        <lastmod>2019-12-02T14:39:46.546Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/article/BlueBridgeCup11.17/</loc>
-        <lastmod>2019-12-01T17:45:03.717Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://www.chenxindaaa.com/article/Leetcode%E5%AE%9E%E6%88%98%EF%BC%9A33.%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/</loc>
         <lastmod>2019-12-01T17:30:25.184Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -583,7 +584,7 @@
     </url>
 
     <url>
-        <loc>http://www.chenxindaaa.com/article/%E5%9C%A8%E7%94%A8pyinstaller%E6%89%93%E5%8C%85py%E6%96%87%E4%BB%B6%E6%97%B6%E9%81%87%E5%88%B0AttributeError_%20'str'%20object%20has%20no%20attribute%20'items'%E7%AD%89%E9%97%AE%E9%A2%98/</loc>
+        <loc>http://www.chenxindaaa.com/article/%E5%9C%A8%E7%94%A8pyinstaller%E6%89%93%E5%8C%85py%E6%96%87%E4%BB%B6%E6%97%B6%E9%81%87%E5%88%B0AttributeError_%20%27str'%20object%20has%20no%20attribute%20'items'%E7%AD%89%E9%97%AE%E9%A2%98/</loc>
         <lastmod>2019-12-01T17:08:49.793Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
