@@ -214,11 +214,12 @@
 
                 <p><strong>朴素贝叶斯（Naive Bayes）是一种简单的分类算法。</strong></p>
 <h2 id="一-朴素贝叶斯的理论基础">一、朴素贝叶斯的理论基础</h2>
-<p>给定训练数据集（X,Y），其中每个样本x都包括n维特征，即x=(x1,x2,x3,...,xn)，类标记集合含有k种类别，即y=(y1,y2,...,yk)。</p>
+<p>给定训练数据集（X,Y），其中每个样本x都包括n维特征，即<span class="math inline">\(x=(x_1,x_2,x_3,...,x_n)\)</span>，类标记集合含有k种类别，<span class="math inline">\(y=(y_1,y_2,...,y_k)\)</span>。</p>
 <p>如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x),P(y2|x),...,P(yk|x)中最大的那个，即求后验概率最大的。</p>
 <p>P(yk|x)根据贝叶斯定理和全概率公式可以求出。分子中的P(yk)是先验概率，根据训练集就可以简单地计算出来。 <strong>贝叶斯公式：</strong> <img src="https://img-blog.csdnimg.cn/20191130192327601.png" alt="在这里插入图片描述"> <strong>全概率公式：</strong> <img src="https://img-blog.csdnimg.cn/20191130192243876.png" alt="在这里插入图片描述"> 朴素贝叶斯算法对条件概率分布作出了独立性的假设，假设各个维度的特征x1,x2,...,xn互相独立。</p>
 <p><strong>那么条件概率公式可以化为：</strong> <img src="https://img-blog.csdnimg.cn/2019113019270736.png" alt="在这里插入图片描述"> <strong>于是朴素贝叶斯分类器可表示为：</strong> <img src="https://img-blog.csdnimg.cn/20191130193041870.png" alt="在这里插入图片描述"> 因为对所有的yk，上式中的分母的值都是一样的，所以可以忽略分母部分。<strong>朴素贝叶斯分类器最终表示为：</strong> <img src="https://img-blog.csdnimg.cn/20191130192858965.png" alt="在这里插入图片描述"></p>
-<p>###<strong>下面举一个例子：</strong> ####数据集：</p>
+<h3 id="下面举一个例子"><strong>下面举一个例子：</strong></h3>
+<h4 id="数据集">数据集：</h4>
 <table>
 <thead>
 <tr class="header">
@@ -441,7 +442,7 @@
 </tr>
 </tbody>
 </table>
-<p>####测试集：</p>
+<h4 id="测试集">测试集：</h4>
 <table>
 <thead>
 <tr class="header">
@@ -475,7 +476,12 @@
 <p><strong>首先我们估计类先验概率P(c)，显然有</strong></p>
 <p><span class="math inline">\(P(好瓜 = 是) = \frac{8} {17}\approx 0.471\)</span>, <span class="math inline">\(P(好瓜 = 否) = \frac{9} {17}\approx 0.529\)</span>,</p>
 <p><strong>然后，为每个属性估计条件概率<span class="math inline">\(P(X_i|C):\)</span></strong></p>
-<p><span class="math display">\[P_{青绿|是} = P(色泽 = 青绿 | 好瓜 = 是)  = \frac{3} {8}= 0.375,\]</span> <span class="math inline">\(P_{青绿|否} = P(色泽 = 青绿 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{蜷缩|是} = P(根蒂 = 蜷缩 | 好瓜 = 是) = \frac{5} {8} = 0.625\)</span>, <span class="math inline">\(P_{蜷缩|否} = P(根蒂 = 蜷缩 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{浊响|是} = P(敲声 = 浊响 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{浊响|否} = P(敲声 = 浊响 | 好瓜 = 否) = \frac{4} {9}\approx 0.444\)</span>, <span class="math inline">\(P_{清晰|是} = P(纹理 = 清晰 | 好瓜 = 是) = \frac{7} {8} = 0.875\)</span>, <span class="math inline">\(P_{清晰|否} = P(纹理 = 清晰 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{凹陷|是} = P(脐部 = 凹陷 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{凹陷|否} = P(脐部 = 凹陷 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{硬滑|是} = P(触感 = 硬滑 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{硬滑|否} = P(触感 = 硬滑 | 好瓜 = 否) = \frac{6} {9}\approx 0.667\)</span>, <span class="math inline">\(P_{密度:0.697|是} = P(密度 = 0.697 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.129}exp(-\frac{(0.697-0.574)^2}{2\cdot0.129^2})\approx1.959\)</span>, <span class="math inline">\(P_{密度:0.697|否} = P(密度 = 0.697 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.195}exp(-\frac{(0.697-0.496)^2}{2\cdot0.0.195^2})\approx1.203\)</span>, <span class="math inline">\(P_{含糖率:0.460|是} = P(含糖率 = 0.460 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.101}exp(-\frac{(0.460-0.279)^2}{2\cdot0.101^2})\approx0.788\)</span>, <span class="math inline">\(P_{含糖率:0.460|否} = P(含糖率 = 0.460 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.108}exp(-\frac{(0.460-0.154)^2}{2\cdot0.108^2})\approx0.066\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_{青绿|是} &amp;= P(色泽 = 青绿 | 好瓜 = 是) \\ 
+ &amp;= \frac{3} {8}= 0.375,
+ \end{aligned}
+ \]</span> <span class="math inline">\(P_{青绿|否} = P(色泽 = 青绿 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{蜷缩|是} = P(根蒂 = 蜷缩 | 好瓜 = 是) = \frac{5} {8} = 0.625\)</span>, <span class="math inline">\(P_{蜷缩|否} = P(根蒂 = 蜷缩 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{浊响|是} = P(敲声 = 浊响 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{浊响|否} = P(敲声 = 浊响 | 好瓜 = 否) = \frac{4} {9}\approx 0.444\)</span>, <span class="math inline">\(P_{清晰|是} = P(纹理 = 清晰 | 好瓜 = 是) = \frac{7} {8} = 0.875\)</span>, <span class="math inline">\(P_{清晰|否} = P(纹理 = 清晰 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{凹陷|是} = P(脐部 = 凹陷 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{凹陷|否} = P(脐部 = 凹陷 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{硬滑|是} = P(触感 = 硬滑 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{硬滑|否} = P(触感 = 硬滑 | 好瓜 = 否) = \frac{6} {9}\approx 0.667\)</span>, <span class="math inline">\(P_{密度:0.697|是} = P(密度 = 0.697 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.129}exp(-\frac{(0.697-0.574)^2}{2\cdot0.129^2})\approx1.959\)</span>, <span class="math inline">\(P_{密度:0.697|否} = P(密度 = 0.697 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.195}exp(-\frac{(0.697-0.496)^2}{2\cdot0.0.195^2})\approx1.203\)</span>, <span class="math inline">\(P_{含糖率:0.460|是} = P(含糖率 = 0.460 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.101}exp(-\frac{(0.460-0.279)^2}{2\cdot0.101^2})\approx0.788\)</span>, <span class="math inline">\(P_{含糖率:0.460|否} = P(含糖率 = 0.460 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.108}exp(-\frac{(0.460-0.154)^2}{2\cdot0.108^2})\approx0.066\)</span>.</p>
 <p><strong>于是，有：</strong> <span class="math inline">\(P(好瓜 = 是) \times P_{青绿|是} \times P_{蜷缩|是} \times P_{浊响|是} \times P_{清晰|是} \times P_{凹陷|是} \times P_{硬滑|是} \times P_{密度:0.697|是} \times P_{含糖:0.460|是}\approx0.063\)</span></p>
 <p><span class="math inline">\(P(好瓜 = 否) \times P_{青绿|否} \times P_{蜷缩|否} \times P_{浊响|否} \times P_{清晰|否} \times P_{凹陷|否} \times P_{硬滑|否} \times P_{密度:0.697|否} \times P_{含糖:0.460|否}\approx6.80\times10^{-5}\)</span></p>
 <p>由于 0.063 &gt; <span class="math inline">\(6.80\times10^{-5}\)</span>， 因此，朴素贝叶斯分类器将测试样本“测1”判别为“好瓜”</p>
