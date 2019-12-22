@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -212,7 +212,65 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>一、AttributeError: 'str' object has no attribute 'items' 1.可能是你的setuptools版本比较老,更新一下seetuptools:pip install --upgrade setuptools 如果还没解决的话,下一步 2.pip uninstall enum34 卸载掉这个 二、然后遇到这个问题<img src="https://img-blog.csdnimg.cn/2019060811382472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解决办法一：修改生成的spac文件，在hiddenimports里输入模块名 <img src="https://img-blog.csdnimg.cn/20190608113947258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">然后以此spec文件打包python <img src="https://img-blog.csdnimg.cn/20190613025649406.png" alt="在这里插入图片描述"> 解决办法二：在用pyinstaller打包py文件时加入–hidden-import numpy.core._dtype._ctypes(这部分填写缺少的模块名) 完整代码：pyinstaller --hidden-import numpy.core._dtype._ctypes（这里填你缺少的模块名） -F yourfilename.py(yourfilename.py即你想打包的文件名) 最后就可以顺利打开exe文件了</p>
+                <h2 id="一-attributeerror-str-object-has-no-attribute-items">一、AttributeError: 'str' object has no attribute 'items'</h2>
+<ul>
+<li>1.可能是你的setuptools版本比较老,更新一下seetuptools:pip install --upgrade setuptools 如果还没解决的话,下一步</li>
+<li>2.pip uninstall enum34 卸载掉这个</li>
+</ul>
+<h2 id="二-然后遇到这个问题">二、然后遇到这个问题</h2>
+<p><img src="https://img-blog.csdnimg.cn/2019060811382472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><strong>- 解决办法一</strong>：修改生成的spac文件，在hiddenimports里输入模块名 <img src="https://img-blog.csdnimg.cn/20190608113947258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">然后以此spec文件打包python <img src="https://img-blog.csdnimg.cn/20190613025649406.png" alt="在这里插入图片描述"> <strong>- 解决办法二</strong>：在用pyinstaller打包py文件时加入–hidden-import numpy.core._dtype._ctypes(这部分填写缺少的模块名) 完整代码：pyinstaller --hidden-import numpy.core._dtype._ctypes（这里填你缺少的模块名） -F yourfilename.py(yourfilename.py即你想打包的文件名) 最后就可以顺利打开exe文件了</p>
+<h2 id="三-补充">三、补充</h2>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>-h，--help</th>
+<th>查看该模块的帮助信息</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-F，-onefile</td>
+<td>产生单个的可执行文件</td>
+</tr>
+<tr class="even">
+<td>-D，--onedir</td>
+<td>产生一个目录（包含多个文件）作为可执行程序</td>
+</tr>
+<tr class="odd">
+<td>-a，--ascii</td>
+<td>不包含 Unicode 字符集支持</td>
+</tr>
+<tr class="even">
+<td>-d，--debug</td>
+<td>产生 debug 版本的可执行文件</td>
+</tr>
+<tr class="odd">
+<td>-w，--windowed，--noconsolc</td>
+<td>指定程序运行时不显示命令行窗口（仅对 Windows 有效）</td>
+</tr>
+<tr class="even">
+<td>-c，--nowindowed，--console</td>
+<td>指定使用命令行窗口运行程序（仅对 Windows 有效）</td>
+</tr>
+<tr class="odd">
+<td>-o DIR，--out=DIR</td>
+<td>指定 spec 文件的生成目录。如果没有指定，则默认使用当前目录来生成 spec 文件</td>
+</tr>
+<tr class="even">
+<td>-p DIR，--path=DIR</td>
+<td>设置 Python 导入模块的路径（和设置 PYTHONPATH 环境变量的作用相似）。也可使用路径分隔符（Windows 使用分号，Linux 使用冒号）来分隔多个路径</td>
+</tr>
+<tr class="odd">
+<td>-n NAME，--name=NAME</td>
+<td>指定项目（产生的 spec）名字。如果省略该选项，那么第一个脚本的主文件名将作为 spec 的名字</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 产生单个的可执行文件、指定程序运行时不显示命令行窗口（仅对 Windows 有效）、以icon.ico为图标</span></span><br><span class="line">Pyinstaller -F -w -i image\icon.ico Fl_Mainwindow.py</span><br></pre></td></tr></table></figure>
 
                 
 

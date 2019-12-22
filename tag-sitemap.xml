@@ -3,8 +3,22 @@
 
 
     <url>
+        <loc>http://www.chenxindaaa.com/tags/Errors/</loc>
+        <lastmod>2019-12-22T11:55:28.527Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
-        <lastmod>2019-12-15T10:12:21.723Z</lastmod>
+        <lastmod>2019-12-22T11:55:12.387Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.chenxindaaa.com/tags/Python/</loc>
+        <lastmod>2019-12-15T10:51:23.440Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -33,20 +47,6 @@
     <url>
         <loc>http://www.chenxindaaa.com/tags/Leetcode/</loc>
         <lastmod>2019-12-07T18:24:46.347Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/tags/Python/</loc>
-        <lastmod>2019-12-07T17:47:17.129Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/tags/Errors/</loc>
-        <lastmod>2019-12-01T17:08:49.793Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -244,13 +244,54 @@ argmin\{\sum(y - X\beta^2)\}\\
 \sum\beta^2\leq t
 \end{cases}\]</span> 其中t为一个常数。以最简单的二维为例，即<span class="math inline">\(\beta(\beta_1, \beta_2)\)</span>其几何图形是 <img src="https://img-blog.csdnimg.cn/20191215175302811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2019121517541562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">抛物面代表的是<span class="math inline">\(\sum(y-X\beta)^2\)</span>的部分，圆柱体代表的是<span class="math inline">\(\beta_1^2+\beta_2^2\leq t\)</span>的部分。最小二乘解是抛物面的中心，岭回归解是抛物面与圆柱体的交点。岭回归的惩罚项<span class="math inline">\(\sum\lambda\beta^2\)</span>是关于回归系数<span class="math inline">\(\beta\)</span>的二次函数，对目标函数求偏导时会保留<span class="math inline">\(\beta\)</span>，抛物面与圆柱体很难相交于轴上使某个变量的回归系数为0，因此岭回归不能实现变量的剔除。 <strong>(1) 岭迹法确定λ值</strong></li>
 </ul>
-<p>由<span class="math inline">\(\beta=(X^TX+\lambda I)^{-1}X^Ty\)</span>可知<span class="math inline">\(\beta\)</span>是<span class="math inline">\(\lambda\)</span>的函数，当<span class="math inline">\(\lambda \in [0,\infty)\)</span>时，在平面直角坐标系中的<span class="math inline">\(\beta-\lambda\)</span>曲线称为岭迹曲线。当<span class="math inline">\(\beta\)</span>趋于稳定的点就是所要寻找的<span class="math inline">\(\lambda\)</span>值。 <img src="https://img-blog.csdnimg.cn/20191215180011977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">**（2）交叉验证法确定λ* 交叉验证法的思想是，将数据集拆分为k个数据组(每组样本量大体相当)，从k组中挑选k-1组用于模型的训练，剩下的1组用于模型的测试，则会有k-1个训练集和测试集配对，每一种训练集和测试集下都会有对应的一个模型及模型评分（如均方误差），进而可以得到一个平均评分。对于<span class="math inline">\(\lambda\)</span>值则选择平均评分最优的<span class="math inline">\(\lambda\)</span>值。</p>
+<p>由<span class="math inline">\(\beta=(X^TX+\lambda I)^{-1}X^Ty\)</span>可知<span class="math inline">\(\beta\)</span>是<span class="math inline">\(\lambda\)</span>的函数，当<span class="math inline">\(\lambda \in [0,\infty)\)</span>时，在平面直角坐标系中的<span class="math inline">\(\beta-\lambda\)</span>曲线称为岭迹曲线。当<span class="math inline">\(\beta\)</span>趋于稳定的点就是所要寻找的<span class="math inline">\(\lambda\)</span>值。 <img src="https://img-blog.csdnimg.cn/20191215180011977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>**（2）交叉验证法确定λ* 交叉验证法的思想是，将数据集拆分为k个数据组(每组样本量大体相当)，从k组中挑选k-1组用于模型的训练，剩下的1组用于模型的测试，则会有k-1个训练集和测试集配对，每一种训练集和测试集下都会有对应的一个模型及模型评分（如均方误差），进而可以得到一个平均评分。对于<span class="math inline">\(\lambda\)</span>值则选择平均评分最优的<span class="math inline">\(\lambda\)</span>值。</p>
+<h2 id="三lasso回归">三.LASSO回归</h2>
+<h4 id="1参数推导">1.参数推导</h4>
+<p>岭回归无法剔除变量，而LASSO回归模型，将惩罚项由L2范数变为L1范数，可以将一些不重要的回归系数缩减为0，达到剔除变量的目的。 <span class="math display">\[\begin{aligned}
+J(\beta)&amp;=\sum(y-X\beta)^2+\lambda||\beta||_1 \\
+&amp;=\sum(y-X\beta)^2+\sum\lambda|\beta| \\
+&amp;=ESS(\beta)+\lambda l_1(\beta)
+\end{aligned}\]</span> 其中<span class="math inline">\(ESS(\beta)\)</span>表示误差平方和，<span class="math inline">\(\lambda l_1(\beta)\)</span>表示惩罚项。由于惩罚项变成了绝对值，则在零点处就不可导，故采用坐标下降法（对于p维参数的可微凸函数<span class="math inline">\(J(\beta)\)</span>，如果存在<span class="math inline">\(\hat\beta\)</span>使得<span class="math inline">\(J(\beta)\)</span>在每个坐标轴上均达到最小值，则<span class="math inline">\(J(\hat{\beta})\)</span> 就是点<span class="math inline">\(\hat\beta\)</span>上的全局最小值），控制其他p-1个参数不变，对目标函数中的某一个<span class="math inline">\(\beta_j\)</span>求偏导，以此类推对剩下的p-1个参数求偏导，最终令每个分量下的导函数为0，得到使目标函数达到全局最小的<span class="math inline">\(\hat\beta\)</span> <span class="math display">\[\begin{aligned}
+ESS(\beta)&amp;=\sum_{i = 1}^{n}(y_i-\sum _{j=1}^{n}\beta x_{ij})^2\\
+&amp;=\sum _{i=1}^n(y_i^2+(\sum_{j=1}^p\beta_jx_{ij})^2-2y_i(\sum_{j=1}^p\beta_jx_{ij}))
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\Longrightarrow\frac{\partial ESS(\beta)}{\partial \beta_j}&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum^{p}_{j=1}\beta_jx_{ij})\\
+&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik}-\beta_jx_{ij})\\
+&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik})+2\beta_j\sum_{i=1}^n
+x_{ij}^2\\
+&amp;=-2m_j+2\beta_jn_j
+\end{aligned}\]</span></p>
+<p>其中<span class="math inline">\(m_j=\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik}),n_j=\sum_{i=1}^nx_{ij}^2\)</span> 惩罚项不可导，则使用次导数： <span class="math display">\[\frac{\partial \lambda l_1(\beta)}{\partial \beta_j}=
+\begin{cases}
+\lambda,&amp;当\beta_j&gt;0\\
+[-\lambda,\lambda], &amp;当\beta_j=0\\
+-\lambda, &amp;当\beta_j&lt;0
+\end{cases}\]</span> 于是令两个偏导数相加等于0 <span class="math display">\[\frac{\partial ESS(\beta)}{\partial \beta_j} + \frac{\partial \lambda l_1(\beta)}{\partial \beta_j} =
+\begin{cases}
+-2m_j+2\beta_jn_j+\lambda=0\\
+[-2m_j-\lambda,-2m_j+\lambda]=0\\
+-2m_j+2\beta_jn_j-\lambda=0
+\end{cases}\\
+\Longrightarrow\beta_j = \begin{cases}
+(m_j-\frac{\lambda}{2})/n_j,&amp;当m_j&gt;\frac{\lambda}{2}\\
+0, &amp;当m_j\in[-\frac{\lambda}{2},\frac{\lambda}{2}]\\
+(m_j+\frac{\lambda}{2})/n_j,&amp;当m_j&lt;\frac{\lambda}{2}
+\end{cases}
+\]</span></p>
+<h4 id="2lambda的选择">2.<span class="math inline">\(\lambda\)</span>的选择</h4>
+<p>直接使用交叉验证法</p>
 
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/MachinLearning_Cluster/" data-toggle="tooltip" data-placement="top" title="MachineLearning_Cluster">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
