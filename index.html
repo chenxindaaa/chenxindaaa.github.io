@@ -241,20 +241,18 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachinLearning_Apriori/">
+    <a href="/article/MachinLearning_Cluster/">
         <h2 class="post-title">
                                  
-            MachineLearning_Apriori
+            MachineLearning_Cluster
         </h2>
         <h3 class="post-subtitle">
-            Apriori
+            Cluster
         </h3>
         <div class="post-content-preview">
-            一.Apriori
-从大规模数据集中寻找物品间的隐含关系被称作关联分析（association analysis）或者关联规则学习（association rule learning）。
-那么什么是关联分析呢？关联分析是一种在大规模数据集中寻找有趣关系的任务。这些任务包括两项：发现频繁项集和从频繁项集中发现关联规则。
-
-频繁项集（frequent item sets）：是经常出现在一块的物品......
+            一.无监督学习
+聚类算法：第一个无监督学习算法（无标签的数据）
+什么是无监督学习？ 对比：监督学习问题指的是，我们有一系列标签，然后用假设函数去拟合它，作为对比，在无监督学习中，我们的数据并没有任何标签，无监督学习要做的就是将这系列没有标签的数据输入到算法中，然后我们要让算法找到隐含在数据中的结构。例如聚类算法，当然还有一些其他的无监督学习算法，而不单单是簇。  在这里我们有一系列点，却没有......
         </div>
     </a>
     
@@ -274,18 +272,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachinLearning_Cluster/">
+    <a href="/article/MachinLearning_Apriori/">
         <h2 class="post-title">
                                  
-            MachineLearning_Cluster
+            MachineLearning_Apriori
         </h2>
         <h3 class="post-subtitle">
-            Cluster
+            Apriori
         </h3>
         <div class="post-content-preview">
-            一.无监督学习
-聚类算法：第一个无监督学习算法（无标签的数据）
-什么是无监督学习？ 对比：监督学习问题指的是，我们有一系列标签，然后用假设函数去拟合它，作为对比，在无监督学习中，我们的数据并没有任何标签，无监督学习要做的就是将这系列没有标签的数据输入到算法中，然后我们要让算法找到隐含在数据中的结构。例如聚类算法，当然还有一些其他的无监督学习算法，而不单单是簇。  在这里我们有一系列点，却没有......
+            一.Apriori
+从大规模数据集中寻找物品间的隐含关系被称作关联分析（association analysis）或者关联规则学习（association rule learning）。
+那么什么是关联分析呢？关联分析是一种在大规模数据集中寻找有趣关系的任务。这些任务包括两项：发现频繁项集和从频繁项集中发现关联规则。
+
+频繁项集（frequent item sets）：是经常出现在一块的物品......
         </div>
     </a>
     
@@ -370,36 +370,6 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachinLearning_SVM/">
-        <h2 class="post-title">
-                                 
-            MachineLearning_SVM
-        </h2>
-        <h3 class="post-subtitle">
-            SVM
-        </h3>
-        <div class="post-content-preview">
-            一、简介
-支持向量机（support vector machines）是一种二分类模型，它的目的是寻找一个超平面来对样本进行分割，分割的原则是间隔最大化，最终转化为一个凸二次规划问题来求解。模型包括： 当训练样本线性可分时，通过硬间隔最大化，学习一个线性可分支持向量机； 当训练样本近似线性可分时，通过软间隔最大化，学习一个线性支持向量机； 当训练样本线性不可分时，通过核技巧和软间隔最大化，学......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-12-06
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/GitOperation/">
         <h2 class="post-title">
                                  
@@ -433,24 +403,23 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachineLearning_LogisticsRegression/">
+    <a href="/article/MachinLearning_SVM/">
         <h2 class="post-title">
                                  
-            MachineLearning_LogisticsRegression
+            MachineLearning_SVM
         </h2>
         <h3 class="post-subtitle">
-            LogisticsRegression
+            SVM
         </h3>
         <div class="post-content-preview">
-            分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。
-逻辑回归（Logistic Regression）
-逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合......
+            一、简介
+支持向量机（support vector machines）是一种二分类模型，它的目的是寻找一个超平面来对样本进行分割，分割的原则是间隔最大化，最终转化为一个凸二次规划问题来求解。模型包括： 当训练样本线性可分时，通过硬间隔最大化，学习一个线性可分支持向量机； 当训练样本近似线性可分时，通过软间隔最大化，学习一个线性支持向量机； 当训练样本线性不可分时，通过核技巧和软间隔最大化，学......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-12-01
+            2019-12-06
         </p>
         <div class="tags">
             
@@ -477,6 +446,37 @@
 一、朴素贝叶斯的理论基础
 给定训练数据集（X,Y），其中每个样本x都包括n维特征，即\(x=(x_1,x_2,x_3,...,x_n)\)，类标记集合含有k种类别，\(y=(y_1,y_2,...,y_k)\)。
 如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-12-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachineLearning_LogisticsRegression/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_LogisticsRegression
+        </h2>
+        <h3 class="post-subtitle">
+            LogisticsRegression
+        </h3>
+        <div class="post-content-preview">
+            分类和回归是机器学习可以解决两大主要问题，从预测值的类型上看，连续变量预测的定量输出称为回归；离散变量预测的定性输出称为分类。
+逻辑回归（Logistic Regression）
+逻辑回归由于存在易于实现、解释性好以及容易扩展等优点，被广泛应用于点击率预估（CTR）、计算广告（CA）以及推荐系统（RS）等任务中。逻辑回归虽然名字叫做回归，但实际上却是一种分类学习方法。线性回归完成的是回归拟合......
         </div>
     </a>
     
@@ -585,11 +585,11 @@
             
         
             
-            <a href="/tags/#Github" title="Github" rel="1">Github</a>
+            <a href="/tags/#Errors" title="Errors" rel="1">Errors</a>
             
         
             
-            <a href="/tags/#Errors" title="Errors" rel="1">Errors</a>
+            <a href="/tags/#Github" title="Github" rel="1">Github</a>
             
         
     </div>
@@ -649,11 +649,11 @@
         </li>
       
         <li>
-          <a href="/article/MachinLearning_Apriori/">MachineLearning_Apriori</a>
+          <a href="/article/MachinLearning_Cluster/">MachineLearning_Cluster</a>
         </li>
       
         <li>
-          <a href="/article/MachinLearning_Cluster/">MachineLearning_Cluster</a>
+          <a href="/article/MachinLearning_Apriori/">MachineLearning_Apriori</a>
         </li>
       
         <li>
