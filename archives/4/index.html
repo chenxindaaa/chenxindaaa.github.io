@@ -134,14 +134,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -211,21 +211,21 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：235.二叉搜索树的最近公共祖先/">
+    <a href="/article/Leetcode实战：237. 删除链表中的节点/">
         <h2 class="post-title">
                                  
-            Leetcode实战：235.二叉搜索树的最近公共祖先
+            Leetcode实战：237. 删除链表中的节点
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
-百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
-例如，给定如下二叉搜索树: root = [6,2,8,0,4,7,9,null,null,3,5] 
+请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
+现有一个链表 -- head = [4,5,1,9]，它可以表示为: 
 示例1：
-123输入: roo......
+123输入: head = [4,5,1,9], node = 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
+示......
         </div>
     </a>
     
@@ -281,21 +281,21 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：237. 删除链表中的节点/">
+    <a href="/article/Leetcode实战：238. 除自身以外数组的乘积/">
         <h2 class="post-title">
                                  
-            Leetcode实战：237. 删除链表中的节点
+            Leetcode实战：238. 除自身以外数组的乘积
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
-现有一个链表 -- head = [4,5,1,9]，它可以表示为: 
-示例1：
-123输入: head = [4,5,1,9], node = 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
-示......
+给定长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。
+示例：
+12输入: [1,2,3,4]输出: [24,12,8,6]
+算法实现：
+12345678910111213141516171819class Solution(object):    def pr......
         </div>
     </a>
     
@@ -315,20 +315,21 @@
 
 <div class="post-preview">
 
-    <a href="/article/Leetcode实战：236.二叉树的最近公共祖先/">
+    <a href="/article/Leetcode实战：235.二叉搜索树的最近公共祖先/">
         <h2 class="post-title">
                                  
-            Leetcode实战：236.二叉树的最近公共祖先
+            Leetcode实战：235.二叉搜索树的最近公共祖先
         </h2>
         <h3 class="post-subtitle">
             Leetcode
         </h3>
         <div class="post-content-preview">
             题目：
-给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
-百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。” 例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4] 
+给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+例如，给定如下二叉搜索树: root = [6,2,8,0,4,7,9,null,null,3,5] 
 示例1：
-123输入: root =......
+123输入: roo......
         </div>
     </a>
     
@@ -382,6 +383,39 @@
 
 <div class="post-preview">
 
+    <a href="/article/Leetcode实战：292. Nim 游戏/">
+        <h2 class="post-title">
+                                 
+            Leetcode实战：292. Nim 游戏
+        </h2>
+        <h3 class="post-subtitle">
+            Leetcode
+        </h3>
+        <div class="post-content-preview">
+            题目：
+你和你的朋友，两个人一起玩 Nim 游戏：桌子上有一堆石头，每次你们轮流拿掉 1 - 3 块石头。 拿掉最后一块石头的人就是获胜者。你作为先手。
+你们是聪明人，每一步都是最优解。 编写一个函数，来判断你是否可以在给定石头数量的情况下赢得游戏。
+示例：
+1234输入: 4输出: false 解释: 如果堆中有 4 块石头，那么你永远不会赢得比赛；     因为无论你拿走 1 块、2 块......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-08
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/Leetcode实战：217.存在重复元素/">
         <h2 class="post-title">
                                  
@@ -401,6 +435,42 @@
 12输入: [1,1,1,3,3,4,3,2,4,2]输出: true
 算法实现：
 123456789101112......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Leetcode实战215：数组中的第K个最大元素/">
+        <h2 class="post-title">
+                                 
+            Leetcode实战215：数组中的第K个最大元素
+        </h2>
+        <h3 class="post-subtitle">
+            Leetcode
+        </h3>
+        <div class="post-content-preview">
+            题目：
+在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例1：
+12输入: [3,2,1,5,6,4] 和 k = 2输出: 5
+示例2：
+12输入: [3,2,3,1,2,4,5,5,6] 和 k = 4输出: 4
+算法实现：提前终止的堆排序
+再重建第k个堆后停止
+12345678910111213141516......
         </div>
     </a>
     
@@ -490,75 +560,6 @@
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/Leetcode实战215：数组中的第K个最大元素/">
-        <h2 class="post-title">
-                                 
-            Leetcode实战215：数组中的第K个最大元素
-        </h2>
-        <h3 class="post-subtitle">
-            Leetcode
-        </h3>
-        <div class="post-content-preview">
-            题目：
-在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。 示例1：
-12输入: [3,2,1,5,6,4] 和 k = 2输出: 5
-示例2：
-12输入: [3,2,3,1,2,4,5,5,6] 和 k = 4输出: 4
-算法实现：提前终止的堆排序
-再重建第k个堆后停止
-12345678910111213141516......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-10-04
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/Leetcode实战160.相交链表/">
-        <h2 class="post-title">
-                                 
-            Leetcode实战160.相交链表
-        </h2>
-        <h3 class="post-subtitle">
-            Leetcode
-        </h3>
-        <div class="post-content-preview">
-            题目：
-编写一个程序，找到两个单链表相交的起始节点。
-如下面的两个链表：  在节点 c1 开始相交。
-示例1： 
-123输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3输出：Reference of the node with value = 8输入解释：相交节点的值为 ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-09-29
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -604,11 +605,11 @@
     <div class="tags">
         
             
-            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
+            <a href="/tags/#Leetcode" title="Leetcode" rel="50">Leetcode</a>
             
         
             
-            <a href="/tags/#Leetcode" title="Leetcode" rel="50">Leetcode</a>
+            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
             
@@ -684,11 +685,15 @@
     <ul>
       
         <li>
-          <a href="/article/MachinLearning_Cluster/">MachineLearning_Cluster</a>
+          <a href="/article/MachineLearning_FP-growth/">(no title)</a>
         </li>
       
         <li>
           <a href="/article/MachinLearning_Apriori/">MachineLearning_Apriori</a>
+        </li>
+      
+        <li>
+          <a href="/article/MachinLearning_Cluster/">MachineLearning_Cluster</a>
         </li>
       
         <li>
@@ -697,10 +702,6 @@
       
         <li>
           <a href="/article/MachineLearning_AdaBoost/">MachineLearning_AdaBoost</a>
-        </li>
-      
-        <li>
-          <a href="/article/GitOperation/">GitOperation</a>
         </li>
       
     </ul>
@@ -723,7 +724,7 @@
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
