@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/page/2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('http://bbs.qn.img-space.com/201912/8/caaba8e7eab793a2137470a816915850.jpg') 
+            /*config*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>chenxindaaa</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">个人博客</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/article/MachinLearning_DecisionTree/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_DecisionTree
+        </h2>
+        <h3 class="post-subtitle">
+            DecisionTree
+        </h3>
+        <div class="post-content-preview">
+            什么是决策树？
+下图是一个是否是好瓜的决策树，其中长方形代表判断模块，椭圆代表终止模块，箭头表示分支 表格表示为：  ## 信息熵 ==信息熵是度量样本集和纯度最常用的一种指标==，假定样本集合D中第k类样本所占比例为pk(k=1, 2, 3..., m) 则信息熵定义为  ==H(X)越小，D的纯的越高== 本例中好西瓜的概率为8/17，坏西瓜的概率为9/17，所以根节点的信息熵为： H(......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-11-16
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachineLearning_K-NN/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_K-NN
+        </h2>
+        <h3 class="post-subtitle">
+            K-NN
+        </h3>
+        <div class="post-content-preview">
+            什么是机器学习？
+在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。
+机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-11-15
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/matlab基础11.matlab在微积分中的应用/">
+        <h2 class="post-title">
+                                 
+            matlab基础11.matlab在微积分中的应用
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            一.差分与近似微分
+ diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分 近似微商：diff(Y)./diff(X)
+二.微分计算
+
+在这里插入图片描述
+
+三.不定积分与定积分计算
+ 
+四.数值积分
+1.梯形积分法   2.递推的辛普森积分法 
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-11-07
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/matlab基础10.线性代数/">
+        <h2 class="post-title">
+                                 
+            matlab基础10.线性代数
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            一.数组的表示，冒号的用法
+1.a : b  2.a : b : c b为步长 
+二.矩阵的大小size()
+1.二维数组  2.三维数组  ## 三.矩阵的秩rank() 
+四.向量范数norm()
+
+在这里插入图片描述
+
+五.矩阵的逆inv()
+
+在这里插入图片描述
+
+六.矩阵的转置'
+
+在这里插入图片描述
+
+七.矩阵的特征值和特征向量eig()
+
+在这里插入图片描述
+
+八.矩阵的左右翻......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-11-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Matlab基础09. 图形属性设置及习题/">
+        <h2 class="post-title">
+                                 
+            Matlab基础09.图形属性设置及习题
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            一.图形属性设置view：
+    
+二.习题
+
+  
+  
+   4   
+  
+  
+
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-11-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Matlab基础08.三维图/">
+        <h2 class="post-title">
+                                 
+            Matlab基础08.三维图
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            一.三维线性图plot(X, Y, Z)
+二维正态分布：  
+二.三维表面图surf
+  
+三.简易表面图ezsurf
+  
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-29
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Matlab基础07.二维图/">
+        <h2 class="post-title">
+                                 
+            Matlab基础07.二维图
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            一.plot
+1.plot(Y)     2.plot(X,Y) 画出反正切函数及其微分函数在(-5, 5)上的图像  
+二.简易线性函数ezplot
+
+在这里插入图片描述
+
+ 
+三.散点图scatter
+  
+四.极坐标图及其与直角坐标图的转换polar
+   
+五.条形图bar
+  
+六.饼图pie
+  
+七.阶梯图stairs
+
+在这里插入图片描述
+
+八.茎干图stem
+
+在这里插入图......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-28
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Matlab基础06.第三章习题/">
+        <h2 class="post-title">
+                                 
+            Matlab基础06.第三章习题
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            
+ 
+ 
+ 
+    
+ 
+ 
+
+  
+  
+
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-26
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Matlab基础05.多维数组/">
+        <h2 class="post-title">
+                                 
+            Matlab基础05.多维数组
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            matlab多维数组
+创建多维数组 1.直接赋值  2.通过函数创建多维数组  2.多维数组的运算 
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-25
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/Matlab基础04.结构数组/">
+        <h2 class="post-title">
+                                 
+            Matlab基础04.结构数组
+        </h2>
+        <h3 class="post-subtitle">
+            Matlab
+        </h3>
+        <div class="post-content-preview">
+            matlab结构数组
+1.直接赋值  访问结构对象：通过.访问  2.使用struct函数创建结构 struct函数格式：s = struct('field1',values1,'field2',values2,...)  删除字段名（域名） 用rmfield()函数删除结构数组里的域
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-10-24
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/3/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
+            
+        
+            
+            <a href="/tags/#Leetcode" title="Leetcode" rel="50">Leetcode</a>
+            
+        
+            
+            <a href="/tags/#MachineLearning" title="MachineLearning" rel="10">MachineLearning</a>
+            
+        
+            
+            <a href="/tags/#Matlab" title="Matlab" rel="11">Matlab</a>
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="6">Python</a>
+            
+        
+            
+            <a href="/tags/#Github" title="Github" rel="1">Github</a>
+            
+        
+            
+            <a href="/tags/#Errors" title="Errors" rel="1">Errors</a>
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/avatar/ironman.png" />
+        
+
+        
+            <p>Stay hungry,Stay foolish</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/chenxindaaa">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/article/MachineLearning_FP-growth/">MachineLearning_FP-growth</a>
+        </li>
+      
+        <li>
+          <a href="/article/MachinLearning_Apriori/">MachineLearning_Apriori</a>
+        </li>
+      
+        <li>
+          <a href="/article/MachinLearning_Cluster/">MachineLearning_Cluster</a>
+        </li>
+      
+        <li>
+          <a href="/article/MachineLearning_Regression/">MachineLearning_Regression</a>
+        </li>
+      
+        <li>
+          <a href="/article/MachineLearning_AdaBoost/">MachineLearning_AdaBoost</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+    
+</ul>
+
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2019 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
