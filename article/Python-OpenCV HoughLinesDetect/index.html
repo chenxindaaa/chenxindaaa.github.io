@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -213,7 +213,8 @@
                 post-container">
 
                 <h2 id="一-hough直线变换原理">一、 Hough直线变换原理</h2>
-<p><strong>1.笛卡尔坐标系与Hough坐标系</strong>   为了方便说明，我们先以笛卡尔坐标系即直角坐标系(与笛卡尔空间对应)为例来说明Hough变换的基本原理。与笛卡尔坐标系对应，我们构造一个Hough坐标系(对应Hough空间)。在Hough坐标系中，横坐标采用笛卡尔坐标系中直线的斜率k，纵坐标使用笛卡尔坐标系中直线的截距b。</p>
+<p><strong>1.笛卡尔坐标系与Hough坐标系</strong></p>
+<p>  为了方便说明，我们先以笛卡尔坐标系即直角坐标系(与笛卡尔空间对应)为例来说明Hough变换的基本原理。与笛卡尔坐标系对应，我们构造一个Hough坐标系(对应Hough空间)。在Hough坐标系中，横坐标采用笛卡尔坐标系中直线的斜率k，纵坐标使用笛卡尔坐标系中直线的截距b。</p>
 <ul>
 <li>在笛卡尔坐标系中，经过点<span class="math inline">\((x_i,y_i)\)</span>的直线表示为： <span class="math display">\[y_i = kx_i + b \qquad(1)\]</span> 其中，参数a为斜率，b为截矩。</li>
 <li>通过点<span class="math inline">\((x_i,y_i)\)</span>的直线有无数条，且对应于不同的a和b值。如果将<span class="math inline">\(x_i\)</span>和<span class="math inline">\(y_i\)</span>视为常数，而将原本的参数a和b看作变量，则式子(1)可以表示为： <span class="math display">\[b = -ax_i + y_i \qquad(2)\]</span> 这样就变换到了Hough坐标系。这个变换就是笛卡尔坐标系中对于<span class="math inline">\((x_i,y_i)\)</span>点的Hough变换。该直线是笛卡尔坐标系中的点<span class="math inline">\((x_i,y_i)\)</span>在Hough空间的唯一方程。</li>
@@ -241,16 +242,41 @@
 </tr>
 </tbody>
 </table>
-<p>  由上可知：笛卡尔坐标系中的一点<span class="math inline">\((x_i, y_i)\)</span>对应Hough坐标系中的一条直线<span class="math inline">\(b =-ax_i+y_i\)</span>，而Hough坐标系中的一个点<span class="math inline">\((a_i, b_i)\)</span>对应笛卡尔坐标系的一条直线<span class="math inline">\(y = a_ix+b_i\)</span>，在Hough空间中，经过一个点的直线越多，说明其在笛卡尔空间内的映射的直线，是由越多的点所构成的。我们知道，两个点就能构成一条直线，但是，如果有一个点是因为计算错误产生的，那么它和另外一个点也会构成一条直线，此时就会凭空构造出一条实际上并不存在的直线。这种情况是要极力避免的。因此，在计算中，我们希望用更多的点构造一条直线，以提高直线的可靠性。也就是说，如果一条直线是由越多的点构成的，那么它实际存在的可能性就越大，它的可靠性也就越高。因此，Hough变换选择直线的基本思路是：选择尽可能多直线交汇的点。 <strong>２.极坐标系与Hough坐标系</strong> 　　上面都是以我们熟悉的笛卡尔空间为例说明的。在笛卡尔空间中，可能存在诸如<span class="math inline">\(x=x_0\)</span>的垂线<span class="math inline">\(LineA\)</span>的形式，此时，斜率k为无穷大，截距b无法取值。因此，垂线<span class="math inline">\(LineA\)</span>无法映射到Hough空间内。为了解决上述问题，可以考虑讲笛卡尔坐标系映射到极坐标系上。 - 极坐标中用如下参数方程表示一条直线。 <span class="math display">\[\rho=xcos\theta+ysin\theta\]</span> 其中，<span class="math inline">\(ρ\)</span>代表直线到原点的垂直距离，<span class="math inline">\(θ\)</span>代表x轴到直线垂线的角度，取值范围为±90°，如图所示。 <img src="https://img-blog.csdnimg.cn/20200102153851526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> 　　与直角坐标类似，极坐标中的Hough变换也将图像坐标空间中的点变换到参数空间中。 　　在极坐标表示下，图像坐标空间中共线的点变换到参数空间中后，在参数空间都相交于同一点，此时所得到的<span class="math inline">\(ρ、θ\)</span>即为所求的直线的极坐标参数。与直角坐标不同的是，用极坐标表示时，图像坐标空间的共线的两点<span class="math inline">\((x_i,y_i)\)</span>和<span class="math inline">\((x_j,y_j)\)</span>映射到参数空间是两条正弦曲线，相交于点<span class="math inline">\((ρ_0,θ_0)\)</span>,如上图所示。 　　具体计算时，与直角坐标类似，也要在参数空间中建立一个二维数组累加器A，只是取值范围不同。对于一副大小为D×D的图像，通常<span class="math inline">\(ρ\)</span>的取值范围为[−2D/2,2D/2],θ的取值范围为[−90°,90°]。计算方法与直角坐标系中累加器的计算方法相同，最后得到最大的A所对应的<span class="math inline">\((ρ,θ)\)</span>。 　　通常情况下，设置一个阈值，当Hough坐标系内教育某点的曲线达到了阈值，就认为在对应的极坐标系内存在（检测到）一条直线。 　</p>
+<p>  由上可知：笛卡尔坐标系中的一点<span class="math inline">\((x_i, y_i)\)</span>对应Hough坐标系中的一条直线<span class="math inline">\(b =-ax_i+y_i\)</span>，而Hough坐标系中的一个点<span class="math inline">\((a_i, b_i)\)</span>对应笛卡尔坐标系的一条直线<span class="math inline">\(y = a_ix+b_i\)</span>，在Hough空间中，经过一个点的直线越多，说明其在笛卡尔空间内的映射的直线，是由越多的点所构成的。我们知道，两个点就能构成一条直线，但是，如果有一个点是因为计算错误产生的，那么它和另外一个点也会构成一条直线，此时就会凭空构造出一条实际上并不存在的直线。这种情况是要极力避免的。因此，在计算中，我们希望用更多的点构造一条直线，以提高直线的可靠性。也就是说，如果一条直线是由越多的点构成的，那么它实际存在的可能性就越大，它的可靠性也就越高。因此，Hough变换选择直线的基本思路是：选择尽可能多直线交汇的点。</p>
+<p><strong>２.极坐标系与Hough坐标系</strong></p>
+<p>上面都是以我们熟悉的笛卡尔空间为例说明的。在笛卡尔空间中，可能存在诸如<span class="math inline">\(x=x_0\)</span>的垂线<span class="math inline">\(LineA\)</span>的形式，此时，斜率k为无穷大，截距b无法取值。因此，垂线<span class="math inline">\(LineA\)</span>无法映射到Hough空间内。为了解决上述问题，可以考虑讲笛卡尔坐标系映射到极坐标系上。 - 极坐标中用如下参数方程表示一条直线。 <span class="math display">\[\rho=xcos\theta+ysin\theta\]</span> 其中，<span class="math inline">\(ρ\)</span>代表直线到原点的垂直距离，<span class="math inline">\(θ\)</span>代表x轴到直线垂线的角度，取值范围为±90°，如图所示。 <img src="https://img-blog.csdnimg.cn/20200102153851526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> 　　</p>
+<p>与直角坐标类似，极坐标中的Hough变换也将图像坐标空间中的点变换到参数空间中。 　　</p>
+<p>在极坐标表示下，图像坐标空间中共线的点变换到参数空间中后，在参数空间都相交于同一点，此时所得到的<span class="math inline">\(ρ、θ\)</span>即为所求的直线的极坐标参数。与直角坐标不同的是，用极坐标表示时，图像坐标空间的共线的两点<span class="math inline">\((x_i,y_i)\)</span>和<span class="math inline">\((x_j,y_j)\)</span>映射到参数空间是两条正弦曲线，相交于点<span class="math inline">\((ρ_0,θ_0)\)</span>,如上图所示。 　　</p>
+<p>具体计算时，与直角坐标类似，也要在参数空间中建立一个二维数组累加器A，只是取值范围不同。对于一副大小为D×D的图像，通常<span class="math inline">\(ρ\)</span>的取值范围为[−2D/2,2D/2],θ的取值范围为[−90°,90°]。计算方法与直角坐标系中累加器的计算方法相同，最后得到最大的A所对应的<span class="math inline">\((ρ,θ)\)</span>。 　　</p>
+<p>通常情况下，设置一个阈值，当Hough坐标系内教育某点的曲线达到了阈值，就认为在对应的极坐标系内存在（检测到）一条直线。 　</p>
 <h2 id="二-houghlines函数">二、 HoughLines函数</h2>
-<p>  OpenCV提供了函数cv2.HoughLines()用来实现Hough直线变换，该函数要求所操作的源图是个二值图像，所以在进行Hough变换之前要先讲源图像进行二值化，或者进行Canny边缘检测。 <strong>函数cv2.HoughLines(image, rho, theta, threshold)</strong> 式中： - image是输入图像，即源图像，必须是８位的单通道二值图像。如果是其他类型的图像，进行Hough变换前，需要将其修改为指定格式。 - rho为以像素为单位的距离r的精度。一般情况下使用的是精度1。 - theta为角度<span class="math inline">\(\theta\)</span>的精度。一般情况下，使用的是精度<span class="math inline">\(\pi/180\)</span>，表示要搜索所有可能的角度。 - threshold是阈值。该值越小，判定出的直线就越多。通过前面的分析可知，识别直线时，要判定有多少个点位于该直线上。在判定直线是否存在时，对直线所穿过的点的数量进行评估，如果直线所穿过的点的数量小于阈值，则认为这些点偶然在算法上构成直线，但是源图像中该直线并不存在；如果大于阈值，则认为直线存在。所以，如果阈值较小，就会得到较多的直线；阈值较大，就会得到较少的直线。 - 返回值lines中的每个元素都是一队浮点数，表示检测到的直线的参数，即<span class="math inline">\((r, \theta)\)</span>，是numpy.ndarray类型</p>
+<p>  OpenCV提供了函数cv2.HoughLines()用来实现Hough直线变换，该函数要求所操作的源图是个二值图像，所以在进行Hough变换之前要先讲源图像进行二值化，或者进行Canny边缘检测。</p>
+<p><strong>函数cv2.HoughLines(image, rho, theta, threshold)</strong></p>
+<p>式中：</p>
+<ul>
+<li>image是输入图像，即源图像，必须是８位的单通道二值图像。如果是其他类型的图像，进行Hough变换前，需要将其修改为指定格式。</li>
+<li>rho为以像素为单位的距离r的精度。一般情况下使用的是精度1。</li>
+<li>theta为角度<span class="math inline">\(\theta\)</span>的精度。一般情况下，使用的是精度<span class="math inline">\(\pi/180\)</span>，表示要搜索所有可能的角度。</li>
+<li>threshold是阈值。该值越小，判定出的直线就越多。通过前面的分析可知，识别直线时，要判定有多少个点位于该直线上。在判定直线是否存在时，对直线所穿过的点的数量进行评估，如果直线所穿过的点的数量小于阈值，则认为这些点偶然在算法上构成直线，但是源图像中该直线并不存在；如果大于阈值，则认为直线存在。所以，如果阈值较小，就会得到较多的直线；阈值较大，就会得到较少的直线。</li>
+<li>返回值lines中的每个元素都是一队浮点数，表示检测到的直线的参数，即<span class="math inline">\((r, \theta)\)</span>，是numpy.ndarray类型</li>
+</ul>
 <h2 id="三-houghlinesp函数">三、 HoughLinesP函数</h2>
 <p>  概率Hough变换对基本Hough变换算法进行了一些修正，是Hough变换算法的优化。它没有考虑所有的点，相反，他只需要一个足以进行线检测的随机点子集即可。 　　为了更好地判断直线，概率Hough变换算法还对选取直线的方法作了两点改进：</p>
 <ul>
 <li>所接受直线的最小长度。如果有超过阈值个数的像素点构成了一条直线，但是这条直线很短，那么就不会接受该直线作为判断结果，而认为这条直线仅仅是图像中若干个像素点恰好随机构成了一种算法上的直线关系而已，实际上原图中并不存在这条直线。</li>
 <li>接受直线时允许的最大像素点间距。如果有超过阈值个数的像素点构成了一条直线，但是这组像素点之间的距离都很远，就不会接受该直线作为判断结果，而认为这条直线仅仅是图像中的若干像素点恰好随机构成了一种算法上的直线关系而已，实际上源图中并不存在这条直线。</li>
 </ul>
-<p><strong>函数cv2.HoughLinesP(image, rho, theta, threshold, minLineLengh, maxLineGap)</strong> 式中： - image是输入图像，即源图像，必须是８位的单通道二值图像。如果是其他类型的图像，进行Hough变换前，需要将其修改为指定格式。 - rho为以像素为单位的距离r的精度。一般情况下使用的是精度1。 - theta为角度<span class="math inline">\(\theta\)</span>的精度。一般情况下，使用的是精度<span class="math inline">\(\pi/180\)</span>，表示要搜索所有可能的角度。 - threshold是阈值。该值越小，判定出的直线就越多。通过前面的分析可知，识别直线时，要判定有多少个点位于该直线上。在判定直线是否存在时，对直线所穿过的点的数量进行评估，如果直线所穿过的点的数量小于阈值，则认为这些点偶然在算法上构成直线，但是源图像中该直线并不存在；如果大于阈值，则认为直线存在。所以，如果阈值较小，就会得到较多的直线；阈值较大，就会得到较少的直线。 - minLineLengh 用来控制“接受直线的最小长度”的值，默认是0。 - maxLineGap 用来控制接受共线线段之间的最小间隔，即在一条线中两点的最大间隔。 - 返回值lines中的每个元素都是一队浮点数，表示检测到的直线的参数，即<span class="math inline">\((r, \theta)\)</span>，是numpy.ndarray类型</p>
+<p><strong>函数cv2.HoughLinesP(image, rho, theta, threshold, minLineLengh, maxLineGap)</strong></p>
+<p>式中：</p>
+<ul>
+<li>image是输入图像，即源图像，必须是８位的单通道二值图像。如果是其他类型的图像，进行Hough变换前，需要将其修改为指定格式。</li>
+<li>rho为以像素为单位的距离r的精度。一般情况下使用的是精度1。</li>
+<li>theta为角度<span class="math inline">\(\theta\)</span>的精度。一般情况下，使用的是精度<span class="math inline">\(\pi/180\)</span>，表示要搜索所有可能的角度。</li>
+<li>threshold是阈值。该值越小，判定出的直线就越多。通过前面的分析可知，识别直线时，要判定有多少个点位于该直线上。在判定直线是否存在时，对直线所穿过的点的数量进行评估，如果直线所穿过的点的数量小于阈值，则认为这些点偶然在算法上构成直线，但是源图像中该直线并不存在；如果大于阈值，则认为直线存在。所以，如果阈值较小，就会得到较多的直线；阈值较大，就会得到较少的直线。</li>
+<li>minLineLengh 用来控制“接受直线的最小长度”的值，默认是0。</li>
+<li>maxLineGap 用来控制接受共线线段之间的最小间隔，即在一条线中两点的最大间隔。</li>
+<li>返回值lines中的每个元素都是一队浮点数，表示检测到的直线的参数，即<span class="math inline">\((r, \theta)\)</span>，是numpy.ndarray类型</li>
+</ul>
 
                 
 
