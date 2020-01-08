@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
+        <lastmod>2020-01-08T13:00:40.162Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/tags/MathematicalModeling/</loc>
         <lastmod>2020-01-06T13:13:03.423Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,13 +19,6 @@
     <url>
         <loc>http://www.chenxindaaa.com/tags/OpenCV/</loc>
         <lastmod>2020-01-02T08:44:11.316Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
-        <lastmod>2019-12-31T09:56:58.027Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
