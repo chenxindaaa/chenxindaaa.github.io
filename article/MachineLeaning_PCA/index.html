@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -219,7 +219,8 @@
 <p>PCA是一个无监督问题，不是基于标签，而是基于方差。我们可以认为原始的数据在某一个维度上是非常密集的，PCA就是需要把这些密集的点给扩散大，相当于基于方差出找方差最大的方向，越大的方差方向数据点更会分分开，便于分类。</p>
 <p>主成分分析除了降低多变量数据系统的维度以外，同时还简化了变量系统的统计数字特征。主成分分析在对多变量数据系统进行最佳简化的同时，还可以提供许多重要的系统信息，例如数据点的重心位置(或称为平均水平)，数据变异的最大方向，群点的散布范围等。</p>
 <p>主成分分析作为最重要的多元统计方法之一，其核心是K-L变换，在高维信号压缩和特征提取等领域已获得广泛应用。主成分分析的基本思路可概述如下：借助一个正交变换矩阵，将分量相关的原随机变量转换成分量不相关的新变量。从代数角度，即将原变量的协方差矩阵转换成对角矩阵。从几何角度，将原变量系统变换成新的正交系统，使之指向样本点散布最开的正交方向，进而对多维变量系统进行降维处理。按照特征提取的观点，主成分分析相当于一种基于最小均方误差的提取方法。</p>
-<p><strong>2.问题描述</strong> 下表1是某些学生的语文、数学、物理、化学成绩统计：</p>
+<p><strong>2.问题描述</strong></p>
+<p>下表1是某些学生的语文、数学、物理、化学成绩统计：</p>
 <table>
 <thead>
 <tr class="header">
@@ -469,25 +470,7 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
 </figure>
 <p>数据中心化（将坐标原点移到样本点的中心点）：</p>
 <p><img src="https://img-blog.csdnimg.cn/20200108204141238.png" alt="在这里插入图片描述"> 　　中心化后的数据在第一主轴u1方向上分布散的最开，也就是说在u1方向上的投影的绝对值之和最大（也可以说方差最大），计算投影的方法上面已经阐述，就是将x与u1做内积，由于只需要求u1的方向，所以设u1也是单位向量。 　　在这里，也就是最大化下式： <img src="https://img-blog.csdnimg.cn/20200108204205381.png" alt="在这里插入图片描述"> 　　由矩阵代数相关知识可知，可以对绝对值符号项进行平方处理，比较方便。所以进而就是最大化下式： <img src="https://img-blog.csdnimg.cn/2020010820450178.png" alt="在这里插入图片描述"> 　　两个向量做内积，可以转化成矩阵乘法：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200108204513197.png" alt="在这里插入图片描述"> 　　所以目标函数可以表示为： <img src="https://img-blog.csdnimg.cn/2020010820453137.png" alt="在这里插入图片描述"> 　　括号里面就是矩阵乘法表示向量内积，由于列向量转置以后是行向量，行向量乘以列向量得到一个数，一个数的转置还是其本身，所以又可以将目标函数化为： 　　 <img src="https://img-blog.csdnimg.cn/20200108204543789.png" alt="在这里插入图片描述"> 　　去括号： <img src="https://img-blog.csdnimg.cn/20200108204606640.png" alt="在这里插入图片描述"> 　　又由于u1和i无关，可以拿到求和符外面，上式化简为： <img src="https://img-blog.csdnimg.cn/20200108204617947.png" alt="在这里插入图片描述"> 　　学过矩阵代数的同学可能已经发现了，上式括号里面求和后的结果，就相当于一个大矩阵乘以自身的转置，其中，这个大矩阵的形式如下：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200108204642192.png" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p>X矩阵的第i列就是xi 于是有：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200108204700633.png" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p>所以目标函数最终化为：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200108204718645.png" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p>其中的<span class="math inline">\(u_1^TXX^Tu_1\)</span>就是一个二次型， 我们假设<span class="math inline">\(XX^T\)</span>的某一特征值为λ，对应的特征向量为ξ，有 <img src="https://img-blog.csdnimg.cn/20200108204810149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>所以<span class="math inline">\(\lambda \geq 0\)</span>，<span class="math inline">\(XX^T\)</span>是半正定的对称矩阵，即<span class="math inline">\(u_1^TXX^Tu_1\)</span>是半正定阵的二次型，由矩阵代数知识得出，目标函数存在最大值！ 　　下面我们求解最大值、取得最大值时u1的方向这两个问题。 　　先解决第一个问题，对于向量x的二范数平方为: 　　<img src="https://img-blog.csdnimg.cn/20200108204927603.png" alt="在这里插入图片描述"> 同样，目标函数也可以表示成映射后的向量的二范数平方：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200108204943795.png" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p>把二次型化成一个范数的形式，由于u1取单位向量，最大化目标函数的基本问题也就转化为：对一个矩阵，它对一个向量做变换，变换前后的向量的模长伸缩尺度如何才能最大？我们有矩阵代数中的定理知，向量经矩阵映射前后的向量长度之比的最大值就是这个矩阵的最大奇异值，即： <img src="https://img-blog.csdnimg.cn/20200108204951444.png" alt="在这里插入图片描述"></p>
-<p>式中，<span class="math inline">\(\sigma_1\)</span>是矩阵A的最大奇异值（亦是矩阵A的二范数），它等于<span class="math inline">\(AA^T\)</span>（或<span class="math inline">\(A^TA\)</span>）的最大特征值开平方。 　　针对本问题来说，<span class="math inline">\(XX^T\)</span>是半正定对称阵，也就意味着它的特征值都大于等于0，且不同特征值对应的特征向量是正交的，构成所在空间的一组单位正交基。<br>
+<p><img src="https://img-blog.csdnimg.cn/20200108204513197.png" alt="在这里插入图片描述"> 　　所以目标函数可以表示为： <img src="https://img-blog.csdnimg.cn/2020010820453137.png" alt="在这里插入图片描述"> 　　括号里面就是矩阵乘法表示向量内积，由于列向量转置以后是行向量，行向量乘以列向量得到一个数，一个数的转置还是其本身，所以又可以将目标函数化为： 　　 <img src="https://img-blog.csdnimg.cn/20200108204543789.png" alt="在这里插入图片描述"> 　　去括号： <img src="https://img-blog.csdnimg.cn/20200108204606640.png" alt="在这里插入图片描述"> 　　又由于u1和i无关，可以拿到求和符外面，上式化简为： <img src="https://img-blog.csdnimg.cn/20200108204617947.png" alt="在这里插入图片描述"> 　　学过矩阵代数的同学可能已经发现了，上式括号里面求和后的结果，就相当于一个大矩阵乘以自身的转置，其中，这个大矩阵的形式如下： <img src="https://img-blog.csdnimg.cn/20200108204642192.png" alt="在这里插入图片描述"> X矩阵的第i列就是xi 于是有： <img src="https://img-blog.csdnimg.cn/20200108204700633.png" alt="在这里插入图片描述"> 所以目标函数最终化为： <img src="https://img-blog.csdnimg.cn/20200108204718645.png" alt="在这里插入图片描述"> 其中的<span class="math inline">\(u_1^TXX^Tu_1\)</span>就是一个二次型， 我们假设<span class="math inline">\(XX^T\)</span>的某一特征值为λ，对应的特征向量为ξ，有 <img src="https://img-blog.csdnimg.cn/20200108204810149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> 所以<span class="math inline">\(\lambda \geq 0\)</span>，<span class="math inline">\(XX^T\)</span>是半正定的对称矩阵，即<span class="math inline">\(u_1^TXX^Tu_1\)</span>是半正定阵的二次型，由矩阵代数知识得出，目标函数存在最大值！ 下面我们求解最大值、取得最大值时u1的方向这两个问题。 先解决第一个问题，对于向量x的二范数平方为: <img src="https://img-blog.csdnimg.cn/20200108204927603.png" alt="在这里插入图片描述"> 同样，目标函数也可以表示成映射后的向量的二范数平方： <img src="https://img-blog.csdnimg.cn/20200108204943795.png" alt="在这里插入图片描述"> 把二次型化成一个范数的形式，由于u1取单位向量，最大化目标函数的基本问题也就转化为：对一个矩阵，它对一个向量做变换，变换前后的向量的模长伸缩尺度如何才能最大？我们有矩阵代数中的定理知，向量经矩阵映射前后的向量长度之比的最大值就是这个矩阵的最大奇异值，即： <img src="https://img-blog.csdnimg.cn/20200108204951444.png" alt="在这里插入图片描述"> 式中，<span class="math inline">\(\sigma_1\)</span>是矩阵A的最大奇异值（亦是矩阵A的二范数），它等于<span class="math inline">\(AA^T\)</span>（或<span class="math inline">\(A^TA\)</span>）的最大特征值开平方。 　　针对本问题来说，<span class="math inline">\(XX^T\)</span>是半正定对称阵，也就意味着它的特征值都大于等于0，且不同特征值对应的特征向量是正交的，构成所在空间的一组单位正交基。<br>
 　　再解决第二个问题，对一般情况，设对称阵<span class="math inline">\(A^TA \in C^{n\times n}\)</span>的n个特征值分别为： <img src="https://img-blog.csdnimg.cn/20200108205227764.png" alt="在这里插入图片描述"> 相应的单位特征向量为:</p>
 <p><img src="https://img-blog.csdnimg.cn/20200108205234625.png" alt="在这里插入图片描述"> 任取一个向量x，用特征向量构成的空间中的这组基表示为：</p>
 <p><img src="https://img-blog.csdnimg.cn/20200108205251922.png" alt="在这里插入图片描述"> 则：</p>
@@ -495,7 +478,7 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
 <figure>
 <img src="https://img-blog.csdnimg.cn/20200108205316647.png" alt=""><figcaption>在这里插入图片描述</figcaption>
 </figure>
-<p>针对第二个问题，我们取上式中的<span class="math inline">\(x=u_1,A=X^T\)</span>，目标函数<span class="math inline">\(u_1^TXX^tu_1\)</span>取得最大值，也就是<span class="math inline">\(max(u_1^TXX^Tu_1)=max(||X^Tu_1||^2_2)=XX^T\)</span>的最大特征值时，对应的特征向量的方向，就是第一主成分u1的方向！（第二主成分的方向为<span class="math inline">\(XX^T\)</span>的第二大特征值对应的特征向量的方向，以此类推）。 证明完毕。 主成分所占整个信息的百分比可用下式计算： <img src="https://img-blog.csdnimg.cn/2020010820560282.png" alt="在这里插入图片描述"> 　　 式中分母为<span class="math inline">\(XX^T\)</span>所有奇异值平方和，分子为所选取的前k大奇异值平方和。 　　有些研究工作表明，所选的主轴总长度占所有主轴长度之和的大约85% 即可，其实，这只是一个大体的说法，具体选多少个，要看实际情况而定。</p>
+<p>针对第二个问题，我们取上式中的<span class="math inline">\(x=u_1,A=X^T\)</span>，目标函数<span class="math inline">\(u_1^TXX^tu_1\)</span>取得最大值，也就是<span class="math inline">\(max(u_1^TXX^Tu_1)=max(||X^Tu_1||^2_2)=XX^T\)</span>的最大特征值时，对应的特征向量的方向，就是第一主成分u1的方向！（第二主成分的方向为<span class="math inline">\(XX^T\)</span>的第二大特征值对应的特征向量的方向，以此类推）。 证明完毕。 主成分所占整个信息的百分比可用下式计算： <img src="https://img-blog.csdnimg.cn/2020010820560282.png" alt="在这里插入图片描述"> 式中分母为<span class="math inline">\(XX^T\)</span>所有奇异值平方和，分子为所选取的前k大奇异值平方和。 有些研究工作表明，所选的主轴总长度占所有主轴长度之和的大约85% 即可，其实，这只是一个大体的说法，具体选多少个，要看实际情况而定。</p>
 <h4 id="四-代码">四、代码</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadDataSet</span><span class="params">(fileName, delim=<span class="string">'\t'</span>)</span>:</span></span><br><span class="line">    fr = open(fileName)</span><br><span class="line">    stringArr = [line.strip().split(delim) <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines()]</span><br><span class="line">    datArr = [map(float,line) <span class="keyword">for</span> line <span class="keyword">in</span> stringArr]</span><br><span class="line">    <span class="keyword">return</span> mat(datArr)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pca</span><span class="params">(dataMat, topNfeat=<span class="number">9999999</span>)</span>:</span></span><br><span class="line">    meanVals = mean(dataMat, axis=<span class="number">0</span>)</span><br><span class="line">    meanRemoved = dataMat - meanVals <span class="comment">#remove mean</span></span><br><span class="line">    covMat = cov(meanRemoved, rowvar=<span class="number">0</span>)</span><br><span class="line">    eigVals,eigVects = linalg.eig(mat(covMat))</span><br><span class="line">    eigValInd = argsort(eigVals)            <span class="comment">#sort, sort goes smallest to largest</span></span><br><span class="line">    eigValInd = eigValInd[:-(topNfeat+<span class="number">1</span>):<span class="number">-1</span>]  <span class="comment">#cut off unwanted dimensions</span></span><br><span class="line">    redEigVects = eigVects[:,eigValInd]       <span class="comment">#reorganize eig vects largest to smallest</span></span><br><span class="line">    lowDDataMat = meanRemoved * redEigVects<span class="comment">#transform data into new dimensions</span></span><br><span class="line">    reconMat = (lowDDataMat * redEigVects.T) + meanVals</span><br><span class="line">    <span class="keyword">return</span> lowDDataMat, reconMat</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">replaceNanWithMean</span><span class="params">()</span>:</span> </span><br><span class="line">    datMat = loadDataSet(<span class="string">'secom.data'</span>, <span class="string">' '</span>)</span><br><span class="line">    numFeat = shape(datMat)[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(numFeat):</span><br><span class="line">        meanVal = mean(datMat[nonzero(~isnan(datMat[:,i].A))[<span class="number">0</span>],i]) <span class="comment">#values that are not NaN (a number)</span></span><br><span class="line">        datMat[nonzero(isnan(datMat[:,i].A))[<span class="number">0</span>],i] = meanVal  <span class="comment">#set NaN values to mean</span></span><br><span class="line">    <span class="keyword">return</span> datMat</span><br></pre></td></tr></table></figure>
 
