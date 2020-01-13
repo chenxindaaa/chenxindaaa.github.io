@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -241,6 +241,8 @@
 \end{aligned}\]</span></p>
 <p>整个算法最重要的部分集中在上面几行，这三行的更新公式其实很好理解，<span class="math inline">\(\eta\)</span>是学习率，<span class="math inline">\(p&#39;\)</span>是原型向量。若样本和原型向量标签一致，说明真实的原型向量是靠近这个样本的，那么就要向这个样本的方向靠拢，也就是+(x - p)这部分；若不一致，说明不在一个簇里，那么就该远离，远离的方向是-(x - p)。</p>
 <p>LVD算法其实也是一种基于竞争的学习，这点和无监督的SOM算法挺像的。LVD算法可以被视为一种网络，由输入层、竞争层、输出层组成。输入层很容易理解，就是接受样本的输入；竞争层可以被视为神经元之间的竞争，也就是原型向量之间的竞争，离得最近的神经元（原型向量）获胜，赢者通吃（winner-take-all）；输出层负责输出分类结果。不论是如何理解这个算法，其实本质都是一样的，也就是同类靠拢、异类远离。</p>
+<h2 id="六-各类聚类的优缺点">六、各类聚类的优缺点</h2>
+<p>https://blog.csdn.net/dengheCSDN/article/details/82748991</p>
 
                 
 
