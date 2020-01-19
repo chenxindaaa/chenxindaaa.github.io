@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>http://www.chenxindaaa.com/tags/BIgData/</loc>
+        <lastmod>2020-01-19T15:01:53.930Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/tags/MachineLearning/</loc>
-        <lastmod>2020-01-13T08:05:41.514Z</lastmod>
+        <lastmod>2020-01-14T15:05:56.926Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

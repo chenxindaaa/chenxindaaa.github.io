@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/python大数据：实战热水器用户行为识别（二、数据预处理）/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2020-01-19
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="四-数据预处理">四、数据预处理</h2>
+<h3 id="1-属性归约">1. 属性归约</h3>
+<p>因为分析主要对象热水器用户，分析的主要目的为热水器用户洗浴行为的一般规律，所以“热水器编号”属性可以除去；因为“有无水流”可以通过“水流量”属性反映出来，“节能模式”属性取值相同均为“关”，对分析无用，可以去除。</p>
+<p>删除“热水器编号”、“有无水流”、“节能模式”后数据如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = pd.read_excel(<span class="string">'../data/original_data.xls'</span>)</span><br><span class="line">print(<span class="string">'初始状态的数据形状为：'</span>, data.shape)</span><br><span class="line"><span class="comment"># 删除热水器编号、有无水流、节能模式属性</span></span><br><span class="line">data.drop(labels=[<span class="string">"热水器编号"</span>,<span class="string">"有无水流"</span>,<span class="string">"节能模式"</span>],axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>) </span><br><span class="line">print(<span class="string">'删除冗余属性后的数据形状为：'</span>, data.shape)</span><br><span class="line">data.to_csv(<span class="string">'../tmp/water_heart.csv'</span>,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>初始状态的数据形状为： (18840, 12)
+删除冗余属性后的数据形状为： (18840, 9)</code></pre>
+<h3 id="2-划分用水事件">2. 划分用水事件</h3>
+<p>在用水状态记录中水流量不为0，表明热水器用户正在使用热水；而水流量为0时，表明热水器用户用热水时发生了停顿或者用热水结束。对于任何一个用水记录，如果它的向前时差超过了阈值T，则将它记为事件的开始编号；如果它的向后时差超过阈值T，则将其记为时间的结束编号。划分模型的符号说明如下表所示。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">符号</th>
+<th style="text-align: center;">释义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(t_1\)</span></td>
+<td style="text-align: center;">所有水流量不为0的用水行为的发生时间</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">时间间隔阈值</td>
+<td style="text-align: center;"><span class="math inline">\(T\)</span></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">'../tmp/water_heart.csv'</span>)</span><br><span class="line"><span class="comment"># 划分用水事件</span></span><br><span class="line">threshold = pd.Timedelta(<span class="string">'1 min'</span>)  <span class="comment"># 阈值为4分钟</span></span><br><span class="line">data[<span class="string">'发生时间'</span>] = pd.to_datetime(data[<span class="string">'发生时间'</span>], format = <span class="string">'%Y%m%d%H%M%S'</span>)  <span class="comment"># 转换时间格式</span></span><br><span class="line">data = data[data[<span class="string">'水流量'</span>] &gt; <span class="number">0</span>]  <span class="comment"># 只要流量大于0的记录</span></span><br><span class="line">sjKs = data[<span class="string">'发生时间'</span>].diff() &gt; threshold  <span class="comment"># 相邻时间向前差分，比较是否大于阈值</span></span><br><span class="line">sjKs.iloc[<span class="number">0</span>] = <span class="keyword">True</span>  <span class="comment"># 令第一个时间为第一个用水事件的开始事件</span></span><br><span class="line">sjJs = sjKs.iloc[<span class="number">1</span>:]  <span class="comment"># 向后差分的结果</span></span><br><span class="line">sjJs = pd.concat([sjJs,pd.Series(<span class="keyword">True</span>)])  <span class="comment"># 令最后一个时间作为最后一个用水事件的结束时间</span></span><br><span class="line"><span class="comment"># 创建数据框，并定义用水事件序列</span></span><br><span class="line">sj = pd.DataFrame(np.arange(<span class="number">1</span>,sum(sjKs)+<span class="number">1</span>),columns = [<span class="string">"事件序号"</span>])</span><br><span class="line">sj[<span class="string">"事件起始编号"</span>] = data.index[sjKs == <span class="number">1</span>]+<span class="number">1</span>  <span class="comment"># 定义用水事件的起始编号</span></span><br><span class="line">sj[<span class="string">"事件终止编号"</span>] = data.index[sjJs == <span class="number">1</span>]+<span class="number">1</span>  <span class="comment"># 定义用水事件的终止编号</span></span><br><span class="line">print(<span class="string">'当阈值为4分钟的时候事件数目为：'</span>,sj.shape[<span class="number">0</span>])</span><br><span class="line">sj.to_csv(<span class="string">'../tmp/sj.csv'</span>,index = <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>当阈值为4分钟的时候事件数目为： 232</code></pre>
+<h3 id="3-确定单次用水事件时长阈值">3. 确定单次用水事件时长阈值</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">4</span>  <span class="comment"># 使用以后四个点的平均斜率</span></span><br><span class="line">threshold = pd.Timedelta(minutes=<span class="number">5</span>)  <span class="comment"># 专家阈值</span></span><br><span class="line">data[<span class="string">'发生时间'</span>] = pd.to_datetime(data[<span class="string">'发生时间'</span>], format=<span class="string">'%Y%m%d%H%M%S'</span>)</span><br><span class="line">data = data[data[<span class="string">'水流量'</span>] &gt; <span class="number">0</span>]  <span class="comment"># 只要流量大于0的记录</span></span><br><span class="line"><span class="comment"># 自定义函数：输入划分时间的时间阈值，得到划分的事件数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">event_num</span><span class="params">(ts)</span>:</span></span><br><span class="line">    d = data[<span class="string">'发生时间'</span>].diff() &gt; ts  <span class="comment"># 相邻时间作差分，比较是否大于阈值</span></span><br><span class="line">    <span class="keyword">return</span> d.sum() + <span class="number">1</span>  <span class="comment"># 这样直接返回事件数</span></span><br><span class="line">dt = [pd.Timedelta(minutes=i) <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(<span class="number">1</span>, <span class="number">9</span>, <span class="number">0.25</span>)]</span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">9</span>, <span class="number">0.25</span>)</span><br><span class="line">h = pd.DataFrame(dt, columns=[<span class="string">'阈值'</span>])  <span class="comment"># 转换数据框，定义阈值列</span></span><br><span class="line">h[<span class="string">'事件数'</span>] = h[<span class="string">'阈值'</span>].apply(event_num)  <span class="comment"># 计算每个阈值对应的事件数</span></span><br><span class="line">h[<span class="string">'斜率'</span>] = h[<span class="string">'事件数'</span>].diff()/<span class="number">0.25</span>  <span class="comment"># 计算每两个相邻点对应的斜率</span></span><br><span class="line">h[<span class="string">'斜率指标'</span>]= h[<span class="string">'斜率'</span>].abs().rolling(<span class="number">4</span>).mean()  <span class="comment"># 往前取n个斜率绝对值平均作为斜率指标</span></span><br><span class="line">h[<span class="string">'x'</span>] = x</span><br><span class="line">ts = h[<span class="string">'阈值'</span>][h[<span class="string">'斜率指标'</span>].idxmin() - n]</span><br><span class="line"><span class="comment"># 用idxmin返回最小值的Index，由于rolling_mean()计算的是前n个斜率的绝对值平均</span></span><br><span class="line"><span class="comment"># 所以结果要进行平移（-n）</span></span><br><span class="line"><span class="keyword">if</span> ts &gt; threshold:</span><br><span class="line">    ts = pd.Timedelta(minutes=<span class="number">4</span>)</span><br><span class="line">print(<span class="string">'计算出的单次用水时长的阈值为：'</span>,ts)</span><br><span class="line"></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = <span class="string">'SimHei'</span>  <span class="comment"># 设置中文显示</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line"><span class="comment"># h['事件数'].plot(label = u'事件数', legend = True)</span></span><br><span class="line">plt.plot(h[<span class="string">'x'</span>], h[<span class="string">'事件数'</span>])</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200119224727642.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h3 id="4-属性构造">4. 属性构造</h3>
+<p><strong>（1）构建用水时长与频率属性</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_excel(<span class="string">'../data/water_hearter.xlsx'</span>,encoding=<span class="string">'gbk'</span>)  <span class="comment"># 读取热水器使用数据记录</span></span><br><span class="line">sj = pd.read_csv(<span class="string">'../tmp/sj.csv'</span>)  <span class="comment"># 读取用水事件记录</span></span><br><span class="line"><span class="comment"># 转换时间格式</span></span><br><span class="line">data[<span class="string">"发生时间"</span>] = pd.to_datetime(data[<span class="string">"发生时间"</span>],format=<span class="string">"%Y%m%d%H%M%S"</span>)</span><br><span class="line"><span class="comment"># 构造特征：总用水时长</span></span><br><span class="line">timeDel = pd.Timedelta(<span class="string">"0.5 sec"</span>)</span><br><span class="line">sj[<span class="string">"事件开始时间"</span>] = data.iloc[sj[<span class="string">"事件起始编号"</span>]<span class="number">-1</span>,<span class="number">0</span>].values- timeDel</span><br><span class="line">sj[<span class="string">"事件结束时间"</span>] = data.iloc[sj[<span class="string">"事件终止编号"</span>]<span class="number">-1</span>,<span class="number">0</span>].values + timeDel</span><br><span class="line">sj[<span class="string">'洗浴时间点'</span>] = [i.hour <span class="keyword">for</span> i <span class="keyword">in</span> sj[<span class="string">"事件开始时间"</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment">### 这里总用水时长感觉不用加1！！！！</span></span><br><span class="line">sj[<span class="string">"总用水时长"</span>] = np.int64(sj[<span class="string">"事件结束时间"</span>] - sj[<span class="string">"事件开始时间"</span>])/<span class="number">1000000000</span> + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">sj.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+事件序号
+</th>
+<th>
+事件起始编号
+</th>
+<th>
+事件终止编号
+</th>
+<th>
+事件开始时间
+</th>
+<th>
+事件结束时间
+</th>
+<th>
+洗浴时间点
+</th>
+<th>
+总用水时长
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+1
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+2014-10-19 07:01:55.500
+</td>
+<td>
+2014-10-19 07:01:56.500
+</td>
+<td>
+7
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+2
+</td>
+<td>
+57
+</td>
+<td>
+57
+</td>
+<td>
+2014-10-19 07:38:15.500
+</td>
+<td>
+2014-10-19 07:38:16.500
+</td>
+<td>
+7
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+3
+</td>
+<td>
+382
+</td>
+<td>
+385
+</td>
+<td>
+2014-10-19 09:46:37.500
+</td>
+<td>
+2014-10-19 09:47:15.500
+</td>
+<td>
+9
+</td>
+<td>
+39.0
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+4
+</td>
+<td>
+405
+</td>
+<td>
+405
+</td>
+<td>
+2014-10-19 11:50:16.500
+</td>
+<td>
+2014-10-19 11:50:17.500
+</td>
+<td>
+11
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+5
+</td>
+<td>
+408
+</td>
+<td>
+408
+</td>
+<td>
+2014-10-19 13:56:20.500
+</td>
+<td>
+2014-10-19 13:56:21.500
+</td>
+<td>
+13
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+6
+</td>
+<td>
+411
+</td>
+<td>
+594
+</td>
+<td>
+2014-10-19 15:34:38.500
+</td>
+<td>
+2014-10-19 15:48:46.500
+</td>
+<td>
+15
+</td>
+<td>
+849.0
+</td>
+</tr>
+<tr>
+<th>
+6
+</th>
+<td>
+7
+</td>
+<td>
+613
+</td>
+<td>
+619
+</td>
+<td>
+2014-10-19 15:55:14.500
+</td>
+<td>
+2014-10-19 15:55:29.500
+</td>
+<td>
+15
+</td>
+<td>
+16.0
+</td>
+</tr>
+<tr>
+<th>
+7
+</th>
+<td>
+8
+</td>
+<td>
+660
+</td>
+<td>
+666
+</td>
+<td>
+2014-10-19 17:23:20.500
+</td>
+<td>
+2014-10-19 17:23:41.500
+</td>
+<td>
+17
+</td>
+<td>
+22.0
+</td>
+</tr>
+<tr>
+<th>
+8
+</th>
+<td>
+9
+</td>
+<td>
+668
+</td>
+<td>
+763
+</td>
+<td>
+2014-10-19 17:24:57.500
+</td>
+<td>
+2014-10-19 17:31:32.500
+</td>
+<td>
+17
+</td>
+<td>
+396.0
+</td>
+</tr>
+<tr>
+<th>
+9
+</th>
+<td>
+10
+</td>
+<td>
+766
+</td>
+<td>
+766
+</td>
+<td>
+2014-10-19 17:34:35.500
+</td>
+<td>
+2014-10-19 17:34:36.500
+</td>
+<td>
+17
+</td>
+<td>
+2.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造用水停顿事件</span></span><br><span class="line"><span class="comment"># 构造特征“停顿开始时间”、“停顿结束时间”</span></span><br><span class="line"><span class="comment"># 停顿开始时间指从有水流到无水流，停顿结束时间指从无水流到有水流</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(data) - <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> (data.loc[i, <span class="string">"水流量"</span>] != <span class="number">0</span>) &amp; (data.loc[i + <span class="number">1</span>, <span class="string">"水流量"</span>] == <span class="number">0</span>):</span><br><span class="line">        data.loc[i + <span class="number">1</span>, <span class="string">"停顿开始时间"</span>] = data.loc[i + <span class="number">1</span>, <span class="string">"发生时间"</span>] - timeDel</span><br><span class="line">    <span class="keyword">if</span> (data.loc[i, <span class="string">"水流量"</span>] == <span class="number">0</span>) &amp; (data.loc[i + <span class="number">1</span>, <span class="string">"水流量"</span>] != <span class="number">0</span>):</span><br><span class="line">        data.loc[i, <span class="string">"停顿结束时间"</span>] = data.loc[i, <span class="string">"发生时间"</span>] + timeDel</span><br><span class="line">data.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+发生时间
+</th>
+<th>
+开关机状态
+</th>
+<th>
+加热中
+</th>
+<th>
+保温中
+</th>
+<th>
+实际温度
+</th>
+<th>
+热水量
+</th>
+<th>
+水流量
+</th>
+<th>
+加热剩余时间
+</th>
+<th>
+当前设置温度
+</th>
+<th>
+停顿结束时间
+</th>
+<th>
+停顿开始时间
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+2014-10-19 06:39:17
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+2014-10-19 07:01:54
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+2014-10-19 07:01:54.500
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+2014-10-19 07:01:56
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+8
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+2014-10-19 07:12:30
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+2014-10-19 07:12:29.500
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+2014-10-19 07:12:36
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+29°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+2014-10-19 07:16:02
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+6
+</th>
+<td>
+2014-10-19 07:16:08
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+29°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+7
+</th>
+<td>
+2014-10-19 07:20:05
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+8
+</th>
+<td>
+2014-10-19 07:20:10
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+29°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+<tr>
+<th>
+9
+</th>
+<td>
+2014-10-19 07:21:53
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+<td>
+NaT
+</td>
+<td>
+NaT
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取停顿开始时间与结束时间所对应行号，放在数据框Stop中</span></span><br><span class="line">indStopStart = data.index[data[<span class="string">"停顿开始时间"</span>].notnull()]+<span class="number">1</span></span><br><span class="line">indStopEnd = data.index[data[<span class="string">"停顿结束时间"</span>].notnull()]+<span class="number">1</span></span><br><span class="line">Stop = pd.DataFrame(data=&#123;<span class="string">"停顿开始编号"</span>:indStopStart[:<span class="number">-1</span>],</span><br><span class="line">                            <span class="string">"停顿结束编号"</span>:indStopEnd[<span class="number">1</span>:]&#125;) </span><br><span class="line"><span class="comment"># 计算停顿时长，并放在数据框stop中，停顿时长=停顿结束时间-停顿结束时间</span></span><br><span class="line">Stop[<span class="string">"停顿时长"</span>] = np.int64(data.loc[indStopEnd[<span class="number">1</span>:]<span class="number">-1</span>,<span class="string">"停顿结束时间"</span>].values-</span><br><span class="line">                     data.loc[indStopStart[:<span class="number">-1</span>]<span class="number">-1</span>,<span class="string">"停顿开始时间"</span>].values)/<span class="number">1000000000</span></span><br><span class="line">Stop.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+停顿开始编号
+</th>
+<th>
+停顿结束编号
+</th>
+<th>
+停顿时长
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+4
+</td>
+<td>
+56
+</td>
+<td>
+1545.0
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+58
+</td>
+<td>
+381
+</td>
+<td>
+7682.0
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+384
+</td>
+<td>
+384
+</td>
+<td>
+1.0
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+386
+</td>
+<td>
+404
+</td>
+<td>
+2130.0
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+406
+</td>
+<td>
+407
+</td>
+<td>
+1679.0
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+409
+</td>
+<td>
+410
+</td>
+<td>
+5007.0
+</td>
+</tr>
+<tr>
+<th>
+6
+</th>
+<td>
+453
+</td>
+<td>
+454
+</td>
+<td>
+11.0
+</td>
+</tr>
+<tr>
+<th>
+7
+</th>
+<td>
+595
+</td>
+<td>
+612
+</td>
+<td>
+286.0
+</td>
+</tr>
+<tr>
+<th>
+8
+</th>
+<td>
+620
+</td>
+<td>
+659
+</td>
+<td>
+5259.0
+</td>
+</tr>
+<tr>
+<th>
+9
+</th>
+<td>
+667
+</td>
+<td>
+667
+</td>
+<td>
+1.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将每次停顿与事件匹配,停顿的开始时间要大于事件的开始时间，</span></span><br><span class="line"><span class="comment"># 且停顿的结束时间要小于事件的结束时间</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(sj)):</span><br><span class="line">    Stop.loc[(Stop[<span class="string">"停顿开始编号"</span>] &gt; sj.loc[i,<span class="string">"事件起始编号"</span>]) &amp; </span><br><span class="line">           (Stop[<span class="string">"停顿结束编号"</span>] &lt; sj.loc[i,<span class="string">"事件终止编号"</span>]),<span class="string">"停顿归属事件"</span>]=i+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除停顿次数为0的事件</span></span><br><span class="line">Stop = Stop[Stop[<span class="string">"停顿归属事件"</span>].notnull()]</span><br><span class="line">Stop.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+停顿开始编号
+</th>
+<th>
+停顿结束编号
+</th>
+<th>
+停顿时长
+</th>
+<th>
+停顿归属事件
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+2
+</th>
+<td>
+384
+</td>
+<td>
+384
+</td>
+<td>
+1.0
+</td>
+<td>
+3.0
+</td>
+</tr>
+<tr>
+<th>
+6
+</th>
+<td>
+453
+</td>
+<td>
+454
+</td>
+<td>
+11.0
+</td>
+<td>
+6.0
+</td>
+</tr>
+<tr>
+<th>
+16
+</th>
+<td>
+1143
+</td>
+<td>
+1143
+</td>
+<td>
+1.0
+</td>
+<td>
+15.0
+</td>
+</tr>
+<tr>
+<th>
+20
+</th>
+<td>
+1350
+</td>
+<td>
+1350
+</td>
+<td>
+1.0
+</td>
+<td>
+18.0
+</td>
+</tr>
+<tr>
+<th>
+21
+</th>
+<td>
+1353
+</td>
+<td>
+1353
+</td>
+<td>
+1.0
+</td>
+<td>
+18.0
+</td>
+</tr>
+<tr>
+<th>
+23
+</th>
+<td>
+1368
+</td>
+<td>
+1368
+</td>
+<td>
+1.0
+</td>
+<td>
+19.0
+</td>
+</tr>
+<tr>
+<th>
+24
+</th>
+<td>
+1371
+</td>
+<td>
+1371
+</td>
+<td>
+1.0
+</td>
+<td>
+19.0
+</td>
+</tr>
+<tr>
+<th>
+25
+</th>
+<td>
+1377
+</td>
+<td>
+1377
+</td>
+<td>
+1.0
+</td>
+<td>
+19.0
+</td>
+</tr>
+<tr>
+<th>
+32
+</th>
+<td>
+1578
+</td>
+<td>
+1578
+</td>
+<td>
+1.0
+</td>
+<td>
+25.0
+</td>
+</tr>
+<tr>
+<th>
+41
+</th>
+<td>
+2166
+</td>
+<td>
+2166
+</td>
+<td>
+1.0
+</td>
+<td>
+33.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造特征 用水事件停顿总时长、停顿次数、停顿平均时长、</span></span><br><span class="line"><span class="comment"># 用水时长，用水/总时长</span></span><br><span class="line">stopAgg =  Stop.groupby(<span class="string">"停顿归属事件"</span>).agg(&#123;<span class="string">"停顿时长"</span>:sum,<span class="string">"停顿开始编号"</span>:len&#125;)</span><br><span class="line">sj.loc[stopAgg.index - <span class="number">1</span>,<span class="string">"总停顿时长"</span>] = stopAgg.loc[:,<span class="string">"停顿时长"</span>].values</span><br><span class="line">sj.loc[stopAgg.index<span class="number">-1</span>,<span class="string">"停顿次数"</span>] = stopAgg.loc[:,<span class="string">"停顿开始编号"</span>].values</span><br><span class="line">sj.fillna(<span class="number">0</span>,inplace=<span class="keyword">True</span>)  <span class="comment"># 对缺失值用0插补</span></span><br><span class="line">stopNo0 = sj[<span class="string">"停顿次数"</span>] != <span class="number">0</span>  <span class="comment"># 判断用水事件是否存在停顿</span></span><br><span class="line">sj.loc[stopNo0,<span class="string">"平均停顿时长"</span>] = sj.loc[stopNo0,<span class="string">"总停顿时长"</span>]/sj.loc[stopNo0,<span class="string">"停顿次数"</span>] </span><br><span class="line">sj.fillna(<span class="number">0</span>,inplace=<span class="keyword">True</span>)  <span class="comment"># 对缺失值用0插补</span></span><br><span class="line">sj[<span class="string">"用水时长"</span>] = sj[<span class="string">"总用水时长"</span>] - sj[<span class="string">"总停顿时长"</span>]  <span class="comment"># 定义特征用水时长</span></span><br><span class="line">sj[<span class="string">"用水/总时长"</span>] = sj[<span class="string">"用水时长"</span>] / sj[<span class="string">"总用水时长"</span>]  <span class="comment"># 定义特征 用水/总时长</span></span><br><span class="line">print(<span class="string">'用水事件用水时长与频率特征构造完成后数据的特征为：\n'</span>,sj.columns)</span><br><span class="line">print(<span class="string">'用水事件用水时长与频率特征构造完成后数据的前5行5列特征为：\n'</span>,</span><br><span class="line">      sj.iloc[:<span class="number">5</span>,:<span class="number">5</span>])</span><br><span class="line">sj.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>用水事件用水时长与频率特征构造完成后数据的特征为： Index(['事件序号', '事件起始编号', '事件终止编号', '事件开始时间', '事件结束时间', '洗浴时间点', '总用水时长', '总停顿时长', '停顿次数', '平均停顿时长', '用水时长', '用水/总时长'], dtype='object') 用水事件用水时长与频率特征构造完成后数据的前5行5列特征为： 事件序号 事件起始编号 事件终止编号 事件开始时间 事件结束时间 0 1 3 3 2014-10-19 07:01:55.500 2014-10-19 07:01:56.500 1 2 57 57 2014-10-19 07:38:15.500 2014-10-19 07:38:16.500 2 3 382 385 2014-10-19 09:46:37.500 2014-10-19 09:47:15.500 3 4 405 405 2014-10-19 11:50:16.500 2014-10-19 11:50:17.500 4 5 408 408 2014-10-19 13:56:20.500 2014-10-19 13:56:21.500</p>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+事件序号
+</th>
+<th>
+事件起始编号
+</th>
+<th>
+事件终止编号
+</th>
+<th>
+事件开始时间
+</th>
+<th>
+事件结束时间
+</th>
+<th>
+洗浴时间点
+</th>
+<th>
+总用水时长
+</th>
+<th>
+总停顿时长
+</th>
+<th>
+停顿次数
+</th>
+<th>
+平均停顿时长
+</th>
+<th>
+用水时长
+</th>
+<th>
+用水/总时长
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+1
+</td>
+<td>
+3
+</td>
+<td>
+3
+</td>
+<td>
+2014-10-19 07:01:55.500
+</td>
+<td>
+2014-10-19 07:01:56.500
+</td>
+<td>
+7
+</td>
+<td>
+2.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+2
+</td>
+<td>
+57
+</td>
+<td>
+57
+</td>
+<td>
+2014-10-19 07:38:15.500
+</td>
+<td>
+2014-10-19 07:38:16.500
+</td>
+<td>
+7
+</td>
+<td>
+2.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+3
+</td>
+<td>
+382
+</td>
+<td>
+385
+</td>
+<td>
+2014-10-19 09:46:37.500
+</td>
+<td>
+2014-10-19 09:47:15.500
+</td>
+<td>
+9
+</td>
+<td>
+39.0
+</td>
+<td>
+1.0
+</td>
+<td>
+1.0
+</td>
+<td>
+1.0
+</td>
+<td>
+38.0
+</td>
+<td>
+0.974359
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+4
+</td>
+<td>
+405
+</td>
+<td>
+405
+</td>
+<td>
+2014-10-19 11:50:16.500
+</td>
+<td>
+2014-10-19 11:50:17.500
+</td>
+<td>
+11
+</td>
+<td>
+2.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+5
+</td>
+<td>
+408
+</td>
+<td>
+408
+</td>
+<td>
+2014-10-19 13:56:20.500
+</td>
+<td>
+2014-10-19 13:56:21.500
+</td>
+<td>
+13
+</td>
+<td>
+2.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+6
+</td>
+<td>
+411
+</td>
+<td>
+594
+</td>
+<td>
+2014-10-19 15:34:38.500
+</td>
+<td>
+2014-10-19 15:48:46.500
+</td>
+<td>
+15
+</td>
+<td>
+849.0
+</td>
+<td>
+11.0
+</td>
+<td>
+1.0
+</td>
+<td>
+11.0
+</td>
+<td>
+838.0
+</td>
+<td>
+0.987044
+</td>
+</tr>
+<tr>
+<th>
+6
+</th>
+<td>
+7
+</td>
+<td>
+613
+</td>
+<td>
+619
+</td>
+<td>
+2014-10-19 15:55:14.500
+</td>
+<td>
+2014-10-19 15:55:29.500
+</td>
+<td>
+15
+</td>
+<td>
+16.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+16.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+7
+</th>
+<td>
+8
+</td>
+<td>
+660
+</td>
+<td>
+666
+</td>
+<td>
+2014-10-19 17:23:20.500
+</td>
+<td>
+2014-10-19 17:23:41.500
+</td>
+<td>
+17
+</td>
+<td>
+22.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+22.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+8
+</th>
+<td>
+9
+</td>
+<td>
+668
+</td>
+<td>
+763
+</td>
+<td>
+2014-10-19 17:24:57.500
+</td>
+<td>
+2014-10-19 17:31:32.500
+</td>
+<td>
+17
+</td>
+<td>
+396.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+396.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+<tr>
+<th>
+9
+</th>
+<td>
+10
+</td>
+<td>
+766
+</td>
+<td>
+766
+</td>
+<td>
+2014-10-19 17:34:35.500
+</td>
+<td>
+2014-10-19 17:34:36.500
+</td>
+<td>
+17
+</td>
+<td>
+2.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+1.000000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/python大数据：实战热水器用户行为识别（一、数据分析）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（一、数据分析）">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2020 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>

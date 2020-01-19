@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -506,7 +506,8 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
 0.677873399 &amp; -0.735178656
 \end{matrix}
 \right)\]</span></p>
-<p>上面是两个特征值，下面是对应的特征向量，特征值0.0490833989对应特征向量为<span class="math inline">\((-0.735178656,0.677873399)^T\)</span>，这里的特征向量都归一化为单位向量。 <strong>第四步</strong>，将特征值按照从大到小的顺序排序，选择其中最大的k个，然后将其对应的k个特征向量分别作为列向量组成特征向量矩阵。</p>
+<p>上面是两个特征值，下面是对应的特征向量，特征值0.0490833989对应特征向量为<span class="math inline">\((-0.735178656,0.677873399)^T\)</span>，这里的特征向量都归一化为单位向量。</p>
+<p><strong>第四步</strong>，将特征值按照从大到小的顺序排序，选择其中最大的k个，然后将其对应的k个特征向量分别作为列向量组成特征向量矩阵。</p>
 <p>　　这里特征值只有两个，我们选择其中最大的那个，这里是1.28402771，对应的特征向量是<span class="math inline">\((-0.677873399, -0.735178656)^T\)</span>。</p>
 <p><strong>第五步</strong>，将样本点投影到选取的特征向量上。假设样例数为m，特征数为n，减去均值后的样本矩阵为<span class="math inline">\(DataAdjust(m*n)\)</span>，协方差矩阵是<span class="math inline">\(n*n\)</span>，选取的k个特征向量组成的矩阵为<span class="math inline">\(EigenVectors(n*k)\)</span>。那么投影后的数据<span class="math inline">\(FinalData\)</span>为</p>
 <p><span class="math inline">\(FinalData(10*1) = DataAdjust(10*2矩阵) * 特征向量(-0.677873399, -0.735178656)^T\)</span></p>
@@ -815,23 +816,7 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 

@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Leetcode实战：23.合并K个排序链表 - chenxindaaa | Blog
+          python大数据：实战热水器用户行为识别（一、数据分析） - chenxindaaa | Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.chenxindaaa.com/article/Leetcode实战：23.合并K个排序链表/">
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/python大数据：实战热水器用户行为识别（一、数据分析）/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/4.jpg')
+            background-image: url('https://bbs.qn.img-space.com/202001/18/a8220a3669a9d4041070f672273d6139.jpg')
             /*post*/
         
     }
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+                              <a class="tag" href="/tags/#BIgData" title="BIgData">BIgData</a>
                             
                         </div>
-                        <h1>Leetcode实战：23.合并K个排序链表</h1>
-                        <h2 class="subheading">Leetcode</h2>
+                        <h1>python大数据：实战热水器用户行为识别（一、数据分析）</h1>
+                        <h2 class="subheading">BIgData</h2>
                         <span class="meta">
                             Posted by Xinda Chen on
-                            2019-09-07
+                            2020-01-19
                         </span>
                     </div>
                 
@@ -212,15 +212,328 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="题目">题目：</h2>
-<p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。 示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
-<h2 id="算法实现">算法实现：</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class ListNode:</span><br><span class="line">    def __init__(self, x):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def mergeTwoLists(self, lists):</span><br><span class="line">        self.sets = []</span><br><span class="line">        result = temp = ListNode(0)</span><br><span class="line">        for each in lists:</span><br><span class="line">            while each:</span><br><span class="line">                self.sets.append(each.val)</span><br><span class="line">                each = each.next</span><br><span class="line">        for x in sorted(self.sets):</span><br><span class="line">            temp.next = ListNode(x)</span><br><span class="line">            temp = temp.next</span><br><span class="line">        return result.next</span><br></pre></td></tr></table></figure>
-<h2 id="结果">结果：</h2>
+                <h2 id="一-导入相关包">一、导入相关包</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="comment">#导入warnings包，利用过滤器来实现忽略警告语句。</span></span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<h2 id="二-总体情况一览">二、总体情况一览</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inputfile = <span class="string">'../data/original_data.xls'</span>  <span class="comment"># 输入的数据文件</span></span><br><span class="line">data = pd.read_excel(inputfile)  <span class="comment"># 读取数据</span></span><br><span class="line">print(data.info())</span><br><span class="line">print(data.describe())</span><br><span class="line">print(data.count())</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 18840 entries, 0 to 18839
+Data columns (total 12 columns):
+热水器编号     18840 non-null object
+发生时间      18840 non-null int64
+开关机状态     18840 non-null object
+加热中       18840 non-null object
+保温中       18840 non-null object
+有无水流      18840 non-null object
+实际温度      18840 non-null object
+热水量       18840 non-null object
+水流量       18840 non-null int64
+节能模式      18840 non-null object
+加热剩余时间    18840 non-null object
+当前设置温度    18840 non-null object
+dtypes: int64(2), object(10)
+memory usage: 1.7+ MB
+None
+               发生时间           水流量
+count  1.884000e+04  18840.000000
+mean   2.014106e+13     12.870594
+std    4.021530e+07     17.122814
+min    2.014102e+13      0.000000
+25%    2.014102e+13      0.000000
+50%    2.014103e+13      0.000000
+75%    2.014111e+13     26.000000
+max    2.014111e+13     77.000000
+热水器编号     18840
+发生时间      18840
+开关机状态     18840
+加热中       18840
+保温中       18840
+有无水流      18840
+实际温度      18840
+热水量       18840
+水流量       18840
+节能模式      18840
+加热剩余时间    18840
+当前设置温度    18840
+dtype: int64</code></pre>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+热水器编号
+</th>
+<th>
+发生时间
+</th>
+<th>
+开关机状态
+</th>
+<th>
+加热中
+</th>
+<th>
+保温中
+</th>
+<th>
+有无水流
+</th>
+<th>
+实际温度
+</th>
+<th>
+热水量
+</th>
+<th>
+水流量
+</th>
+<th>
+节能模式
+</th>
+<th>
+加热剩余时间
+</th>
+<th>
+当前设置温度
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+R_00001
+</td>
+<td>
+20141019063917
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+无
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+关
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+R_00001
+</td>
+<td>
+20141019070154
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+无
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+关
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+R_00001
+</td>
+<td>
+20141019070156
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+无
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+8
+</td>
+<td>
+关
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+R_00001
+</td>
+<td>
+20141019071230
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+无
+</td>
+<td>
+30°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+关
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+R_00001
+</td>
+<td>
+20141019071236
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+关
+</td>
+<td>
+无
+</td>
+<td>
+29°C
+</td>
+<td>
+0%
+</td>
+<td>
+0
+</td>
+<td>
+关
+</td>
+<td>
+0分钟
+</td>
+<td>
+50°C
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="三-数据分析">三、数据分析</h2>
+<p><strong>水流状态</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制条形图</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">6</span>, <span class="number">5</span>))  <span class="comment"># 设置画布大小</span></span><br><span class="line">sns.set(style=<span class="string">"darkgrid"</span>)</span><br><span class="line">sns.set_context(<span class="string">"notebook"</span>, font_scale=<span class="number">1.2</span>, rc=&#123;<span class="string">"lines.linewidth"</span>: <span class="number">2.5</span>&#125;)</span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = <span class="string">'SimHei'</span>  <span class="comment"># 设置中文显示</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line">sns.catplot(kind=<span class="string">"count"</span>,</span><br><span class="line">            data=data,</span><br><span class="line">            x=<span class="string">"有无水流"</span>,</span><br><span class="line">            aspect=<span class="number">1</span>,</span><br><span class="line">            height=<span class="number">5</span>,</span><br><span class="line">            palette=<span class="string">'tab20'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'水流状态'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'记录数'</span>)</span><br><span class="line">plt.title(<span class="string">'不同水流状态记录数'</span>)</span><br></pre></td></tr></table></figure>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20190907231248116.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200119224153334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-j9KrTBA6-1579444860710)(https://i.loli.net/2020/01/19/fsQGqCW9EN4BXtz.png)]</figcaption>
 </figure>
+<p><strong>水流量分布</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制水流量分布箱型图</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">5</span>, <span class="number">8</span>))</span><br><span class="line">sns.catplot(</span><br><span class="line">    kind=<span class="string">"box"</span>,</span><br><span class="line">    data=data,</span><br><span class="line">    y=<span class="string">'水流量'</span>,  <span class="comment"># 设置x轴标题</span></span><br><span class="line">    aspect=<span class="number">1</span>,</span><br><span class="line">    height=<span class="number">5</span>,</span><br><span class="line">    palette=<span class="string">'tab20'</span>)</span><br><span class="line">plt.title(<span class="string">'水流量分布箱线图'</span>)</span><br><span class="line"><span class="comment">#显示y坐标轴的底线</span></span><br><span class="line"><span class="comment">#plt.grid(axis='y')</span></span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjAvMDEvMTkvZDdBR1ZKbW5XekhVdndnLnBuZw?x-oss-process=image/format,png" alt=""><figcaption>output_7_2.png</figcaption>
+</figure>
+<p>由分箱图可以看出，用户一半以上的时间都没在用水，刚好和条形图对应</p>
 
                 
 
@@ -229,12 +542,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：26.删除排序数组中重复的项/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：26.删除排序数组中重复的项">&larr; Previous Post</a>
+                            <a href="/article/python大数据：实战热水器用户行为识别（二、数据预处理）/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战：21.合并两个有序链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：21.合并两个有序链表">Next Post &rarr;</a>
+                            <a href="/article/MathematicalModeling_FCE/" data-toggle="tooltip" data-placement="top" title="MathematicalModeling_FCE">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -292,7 +605,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+                          <a class="tag" href="/tags/#BIgData" title="BIgData">BIgData</a>
                         
                     </div>
                 </section>
