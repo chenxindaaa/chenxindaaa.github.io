@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Matlab基础03.数据类型 - chenxindaaa | Blog
+          python大数据：实战热水器用户行为识别（三、建立模型与模型检验） - chenxindaaa | Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.chenxindaaa.com/article/Matlab基础03.数据类型/">
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/4.jpg')
+            background-image: url('https://bbs.qn.img-space.com/202001/18/a8220a3669a9d4041070f672273d6139.jpg')
             /*post*/
         
     }
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Matlab" title="Matlab">Matlab</a>
+                              <a class="tag" href="/tags/#BIgData" title="BIgData">BIgData</a>
                             
                         </div>
-                        <h1>Matlab基础03.数据类型</h1>
-                        <h2 class="subheading">Matlab</h2>
+                        <h1>python大数据：实战热水器用户行为识别（三、建立模型与模型检验）</h1>
+                        <h2 class="subheading">BIgData</h2>
                         <span class="meta">
                             Posted by Xinda Chen on
-                            2019-10-22
+                            2020-01-22
                         </span>
                     </div>
                 
@@ -212,18 +212,41 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="一matlab数据类型概述">一.matlab数据类型概述</h2>
-<p><img src="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>matlab中每一种数据类型都是以数组的方式出现</strong></p>
-<h2 id="二字符型数组">二.字符型数组</h2>
-<p>用单引号括起来的字符和数字的组合称为字符串或称为字符数组 <strong>字符数组的基本运算</strong> <strong>1.水平连接strcat</strong> 例如：</p>
-<p><img src="https://img-blog.csdnimg.cn/20191022165607626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>2.垂直连接stavcat</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022165752175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>3.寻找findstr</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022170229450.png" alt="在这里插入图片描述"></p>
-<h2 id="三数值型数组">三.数值型数组</h2>
+                <h2 id="五-模型构建">五、模型构建</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.neural_network <span class="keyword">import</span> MLPClassifier</span><br><span class="line"><span class="keyword">import</span> joblib</span><br></pre></td></tr></table></figure>
+<h3 id="1-读取数据">1. 读取数据</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">Xtrain = pd.read_excel(<span class="string">'../tmp/sj_final.xlsx'</span>)</span><br><span class="line">ytrain = pd.read_excel(<span class="string">'../data/water_heater_log.xlsx'</span>)</span><br><span class="line">test = pd.read_excel(<span class="string">'../data/test_data.xlsx'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-训练集测试集区分">2. 训练集测试集区分</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练集测试集区分。</span></span><br><span class="line">x_train, x_test, y_train, y_test = Xtrain.iloc[:,<span class="number">5</span>:],test.iloc[:,<span class="number">4</span>:<span class="number">-1</span>],\</span><br><span class="line">                                   ytrain.iloc[:,<span class="number">-1</span>],test.iloc[:,<span class="number">-1</span>]</span><br><span class="line"><span class="comment"># 标准化</span></span><br><span class="line">stdScaler = StandardScaler().fit(x_train)</span><br><span class="line">x_stdtrain = stdScaler.transform(x_train)</span><br><span class="line">x_stdtest = stdScaler.transform(x_test)</span><br></pre></td></tr></table></figure>
+<h3 id="3-建立模型">3. 建立模型</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立模型</span></span><br><span class="line">bpnn = MLPClassifier(hidden_layer_sizes=(<span class="number">15</span>, <span class="number">12</span>),</span><br><span class="line">                     max_iter=<span class="number">200</span>,</span><br><span class="line">                     solver=<span class="string">'lbfgs'</span>,</span><br><span class="line">                     random_state=<span class="number">50</span>)</span><br><span class="line">bpnn.fit(x_stdtrain, y_train)</span><br><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line">joblib.dump(bpnn, <span class="string">'../tmp/water_heater_nnet.m'</span>)</span><br><span class="line">print(<span class="string">'构建的模型为：\n'</span>, bpnn)</span><br></pre></td></tr></table></figure>
+<pre><code>构建的模型为：
+ MLPClassifier(activation=&#39;relu&#39;, alpha=0.0001, batch_size=&#39;auto&#39;, beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(15, 12), learning_rate=&#39;constant&#39;,
+              learning_rate_init=0.001, max_fun=15000, max_iter=200,
+              momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
+              power_t=0.5, random_state=50, shuffle=True, solver=&#39;lbfgs&#39;,
+              tol=0.0001, validation_fraction=0.1, verbose=False,
+              warm_start=False)</code></pre>
+<h2 id="六-模型检验">六、模型检验</h2>
+<h3 id="1-检验">1. 检验</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="keyword">import</span> joblib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bpnn = joblib.load(<span class="string">'../tmp/water_heater_nnet.m'</span>)  <span class="comment"># 加载模型</span></span><br><span class="line">y_pred = bpnn.predict(x_stdtest)  <span class="comment"># 返回预测结果</span></span><br><span class="line">print(<span class="string">'神经网络预测结果评价报告：\n'</span>, classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<pre><code>神经网络预测结果评价报告：
+               precision    recall  f1-score   support
+
+           0       0.45      0.42      0.43        12
+           1       0.82      0.84      0.83        37
+
+    accuracy                           0.73        49
+   macro avg       0.64      0.63      0.63        49
+weighted avg       0.73      0.73      0.73        49</code></pre>
+<h3 id="2-可视化">2. 可视化</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制roc曲线图</span></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = <span class="string">'SimHei'</span>  <span class="comment"># 显示中文</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span>  <span class="comment"># 显示负号</span></span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_pred,y_test)  <span class="comment"># 求出TPR和FPR</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>,<span class="number">4</span>))  <span class="comment"># 创建画布</span></span><br><span class="line">plt.plot(fpr,tpr)  <span class="comment"># 绘制曲线</span></span><br><span class="line">plt.title(<span class="string">'用户用水事件识别ROC曲线'</span>)  <span class="comment"># 标题</span></span><br><span class="line">plt.xlabel(<span class="string">'FPR'</span>)  <span class="comment"># x轴标签</span></span><br><span class="line">plt.ylabel(<span class="string">'TPR'</span>)  <span class="comment"># y轴标签</span></span><br><span class="line">plt.savefig(<span class="string">'../tmp/用户用水事件识别ROC曲线.png'</span>)  <span class="comment"># 保存图片</span></span><br><span class="line">plt.show()  <span class="comment"># 显示图形</span></span><br></pre></td></tr></table></figure>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20191022170857411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200122163112613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-B5eVc2Tr-1579681861712)(output_13_0.png)]</figcaption>
 </figure>
-<h2 id="四单元型数组">四.单元型数组</h2>
-<p><strong>1,单元数组的创建</strong> C = cell(m) %创建n阶单元空方阵 <img src="https://img-blog.csdnimg.cn/20191022171252406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> cell(m, n) %创建m行n列的单元空矩阵 <img src="https://img-blog.csdnimg.cn/20191022171414180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>2.赋值方法</strong> （1）下标索引 如果A是一个二阶空方阵 A（1， 1） = {1 ： 5}意为在（1， 1）单元里为一个1：5的行向量 （2）单元索引 如果A是一个二阶空方阵</p>
-<p>A{1， 1} = 1 ： 5意为在（1， 1）单元里为一个1：5的行向量</p>
 
                 
 
@@ -231,13 +254,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/Python基础03.列表与元组/" data-toggle="tooltip" data-placement="top" title="Python基础03.列表与元组">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/Matlab基础01. .m文件/" data-toggle="tooltip" data-placement="top" title="Matlab基础01. .m文件">Next Post &rarr;</a>
+                            <a href="/article/numpy基础操作（一）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（一）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -295,7 +314,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Matlab" title="Matlab">Matlab</a>
+                          <a class="tag" href="/tags/#BIgData" title="BIgData">BIgData</a>
                         
                     </div>
                 </section>
