@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          numpy基础操作（一） - chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/numpy基础操作（一）/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('https://bbs.qn.img-space.com/202001/16/a5721bd99ac39fcf0a4c3f77c791f1e2.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#python" title="python">python</a>
+                            
+                        </div>
+                        <h1>numpy基础操作（一）</h1>
+                        <h2 class="subheading">numpy</h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2020-01-22
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="一-生成ndarray">一、生成ndarray</h2>
+<h4 id="1-最简单的方法就是使用array函数-array函数接收任何的序列型对象当然也包括其他的数组生成一个新的包含传递数组的numpy数组-例如">1. 最简单的方法就是使用array函数。array函数接收任何的序列型对象（当然也包括其他的数组），生成一个新的包含传递数组的numpy数组。例如：</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data1 = [<span class="number">6</span>, <span class="number">7.5</span>,  <span class="number">8</span>,  <span class="number">0</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr1 = np.array(data1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr1</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 6. ,  7.5,  8. ,  0. ,  1. ])</code></pre>
+<h4 id="2嵌套序列例如同等长度的列表将会自动转换成多维数组">2.嵌套序列，例如同等长度的列表，将会自动转换成多维数组</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data2 = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2 = np.array(data2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])</code></pre>
+<p>通过ndim和shape可以查看属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2.ndim</span><br></pre></td></tr></table></figure>
+<pre><code>2</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(2, 4)</code></pre>
+<h4 id="3-除了用nparray还有很多其他的函数可以创建新数组">3. 除了用np.array，还有很多其他的函数可以创建新数组。</h4>
+<p>例如，给定长度和形状后，zeros可以一次性创建全为0的数组，ones可以创建全为1的数组。empty可以创建一个没有初始化数组的数组。想要创建高维数组，则需要为shape传递一个元组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros((<span class="number">3</span>, <span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.,  0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.,  0.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.empty((<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[  6.93191462e-310,   1.59160125e-316],
+        [  0.00000000e+000,   0.00000000e+000],
+        [  0.00000000e+000,   5.68519743e-062]],
+
+       [[  3.59789606e+179,   6.52172099e-038],
+        [  1.41915235e+161,   4.42531362e-062],
+        [  1.46169329e+185,   7.13064093e-067]]])</code></pre>
+<p>想要用np.empty创建一个全为0的数组并不安全，有些时候它可能返回未初始化的垃圾数值</p>
+<p>arange是python内建函数range的数组版：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])</code></pre>
+<p>下表是标准数组的生成函数，如果没有特别声明。默认的数据类型都是float64</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">函数名</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">array</td>
+<td style="text-align: center;">将输入数据转换为ndarray，如不显式致命数据类型，将自动推断</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">asarray</td>
+<td style="text-align: center;">将输入转为ndarray，如果已经是ndarray则不再复制</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">arange</td>
+<td style="text-align: center;">python内建函数range的数组版，返回一个数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ones</td>
+<td style="text-align: center;">根据形状生成一个全1的数组</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ones_like</td>
+<td style="text-align: center;">根据所给的数组生成一个形状一样的全1数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">zeros</td>
+<td style="text-align: center;">根据形状生成一个全0的数组</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">zeros_like</td>
+<td style="text-align: center;">根据所给的数组生成一个形状一样的全0数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">empty</td>
+<td style="text-align: center;">根据形状生成一个没有初始化数值的空数组</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">empty_like</td>
+<td style="text-align: center;">根据所给的数组生成一个形状一样但没有初始化数据的空数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">full</td>
+<td style="text-align: center;">根据形状生成一个制定数值的数组</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">full_like</td>
+<td style="text-align: center;">根据所给的数组生成一个形状一样但内容是指定数值的数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">eye,identity</td>
+<td style="text-align: center;">生成一个<span class="math inline">\(N\cdot N\)</span>的单位矩阵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二-ndarray的数据类型">二、ndarray的数据类型</h2>
+<p>numpy数据类型如下表所示：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">类型</th>
+<th style="text-align: center;">类型代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">int8,uint8</td>
+<td style="text-align: center;">i1,u1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">int16,uint16</td>
+<td style="text-align: center;">i2,u2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">int32,uint32</td>
+<td style="text-align: center;">i4,u4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">int64,uint64</td>
+<td style="text-align: center;">i8,u8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">float16</td>
+<td style="text-align: center;">f2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">float32</td>
+<td style="text-align: center;">f4或f</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">float64</td>
+<td style="text-align: center;">f8或d</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">float128</td>
+<td style="text-align: center;">f16或g</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">complex64</td>
+<td style="text-align: center;">c8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">complex128</td>
+<td style="text-align: center;">c16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">complex256</td>
+<td style="text-align: center;">c32</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">object</td>
+<td style="text-align: center;">o</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">string_</td>
+<td style="text-align: center;">S</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">unicode_</td>
+<td style="text-align: center;">U</td>
+</tr>
+</tbody>
+</table>
+<p>你可以使用astype方法显式地转换数组的数据类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.dtype</span><br></pre></td></tr></table></figure>
+<pre><code>dtype(&#39;int64&#39;)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float_arr = arr.astype(np.float64)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float_arr.dtype</span><br></pre></td></tr></table></figure>
+<pre><code>dtype(&#39;float64&#39;)</code></pre>
+<p>在上面例子中，整数被转换成了浮点数，如果我把浮点数转换成整数，则小数点后的部分将被消除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array([<span class="number">3.7</span>, <span class="number">-1.2</span>, <span class="number">-2.6</span>, <span class="number">0.5</span>, <span class="number">12.9</span>, <span class="number">10.1</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.dtype</span><br></pre></td></tr></table></figure>
+<pre><code>dtype(&#39;float64&#39;)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.astype(np.int32)</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 3, -1, -2,  0, 12, 10], dtype=int32)</code></pre>
+<h2 id="三-基础索引与切片">三、基础索引与切片</h2>
+<p>一位数组比较简单，看起来和python的列表很类似：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>5</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">5</span>:<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([5, 6, 7])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">5</span>:<span class="number">8</span>] = <span class="number">12</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])</code></pre>
+<p>如你所见，如果你传入了一个数值给数组的切片，数值被传递给了整个切片，区别于python的内建列表，数组的切片是原数组的视图。这意味着数据并不是被复制了，任何对于视图的修改都会放映到原数组上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr_slice = arr[<span class="number">5</span>:<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr_slice</span><br></pre></td></tr></table></figure>
+<pre><code>array([12, 12, 12])</code></pre>
+<p>当我改变arr_slice，变化也会体现在原数组上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr_slice[<span class="number">1</span>] = <span class="number">12345</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
+<pre><code>array([    0,     1,     2,     3,     4,    12, 12345,    12,     8,     9])</code></pre>
+<p>如果你想要一份数组切片的拷贝而不是一份视图的化话，你就逆序显式地复制这个数组，例如arr[5:8].copy 对于更高唯独的数组，你会有更多选择。在一个二维数组中，每个索引值对应的元素不再是一个值，而是一个数组:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([7, 8, 9])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">0</span>][<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>3</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">0</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>3</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[:<span class="number">2</span>, <span class="number">1</span>:]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[2, 3],
+       [5, 6]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([7, 8, 9])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[:, :<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1, 2],
+       [4, 5],
+       [7, 8]])</code></pre>
+<p>arr2d[1, :2]和arr2d[1:2, :2]有所不同</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">1</span>, :<span class="number">2</span>] <span class="comment"># shape = (2, )</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([4, 5])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">1</span>:<span class="number">2</span>, :<span class="number">2</span>] <span class="comment">#　shape = (1, 2)</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[4, 5]])</code></pre>
+<h2 id="四-布尔索引">四、布尔索引</h2>
+<p>让我们考虑以下例子，假设我们的数据都在数组中，并且数组中的数据是一些存在重复的人名。我会使用numpy.random中的randn函数来生成一些随机正态分布的数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names = np.array([<span class="string">'Bob'</span>, <span class="string">'Joe'</span>, <span class="string">'Will'</span>, <span class="string">'Bob'</span>, <span class="string">'Will'</span>, <span class="string">'Joe'</span>, <span class="string">'Joe'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randn(<span class="number">7</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names</span><br></pre></td></tr></table></figure>
+<pre><code>array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Joe&#39;, &#39;Joe&#39;],
+      dtype=&#39;&lt;U4&#39;)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.70522835,  1.47087563,  0.35250176,  0.02848163],
+       [-0.78749969, -0.72789731, -0.7797904 ,  0.77486765],
+       [ 1.30127429,  0.62887439,  1.06599137,  1.52760906],
+       [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308],
+       [ 1.46165639,  0.42842885,  0.24971774,  0.26540473],
+       [-1.34049878,  0.39110936, -1.40111365,  0.6045064 ],
+       [ 0.30309953,  1.29267219,  0.66753705, -0.86407424]])</code></pre>
+<p>假设每个人名都和data数组中的一行相对应，并且我们想要选中所有的‘Bob’对应的行。与数学操作类似，数组的比较操作（比如 == ）也是可以向量化的。因此，比较names数组和字符串'Bob'会产生一个布尔值数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names == <span class="string">'Bob'</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([ True, False, False,  True, False, False, False], dtype=bool)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[names == <span class="string">'Bob'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.70522835,  1.47087563,  0.35250176,  0.02848163],
+       [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308]])</code></pre>
+<p>布尔值数组的长度必须和数组轴索引长度一致。你甚至还可以用切片或者整数值（或整数值的序列）对布尔值数组进行混合和匹配。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[names == <span class="string">'Bob'</span>, <span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.35250176,  0.02848163],
+       [ 0.89749706,  0.09828308]])</code></pre>
+<p>当要选择三个名字中的两个来组合多个布尔值条件时，需要使用布尔算术运算符，如&amp;(and)和|(or):</p>
+<p><strong>注意：当使用复合条件时，只能用&amp;和|，不能用and和or</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask = (names == <span class="string">'Bob'</span>) | (names == <span class="string">'Will'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask</span><br></pre></td></tr></table></figure>
+<pre><code>array([ True, False,  True,  True,  True, False, False], dtype=bool)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask = (names == <span class="string">'Bob'</span>) <span class="keyword">or</span> (names == <span class="string">'Will'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-58-bae01d3eeda5&gt; in &lt;module&gt;()
+----&gt; 1 mask = (names == &#39;Bob&#39;) or (names == &#39;Will&#39;)
+
+
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()</code></pre>
+<p>基于常识来设置布尔值数组的值也是可行的。将data中所有的负值设置为0，我们需要做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data &lt; <span class="number">0</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  1.47087563,  0.35250176,  0.02848163],
+       [ 0.        ,  0.        ,  0.        ,  0.77486765],
+       [ 1.30127429,  0.62887439,  1.06599137,  1.52760906],
+       [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308],
+       [ 1.46165639,  0.42842885,  0.24971774,  0.26540473],
+       [ 0.        ,  0.39110936,  0.        ,  0.6045064 ],
+       [ 0.30309953,  1.29267219,  0.66753705,  0.        ]])</code></pre>
+<h2 id="五-神奇索引">五、神奇索引</h2>
+<p>假设我们有一个8 × 4的数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.empty((<span class="number">8</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">    arr[i] = i</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.,  0.,  0.,  0.],
+       [ 1.,  1.,  1.,  1.],
+       [ 2.,  2.,  2.,  2.],
+       [ 3.,  3.,  3.,  3.],
+       [ 4.,  4.,  4.,  4.],
+       [ 5.,  5.,  5.,  5.],
+       [ 6.,  6.,  6.,  6.],
+       [ 7.,  7.,  7.,  7.]])</code></pre>
+<p>为了选出一个符合特定顺序的子集，你可以简单地通过传递一个包含指明所需顺序的列表或数组来完成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">4</span>, <span class="number">3</span>, <span class="number">0</span> ,<span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 4.,  4.,  4.,  4.],
+       [ 3.,  3.,  3.,  3.],
+       [ 0.,  0.,  0.,  0.],
+       [ 6.,  6.,  6.,  6.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">-3</span>, <span class="number">-5</span>, <span class="number">-7</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 5.,  5.,  5.,  5.],
+       [ 3.,  3.,  3.,  3.],
+       [ 1.,  1.,  1.,  1.]])</code></pre>
+<p>传递多个索引数组时情况有些许不同，这样会根据每个索引元组对应的元素选出一个一位数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">32</span>).reshape((<span class="number">8</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11],
+       [12, 13, 14, 15],
+       [16, 17, 18, 19],
+       [20, 21, 22, 23],
+       [24, 25, 26, 27],
+       [28, 29, 30, 31]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 4, 23, 29, 10])</code></pre>
+<p>通常情况下，我们所设想的结果是通过选择矩阵中行列的子集所形成的矩形区域。下面是实现我们想法的一种方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>]] [:, [<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 4,  7,  5,  6],
+       [20, 23, 21, 22],
+       [28, 31, 29, 30],
+       [ 8, 11,  9, 10]])</code></pre>
+<p><strong>注意，神奇索引与切片不同，它总是将数据负值到一个新的数组中</strong></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/numpy简介/" data-toggle="tooltip" data-placement="top" title="numpy简介">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#python" title="python">python</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2020 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>

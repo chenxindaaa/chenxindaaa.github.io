@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          MachineLearning_Regression - chenxindaaa | Blog
+          numpy简介 - chenxindaaa | Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.chenxindaaa.com/article/MachineLearning_Regression/">
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/numpy简介/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/9.jpg')
+            background-image: url('https://bbs.qn.img-space.com/202001/16/a5721bd99ac39fcf0a4c3f77c791f1e2.jpg')
             /*post*/
         
     }
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+                              <a class="tag" href="/tags/#python" title="python">python</a>
                             
                         </div>
-                        <h1>MachineLearning_Regression</h1>
-                        <h2 class="subheading">Regression</h2>
+                        <h1>numpy简介</h1>
+                        <h2 class="subheading">numpy</h2>
                         <span class="meta">
                             Posted by Xinda Chen on
-                            2019-12-15
+                            2020-01-22
                         </span>
                     </div>
                 
@@ -212,76 +212,48 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="一线性回归">一.线性回归</h1>
+                <h2 id="一-numpy在数据分析的应用">一、numpy在数据分析的应用：</h2>
 <ul>
-<li>线性回归形式简单、易于建模，但却蕴涵着机器学习中一些重要的基本思想。许多功能更为强大的非线性模型(nonlinear model)可在线性模型的基础上通过引入层级结构或高维映射而得。此外，由于线性回归的解𝜃直观表达了各属性在预测中的重要性，因此线性回归有很好的可解释性。</li>
+<li>在数据处理、清洗、构造子集、过滤、变换以及其他计算中进行快速的向量化计算</li>
+<li>常见的数组算法，比如sort、unique以及set操作等</li>
+<li>高效的描述性统计和聚合、概述数据</li>
+<li>数据排列和相关数据操作，例如对异构数据进行merge和join</li>
+<li>使用数组表达式来表明条件逻辑，代替if-elif-else条件分支的循环。</li>
+<li>分组数据的操作（聚合，变换以及函数式操作）</li>
 </ul>
-<h4 id="1线性回归原理">1.线性回归原理</h4>
-<p>线性回归遇到的问题一般是这样的。我们有𝑚个样本，每个样本对应于𝑛维特征和一个结果输出。 训练数据的形式： <span class="math display">\[(x_1^{(0)}, x_2^{(0)},...x_n^{(0)},y_0), (x_1^{(1)}, x_2^{(1)}, ...x_n^{(1)}, y_1),...(x_1^{(m)}, x_2^{(m)},...x_n^{(m)},y_n)\]</span> 我们主要做的是通过找到参数<span class="math inline">\((\theta _0, \theta_1,...\theta_m)\)</span>，线性回归模型如下： <span class="math display">\[h_\theta, (x_1, x_2, ...x_n) = \theta_0 + \theta_1x_1 + ... + \theta_nx_n\]</span> 矩阵化如下： <span class="math display">\[h_\theta(X) = X\theta\]</span></p>
-<p>得到了模型，我们需要求出需要的损失函数，一般线性回归我们用均方误差作为损失函数。损失函数的代数法表示如下： <span class="math display">\[J(\theta_0,\theta_1,...\theta_n) = \sum _{i=0}^m (h_\theta (x_0, x_1, ... x_n) - y_i)^2\]</span> 矩阵化如下： <span class="math display">\[J(\theta) = \frac{1}{2}(X\theta - Y)^T(X\theta - Y)\]</span></p>
-<h4 id="2线性回归的算法">2.线性回归的算法</h4>
-<p>对于线性回归的损失函数<span class="math inline">\(J(\theta) = \frac{1}{2}(X\theta - Y)^T(X\theta - Y)\)</span>，<span class="math inline">\(J(\theta)&#39;=X^T(X\theta -Y)\)</span>我们常用的有两种方法来求损失函数最小化时候的θ参数：一种是梯度下降法，一种是最小二乘法。 - <strong>如果采用梯度下降法，则𝜃的迭代公式是这样的：</strong> <span class="math display">\[\theta = \theta - \alpha X^T(X\theta - Y)\]</span> 其中<span class="math inline">\(\alpha\)</span>是学习率(步长)，<span class="math inline">\(X^T(X\theta -Y)\)</span>是梯度 通过若干次迭代后，我们可以得到最终的𝜃的结果 - <strong>如果采用最小二乘法，则<span class="math inline">\(\theta\)</span>的结果公式如下：</strong> <span class="math display">\[\theta = (X^TX)^{-1}X^TY\]</span> 推导如下： 令<span class="math inline">\(J(\theta)&#39;=0\)</span>，即<span class="math inline">\(X^T(X\theta -Y)\)</span> 所以<span class="math inline">\(\theta = (X^TX)^{-1}X^TY\)</span> 当然线性回归，还有其他的常用算法，比如牛顿法和拟牛顿法，这里不详细描述。</p>
-<h3 id="3多项式线性回归">3.多项式线性回归</h3>
-<p>我们遇到的数据不一定都是线性的形式，如果是<span class="math inline">\(y = x_1^2+x_2^2\)</span>的模型，那线性回归很难拟合这个函数，这时候就需要用到多项式回归了。 回到我们开始的线性模型，<span class="math inline">\(h_\theta, (x_1, x_2, ...x_n) = \theta_0 + \theta_1x_1 +... + \theta_nx_n\)</span>，如果这里不仅仅是x的一次方，而是二次方，那么模型就变成了多项式回归。这里写一个只有两个特征的2次多项式回归的模型： <span class="math display">\[h_\theta(x_1, x_2) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_1^2 + \theta_4x_2^2 + \theta_5x_1x_2\]</span> 我们令<span class="math inline">\(x_0=1, x_1 = x_1, x_2 = x_2, x_3 = x_1^2, x_4 = x_2^2, x_5 = x_1x_2\)</span>，这样我们就得到下式： <span class="math display">\[h_\theta(x_1, x_2) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3 + \theta_4x_4 + \theta_5x_5\]</span> 可以发现，我们又重新回到了线性回归，这是一个五元线性回归，可以用线性回归的方法来完成算法。对于每个二元样本特征<span class="math inline">\((x_1,x_2)\)</span>,我们得到一个五元样本特征<span class="math inline">\((1, x_1, x_2, x_1^2, x_2^2, x_1, x_2)\)</span>，通过这个改进的五元样本特征，我们重新把不是线性回归的函数变回线性回归，但是达到了非线性拟合的效果。</p>
-<h2 id="二岭回归">二.岭回归</h2>
-<h4 id="1参数推导">1.参数推导</h4>
-<p>线性回归模型的目标函数 <span class="math display">\[J(\beta) = \sum(y - X\beta)\]</span> 为了保证回归系数<span class="math inline">\(\beta\)</span>可求，岭回归模型在目标函数上加了一个L2范数的惩罚项 <span class="math display">\[\begin{aligned}
-J(\beta) = \sum(y - X\beta)^2 + \lambda ||\beta||^2 \\
-=\sum(y - X\beta)^2 + \sum\lambda\beta^2
-\end{aligned}\]</span> 其中<span class="math inline">\(\lambda\)</span>为非负数，<span class="math inline">\(\lambda\)</span>越大，则为了使<span class="math inline">\(J(\beta)\)</span>最小，回归系数<span class="math inline">\(\beta\)</span>就越小。 推导过程： <span class="math display">\[\begin{aligned}
-J(\beta) &amp;= (y - X\beta)^T(y - X\beta)+\lambda\beta^T\beta \\ 
-&amp;=y^Ty-y^TX\beta-\beta^TX^Ty + \beta^TX^TX\beta + \lambda\beta^T\beta 
-\end{aligned}\]</span></p>
-<p><span class="math display">\[令\frac{\partial J(\beta)}{\partial \beta} = 0\]</span></p>
-<p><span class="math display">\[\Rightarrow0-X^Ty-X^Ty + 2X^TX\beta + 2\lambda\beta = 0\]</span></p>
-<p><span class="math display">\[\Rightarrow \beta = (X^TX+\lambda I)^{-1}X^Ty\]</span> L2范数惩罚项的加入使得<span class="math inline">\((X^TX+\lambda I)\)</span>满秩，保证了可逆，但是也由于惩罚项的加入，使得回归系数<span class="math inline">\(\beta\)</span>的估计不再是无偏估计。所以岭回归是以放弃无偏性、降低精度为代价解决病态矩阵问题的回归方法。 单位矩阵<span class="math inline">\(I\)</span>的对角线上全是1，像一条山岭一样，这也是岭回归名称的由来。</p>
-<h4 id="2λ的选择">2.λ的选择</h4>
-<ul>
-<li>模型的方差：回归系数的方差</li>
-<li>模型的偏差：预测值和真实值的差异 随着模型复杂度的提升，在训练集上的效果就越好，即模型的偏差就越小；但是同时模型的方差就越大。对于岭回归的<span class="math inline">\(\lambda\)</span>而言，随着<span class="math inline">\(\lambda\)</span>的增大，<span class="math inline">\(|X^TX+\lambda I|\)</span>就越大，<span class="math inline">\((X^TX+\lambda I)^{-1}\)</span>就越小，模型的方差就越小；而<span class="math inline">\(\lambda\)</span>越大使得<span class="math inline">\(\beta\)</span>的估计值更加偏离真实值，模型的偏差就越大。所以岭回归的关键是找到一个合理的<span class="math inline">\(\lambda\)</span>值来平衡模型的方差和偏差。 根据凸优化，可以将岭回归模型的目标函数<span class="math inline">\(J(\beta)\)</span>最小化问题等价于 <span class="math display">\[f(x)=
-\begin{cases}
-argmin\{\sum(y - X\beta^2)\}\\
-\sum\beta^2\leq t
-\end{cases}\]</span> 其中t为一个常数。以最简单的二维为例，即<span class="math inline">\(\beta(\beta_1, \beta_2)\)</span>其几何图形是 <img src="https://img-blog.csdnimg.cn/20191215175302811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2019121517541562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">抛物面代表的是<span class="math inline">\(\sum(y-X\beta)^2\)</span>的部分，圆柱体代表的是<span class="math inline">\(\beta_1^2+\beta_2^2\leq t\)</span>的部分。最小二乘解是抛物面的中心，岭回归解是抛物面与圆柱体的交点。岭回归的惩罚项<span class="math inline">\(\sum\lambda\beta^2\)</span>是关于回归系数<span class="math inline">\(\beta\)</span>的二次函数，对目标函数求偏导时会保留<span class="math inline">\(\beta\)</span>，抛物面与圆柱体很难相交于轴上使某个变量的回归系数为0，因此岭回归不能实现变量的剔除。 <strong>(1) 岭迹法确定λ值</strong></li>
-</ul>
-<p>由<span class="math inline">\(\beta=(X^TX+\lambda I)^{-1}X^Ty\)</span>可知<span class="math inline">\(\beta\)</span>是<span class="math inline">\(\lambda\)</span>的函数，当<span class="math inline">\(\lambda \in [0,\infty)\)</span>时，在平面直角坐标系中的<span class="math inline">\(\beta-\lambda\)</span>曲线称为岭迹曲线。当<span class="math inline">\(\beta\)</span>趋于稳定的点就是所要寻找的<span class="math inline">\(\lambda\)</span>值。 <img src="https://img-blog.csdnimg.cn/20191215180011977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>**（2）交叉验证法确定λ* 交叉验证法的思想是，将数据集拆分为k个数据组(每组样本量大体相当)，从k组中挑选k-1组用于模型的训练，剩下的1组用于模型的测试，则会有k-1个训练集和测试集配对，每一种训练集和测试集下都会有对应的一个模型及模型评分（如均方误差），进而可以得到一个平均评分。对于<span class="math inline">\(\lambda\)</span>值则选择平均评分最优的<span class="math inline">\(\lambda\)</span>值。</p>
-<h2 id="三lasso回归">三.LASSO回归</h2>
-<h4 id="1参数推导">1.参数推导</h4>
-<p>岭回归无法剔除变量，而LASSO回归模型，将惩罚项由L2范数变为L1范数，可以将一些不重要的回归系数缩减为0，达到剔除变量的目的。 <span class="math display">\[\begin{aligned}
-J(\beta)&amp;=\sum(y-X\beta)^2+\lambda||\beta||_1 \\
-&amp;=\sum(y-X\beta)^2+\sum\lambda|\beta| \\
-&amp;=ESS(\beta)+\lambda l_1(\beta)
-\end{aligned}\]</span> 其中<span class="math inline">\(ESS(\beta)\)</span>表示误差平方和，<span class="math inline">\(\lambda l_1(\beta)\)</span>表示惩罚项。由于惩罚项变成了绝对值，则在零点处就不可导，故采用坐标下降法（对于p维参数的可微凸函数<span class="math inline">\(J(\beta)\)</span>，如果存在<span class="math inline">\(\hat\beta\)</span>使得<span class="math inline">\(J(\beta)\)</span>在每个坐标轴上均达到最小值，则<span class="math inline">\(J(\hat{\beta})\)</span> 就是点<span class="math inline">\(\hat\beta\)</span>上的全局最小值），控制其他p-1个参数不变，对目标函数中的某一个<span class="math inline">\(\beta_j\)</span>求偏导，以此类推对剩下的p-1个参数求偏导，最终令每个分量下的导函数为0，得到使目标函数达到全局最小的<span class="math inline">\(\hat\beta\)</span> <span class="math display">\[\begin{aligned}
-ESS(\beta)&amp;=\sum_{i = 1}^{n}(y_i-\sum _{j=1}^{n}\beta x_{ij})^2\\
-&amp;=\sum _{i=1}^n(y_i^2+(\sum_{j=1}^p\beta_jx_{ij})^2-2y_i(\sum_{j=1}^p\beta_jx_{ij}))
-\end{aligned}\]</span></p>
-<p><span class="math display">\[\begin{aligned}
-\Longrightarrow\frac{\partial ESS(\beta)}{\partial \beta_j}&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum^{p}_{j=1}\beta_jx_{ij})\\
-&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik}-\beta_jx_{ij})\\
-&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik})+2\beta_j\sum_{i=1}^n
-x_{ij}^2\\
-&amp;=-2m_j+2\beta_jn_j
-\end{aligned}\]</span></p>
-<p>其中<span class="math inline">\(m_j=\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik}),n_j=\sum_{i=1}^nx_{ij}^2\)</span> 惩罚项不可导，则使用次导数： <span class="math display">\[\frac{\partial \lambda l_1(\beta)}{\partial \beta_j}=
-\begin{cases}
-\lambda,&amp;当\beta_j&gt;0\\
-[-\lambda,\lambda], &amp;当\beta_j=0\\
--\lambda, &amp;当\beta_j&lt;0
-\end{cases}\]</span> 于是令两个偏导数相加等于0 <span class="math display">\[\frac{\partial ESS(\beta)}{\partial \beta_j} + \frac{\partial \lambda l_1(\beta)}{\partial \beta_j} =
-\begin{cases}
--2m_j+2\beta_jn_j+\lambda=0\\
-[-2m_j-\lambda,-2m_j+\lambda]=0\\
--2m_j+2\beta_jn_j-\lambda=0
-\end{cases}\\
-\Longrightarrow\beta_j = \begin{cases}
-(m_j-\frac{\lambda}{2})/n_j,&amp;当m_j&gt;\frac{\lambda}{2}\\
-0, &amp;当m_j\in[-\frac{\lambda}{2},\frac{\lambda}{2}]\\
-(m_j+\frac{\lambda}{2})/n_j,&amp;当m_j&lt;\frac{\lambda}{2}
-\end{cases}
-\]</span></p>
-<h4 id="2lambda的选择">2.<span class="math inline">\(\lambda\)</span>的选择</h4>
-<p>直接使用交叉验证法</p>
+<h2 id="二-numpy的优势">二、numpy的优势</h2>
+<p>下面的例子将展现numpy的不同，假设一个numpy数组包含100万个整数，还有一个同样数据内容的python列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_arr = np.arange(<span class="number">100000</span>)</span><br><span class="line">my_list = list(range(<span class="number">100000</span>))</span><br></pre></td></tr></table></figure>
+<p>现在我们同时对每个序列乘以2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%time <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>): my_arr2 = my_arr * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 1.31 ms, sys: 4.08 ms, total: 5.39 ms
+Wall time: 4.95 ms</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%time <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>): my_list2 = [x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> my_list]</span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 77.3 ms, sys: 8.11 ms, total: 85.4 ms
+Wall time: 84.9 ms</code></pre>
+<p>由此可以看出，numpy的方法比python方法快10到100倍，并且使用的内存也更少</p>
+<h2 id="三-numpy-ndarray多维数组对象">三、numpy ndarray：多维数组对象</h2>
+<p><strong>为了让你感受下numpy如何使用类似于python内建对象的标量计算语法进行批量计算，这里举一个例子：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randn(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.95909317, -0.86735722, -2.12730064],
+       [ 1.55107167,  0.34639641,  0.98348208]])</code></pre>
+<p>然后给data加上一个数学操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data * <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[ -9.59093173,  -8.67357218, -21.27300638],
+       [ 15.51071672,   3.46396414,   9.83482081]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data + <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[  9.04090683,   9.13264278,   7.87269936],
+       [ 11.55107167,  10.34639641,  10.98348208]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data + data</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-1.91818635, -1.73471444, -4.25460128],
+       [ 3.10214334,  0.69279283,  1.96696416]])</code></pre>
+<p>每个数据都有一个shape属性，用来表征数组每一维度的数量；每一个数组都有一个dtype属性，用来描述数组的数据类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(2, 3)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dtype</span><br></pre></td></tr></table></figure>
+<pre><code>dtype(&#39;float64&#39;)</code></pre>
 
                 
 
@@ -290,12 +262,12 @@ x_{ij}^2\\
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/MachinLearning_Cluster/" data-toggle="tooltip" data-placement="top" title="MachineLearning_Cluster">&larr; Previous Post</a>
+                            <a href="/article/numpy基础操作（一）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（一）">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/MachineLearning_AdaBoost/" data-toggle="tooltip" data-placement="top" title="MachineLearning_AdaBoost">Next Post &rarr;</a>
+                            <a href="/article/Seaborn.set()与Seaborn.catplot()/" data-toggle="tooltip" data-placement="top" title="Seaborn.set()与Seaborn.catplot()">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -353,7 +325,7 @@ x_{ij}^2\\
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+                          <a class="tag" href="/tags/#python" title="python">python</a>
                         
                     </div>
                 </section>
