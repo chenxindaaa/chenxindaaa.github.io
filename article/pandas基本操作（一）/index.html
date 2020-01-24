@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          pandas基本操作（一） - chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/pandas基本操作（一）/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/2.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#python" title="python">python</a>
+                            
+                        </div>
+                        <h1>pandas基本操作（一）</h1>
+                        <h2 class="subheading">pandas</h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2020-01-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="一-pandas数据结构介绍">一、pandas数据结构介绍</h2>
+<h3 id="1-series">1. Series</h3>
+<p>Series是一种一维的数组性对象，它包含了一个值序列，并且包含了数据标签，称为索引。最简单的序列可以仅仅由一个数组形成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series([<span class="number">4</span>, <span class="number">7</span>, <span class="number">-5</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj</span><br></pre></td></tr></table></figure>
+<pre><code>0    4
+1    7
+2   -5
+3    3
+dtype: int64</code></pre>
+<p>在交互式环境中Series的索引在左边，值在右边。由于我们不为数据制定索引，默认索引都是从0到N-1.你可以通过values属性和index属性分别获得Series对象的值和索引：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.values</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 4,  7, -5,  3])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.index</span><br></pre></td></tr></table></figure>
+<pre><code>RangeIndex(start=0, stop=4, step=1)</code></pre>
+<p>与numpy数组相比，你可以使用标签来进行索引：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj2 = pd.Series([<span class="number">4</span>, <span class="number">7</span>, <span class="number">-5</span>, <span class="number">3</span>], index=[<span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'c'</span>])</span><br><span class="line">obj2</span><br></pre></td></tr></table></figure>
+<pre><code>d    4
+b    7
+a   -5
+c    3
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>-5</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>7</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[[<span class="string">'c'</span>, <span class="string">'a'</span>, <span class="string">'d'</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>c    3
+a   -5
+d    4
+dtype: int64</code></pre>
+<p>与numpy类似，Series可以使用numpy的函数或者操作，比如布尔值数组进行过滤等：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[obj2 &gt; <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>d    4
+b    7
+c    3
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2 * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<pre><code>d     8
+b    14
+a   -10
+c     6
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(obj2)</span><br></pre></td></tr></table></figure>
+<pre><code>d      54.598150
+b    1096.633158
+a       0.006738
+c      20.085537
+dtype: float64</code></pre>
+<p>其实，Series可以看成是一个长度固定且有序的字典：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'b'</span> <span class="keyword">in</span> obj2</span><br></pre></td></tr></table></figure>
+<pre><code>True</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sdata = &#123;<span class="string">'Ohio'</span> : <span class="number">3500</span>, <span class="string">'Texas'</span> : <span class="number">71000</span>, <span class="string">'Oregon'</span> : <span class="number">16000</span>, <span class="string">'Utah'</span> : <span class="number">5000</span>&#125;</span><br><span class="line">obj3 = pd.Series(sdata)</span><br><span class="line">obj3</span><br></pre></td></tr></table></figure>
+<pre><code>Ohio       3500
+Oregon    16000
+Texas     71000
+Utah       5000
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">states = [<span class="string">'California'</span>, <span class="string">'Ohio'</span>, <span class="string">'Oregon'</span>, <span class="string">'Texas'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj4 = pd.Series(sdata, index=states)</span><br><span class="line">obj4</span><br></pre></td></tr></table></figure>
+<pre><code>California        NaN
+Ohio           3500.0
+Oregon        16000.0
+Texas         71000.0
+dtype: float64</code></pre>
+<p>pandas利用isnull和notnull来检查缺失数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull(obj4)</span><br></pre></td></tr></table></figure>
+<pre><code>California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.notnull(obj4)</span><br></pre></td></tr></table></figure>
+<pre><code>California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj4.isnull()</span><br></pre></td></tr></table></figure>
+<pre><code>California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool</code></pre>
+<p>在很多应用中，数学操作自动对齐索引是Series的一个非常有用的特性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj3</span><br></pre></td></tr></table></figure>
+<pre><code>Ohio       3500
+Oregon    16000
+Texas     71000
+Utah       5000
+dtype: int64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj4</span><br></pre></td></tr></table></figure>
+<pre><code>California        NaN
+Ohio           3500.0
+Oregon        16000.0
+Texas         71000.0
+dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj3 + obj4</span><br></pre></td></tr></table></figure>
+<pre><code>California         NaN
+Ohio            7000.0
+Oregon         32000.0
+Texas         142000.0
+Utah               NaN
+dtype: float64</code></pre>
+<p>Series对象自身和其索引都有name属性，这个特性与pandas其他重要功能集成在一起：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj4.index.name = <span class="string">'states'</span></span><br><span class="line">obj4</span><br></pre></td></tr></table></figure>
+<pre><code>states
+California        NaN
+Ohio           3500.0
+Oregon        16000.0
+Texas         71000.0
+dtype: float64</code></pre>
+<h3 id="2-dataframe">2. Dataframe</h3>
+<p>dataframe既有行索引也有列索引，它可以被视为一个共享相同索引的Series。尽管dataframe是二维的，但是你可以利用分层索引在dataframe中展现更高维度的数据。</p>
+<p>有多种方式可以创建Dataframe，其中最常用的方式是利用包含等长度列表或numpy数组的字典来形成dataframe：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">'state'</span> : [<span class="string">'Ohio'</span>, <span class="string">'Ohio'</span>, <span class="string">'Ohio'</span>, <span class="string">'Nevada'</span>, <span class="string">'Nevada'</span>, <span class="string">'Nevada'</span>], <span class="string">'year'</span> : [<span class="number">2000</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2001</span>, <span class="number">2002</span>, <span class="number">2003</span>], <span class="string">'pop'</span> : [<span class="number">1.5</span>, <span class="number">1.7</span>, <span class="number">3.6</span>, <span class="number">2.4</span>, <span class="number">2.9</span>, <span class="number">3.2</span>]&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame = pd.DataFrame(data)</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+pop
+</th>
+<th>
+state
+</th>
+<th>
+year
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+1.5
+</td>
+<td>
+Ohio
+</td>
+<td>
+2000
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+1.7
+</td>
+<td>
+Ohio
+</td>
+<td>
+2001
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+3.6
+</td>
+<td>
+Ohio
+</td>
+<td>
+2002
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+2.4
+</td>
+<td>
+Nevada
+</td>
+<td>
+2001
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+2.9
+</td>
+<td>
+Nevada
+</td>
+<td>
+2002
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+3.2
+</td>
+<td>
+Nevada
+</td>
+<td>
+2003
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果你指定了列的顺序，Dataframe的列将会按照指定的顺序排列：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(data, columns=[<span class="string">'year'</span>, <span class="string">'state'</span>, <span class="string">'pop'</span>])</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+year
+</th>
+<th>
+state
+</th>
+<th>
+pop
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+2000
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.5
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+2001
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.7
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+2002
+</td>
+<td>
+Ohio
+</td>
+<td>
+3.6
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+2001
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.4
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+2002
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.9
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+2003
+</td>
+<td>
+Nevada
+</td>
+<td>
+3.2
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frame2 = pd.DataFrame(data, columns=[<span class="string">'year'</span>, <span class="string">'state'</span>, <span class="string">'pop'</span>, <span class="string">'debt'</span>],</span><br><span class="line">                      index=[<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>, <span class="string">'four'</span>,</span><br><span class="line">                             <span class="string">'five'</span>, <span class="string">'six'</span>])</span><br><span class="line">print(frame2)</span><br><span class="line">frame2.columns</span><br></pre></td></tr></table></figure>
+<pre><code> year   state  pop debt
+one    2000    Ohio  1.5  NaN
+two    2001    Ohio  1.7  NaN
+three  2002    Ohio  3.6  NaN
+four   2001  Nevada  2.4  NaN
+five   2002  Nevada  2.9  NaN
+six    2003  Nevada  3.2  NaN
+
+
+
+
+
+Index([&#39;year&#39;, &#39;state&#39;, &#39;pop&#39;, &#39;debt&#39;], dtype=&#39;object&#39;)</code></pre>
+<p>dataframe中的一列，可以按字典型标记或属性那样检索为Series：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'state'</span>]</span><br></pre></td></tr></table></figure>
+<p>one Ohio two Ohio three Ohio four Nevada five Nevada six Nevada Name: state, dtype: object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.state</span><br></pre></td></tr></table></figure>
+<p>one Ohio two Ohio three Ohio four Nevada five Nevada six Nevada Name: state, dtype: object</p>
+<p>frame[colunm]对于任意列名均有效，但是frame2.column只会在列名是有效的python变量名时有效 请注意，返回的Series与原dataframe有相同的索引，且Series的name属性也会被合理地设置。</p>
+<p>行也可以通过位置或特殊属性loc进行选取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.loc[<span class="string">'three'</span>]</span><br></pre></td></tr></table></figure>
+<p>year 2002 state Ohio pop 3.6 debt NaN Name: three, dtype: object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.loc[<span class="string">'three'</span>, <span class="string">'state'</span>]</span><br></pre></td></tr></table></figure>
+<p>'Ohio'</p>
+<p>列的引用是可以修改的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'debt'</span>] = <span class="number">16.5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+year
+</th>
+<th>
+state
+</th>
+<th>
+pop
+</th>
+<th>
+debt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+one
+</th>
+<td>
+2000
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.5
+</td>
+<td>
+16.5
+</td>
+</tr>
+<tr>
+<th>
+two
+</th>
+<td>
+2001
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.7
+</td>
+<td>
+16.5
+</td>
+</tr>
+<tr>
+<th>
+three
+</th>
+<td>
+2002
+</td>
+<td>
+Ohio
+</td>
+<td>
+3.6
+</td>
+<td>
+16.5
+</td>
+</tr>
+<tr>
+<th>
+four
+</th>
+<td>
+2001
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.4
+</td>
+<td>
+16.5
+</td>
+</tr>
+<tr>
+<th>
+five
+</th>
+<td>
+2002
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.9
+</td>
+<td>
+16.5
+</td>
+</tr>
+<tr>
+<th>
+six
+</th>
+<td>
+2003
+</td>
+<td>
+Nevada
+</td>
+<td>
+3.2
+</td>
+<td>
+16.5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'debt'</span>] = np.arange(<span class="number">6</span>)</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+year
+</th>
+<th>
+state
+</th>
+<th>
+pop
+</th>
+<th>
+debt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+one
+</th>
+<td>
+2000
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.5
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<th>
+two
+</th>
+<td>
+2001
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.7
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<th>
+three
+</th>
+<td>
+2002
+</td>
+<td>
+Ohio
+</td>
+<td>
+3.6
+</td>
+<td>
+2
+</td>
+</tr>
+<tr>
+<th>
+four
+</th>
+<td>
+2001
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.4
+</td>
+<td>
+3
+</td>
+</tr>
+<tr>
+<th>
+five
+</th>
+<td>
+2002
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.9
+</td>
+<td>
+4
+</td>
+</tr>
+<tr>
+<th>
+six
+</th>
+<td>
+2003
+</td>
+<td>
+Nevada
+</td>
+<td>
+3.2
+</td>
+<td>
+5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val = pd.Series([<span class="number">-1.2</span>, <span class="number">-1.5</span>, <span class="number">-1.7</span>], index=[<span class="string">'two'</span>, <span class="string">'four'</span>, <span class="string">'five'</span>])</span><br><span class="line">frame2[<span class="string">'debt'</span>] = val</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+year
+</th>
+<th>
+state
+</th>
+<th>
+pop
+</th>
+<th>
+debt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+one
+</th>
+<td>
+2000
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.5
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+two
+</th>
+<td>
+2001
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.7
+</td>
+<td>
+-1.2
+</td>
+</tr>
+<tr>
+<th>
+three
+</th>
+<td>
+2002
+</td>
+<td>
+Ohio
+</td>
+<td>
+3.6
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+four
+</th>
+<td>
+2001
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.4
+</td>
+<td>
+-1.5
+</td>
+</tr>
+<tr>
+<th>
+five
+</th>
+<td>
+2002
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.9
+</td>
+<td>
+-1.7
+</td>
+</tr>
+<tr>
+<th>
+six
+</th>
+<td>
+2003
+</td>
+<td>
+Nevada
+</td>
+<td>
+3.2
+</td>
+<td>
+NaN
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>可以用del关键字删除dataframe的一列，首先我们增加一列：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'eastern'</span>] = frame2.state == <span class="string">'Hhio'</span></span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+year
+</th>
+<th>
+state
+</th>
+<th>
+pop
+</th>
+<th>
+debt
+</th>
+<th>
+reastern
+</th>
+<th>
+eastern
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+one
+</th>
+<td>
+2000
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.5
+</td>
+<td>
+NaN
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+two
+</th>
+<td>
+2001
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.7
+</td>
+<td>
+-1.2
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+three
+</th>
+<td>
+2002
+</td>
+<td>
+Ohio
+</td>
+<td>
+3.6
+</td>
+<td>
+NaN
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+four
+</th>
+<td>
+2001
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.4
+</td>
+<td>
+-1.5
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+five
+</th>
+<td>
+2002
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.9
+</td>
+<td>
+-1.7
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+six
+</th>
+<td>
+2003
+</td>
+<td>
+Nevada
+</td>
+<td>
+3.2
+</td>
+<td>
+NaN
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> frame2[<span class="string">'eastern'</span>]</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+year
+</th>
+<th>
+state
+</th>
+<th>
+pop
+</th>
+<th>
+debt
+</th>
+<th>
+reastern
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+one
+</th>
+<td>
+2000
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.5
+</td>
+<td>
+NaN
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+two
+</th>
+<td>
+2001
+</td>
+<td>
+Ohio
+</td>
+<td>
+1.7
+</td>
+<td>
+-1.2
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+three
+</th>
+<td>
+2002
+</td>
+<td>
+Ohio
+</td>
+<td>
+3.6
+</td>
+<td>
+NaN
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+four
+</th>
+<td>
+2001
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.4
+</td>
+<td>
+-1.5
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+five
+</th>
+<td>
+2002
+</td>
+<td>
+Nevada
+</td>
+<td>
+2.9
+</td>
+<td>
+-1.7
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+six
+</th>
+<td>
+2003
+</td>
+<td>
+Nevada
+</td>
+<td>
+3.2
+</td>
+<td>
+NaN
+</td>
+<td>
+False
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>从dataframe中选取的列是数据的视图，而不是拷贝。因此，对Series的修改会映射到dataframe中。如果需要复制，则应当显式地使用Series的copy方法。</p>
+<p>你可以用类似numpy的语法对dataframe进行转置操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pop = &#123;<span class="string">'Nevada'</span>: &#123;<span class="number">2001</span>: <span class="number">2.4</span>, <span class="number">2002</span>: <span class="number">2.9</span>&#125;,</span><br><span class="line">       <span class="string">'Ohio'</span>: &#123;<span class="number">2000</span>: <span class="number">1.5</span>, <span class="number">2001</span>: <span class="number">1.7</span>, <span class="number">2002</span>: <span class="number">3.6</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">frame3 = pd.DataFrame(pop)</span><br><span class="line">frame3</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Nevada
+</th>
+<th>
+Ohio
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+2000
+</th>
+<td>
+NaN
+</td>
+<td>
+1.5
+</td>
+</tr>
+<tr>
+<th>
+2001
+</th>
+<td>
+2.4
+</td>
+<td>
+1.7
+</td>
+</tr>
+<tr>
+<th>
+2002
+</th>
+<td>
+2.9
+</td>
+<td>
+3.6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.T</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+2000
+</th>
+<th>
+2001
+</th>
+<th>
+2002
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Nevada
+</th>
+<td>
+NaN
+</td>
+<td>
+2.4
+</td>
+<td>
+2.9
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+1.5
+</td>
+<td>
+1.7
+</td>
+<td>
+3.6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>包含Series的字典也可以用于构造dataframe：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pdata = &#123;<span class="string">'Ohio'</span>: frame3[<span class="string">'Ohio'</span>][:<span class="number">-1</span>],</span><br><span class="line">         <span class="string">'Nevada'</span>: frame3[<span class="string">'Nevada'</span>][:<span class="number">2</span>]&#125;</span><br><span class="line">pd.DataFrame(pdata)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Nevada
+</th>
+<th>
+Ohio
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+2000
+</th>
+<td>
+NaN
+</td>
+<td>
+1.5
+</td>
+</tr>
+<tr>
+<th>
+2001
+</th>
+<td>
+2.4
+</td>
+<td>
+1.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>设置name属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frame3.index.name = <span class="string">'year'</span></span><br><span class="line">frame3.columns.name = <span class="string">'state'</span></span><br><span class="line">frame3</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+state
+</th>
+<th>
+Nevada
+</th>
+<th>
+Ohio
+</th>
+</tr>
+<tr>
+<th>
+year
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+2000
+</th>
+<td>
+NaN
+</td>
+<td>
+1.5
+</td>
+</tr>
+<tr>
+<th>
+2001
+</th>
+<td>
+2.4
+</td>
+<td>
+1.7
+</td>
+</tr>
+<tr>
+<th>
+2002
+</th>
+<td>
+2.9
+</td>
+<td>
+3.6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>dataframe的values属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.values</span><br></pre></td></tr></table></figure>
+<p>array([[ nan, 1.5], [ 2.4, 1.7], [ 2.9, 3.6]])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.values</span><br></pre></td></tr></table></figure>
+<p>array([[2000, 'Ohio', 1.5, nan, False], [2001, 'Ohio', 1.7, -1.2, False], [2002, 'Ohio', 3.6, nan, False], [2001, 'Nevada', 2.4, -1.5, False], [2002, 'Nevada', 2.9, -1.7, False], [2003, 'Nevada', 3.2, nan, False]], dtype=object)</p>
+<h3 id="3-索引对象">3. 索引对象</h3>
+<p>在构造Series或dataframe时，你所使用的任意数组或标签序列都可以在内部转换为索引对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series(range(<span class="number">3</span>), index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])</span><br><span class="line">index = obj.index</span><br><span class="line">index</span><br></pre></td></tr></table></figure>
+<p>Index(['a', 'b', 'c'], dtype='object')</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index[<span class="number">1</span>:]</span><br></pre></td></tr></table></figure>
+<p>Index(['b', 'c'], dtype='object')</p>
+<p>索引对象是不可变的，因此用户是无法修改索引对象的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index[<span class="number">1</span>] = <span class="string">'d'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>TypeError Traceback (most recent call last)</p>
+<p><ipython-input-70-676fdeb26a68> in <module>() ----&gt; 1 index[1] = 'd'</module></ipython-input-70-676fdeb26a68></p>
+<p>~/.conda/envs/python36/lib/python3.6/site-packages/pandas/core/indexes/base.py in <strong>setitem</strong>(self, key, value) 1668 1669 def <strong>setitem</strong>(self, key, value): -&gt; 1670 raise TypeError("Index does not support mutable operations") 1671 1672 def <strong>getitem</strong>(self, key):</p>
+<p>TypeError: Index does not support mutable operations</p>
+<p>不可变性使得在多种数据结构中分享索引对象更为安全：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">labels = pd.Index(np.arange(<span class="number">3</span>))</span><br><span class="line">labels</span><br></pre></td></tr></table></figure>
+<p>Int64Index([0, 1, 2], dtype='int64')</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj2 = pd.Series([<span class="number">1.5</span>, <span class="number">-2.5</span>, <span class="number">0</span>], index=labels)</span><br><span class="line">obj2</span><br></pre></td></tr></table></figure>
+<p>0 1.5 1 -2.5 2 0.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2.index <span class="keyword">is</span> labels</span><br></pre></td></tr></table></figure>
+<p>True</p>
+<p>除了类似数组，索引对象也像一个固定大小的集合：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+state
+</th>
+<th>
+Nevada
+</th>
+<th>
+Ohio
+</th>
+</tr>
+<tr>
+<th>
+year
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+2000
+</th>
+<td>
+NaN
+</td>
+<td>
+1.5
+</td>
+</tr>
+<tr>
+<th>
+2001
+</th>
+<td>
+2.4
+</td>
+<td>
+1.7
+</td>
+</tr>
+<tr>
+<th>
+2002
+</th>
+<td>
+2.9
+</td>
+<td>
+3.6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.columns</span><br></pre></td></tr></table></figure>
+<p>Index(['Nevada', 'Ohio'], dtype='object', name='state')</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Ohio'</span> <span class="keyword">in</span> frame3.columns</span><br></pre></td></tr></table></figure>
+<p>True</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2003</span> <span class="keyword">in</span> frame3.index</span><br></pre></td></tr></table></figure>
+<p>False</p>
+<p>一些索引对象的方法和属性：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">方法</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">append</td>
+<td style="text-align: center;">将额外的索引对象粘贴到原索引后，产生一个新的索引</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">difference</td>
+<td style="text-align: center;">计算两个索引的差集</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">intersrction</td>
+<td style="text-align: center;">计算两个索引的交集</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">union</td>
+<td style="text-align: center;">计算两个索引的并集</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">isin</td>
+<td style="text-align: center;">计算表示每一个值是否在传值容器中的布尔数组</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">delete</td>
+<td style="text-align: center;">将位置i的元素删除，并产生新的索引</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">drop</td>
+<td style="text-align: center;">根据传参删除指定索引值，并产生新的索引</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">insert</td>
+<td style="text-align: center;">在位置i插入元素，并产生新的索引</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">is_monotonic</td>
+<td style="text-align: center;">如果索引序列递增则返回True</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">is_unique</td>
+<td style="text-align: center;">如果索引序列唯一则返回True</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">unique</td>
+<td style="text-align: center;">计算索引的唯一值序列</td>
+</tr>
+</tbody>
+</table>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/pandas基本操作（二）/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/numpy基础操作（二）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（二）">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#python" title="python">python</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2020 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>

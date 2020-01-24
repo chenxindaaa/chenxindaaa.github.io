@@ -1,0 +1,3317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/pandas基本操作（二）/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2020-01-24
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="二-基本功能">二、基本功能</h3>
+<h3 id="1-重建索引">1. 重建索引</h3>
+<p>reindex是pandas对象的重要方法，该方法用于创建一个符合新索引的新对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series([<span class="number">4.5</span>, <span class="number">7.2</span>, <span class="number">-5.3</span>, <span class="number">3.6</span>], index=[<span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'c'</span>])</span><br><span class="line">obj</span><br></pre></td></tr></table></figure>
+<pre><code>d    4.5
+b    7.2
+a   -5.3
+c    3.6
+dtype: float64</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj2 = obj.reindex([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>])</span><br><span class="line">obj2</span><br></pre></td></tr></table></figure>
+<pre><code>a   -5.3
+b    7.2
+c    3.6
+d    4.5
+e    NaN
+dtype: float64</code></pre>
+<p>对于顺序数据，比如时间序列，在重建索引时可能会需要进行插值或者填值。method可选参数允许我们使用诸如ffill等方法在重建索引时插值，ffill方法会将值前向填充：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj3 = pd.Series([<span class="string">'blue'</span>, <span class="string">'purple'</span>, <span class="string">'yellow'</span>], index=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>])</span><br><span class="line">obj3</span><br><span class="line">obj3.reindex(range(<span class="number">6</span>), method=<span class="string">'ffill'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>0      blue
+1      blue
+2    purple
+3    purple
+4    yellow
+5    yellow
+dtype: object</code></pre>
+<p>在dataframe中，reindex可以改变行索引、列索引、也可以同时改变二者。当仅传入一个序列时，结果中的行会重建索引：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">frame = pd.DataFrame(np.arange(<span class="number">9</span>).reshape((<span class="number">3</span>, <span class="number">3</span>)),</span><br><span class="line">                     index=[<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>],</span><br><span class="line">                     columns=[<span class="string">'Ohio'</span>, <span class="string">'Texas'</span>, <span class="string">'California'</span>])</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Ohio
+</th>
+<th>
+Texas
+</th>
+<th>
+California
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+a
+</th>
+<td>
+0
+</td>
+<td>
+1
+</td>
+<td>
+2
+</td>
+</tr>
+<tr>
+<th>
+c
+</th>
+<td>
+3
+</td>
+<td>
+4
+</td>
+<td>
+5
+</td>
+</tr>
+<tr>
+<th>
+d
+</th>
+<td>
+6
+</td>
+<td>
+7
+</td>
+<td>
+8
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame2 = frame.reindex([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>])</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Ohio
+</th>
+<th>
+Texas
+</th>
+<th>
+California
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+a
+</th>
+<td>
+0.0
+</td>
+<td>
+1.0
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+b
+</th>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+c
+</th>
+<td>
+3.0
+</td>
+<td>
+4.0
+</td>
+<td>
+5.0
+</td>
+</tr>
+<tr>
+<th>
+d
+</th>
+<td>
+6.0
+</td>
+<td>
+7.0
+</td>
+<td>
+8.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">states = [<span class="string">'Texas'</span>, <span class="string">'Utah'</span>, <span class="string">'California'</span>]</span><br><span class="line">frame.reindex(columns=states)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Texas
+</th>
+<th>
+Utah
+</th>
+<th>
+California
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+a
+</th>
+<td>
+1
+</td>
+<td>
+NaN
+</td>
+<td>
+2
+</td>
+</tr>
+<tr>
+<th>
+c
+</th>
+<td>
+4
+</td>
+<td>
+NaN
+</td>
+<td>
+5
+</td>
+</tr>
+<tr>
+<th>
+d
+</th>
+<td>
+7
+</td>
+<td>
+NaN
+</td>
+<td>
+8
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>你可以用loc进行更为简洁的标签索引：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame.loc[[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>], states]</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Texas
+</th>
+<th>
+Utah
+</th>
+<th>
+California
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+a
+</th>
+<td>
+1.0
+</td>
+<td>
+NaN
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+b
+</th>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+c
+</th>
+<td>
+4.0
+</td>
+<td>
+NaN
+</td>
+<td>
+5.0
+</td>
+</tr>
+<tr>
+<th>
+d
+</th>
+<td>
+7.0
+</td>
+<td>
+NaN
+</td>
+<td>
+8.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>reindex方法的参数：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">参数</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">index</td>
+<td style="text-align: center;">新建作为索引的序列</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">method</td>
+<td style="text-align: center;">填充方式，ffill为前向填充，bfill是后向填充</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">fill_value</td>
+<td style="text-align: center;">引入的缺失数据值</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">limit</td>
+<td style="text-align: center;">填充间隙</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">tolerance</td>
+<td style="text-align: center;">所需填充的不精确匹配下的最大尺寸间隙</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">level</td>
+<td style="text-align: center;">在多层索引上匹配简单索引</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">copy</td>
+<td style="text-align: center;">如果weiTrue则复制数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-轴向上删除条目">2. 轴向上删除条目</h2>
+<p>drop方法会返回一个含有指示值或轴向上删除值的新对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series(np.arange(<span class="number">5.</span>), index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>])</span><br><span class="line">obj</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 1.0 c 2.0 d 3.0 e 4.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_obj = obj.drop(<span class="string">'c'</span>)</span><br><span class="line">new_obj</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 1.0 d 3.0 e 4.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.drop([<span class="string">'d'</span>, <span class="string">'c'</span>])</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 1.0 e 4.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = pd.DataFrame(np.arange(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>)),</span><br><span class="line">                    index=[<span class="string">'Ohio'</span>, <span class="string">'Colorado'</span>, <span class="string">'Utah'</span>, <span class="string">'New York'</span>],</span><br><span class="line">                    columns=[<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>, <span class="string">'four'</span>])</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0
+</td>
+<td>
+1
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+10
+</td>
+<td>
+11
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+13
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>调用drop时使用标签序列会根据行标签删除值（轴0）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.drop([<span class="string">'Colorado'</span>, <span class="string">'Ohio'</span>])</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+10
+</td>
+<td>
+11
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+13
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>你可以通过传递axis=1或axis='columns'来从列中删除值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.drop(<span class="string">'two'</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+4
+</td>
+<td>
+6
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+10
+</td>
+<td>
+11
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.drop([<span class="string">'two'</span>, <span class="string">'four'</span>], axis=<span class="string">'columns'</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+three
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0
+</td>
+<td>
+2
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+4
+</td>
+<td>
+6
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+10
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>很多函数，例如drop，会修改Series或Dataframe的尺寸或形状，这些方法直接操作原对象而不返回新对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.drop(<span class="string">'c'</span>, inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 1.0 d 3.0 e 4.0 dtype: float64</p>
+<h3 id="3-索引-选择与过滤">3. 索引、选择与过滤</h3>
+<p>Series的索引与numpy数组索引的功能类似，只不过普通python切片不包含尾部，而series的切片不同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj[<span class="string">'c'</span>] = <span class="number">2.0</span></span><br><span class="line">obj = obj.reindex([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>])</span><br><span class="line">obj</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 1.0 c 2.0 d 3.0 e 4.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj[<span class="string">'b'</span>:<span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
+<p>b 1.0 c 2.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj[<span class="string">'b'</span>:<span class="string">'c'</span>] = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 5.0 c 5.0 d 3.0 e 4.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = pd.DataFrame(np.arange(<span class="number">16</span>).reshape((<span class="number">4</span>, <span class="number">4</span>)),</span><br><span class="line">                    index=[<span class="string">'Ohio'</span>, <span class="string">'Colorado'</span>, <span class="string">'Utah'</span>, <span class="string">'New York'</span>],</span><br><span class="line">                    columns=[<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>, <span class="string">'four'</span>])</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0
+</td>
+<td>
+1
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+10
+</td>
+<td>
+11
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+13
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'two'</span>]</span><br></pre></td></tr></table></figure>
+<p>Ohio 1 Colorado 5 Utah 9 New York 13 Name: two, dtype: int64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[[<span class="string">'three'</span>, <span class="string">'one'</span>]]</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+three
+</th>
+<th>
+one
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+2
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+6
+</td>
+<td>
+4
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+10
+</td>
+<td>
+8
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+14
+</td>
+<td>
+12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这种方式也有特殊案例。首先，可以根据一个布尔值数组切片或选择数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0
+</td>
+<td>
+1
+</td>
+<td>
+2
+</td>
+<td>
+3
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+<td>
+7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data[<span class="string">'three'</span>] &gt; <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+4
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+10
+</td>
+<td>
+11
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+13
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data &lt; <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+True
+</td>
+<td>
+True
+</td>
+<td>
+True
+</td>
+<td>
+True
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+True
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+False
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+False
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+<td>
+False
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data &lt; <span class="number">5</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+<th>
+four
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+0
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+<td>
+7
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+10
+</td>
+<td>
+11
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+13
+</td>
+<td>
+14
+</td>
+<td>
+15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>使用loc和iloc选额数据</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[<span class="string">'Colorado'</span>, [<span class="string">'two'</span>, <span class="string">'three'</span>]]</span><br></pre></td></tr></table></figure>
+<p>two 5 three 6 Name: Colorado, dtype: int64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[<span class="number">2</span>, [<span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<p>four 11 one 8 two 9 Name: Utah, dtype: int64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>one 8 two 9 three 10 four 11 Name: Utah, dtype: int64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+four
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+7
+</td>
+<td>
+0
+</td>
+<td>
+5
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+11
+</td>
+<td>
+8
+</td>
+<td>
+9
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.loc[:<span class="string">'Utah'</span>, <span class="string">'two'</span>]</span><br></pre></td></tr></table></figure>
+<p>Ohio 0 Colorado 5 Utah 9 Name: two, dtype: int64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.iloc[:, :<span class="number">3</span>][data.three &gt; <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+one
+</th>
+<th>
+two
+</th>
+<th>
+three
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Colorado
+</th>
+<td>
+0
+</td>
+<td>
+5
+</td>
+<td>
+6
+</td>
+</tr>
+<tr>
+<th>
+Utah
+</th>
+<td>
+8
+</td>
+<td>
+9
+</td>
+<td>
+10
+</td>
+</tr>
+<tr>
+<th>
+New York
+</th>
+<td>
+12
+</td>
+<td>
+13
+</td>
+<td>
+14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>对于整数索引，pandas不可以用负索引：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(np.arange(<span class="number">3.</span>))</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<p>0 0.0 1 1.0 2 2.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ser[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<hr>
+<p>KeyError Traceback (most recent call last)</p>
+<p><ipython-input-67-7ed1c232b3a2> in <module>() ----&gt; 1 ser[-1]</module></ipython-input-67-7ed1c232b3a2></p>
+<p>~/.conda/envs/python36/lib/python3.6/site-packages/pandas/core/series.py in <strong>getitem</strong>(self, key) 599 key = com._apply_if_callable(key, self) 600 try: --&gt; 601 result = self.index.get_value(self, key) 602 603 if not is_scalar(result):</p>
+<p>~/.conda/envs/python36/lib/python3.6/site-packages/pandas/core/indexes/base.py in get_value(self, series, key) 2475 try: 2476 return self._engine.get_value(s, k, -&gt; 2477 tz=getattr(series.dtype, 'tz', None)) 2478 except KeyError as e1: 2479 if len(self) &gt; 0 and self.inferred_type in ['integer', 'boolean']:</p>
+<p>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_value (pandas/_libs/index.c:4404)()</p>
+<p>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_value (pandas/_libs/index.c:4087)()</p>
+<p>pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc (pandas/_libs/index.c:5126)()</p>
+<p>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.Int64HashTable.get_item (pandas/_libs/hashtable.c:14031)()</p>
+<p>pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.Int64HashTable.get_item (pandas/_libs/hashtable.c:13975)()</p>
+<p>KeyError: -1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ser2 = pd.Series(np.arange(<span class="number">3.</span>), index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])</span><br><span class="line">ser2</span><br></pre></td></tr></table></figure>
+<p>a 0.0 b 1.0 c 2.0 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ser2[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<p>2.0</p>
+<p>使用填充的算数方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.DataFrame(np.arange(<span class="number">12.</span>).reshape((<span class="number">3</span>, <span class="number">4</span>)),</span><br><span class="line">                   columns=list(<span class="string">'abcd'</span>))</span><br><span class="line">df2 = pd.DataFrame(np.arange(<span class="number">20.</span>).reshape((<span class="number">4</span>, <span class="number">5</span>)),</span><br><span class="line">                   columns=list(<span class="string">'abcde'</span>))</span><br><span class="line">df2.loc[<span class="number">1</span>, <span class="string">'b'</span>] = np.nan</span><br><span class="line">df1</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+a
+</th>
+<th>
+b
+</th>
+<th>
+c
+</th>
+<th>
+d
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+0.0
+</td>
+<td>
+1.0
+</td>
+<td>
+2.0
+</td>
+<td>
+3.0
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+4.0
+</td>
+<td>
+5.0
+</td>
+<td>
+6.0
+</td>
+<td>
+7.0
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+8.0
+</td>
+<td>
+9.0
+</td>
+<td>
+10.0
+</td>
+<td>
+11.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+a
+</th>
+<th>
+b
+</th>
+<th>
+c
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+0.0
+</td>
+<td>
+1.0
+</td>
+<td>
+2.0
+</td>
+<td>
+3.0
+</td>
+<td>
+4.0
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+5.0
+</td>
+<td>
+NaN
+</td>
+<td>
+7.0
+</td>
+<td>
+8.0
+</td>
+<td>
+9.0
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+10.0
+</td>
+<td>
+11.0
+</td>
+<td>
+12.0
+</td>
+<td>
+13.0
+</td>
+<td>
+14.0
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+15.0
+</td>
+<td>
+16.0
+</td>
+<td>
+17.0
+</td>
+<td>
+18.0
+</td>
+<td>
+19.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1 + df2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+a
+</th>
+<th>
+b
+</th>
+<th>
+c
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+4.0
+</td>
+<td>
+6.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+9.0
+</td>
+<td>
+NaN
+</td>
+<td>
+13.0
+</td>
+<td>
+15.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+18.0
+</td>
+<td>
+20.0
+</td>
+<td>
+22.0
+</td>
+<td>
+24.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+<td>
+NaN
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.add(df2, fill_value=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+a
+</th>
+<th>
+b
+</th>
+<th>
+c
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+0.0
+</td>
+<td>
+2.0
+</td>
+<td>
+4.0
+</td>
+<td>
+6.0
+</td>
+<td>
+4.0
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+9.0
+</td>
+<td>
+5.0
+</td>
+<td>
+13.0
+</td>
+<td>
+15.0
+</td>
+<td>
+9.0
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+18.0
+</td>
+<td>
+20.0
+</td>
+<td>
+22.0
+</td>
+<td>
+24.0
+</td>
+<td>
+14.0
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+15.0
+</td>
+<td>
+16.0
+</td>
+<td>
+17.0
+</td>
+<td>
+18.0
+</td>
+<td>
+19.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> / df1</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+a
+</th>
+<th>
+b
+</th>
+<th>
+c
+</th>
+<th>
+d
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+inf
+</td>
+<td>
+1.000000
+</td>
+<td>
+0.500000
+</td>
+<td>
+0.333333
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+0.250000
+</td>
+<td>
+0.200000
+</td>
+<td>
+0.166667
+</td>
+<td>
+0.142857
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+0.125000
+</td>
+<td>
+0.111111
+</td>
+<td>
+0.100000
+</td>
+<td>
+0.090909
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.rdiv(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+a
+</th>
+<th>
+b
+</th>
+<th>
+c
+</th>
+<th>
+d
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+inf
+</td>
+<td>
+1.000000
+</td>
+<td>
+0.500000
+</td>
+<td>
+0.333333
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+0.250000
+</td>
+<td>
+0.200000
+</td>
+<td>
+0.166667
+</td>
+<td>
+0.142857
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+0.125000
+</td>
+<td>
+0.111111
+</td>
+<td>
+0.100000
+</td>
+<td>
+0.090909
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>灵活算术方法：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">方法</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">add, radd</td>
+<td style="text-align: center;">想加</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">sub, rsub</td>
+<td style="text-align: center;">相减</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">div, rdiv</td>
+<td style="text-align: center;">相除</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">floordiv, rfloordiv</td>
+<td style="text-align: center;">整除</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">mul, rmul</td>
+<td style="text-align: center;">方法</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">pow, rpow</td>
+<td style="text-align: center;">次方</td>
+</tr>
+</tbody>
+</table>
+<p>dataframe和series间的操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">12.</span>).reshape((<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">arr</span><br></pre></td></tr></table></figure>
+<p>array([[ 0., 1., 2., 3.], [ 4., 5., 6., 7.], [ 8., 9., 10., 11.]])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>array([ 0., 1., 2., 3.])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr - arr[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>array([[ 0., 0., 0., 0.], [ 4., 4., 4., 4.], [ 8., 8., 8., 8.]])</p>
+<p>这就是广播机制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frame = pd.DataFrame(np.arange(<span class="number">12.</span>).reshape((<span class="number">4</span>, <span class="number">3</span>)),</span><br><span class="line">                     columns=list(<span class="string">'bde'</span>),</span><br><span class="line">                     index=[<span class="string">'Utah'</span>, <span class="string">'Ohio'</span>, <span class="string">'Texas'</span>, <span class="string">'Oregon'</span>])</span><br><span class="line">series = frame.iloc[<span class="number">0</span>]</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+0.0
+</td>
+<td>
+1.0
+</td>
+<td>
+2.0
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+3.0
+</td>
+<td>
+4.0
+</td>
+<td>
+5.0
+</td>
+</tr>
+<tr>
+<th>
+Texas
+</th>
+<td>
+6.0
+</td>
+<td>
+7.0
+</td>
+<td>
+8.0
+</td>
+</tr>
+<tr>
+<th>
+Oregon
+</th>
+<td>
+9.0
+</td>
+<td>
+10.0
+</td>
+<td>
+11.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">series</span><br></pre></td></tr></table></figure>
+<p>b 0.0 d 1.0 e 2.0 Name: Utah, dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame - series</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+<td>
+0.0
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+3.0
+</td>
+<td>
+3.0
+</td>
+<td>
+3.0
+</td>
+</tr>
+<tr>
+<th>
+Texas
+</th>
+<td>
+6.0
+</td>
+<td>
+6.0
+</td>
+<td>
+6.0
+</td>
+</tr>
+<tr>
+<th>
+Oregon
+</th>
+<td>
+9.0
+</td>
+<td>
+9.0
+</td>
+<td>
+9.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">series2 = pd.Series(range(<span class="number">3</span>), index=[<span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>])</span><br><span class="line">frame + series2</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+<th>
+f
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+0.0
+</td>
+<td>
+NaN
+</td>
+<td>
+3.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+3.0
+</td>
+<td>
+NaN
+</td>
+<td>
+6.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+Texas
+</th>
+<td>
+6.0
+</td>
+<td>
+NaN
+</td>
+<td>
+9.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+<tr>
+<th>
+Oregon
+</th>
+<td>
+9.0
+</td>
+<td>
+NaN
+</td>
+<td>
+12.0
+</td>
+<td>
+NaN
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="4-函数应用和映射">4. 函数应用和映射</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frame = pd.DataFrame(np.random.randn(<span class="number">4</span>, <span class="number">3</span>), columns=list(<span class="string">'bde'</span>),</span><br><span class="line">                     index=[<span class="string">'Utah'</span>, <span class="string">'Ohio'</span>, <span class="string">'Texas'</span>, <span class="string">'Oregon'</span>])</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+-0.894119
+</td>
+<td>
+-1.707091
+</td>
+<td>
+0.843595
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+-0.413837
+</td>
+<td>
+-0.251321
+</td>
+<td>
+0.440044
+</td>
+</tr>
+<tr>
+<th>
+Texas
+</th>
+<td>
+0.871326
+</td>
+<td>
+0.828606
+</td>
+<td>
+-0.521924
+</td>
+</tr>
+<tr>
+<th>
+Oregon
+</th>
+<td>
+0.603869
+</td>
+<td>
+0.154679
+</td>
+<td>
+2.067279
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.abs(frame)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+0.894119
+</td>
+<td>
+1.707091
+</td>
+<td>
+0.843595
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+0.413837
+</td>
+<td>
+0.251321
+</td>
+<td>
+0.440044
+</td>
+</tr>
+<tr>
+<th>
+Texas
+</th>
+<td>
+0.871326
+</td>
+<td>
+0.828606
+</td>
+<td>
+0.521924
+</td>
+</tr>
+<tr>
+<th>
+Oregon
+</th>
+<td>
+0.603869
+</td>
+<td>
+0.154679
+</td>
+<td>
+2.067279
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="keyword">lambda</span> x: x.max() - x.min()</span><br><span class="line">frame.apply(f)</span><br></pre></td></tr></table></figure>
+<p>b 1.765445 d 2.535697 e 2.589203 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame.apply(f, axis=<span class="string">'columns'</span>)</span><br></pre></td></tr></table></figure>
+<p>Utah 2.550685 Ohio 0.853881 Texas 1.393250 Oregon 1.912600 dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> pd.Series([x.min(), x.max()], index=[<span class="string">'min'</span>, <span class="string">'max'</span>])</span><br><span class="line">frame.apply(f)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+min
+</th>
+<td>
+-0.894119
+</td>
+<td>
+-1.707091
+</td>
+<td>
+-0.521924
+</td>
+</tr>
+<tr>
+<th>
+max
+</th>
+<td>
+0.871326
+</td>
+<td>
+0.828606
+</td>
+<td>
+2.067279
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>逐元素的python函数也可以使用。假设你要根据frame中的每个浮点数计算一个格式化字符串，可以使用applymap方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">format = <span class="keyword">lambda</span> x: <span class="string">'%.2f'</span> % x</span><br><span class="line">frame.applymap(format)</span><br></pre></td></tr></table></figure>
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+b
+</th>
+<th>
+d
+</th>
+<th>
+e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+Utah
+</th>
+<td>
+-0.89
+</td>
+<td>
+-1.71
+</td>
+<td>
+0.84
+</td>
+</tr>
+<tr>
+<th>
+Ohio
+</th>
+<td>
+-0.41
+</td>
+<td>
+-0.25
+</td>
+<td>
+0.44
+</td>
+</tr>
+<tr>
+<th>
+Texas
+</th>
+<td>
+0.87
+</td>
+<td>
+0.83
+</td>
+<td>
+-0.52
+</td>
+</tr>
+<tr>
+<th>
+Oregon
+</th>
+<td>
+0.60
+</td>
+<td>
+0.15
+</td>
+<td>
+2.07
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>series自己有map方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame[<span class="string">'e'</span>].map(format)</span><br></pre></td></tr></table></figure>
+<p>Utah 0.84 Ohio 0.44 Texas -0.52 Oregon 2.07 Name: e, dtype: object</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/pandas基本操作（一）/" data-toggle="tooltip" data-placement="top" title="pandas基本操作（一）">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2020 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
