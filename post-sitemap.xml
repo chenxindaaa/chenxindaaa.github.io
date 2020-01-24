@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://www.chenxindaaa.com/article/pandas%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+        <lastmod>2020-01-24T03:40:27.150Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/article/pandas%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
         <lastmod>2020-01-24T03:38:05.325Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +42,6 @@
     <url>
         <loc>http://www.chenxindaaa.com/article/numpy%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
         <lastmod>2020-01-24T03:36:47.986Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/article/pandas%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
-        <lastmod>2020-01-24T03:23:39.040Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
