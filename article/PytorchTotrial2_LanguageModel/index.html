@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          PytorchTotrial2_LanguageModel - chenxindaaa | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.chenxindaaa.com/article/PytorchTotrial2_LanguageModel/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/13.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#pytorch" title="pytorch">pytorch</a>
+                            
+                        </div>
+                        <h1>PytorchTotrial2_LanguageModel</h1>
+                        <h2 class="subheading">pytorch</h2>
+                        <span class="meta">
+                            Posted by Xinda Chen on
+                            2020-02-14
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">chenxindaaa</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="语言模型">语言模型</h1>
+<p>一段自然语言文本可以看作是一个离散时间序列，给定一个长度为<span class="math inline">\(T\)</span>的词的序列<span class="math inline">\(w_1, w_2, \ldots, w_T\)</span>，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：</p>
+<p><span class="math display">\[
+P(w_1, w_2, \ldots, w_T).
+\]</span></p>
+<p>本节我们介绍基于统计的语言模型，主要是<span class="math inline">\(n\)</span>元语法（<span class="math inline">\(n\)</span>-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。</p>
+<h2 id="语言模型">语言模型</h2>
+<p>假设序列<span class="math inline">\(w_1, w_2, \ldots, w_T\)</span>中的每个词是依次生成的，我们有</p>
+<p>$$</p>
+<p><span class="math display">\[\begin{align*}
+P(w_1, w_2, \ldots, w_T)
+&amp;= \prod_{t=1}^T P(w_t \mid w_1, \ldots, w_{t-1})\\
+&amp;= P(w_1)P(w_2 \mid w_1) \cdots P(w_T \mid w_1w_2\cdots w_{T-1})
+\end{align*}\]</span></p>
+<p>$$</p>
+<p>例如，一段含有4个词的文本序列的概率</p>
+<p><span class="math display">\[
+P(w_1, w_2, w_3, w_4) =  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_1, w_2, w_3).
+\]</span></p>
+<p>语言模型的参数就是词的概率以及给定前几个词情况下的条件概率。设训练数据集为一个大型文本语料库，如维基百科的所有条目，词的概率可以通过该词在训练数据集中的相对词频来计算，例如，<span class="math inline">\(w_1\)</span>的概率可以计算为：</p>
+<p>$$</p>
+<p>P(w_1) = </p>
+<p>$$</p>
+<p>其中<span class="math inline">\(n(w_1)\)</span>为语料库中以<span class="math inline">\(w_1\)</span>作为第一个词的文本的数量，<span class="math inline">\(n\)</span>为语料库中文本的总数量。</p>
+<p>类似的，给定<span class="math inline">\(w_1\)</span>情况下，<span class="math inline">\(w_2\)</span>的条件概率可以计算为：</p>
+<p>$$</p>
+<p>P(w_2 w_1) = </p>
+<p>$$</p>
+<p>其中<span class="math inline">\(n(w_1, w_2)\)</span>为语料库中以<span class="math inline">\(w_1\)</span>作为第一个词，<span class="math inline">\(w_2\)</span>作为第二个词的文本的数量。</p>
+<h2 id="n元语法">n元语法</h2>
+<p>序列长度增加，计算和存储多个词共同出现的概率的复杂度会呈指数级增加。<span class="math inline">\(n\)</span>元语法通过马尔可夫假设简化模型，马尔科夫假设是指一个词的出现只与前面<span class="math inline">\(n\)</span>个词相关，即<span class="math inline">\(n\)</span>阶马尔可夫链（Markov chain of order <span class="math inline">\(n\)</span>），如果<span class="math inline">\(n=1\)</span>，那么有<span class="math inline">\(P(w_3 \mid w_1, w_2) = P(w_3 \mid w_2)\)</span>。基于<span class="math inline">\(n-1\)</span>阶马尔可夫链，我们可以将语言模型改写为</p>
+<p><span class="math display">\[
+P(w_1, w_2, \ldots, w_T) = \prod_{t=1}^T P(w_t \mid w_{t-(n-1)}, \ldots, w_{t-1}) .
+\]</span></p>
+<p>以上也叫<span class="math inline">\(n\)</span>元语法（<span class="math inline">\(n\)</span>-grams），它是基于<span class="math inline">\(n - 1\)</span>阶马尔可夫链的概率语言模型。例如，当<span class="math inline">\(n=2\)</span>时，含有4个词的文本序列的概率就可以改写为：</p>
+<p>$$</p>
+<p><span class="math display">\[\begin{align*}
+P(w_1, w_2, w_3, w_4)
+&amp;= P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_1, w_2, w_3)\\
+&amp;= P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_2) P(w_4 \mid w_3)
+\end{align*}\]</span></p>
+<p>$$</p>
+<p>当<span class="math inline">\(n\)</span>分别为1、2和3时，我们将其分别称作一元语法（unigram）、二元语法（bigram）和三元语法（trigram）。例如，长度为4的序列<span class="math inline">\(w_1, w_2, w_3, w_4\)</span>在一元语法、二元语法和三元语法中的概率分别为</p>
+<p>$$</p>
+<p>\begin{aligned} P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2) P(w_3) P(w_4) ,\ P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2 w_1) P(w_3 w_2) P(w_4 w_3) ,\ P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2 w_1) P(w_3 w_1, w_2) P(w_4 w_2, w_3) . \end{aligned}</p>
+<p>$$</p>
+<p>当<span class="math inline">\(n\)</span>较小时，<span class="math inline">\(n\)</span>元语法往往并不准确。例如，在一元语法中，由三个词组成的句子“你走先”和“你先走”的概率是一样的。然而，当<span class="math inline">\(n\)</span>较大时，<span class="math inline">\(n\)</span>元语法需要计算并存储大量的词频和多词相邻频率。</p>
+<p>思考：<span class="math inline">\(n\)</span>元语法可能有哪些缺陷？</p>
+<ol type="1">
+<li>参数空间过大</li>
+<li>数据稀疏</li>
+</ol>
+<h1 id="语言模型数据集">语言模型数据集</h1>
+<h2 id="读取数据集">读取数据集</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'/home/kesci/input/jaychou_lyrics4703/jaychou_lyrics.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    corpus_chars = f.read()</span><br><span class="line">print(len(corpus_chars))</span><br><span class="line">print(corpus_chars[: <span class="number">40</span>])</span><br><span class="line">corpus_chars = corpus_chars.replace(<span class="string">'\n'</span>, <span class="string">' '</span>).replace(<span class="string">'\r'</span>, <span class="string">' '</span>)</span><br><span class="line">corpus_chars = corpus_chars[: <span class="number">10000</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>63282
+想要有直升机
+想要和你飞到宇宙去
+想要和你融化在一起
+融化在宇宙里
+我每天每天每</code></pre>
+<h2 id="建立字符索引">建立字符索引</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">idx_to_char = list(set(corpus_chars)) <span class="comment"># 去重，得到索引到字符的映射</span></span><br><span class="line">char_to_idx = &#123;char: i <span class="keyword">for</span> i, char <span class="keyword">in</span> enumerate(idx_to_char)&#125; <span class="comment"># 字符到索引的映射</span></span><br><span class="line">vocab_size = len(char_to_idx)</span><br><span class="line">print(vocab_size)</span><br><span class="line"></span><br><span class="line">corpus_indices = [char_to_idx[char] <span class="keyword">for</span> char <span class="keyword">in</span> corpus_chars]  <span class="comment"># 将每个字符转化为索引，得到一个索引的序列</span></span><br><span class="line">sample = corpus_indices[: <span class="number">20</span>]</span><br><span class="line">print(<span class="string">'chars:'</span>, <span class="string">''</span>.join([idx_to_char[idx] <span class="keyword">for</span> idx <span class="keyword">in</span> sample]))</span><br><span class="line">print(<span class="string">'indices:'</span>, sample)</span><br></pre></td></tr></table></figure>
+<pre><code>1027
+chars: 想要有直升机 想要和你飞到宇宙去 想要和
+indices: [1022, 648, 1025, 366, 208, 792, 199, 1022, 648, 641, 607, 625, 26, 155, 130, 5, 199, 1022, 648, 641]</code></pre>
+<p>定义函数<code>load_data_jay_lyrics</code>，在后续章节中直接调用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data_jay_lyrics</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'/home/kesci/input/jaychou_lyrics4703/jaychou_lyrics.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        corpus_chars = f.read()</span><br><span class="line">    corpus_chars = corpus_chars.replace(<span class="string">'\n'</span>, <span class="string">' '</span>).replace(<span class="string">'\r'</span>, <span class="string">' '</span>)</span><br><span class="line">    corpus_chars = corpus_chars[<span class="number">0</span>:<span class="number">10000</span>]</span><br><span class="line">    idx_to_char = list(set(corpus_chars))</span><br><span class="line">    char_to_idx = dict([(char, i) <span class="keyword">for</span> i, char <span class="keyword">in</span> enumerate(idx_to_char)])</span><br><span class="line">    vocab_size = len(char_to_idx)</span><br><span class="line">    corpus_indices = [char_to_idx[char] <span class="keyword">for</span> char <span class="keyword">in</span> corpus_chars]</span><br><span class="line">    <span class="keyword">return</span> corpus_indices, char_to_idx, idx_to_char, vocab_size</span><br></pre></td></tr></table></figure>
+<h2 id="时序数据的采样">时序数据的采样</h2>
+<p>在训练中我们需要每次随机读取小批量样本和标签。与之前章节的实验数据不同的是，时序数据的一个样本通常包含连续的字符。假设时间步数为5，样本序列为5个字符，即“想”“要”“有”“直”“升”。该样本的标签序列为这些字符分别在训练集中的下一个字符，即“要”“有”“直”“升”“机”，即<span class="math inline">\(X\)</span>=“想要有直升”，<span class="math inline">\(Y\)</span>=“要有直升机”。</p>
+<p>现在我们考虑序列“想要有直升机，想要和你飞到宇宙去”，如果时间步数为5，有以下可能的样本和标签： * <span class="math inline">\(X\)</span>：“想要有直升”，<span class="math inline">\(Y\)</span>：“要有直升机” * <span class="math inline">\(X\)</span>：“要有直升机”，<span class="math inline">\(Y\)</span>：“有直升机，” * <span class="math inline">\(X\)</span>：“有直升机，”，<span class="math inline">\(Y\)</span>：“直升机，想” * ... * <span class="math inline">\(X\)</span>：“要和你飞到”，<span class="math inline">\(Y\)</span>：“和你飞到宇” * <span class="math inline">\(X\)</span>：“和你飞到宇”，<span class="math inline">\(Y\)</span>：“你飞到宇宙” * <span class="math inline">\(X\)</span>：“你飞到宇宙”，<span class="math inline">\(Y\)</span>：“飞到宇宙去”</p>
+<p>可以看到，如果序列的长度为<span class="math inline">\(T\)</span>，时间步数为<span class="math inline">\(n\)</span>，那么一共有<span class="math inline">\(T-n\)</span>个合法的样本，但是这些样本有大量的重合，我们通常采用更加高效的采样方式。我们有两种方式对时序数据进行采样，分别是随机采样和相邻采样。</p>
+<h3 id="随机采样">随机采样</h3>
+<p>下面的代码每次从数据里随机采样一个小批量。其中批量大小<code>batch_size</code>是每个小批量的样本数，<code>num_steps</code>是每个样本所包含的时间步数。 在随机采样中，每个样本是原始序列上任意截取的一段序列，相邻的两个随机小批量在原始序列上的位置不一定相毗邻。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter_random</span><span class="params">(corpus_indices, batch_size, num_steps, device=None)</span>:</span></span><br><span class="line">    <span class="comment"># 减1是因为对于长度为n的序列，X最多只有包含其中的前n - 1个字符</span></span><br><span class="line">    num_examples = (len(corpus_indices) - <span class="number">1</span>) // num_steps  <span class="comment"># 下取整，得到不重叠情况下的样本个数</span></span><br><span class="line">    example_indices = [i * num_steps <span class="keyword">for</span> i <span class="keyword">in</span> range(num_examples)]  <span class="comment"># 每个样本的第一个字符在corpus_indices中的下标</span></span><br><span class="line">    random.shuffle(example_indices)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_data</span><span class="params">(i)</span>:</span></span><br><span class="line">        <span class="comment"># 返回从i开始的长为num_steps的序列</span></span><br><span class="line">        <span class="keyword">return</span> corpus_indices[i: i + num_steps]</span><br><span class="line">    <span class="keyword">if</span> device <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        device = torch.device(<span class="string">'cuda'</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">'cpu'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        <span class="comment"># 每次选出batch_size个随机样本</span></span><br><span class="line">        batch_indices = example_indices[i: i + batch_size]  <span class="comment"># 当前batch的各个样本的首字符的下标</span></span><br><span class="line">        X = [_data(j) <span class="keyword">for</span> j <span class="keyword">in</span> batch_indices]</span><br><span class="line">        Y = [_data(j + <span class="number">1</span>) <span class="keyword">for</span> j <span class="keyword">in</span> batch_indices]</span><br><span class="line">        <span class="keyword">yield</span> torch.tensor(X, device=device), torch.tensor(Y, device=device)</span><br></pre></td></tr></table></figure>
+<p>测试一下这个函数，我们输入从0到29的连续整数作为一个人工序列，设批量大小和时间步数分别为2和6，打印随机采样每次读取的小批量样本的输入<code>X</code>和标签<code>Y</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my_seq = list(range(<span class="number">30</span>))</span><br><span class="line"><span class="keyword">for</span> X, Y <span class="keyword">in</span> data_iter_random(my_seq, batch_size=<span class="number">2</span>, num_steps=<span class="number">6</span>):</span><br><span class="line">    print(<span class="string">'X: '</span>, X, <span class="string">'\nY:'</span>, Y, <span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>X:  tensor([[ 6,  7,  8,  9, 10, 11],
+        [12, 13, 14, 15, 16, 17]]) 
+Y: tensor([[ 7,  8,  9, 10, 11, 12],
+        [13, 14, 15, 16, 17, 18]]) 
+
+X:  tensor([[ 0,  1,  2,  3,  4,  5],
+        [18, 19, 20, 21, 22, 23]]) 
+Y: tensor([[ 1,  2,  3,  4,  5,  6],
+        [19, 20, 21, 22, 23, 24]]) </code></pre>
+<h3 id="相邻采样">相邻采样</h3>
+<p>在相邻采样中，相邻的两个随机小批量在原始序列上的位置相毗邻。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter_consecutive</span><span class="params">(corpus_indices, batch_size, num_steps, device=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> device <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        device = torch.device(<span class="string">'cuda'</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">'cpu'</span>)</span><br><span class="line">    corpus_len = len(corpus_indices) // batch_size * batch_size  <span class="comment"># 保留下来的序列的长度</span></span><br><span class="line">    corpus_indices = corpus_indices[: corpus_len]  <span class="comment"># 仅保留前corpus_len个字符</span></span><br><span class="line">    indices = torch.tensor(corpus_indices, device=device)</span><br><span class="line">    indices = indices.view(batch_size, <span class="number">-1</span>)  <span class="comment"># resize成(batch_size, )</span></span><br><span class="line">    batch_num = (indices.shape[<span class="number">1</span>] - <span class="number">1</span>) // num_steps</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(batch_num):</span><br><span class="line">        i = i * num_steps</span><br><span class="line">        X = indices[:, i: i + num_steps]</span><br><span class="line">        Y = indices[:, i + <span class="number">1</span>: i + num_steps + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">yield</span> X, Y</span><br></pre></td></tr></table></figure>
+<p>同样的设置下，打印相邻采样每次读取的小批量样本的输入<code>X</code>和标签<code>Y</code>。相邻的两个随机小批量在原始序列上的位置相毗邻。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> X, Y <span class="keyword">in</span> data_iter_consecutive(my_seq, batch_size=<span class="number">2</span>, num_steps=<span class="number">6</span>):</span><br><span class="line">    print(<span class="string">'X: '</span>, X, <span class="string">'\nY:'</span>, Y, <span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>X:  tensor([[ 0,  1,  2,  3,  4,  5],
+        [15, 16, 17, 18, 19, 20]]) 
+Y: tensor([[ 1,  2,  3,  4,  5,  6],
+        [16, 17, 18, 19, 20, 21]]) 
+
+X:  tensor([[ 6,  7,  8,  9, 10, 11],
+        [21, 22, 23, 24, 25, 26]]) 
+Y: tensor([[ 7,  8,  9, 10, 11, 12],
+        [22, 23, 24, 25, 26, 27]])</code></pre>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/PytorchTotrial2_TextPrepare/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_TextPrepare">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/PytorchTotrial1_MultilayerPerceptron/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial1_MultilayerPerceptron">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#pytorch" title="pytorch">pytorch</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://blog.csdn.net/qq_44315987" target="_blank">CSDN Blog chenxindaaa</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/chenxindaaa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Xinda Chen 2020 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.chenxindaaa.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>

@@ -211,30 +211,189 @@
 
 <div class="post-preview">
 
-    <a href="/article/GitOperation/">
+    <a href="/article/Python-OpenCV HoughLinesDetect/">
         <h2 class="post-title">
                                  
-            GitOperation
+            Python-OpenCV HoughLinesDetect
         </h2>
         <h3 class="post-subtitle">
-            Github
+            OpenCV
         </h3>
         <div class="post-content-preview">
-            一.修改email和name
-12$ git config --global user.email "邮箱"$ git config --global user.name "用户名"
-附1.git config 1. 仓库级的配置文件：在仓库的 .git/.gitconfig，该配置文件只对所在的仓库有效。
+            一、 Hough直线变换原理
+1.笛卡尔坐标系与Hough坐标系
+  为了方便说明，我们先以笛卡尔坐标系即直角坐标系(与笛卡尔空间对应)为例来说明Hough变换的基本原理。与笛卡尔坐标系对应，我们构造一个Hough坐标系(对应Hough空间)。在Hough坐标系中，横坐标采用笛卡尔坐标系中直线的斜率k，纵坐标使用笛卡尔坐标系中直线的截距b。
 
-全局配置文件：Mac 系统在 ~/.gitconfig，Windows 系统在 C......
+在笛卡尔坐标系中，经过点\((x_i,y_i)\......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-12-06
+            2020-01-02
         </p>
         <div class="tags">
             
-              <a href="/tags/#Github" title="Github">Github</a>
+              <a href="/tags/#OpenCV" title="OpenCV">OpenCV</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachineLearning_FP-growth/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_FP-growth
+        </h2>
+        <h3 class="post-subtitle">
+            FP-growth
+        </h3>
+        <div class="post-content-preview">
+            一、FP-growth介绍
+从大规模的数据集中，寻找不同特征或者物品之间的隐含关系，称为关联分析（association analysis），或者关联规则学习（association rule learning）。 在 Apriori 算法中，寻找频繁项集，需要对每一个可能的频繁项扫描一遍数据集计算支持度，计算量庞大。 在 FP-growth 算法中，寻找频繁项集，只需要扫描两遍数据集，将数......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-12-31
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachinLearning_Cluster/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_Cluster
+        </h2>
+        <h3 class="post-subtitle">
+            Cluster
+        </h3>
+        <div class="post-content-preview">
+            一.无监督学习
+聚类算法：第一个无监督学习算法（无标签的数据）
+什么是无监督学习？ 对比：监督学习问题指的是，我们有一系列标签，然后用假设函数去拟合它，作为对比，在无监督学习中，我们的数据并没有任何标签，无监督学习要做的就是将这系列没有标签的数据输入到算法中，然后我们要让算法找到隐含在数据中的结构。例如聚类算法，当然还有一些其他的无监督学习算法，而不单单是簇。  在这里我们有一系列点，却没有......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-12-22
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachinLearning_Apriori/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_Apriori
+        </h2>
+        <h3 class="post-subtitle">
+            Apriori
+        </h3>
+        <div class="post-content-preview">
+            一.Apriori
+从大规模数据集中寻找物品间的隐含关系被称作关联分析（association analysis）或者关联规则学习（association rule learning）。
+那么什么是关联分析呢？关联分析是一种在大规模数据集中寻找有趣关系的任务。这些任务包括两项：发现频繁项集和从频繁项集中发现关联规则。
+
+频繁项集（frequent item sets）：是经常出现在一块的物品......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-12-22
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachineLearning_Regression/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_Regression
+        </h2>
+        <h3 class="post-subtitle">
+            Regression
+        </h3>
+        <div class="post-content-preview">
+            一.线性回归
+
+线性回归形式简单、易于建模，但却蕴涵着机器学习中一些重要的基本思想。许多功能更为强大的非线性模型(nonlinear model)可在线性模型的基础上通过引入层级结构或高维映射而得。此外，由于线性回归的解𝜃直观表达了各属性在预测中的重要性，因此线性回归有很好的可解释性。
+
+1.线性回归原理
+线性回归遇到的问题一般是这样的。我们有𝑚个样本，每个样本对应于𝑛维特征和一个结果......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-12-15
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/MachineLearning_AdaBoost/">
+        <h2 class="post-title">
+                                 
+            MachineLearning_AdaBoost
+        </h2>
+        <h3 class="post-subtitle">
+            Adaboost
+        </h3>
+        <div class="post-content-preview">
+            AdaBoost基本原理介绍
+一. AdaBoost分类问题
+以二分类为例，假设给定一个二类分类的训练数据集\(\chi = \left \{ (x_{1}, y_{1}), (x_{2}, y_{2}),...,(x_{n}, y_{n})\right \}\)，其中\(x_{i}\)表示样本点，\(y_{i}\)表示样本对应的类别，其可取值为｛-1，1｝。AdaBoost算法利用如下的算......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2019-12-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
             
         </div>
     
@@ -274,29 +433,30 @@
 
 <div class="post-preview">
 
-    <a href="/article/MachineLearning_NoiveBayes/">
+    <a href="/article/GitOperation/">
         <h2 class="post-title">
                                  
-            MachineLearning_NoiveBayes
+            GitOperation
         </h2>
         <h3 class="post-subtitle">
-            NoiveBayes
+            Github
         </h3>
         <div class="post-content-preview">
-            朴素贝叶斯（Naive Bayes）是一种简单的分类算法。
-一、朴素贝叶斯的理论基础
-给定训练数据集（X,Y），其中每个样本x都包括n维特征，即\(x=(x_1,x_2,x_3,...,x_n)\)，类标记集合含有k种类别，\(y=(y_1,y_2,...,y_k)\)。
-如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问......
+            一.修改email和name
+12$ git config --global user.email "邮箱"$ git config --global user.name "用户名"
+附1.git config 1. 仓库级的配置文件：在仓库的 .git/.gitconfig，该配置文件只对所在的仓库有效。
+
+全局配置文件：Mac 系统在 ~/.gitconfig，Windows 系统在 C......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-12-01
+            2019-12-06
         </p>
         <div class="tags">
             
-              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
+              <a href="/tags/#Github" title="Github">Github</a>
             
         </div>
     
@@ -337,217 +497,29 @@
 
 <div class="post-preview">
 
-    <a href="/article/BlueBridgeCup11.17/">
+    <a href="/article/MachineLearning_NoiveBayes/">
         <h2 class="post-title">
                                  
-            BlueBridgeCup11.17
+            MachineLearning_NoiveBayes
         </h2>
         <h3 class="post-subtitle">
-            BlueBridgeCup
+            NoiveBayes
         </h3>
         <div class="post-content-preview">
-            题目描述
-当两个比较大的整数相乘时，可能会出现数据溢出的情形。为避免溢出，剋采用字符串的方法来实现两个大数之间的乘法。 具体来说，首先以字符串的形式输入两个整数，每个整数的长度不会超过8位，然后把它们相乘的结果存储在另一个字符串当中（长度不会超过16位），最后把这个字符串打印出来。例如，假设用户输入为：62773417 和 12345678，则输出结果为：774980393241726 输入......
+            朴素贝叶斯（Naive Bayes）是一种简单的分类算法。
+一、朴素贝叶斯的理论基础
+给定训练数据集（X,Y），其中每个样本x都包括n维特征，即\(x=(x_1,x_2,x_3,...,x_n)\)，类标记集合含有k种类别，\(y=(y_1,y_2,...,y_k)\)。
+如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2019-11-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup">BlueBridgeCup</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/MachinLearning_DecisionTree/">
-        <h2 class="post-title">
-                                 
-            MachineLearning_DecisionTree
-        </h2>
-        <h3 class="post-subtitle">
-            DecisionTree
-        </h3>
-        <div class="post-content-preview">
-            什么是决策树？
-下图是一个是否是好瓜的决策树，其中长方形代表判断模块，椭圆代表终止模块，箭头表示分支 表格表示为： 
-信息熵
-信息熵是度量样本集和纯度最常用的一种指标，假定样本集合D中第k类样本所占比例为pk(k=1, 2, 3..., m) 则信息熵定义为  H(X)越小，D的纯的越高 本例中好西瓜的概率为8/17，坏西瓜的概率为9/17，所以根节点的信息熵为： H(X) = -(8/17......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-16
+            2019-12-01
         </p>
         <div class="tags">
             
               <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/MachineLearning_K-NN/">
-        <h2 class="post-title">
-                                 
-            MachineLearning_K-NN
-        </h2>
-        <h3 class="post-subtitle">
-            K-NN
-        </h3>
-        <div class="post-content-preview">
-            什么是机器学习？
-在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。
-机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-15
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#MachineLearning" title="MachineLearning">MachineLearning</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/matlab基础11.matlab在微积分中的应用/">
-        <h2 class="post-title">
-                                 
-            matlab基础11.matlab在微积分中的应用
-        </h2>
-        <h3 class="post-subtitle">
-            Matlab
-        </h3>
-        <div class="post-content-preview">
-            一.差分与近似微分
- diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分 近似微商：diff(Y)./diff(X)
-二.微分计算
-
-在这里插入图片描述
-
-三.不定积分与定积分计算
- 
-四.数值积分
-1.梯形积分法   2.递推的辛普森积分法 
-...
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-07
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/matlab基础10.线性代数/">
-        <h2 class="post-title">
-                                 
-            matlab基础10.线性代数
-        </h2>
-        <h3 class="post-subtitle">
-            Matlab
-        </h3>
-        <div class="post-content-preview">
-            一.数组的表示，冒号的用法
-1.a : b  2.a : b : c b为步长 
-二.矩阵的大小size()
-1.二维数组  2.三维数组  ## 三.矩阵的秩rank() 
-四.向量范数norm()
-
-在这里插入图片描述
-
-五.矩阵的逆inv()
-
-在这里插入图片描述
-
-六.矩阵的转置'
-
-在这里插入图片描述
-
-七.矩阵的特征值和特征向量eig()
-
-在这里插入图片描述
-
-八.矩阵的左右翻......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-04
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/Matlab基础09. 图形属性设置及习题/">
-        <h2 class="post-title">
-                                 
-            Matlab基础09.图形属性设置及习题
-        </h2>
-        <h3 class="post-subtitle">
-            Matlab
-        </h3>
-        <div class="post-content-preview">
-            一.图形属性设置view：
-    
-二.习题
-
-  
-  
-   4   
-  
-  
-
-...
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2019-11-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Matlab" title="Matlab">Matlab</a>
             
         </div>
     
@@ -621,6 +593,10 @@
         
             
             <a href="/tags/#Python" title="Python" rel="7">Python</a>
+            
+        
+            
+            <a href="/tags/#pytorch" title="pytorch" rel="6">pytorch</a>
             
         
             
@@ -700,23 +676,23 @@
     <ul>
       
         <li>
-          <a href="/article/pandas基本操作（一）/">pandas基本操作（一）</a>
+          <a href="/article/PytorchTotrial1_SoftmaxClassify/">PytorchTotrial1_SoftmaxClassify</a>
         </li>
       
         <li>
-          <a href="/article/numpy基础操作（二）/">numpy基础操作（二）</a>
+          <a href="/article/PytorchTotrial1_LinearRegression/">PytorchTotrial1_LinearRegression</a>
         </li>
       
         <li>
-          <a href="/article/pandas基本操作（二）/">pandas基本操作（二）</a>
+          <a href="/article/PytorchTotrial2_LanguageModel/">PytorchTotrial2_LanguageModel</a>
         </li>
       
         <li>
-          <a href="/article/numpy基础操作（三）/">numpy基础操作（三）</a>
+          <a href="/article/PytorchTotrial1_MultilayerPerceptron/">PytorchTotrial1_MultilayerPerceptron</a>
         </li>
       
         <li>
-          <a href="/article/numpy基础操作（四）/">numpy基础操作（四）</a>
+          <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/">PytorchTotrial2_RecurrentNeuralNetwork</a>
         </li>
       
     </ul>
@@ -739,7 +715,7 @@
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
@@ -899,23 +875,7 @@
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 
