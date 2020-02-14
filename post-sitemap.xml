@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://www.chenxindaaa.com/article/PytorchTotrial1_LinearRegression/</loc>
+        <lastmod>2020-02-14T13:35:05.487Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/article/PytorchTotrial1_SoftmaxClassify/</loc>
         <lastmod>2020-02-14T13:14:39.495Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -42,14 +50,6 @@
     <url>
         <loc>http://www.chenxindaaa.com/article/PytorchTotrial1_MultilayerPerceptron/</loc>
         <lastmod>2020-02-14T13:11:26.901Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/article/PytorchTotrial1_LinearRegression/</loc>
-        <lastmod>2020-02-14T13:10:44.025Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

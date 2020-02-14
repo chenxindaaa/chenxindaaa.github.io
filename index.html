@@ -134,14 +134,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -211,6 +211,40 @@
 
 <div class="post-preview">
 
+    <a href="/article/PytorchTotrial2_LanguageModel/">
+        <h2 class="post-title">
+                                 
+            PytorchTotrial2_LanguageModel
+        </h2>
+        <h3 class="post-subtitle">
+            pytorch
+        </h3>
+        <div class="post-content-preview">
+            语言模型
+一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：
+\[
+P(w_1, w_2, \ldots, w_T).
+\]
+本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-02-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/PytorchTotrial1_SoftmaxClassify/">
         <h2 class="post-title">
                                  
@@ -261,10 +295,10 @@ softmax的基本概念
 线性回归模型从零开始的实现
 线性回归模型使用pytorch的简洁实现
 
+第一次打卡链接： SoftmaxClassify MultilayerPerceptron TextPrepare LanguageModel RecurrentNeuralNetwork
 线性回归的基本要素
 模型
-为了简单起见，这里我们假设价格只取决于房屋状况的两个因素，即面积（平方米）和房龄（年）。接下来我们希望探索价格与这两个因素的具体关系。线性回归假设输出与各个输入之间是线性关系:
-\[price=w_{area}⋅area+w_{age}⋅age+b......
+为了简单起见，这里我们假设价格只取决于房屋状况的两个因素，......
         </div>
     </a>
     
@@ -304,40 +338,6 @@ softmax的基本概念
 读入文本
 我们用一部英文小说，即H. G. Well的Time Machine，作为示例，展示文本预处理的具体过程。
 123456789101......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-02-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/PytorchTotrial2_LanguageModel/">
-        <h2 class="post-title">
-                                 
-            PytorchTotrial2_LanguageModel
-        </h2>
-        <h3 class="post-subtitle">
-            pytorch
-        </h3>
-        <div class="post-content-preview">
-            语言模型
-一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：
-\[
-P(w_1, w_2, \ldots, w_T).
-\]
-本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。......
         </div>
     </a>
     
@@ -467,6 +467,45 @@ c......
 
 <div class="post-preview">
 
+    <a href="/article/pandas基本操作（一）/">
+        <h2 class="post-title">
+                                 
+            pandas基本操作（一）
+        </h2>
+        <h3 class="post-subtitle">
+            pandas
+        </h3>
+        <div class="post-content-preview">
+            一、pandas数据结构介绍
+1. Series
+Series是一种一维的数组性对象，它包含了一个值序列，并且包含了数据标签，称为索引。最简单的序列可以仅仅由一个数组形成：
+12import pandas as pdimport numpy as np
+1obj = pd.Series([4, 7, -5, 3])
+1obj
+0    4
+1    7
+2   -5
+3    3
+dtype......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-01-24
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#python" title="python">python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/numpy基础操作（四）/">
         <h2 class="post-title">
                                  
@@ -542,60 +581,23 @@ s......
 
 <div class="post-preview">
 
-    <a href="/article/pandas基本操作（一）/">
+    <a href="/article/numpy基础操作（二）/">
         <h2 class="post-title">
                                  
-            pandas基本操作（一）
-        </h2>
-        <h3 class="post-subtitle">
-            pandas
-        </h3>
-        <div class="post-content-preview">
-            一、pandas数据结构介绍
-1. Series
-Series是一种一维的数组性对象，它包含了一个值序列，并且包含了数据标签，称为索引。最简单的序列可以仅仅由一个数组形成：
-12import pandas as pdimport numpy as np
-1obj = pd.Series([4, 7, -5, 3])
-1obj
-0    4
-1    7
-2   -5
-3    3
-dtype......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-01-24
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#python" title="python">python</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/numpy基础操作（三）/">
-        <h2 class="post-title">
-                                 
-            numpy基础操作（三）
+            numpy基础操作（二）
         </h2>
         <h3 class="post-subtitle">
             numpy
         </h3>
         <div class="post-content-preview">
-            一、数学和统计方法
-许多关于计算整个数组统计值或关于轴向数据的数学函数，可以作为数组类型的方法被调用，比如sum、mean和std，既可以直接调用数组实例的方法，也可以使用顶层的numpy函数。这里生成了一些正态分布的随机数，并计算了部分聚合统计数据：
+            一、数组转置和换轴
+转置是一种特殊的数据重组形式，可以返回底层数据的视图而不需要复制任何内容。数组拥有transpose方法，也有特殊的T属性：
 1import numpy as np
-1arr = np.random.randn(5, 4)
+1arr = np.arange(15).reshape((3, 5))
 1arr
-array([[ 0.54234......
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+    ......
         </div>
     </a>
     
@@ -758,15 +760,15 @@ array([[ 0.54234......
     <ul>
       
         <li>
+          <a href="/article/PytorchTotrial2_LanguageModel/">PytorchTotrial2_LanguageModel</a>
+        </li>
+      
+        <li>
           <a href="/article/PytorchTotrial1_SoftmaxClassify/">PytorchTotrial1_SoftmaxClassify</a>
         </li>
       
         <li>
-          <a href="/article/PytorchTotrial1_LinearRegression/">PytorchTotrial1_LinearRegression</a>
-        </li>
-      
-        <li>
-          <a href="/article/PytorchTotrial2_LanguageModel/">PytorchTotrial2_LanguageModel</a>
+          <a href="/article/PytorchTotrial2_TextPrepare/">PytorchTotrial2_TextPrepare</a>
         </li>
       
         <li>
@@ -957,7 +959,23 @@ array([[ 0.54234......
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 

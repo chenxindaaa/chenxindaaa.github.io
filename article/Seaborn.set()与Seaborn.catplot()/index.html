@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -840,12 +840,12 @@ True
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（三、建立模型与模型检验）">&larr; Previous Post</a>
+                            <a href="/article/numpy简介/" data-toggle="tooltip" data-placement="top" title="numpy简介">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/python大数据：实战热水器用户行为识别（二、数据预处理）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（二、数据预处理）">Next Post &rarr;</a>
+                            <a href="/article/python大数据：实战热水器用户行为识别（一、数据分析）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（一、数据分析）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -1115,7 +1115,23 @@ True
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 

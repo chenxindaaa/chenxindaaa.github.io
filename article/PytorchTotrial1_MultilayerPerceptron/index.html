@@ -142,14 +142,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -333,7 +333,7 @@ epoch 5, loss 0.0015, train acc 0.864, test acc 0.855</code></pre>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/PytorchTotrial2_LanguageModel/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_LanguageModel">&larr; Previous Post</a>
+                            <a href="/article/PytorchTotrial2_TextPrepare/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_TextPrepare">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -608,7 +608,23 @@ epoch 5, loss 0.0015, train acc 0.864, test acc 0.855</code></pre>
     <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
 <!-- Image to hack wechat -->
 <img src="http://www.chenxindaaa.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 
