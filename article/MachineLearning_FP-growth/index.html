@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -213,9 +213,7 @@
                 post-container">
 
                 <h2 id="一-fp-growth介绍">一、FP-growth介绍</h2>
-<p>从大规模的数据集中，寻找不同特征或者物品之间的隐含关系，称为关联分析（association analysis），或者关联规则学习（association rule learning）。<br>
-在 Apriori 算法中，寻找频繁项集，需要对每一个可能的频繁项扫描一遍数据集计算支持度，计算量庞大。<br>
-在 FP-growth 算法中，寻找频繁项集，只需要扫描两遍数据集，将数据存储在FP树的结构上，然后在FP树上挖掘频繁项集。</p>
+<p>从大规模的数据集中，寻找不同特征或者物品之间的隐含关系，称为关联分析（association analysis），或者关联规则学习（association rule learning）。 在 Apriori 算法中，寻找频繁项集，需要对每一个可能的频繁项扫描一遍数据集计算支持度，计算量庞大。 在 FP-growth 算法中，寻找频繁项集，只需要扫描两遍数据集，将数据存储在FP树的结构上，然后在FP树上挖掘频繁项集。</p>
 <ul>
 <li>优点：速度一般要快于 Apriori。</li>
 <li>缺点：实现比较困难，在某些数据集上性能会下降。</li>
@@ -224,83 +222,79 @@
 <p>例如在下述例子中，下图是一颗FP树：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>事务ID</th>
 <th>事务中的元素项</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>001</td>
 <td>r, z, h, j, p</td>
 </tr>
-<tr>
+<tr class="even">
 <td>002</td>
 <td>z, y, x, w, v, u, t, s</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>003</td>
 <td>z</td>
 </tr>
-<tr>
+<tr class="even">
 <td>004</td>
 <td>r, x, n, o, s</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>005</td>
 <td>y, r, x, z, q, t, p</td>
 </tr>
-<tr>
+<tr class="even">
 <td>006</td>
 <td>y, z, x, e, q, s, t, m</td>
 </tr>
 </tbody>
 </table>
-<p><img src="https://img-blog.csdnimg.cn/20191231164503907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-FP代表频繁模式（Frequent Pattern），一个元素项可以在一颗FP树上出现多次。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191231164503907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> FP代表频繁模式（Frequent Pattern），一个元素项可以在一颗FP树上出现多次。</p>
 <p>树节点上给出了当前节点的路径在数据集中的出现次数，例如｛z:5｝表示元素｛z｝在数据集中出现了5次；｛y:3｝表示路径｛y, x, z｝在数据集中出现了3次；｛s:2｝表示路径｛s, y, x, z｝在数据集中出现了2次。</p>
 <p>左侧为头指针表，给出了每个元素在数据集中出现的次数，并由链表通过节点链接（node link）依次链接每个元素。部分元素因为不满足最小支持度的要求，所以不储存在FP树中。</p>
 <p>在 FP-growth 算法中，同样采用了 Apriori 算法的思想，如果某个项是非频繁的，那么这个项的所有超集也是非频繁的。</p>
 <h2 id="二-构建fp树">二、构建FP树</h2>
-<p>构建FP树的过程只需要扫描两遍数据集。<br>
-第一遍扫描，计算每个单个元素的频率，并根据最小支持度，滤除不满足的元素。<br>
-第二遍扫描，首先对数据集进行处理，每一条数据按照元素的绝对出现频率排序，并滤除不满足最小支持度的元素。<br>
-例如根据上述的头指针表，元素排序为｛z:5, x:4, y:3, s:3, r:3, t:3｝，所以处理后的数据为：</p>
+<p>构建FP树的过程只需要扫描两遍数据集。 第一遍扫描，计算每个单个元素的频率，并根据最小支持度，滤除不满足的元素。 第二遍扫描，首先对数据集进行处理，每一条数据按照元素的绝对出现频率排序，并滤除不满足最小支持度的元素。 例如根据上述的头指针表，元素排序为｛z:5, x:4, y:3, s:3, r:3, t:3｝，所以处理后的数据为：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>事务ID</th>
 <th>事务中的元素项</th>
 <th>过滤及重排序后的事务</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>001</td>
 <td>r, z, h, j, p</td>
 <td>z,r</td>
 </tr>
-<tr>
+<tr class="even">
 <td>002</td>
 <td>z, y, x, w, v, u, t, s</td>
 <td>z, x, y, s, t</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>003</td>
 <td>z</td>
 <td>z</td>
 </tr>
-<tr>
+<tr class="even">
 <td>004</td>
 <td>r, x, n, o, s</td>
 <td>x, s, r</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>005</td>
 <td>y, r, x, z, q, t, p</td>
 <td>z, x, y, r, t</td>
 </tr>
-<tr>
+<tr class="even">
 <td>006</td>
 <td>y, z, x, e, q, s, t, m</td>
 <td>z, x, y, s, t</td>
@@ -308,8 +302,10 @@ FP代表频繁模式（Frequent Pattern），一个元素项可以在一颗FP树
 </tbody>
 </table>
 <p>处理后，遍历数据集，将每一条数据插入FP树中，从根节点开始递归添加路径，存在则将数值增加，不存在则创建新的节点。</p>
-<p>例如下图所示，① 根节点不存在子节点｛z｝，所以创建新的子节点｛z｝，递归节点｛z｝，因不存在子节点｛r｝，所以创建新的子节点｛r｝，② 根节点存在子节点｛z｝，所以数值增加，递归节点｛z｝，因不存在子节点｛x｝，所以创建新的子节点｛x｝，递归节点｛x｝，…，如此递归。</p>
-<p><img src="https://img-blog.csdnimg.cn/20191231164854510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>例如下图所示，① 根节点不存在子节点｛z｝，所以创建新的子节点｛z｝，递归节点｛z｝，因不存在子节点｛r｝，所以创建新的子节点｛r｝，② 根节点存在子节点｛z｝，所以数值增加，递归节点｛z｝，因不存在子节点｛x｝，所以创建新的子节点｛x｝，递归节点｛x｝，......，如此递归。</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20191231164854510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
 <h2 id="三-代码实现">三、代码实现</h2>
 <h4 id="31-fp树的类定义">3.1 FP树的类定义</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">treeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nameValue, numOccur, parentNode)</span>:</span></span><br><span class="line">        self.name = nameValue</span><br><span class="line">        self.count = numOccur</span><br><span class="line">        self.nodeLink = <span class="keyword">None</span></span><br><span class="line">        self.parent = parentNode      <span class="comment">#needs to be updated</span></span><br><span class="line">        self.children = &#123;&#125; </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(self, numOccur)</span>:</span></span><br><span class="line">        self.count += numOccur</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">disp</span><span class="params">(self, ind=<span class="number">1</span>)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'  '</span>*ind, self.name, <span class="string">' '</span>, self.count</span><br><span class="line">        <span class="keyword">for</span> child <span class="keyword">in</span> self.children.values():</span><br><span class="line">            child.disp(ind+<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
@@ -330,7 +326,7 @@ FP代表频繁模式（Frequent Pattern），一个元素项可以在一颗FP树
                     
                     
                         <li class="next">
-                            <a href="/article/MachinLearning_Cluster/" data-toggle="tooltip" data-placement="top" title="MachineLearning_Cluster">Next Post &rarr;</a>
+                            <a href="/article/MachinLearning_Apriori/" data-toggle="tooltip" data-placement="top" title="MachineLearning_Apriori">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

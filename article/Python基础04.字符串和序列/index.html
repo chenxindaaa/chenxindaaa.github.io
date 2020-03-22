@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -213,119 +213,12 @@
                 post-container">
 
                 <h2 id="一python字符串">一.Python字符串</h2>
-<p><strong>1.字符串的创建</strong><br>
-Python中的字符串可以使用&quot;&quot;也可以使用‘’，其都是表示字符串类型<br>
-创建一个字符串有两个方法<br>
-方法一：<br>
-<img src="https://img-blog.csdnimg.cn/20191024102015873.png" alt="在这里插入图片描述"><br>
-方法二：<br>
-<img src="https://img-blog.csdnimg.cn/20191024102042534.png" alt="在这里插入图片描述"><br>
-也可以使用一些方法来创建数组<br>
-<img src="https://img-blog.csdnimg.cn/20191024102215221.png" alt="在这里插入图片描述"><br>
-<strong>2.字符串的修改</strong><img src="https://img-blog.csdnimg.cn/2019102410240564.png" alt="在这里插入图片描述"><br>
-由于字符串是不可修改数据类型，所以想要修改字符串只能通过间接的方式<br>
-<img src="https://img-blog.csdnimg.cn/20191024102449242.png" alt="在这里插入图片描述"><br>
-<strong>3.Python转义字符：</strong><br>
-<img src="https://img-blog.csdnimg.cn/20191024102722525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
-<strong>4.字符串内置方法</strong><br>
-1capitalize()<br>
-将字符串的第一个字符转换为大写<br>
-2center(width, fillchar)</p>
+<p><strong>1.字符串的创建</strong> Python中的字符串可以使用""也可以使用‘’，其都是表示字符串类型 创建一个字符串有两个方法 方法一： <img src="https://img-blog.csdnimg.cn/20191024102015873.png" alt="在这里插入图片描述"> 方法二： <img src="https://img-blog.csdnimg.cn/20191024102042534.png" alt="在这里插入图片描述"> 也可以使用一些方法来创建数组 <img src="https://img-blog.csdnimg.cn/20191024102215221.png" alt="在这里插入图片描述"> <strong>2.字符串的修改</strong><img src="https://img-blog.csdnimg.cn/2019102410240564.png" alt="在这里插入图片描述"> 由于字符串是不可修改数据类型，所以想要修改字符串只能通过间接的方式 <img src="https://img-blog.csdnimg.cn/20191024102449242.png" alt="在这里插入图片描述"> <strong>3.Python转义字符：</strong> <img src="https://img-blog.csdnimg.cn/20191024102722525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>4.字符串内置方法</strong> 1capitalize() 将字符串的第一个字符转换为大写 2center(width, fillchar)</p>
 <p>返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。</p>
-<p>3count(str, beg= 0,end=len(string))<br>
-返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数<br>
-4bytes.decode(encoding=“utf-8”, errors=“strict”)<br>
-Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。<br>
-5encode(encoding=‘UTF-8’,errors=‘strict’)<br>
-以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是’ignore’或者’replace’<br>
-6endswith(suffix, beg=0, end=len(string))<br>
-检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True,否则返回 False.<br>
-7expandtabs(tabsize=8)<br>
-把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。<br>
-8find(str, beg=0, end=len(string))<br>
-检测 str 是否包含在字符串中，如果指定范围 beg 和 end ，则检查是否包含在指定范围内，如果包含返回开始的索引值，否则返回-1<br>
-9index(str, beg=0, end=len(string))<br>
-跟find()方法一样，只不过如果str不在字符串中会报一个异常.<br>
-10isalnum()<br>
-如果字符串至少有一个字符并且所有字符都是字母或数字则返<br>
-回 True,否则返回 False<br>
-11isalpha()<br>
-如果字符串至少有一个字符并且所有字符都是字母则返回 True,<br>
-否则返回 False<br>
-12isdigit()<br>
-如果字符串只包含数字则返回 True 否则返回 False…<br>
-13islower()<br>
-如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True，否则返回 False<br>
-14isnumeric()<br>
-如果字符串中只包含数字字符，则返回 True，否则返回 False<br>
-15isspace()<br>
-如果字符串中只包含空白，则返回 True，否则返回 False.<br>
-16istitle()</p>
-<p>如果字符串是标题化的(见 title())则返回 True，否则返回 False<br>
-17isupper()<br>
-如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True，否则返回 False<br>
-18join(seq)<br>
-以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串<br>
-19len(string)<br>
-返回字符串长度<br>
-20ljust(width[, fillchar])<br>
-返回一个原字符串左对齐,并使用 fillchar 填充至长度 width 的新字符串，fillchar 默认为空格。<br>
-21lower()<br>
-转换字符串中所有大写字符为小写.<br>
-22lstrip()<br>
-截掉字符串左边的空格或指定字符。<br>
-23maketrans()<br>
-创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。<br>
-24max(str)<br>
-返回字符串 str 中最大的字母。<br>
-25min(str)<br>
-返回字符串 str 中最小的字母。<br>
-26replace(old, new [, max])<br>
-把 将字符串中的 str1 替换成 str2,如果 max 指定，则替换不超过 max 次。<br>
-27rfind(str, beg=0,end=len(string))<br>
-类似于 find()函数，不过是从右边开始查找.<br>
-28rindex( str, beg=0, end=len(string))<br>
-类似于 index()，不过是从右边开始.<br>
-29rjust(width,[, fillchar])<br>
-返回一个原字符串右对齐,并使用fillchar(默认空格）填充至长度 width 的新字符串<br>
-30rstrip()<br>
-删除字符串字符串末尾的空格.<br>
-31split(str=&quot;&quot;, num=string.count(str))<br>
-num=string.count(str))<br>
-以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串<br>
-32splitlines([keepends])<br>
-按照行(’\r’, ‘\r\n’, \n’)分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。<br>
-33startswith(substr, beg=0,end=len(string))<br>
-检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。如果beg 和 end 指定值，则在指定范围内检查。<br>
-34strip([chars])<br>
-在字符串上执行 lstrip()和 rstrip()<br>
-35swapcase()<br>
-将字符串中大写转换为小写，小写转换为大写<br>
-36title()<br>
-返回&quot;标题化&quot;的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())<br>
-37translate(table, deletechars=&quot;&quot;)<br>
-根据 str 给出的表(包含 256 个字符)转换 string 的字符,<br>
-要过滤掉的字符放到 deletechars 参数中<br>
-38upper()</p>
-<p>转换字符串中的小写字母为大写<br>
-39zfill (width)<br>
-返回长度为 width 的字符串，原字符串右对齐，前面填充0<br>
-40isdecimal()</p>
-<p>检查字符串是否只包含十进制字符，如果是返回 true，否则返回 false。<br>
-<strong>5.格式化字符串</strong><br>
-Python字符串格式化符号<br>
-<img src="https://img-blog.csdnimg.cn/20191024103129785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">第一种格式化方法：<br>
-format<br>
-<img src="https://img-blog.csdnimg.cn/20191024103738468.png" alt="在这里插入图片描述"><br>
-第二种方法<br>
-<img src="https://img-blog.csdnimg.cn/20191024104225810.png" alt="在这里插入图片描述"><br>
-二.Python序列<br>
-　常见序列类型包括字符串(普通字符串和unicode字符串),列表和元组.所谓序列,即成员有序排列,可通过下标访问.<br>
-　序列都有<br>
-　1.索引<br>
-　2.切片<br>
-　3.乘法<br>
-　4.成员资格</p>
+<p>3count(str, beg= 0,end=len(string)) 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数 4bytes.decode(encoding="utf-8", errors="strict") Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。 5encode(encoding='UTF-8',errors='strict') 以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是'ignore'或者'replace' 6endswith(suffix, beg=0, end=len(string)) 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，如果是，返回 True,否则返回 False. 7expandtabs(tabsize=8) 把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。 8find(str, beg=0, end=len(string)) 检测 str 是否包含在字符串中，如果指定范围 beg 和 end ，则检查是否包含在指定范围内，如果包含返回开始的索引值，否则返回-1 9index(str, beg=0, end=len(string)) 跟find()方法一样，只不过如果str不在字符串中会报一个异常. 10isalnum() 如果字符串至少有一个字符并且所有字符都是字母或数字则返 回 True,否则返回 False 11isalpha() 如果字符串至少有一个字符并且所有字符都是字母则返回 True, 否则返回 False 12isdigit() 如果字符串只包含数字则返回 True 否则返回 False.. 13islower() 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True，否则返回 False 14isnumeric() 如果字符串中只包含数字字符，则返回 True，否则返回 False 15isspace() 如果字符串中只包含空白，则返回 True，否则返回 False. 16istitle()</p>
+<p>如果字符串是标题化的(见 title())则返回 True，否则返回 False 17isupper() 如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True，否则返回 False 18join(seq) 以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串 19len(string) 返回字符串长度 20ljust(width[, fillchar]) 返回一个原字符串左对齐,并使用 fillchar 填充至长度 width 的新字符串，fillchar 默认为空格。 21lower() 转换字符串中所有大写字符为小写. 22lstrip() 截掉字符串左边的空格或指定字符。 23maketrans() 创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。 24max(str) 返回字符串 str 中最大的字母。 25min(str) 返回字符串 str 中最小的字母。 26replace(old, new [, max]) 把 将字符串中的 str1 替换成 str2,如果 max 指定，则替换不超过 max 次。 27rfind(str, beg=0,end=len(string)) 类似于 find()函数，不过是从右边开始查找. 28rindex( str, beg=0, end=len(string)) 类似于 index()，不过是从右边开始. 29rjust(width,[, fillchar]) 返回一个原字符串右对齐,并使用fillchar(默认空格）填充至长度 width 的新字符串 30rstrip() 删除字符串字符串末尾的空格. 31split(str="", num=string.count(str)) num=string.count(str)) 以 str 为分隔符截取字符串，如果 num 有指定值，则仅截取 num+1 个子字符串 32splitlines([keepends]) 按照行(', '', ')分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。 33startswith(substr, beg=0,end=len(string)) 检查字符串是否是以指定子字符串 substr 开头，是则返回 True，否则返回 False。如果beg 和 end 指定值，则在指定范围内检查。 34strip([chars]) 在字符串上执行 lstrip()和 rstrip() 35swapcase() 将字符串中大写转换为小写，小写转换为大写 36title() 返回"标题化"的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle()) 37translate(table, deletechars="") 根据 str 给出的表(包含 256 个字符)转换 string 的字符, 要过滤掉的字符放到 deletechars 参数中 38upper()</p>
+<p>转换字符串中的小写字母为大写 39zfill (width) 返回长度为 width 的字符串，原字符串右对齐，前面填充0 40isdecimal()</p>
+<p>检查字符串是否只包含十进制字符，如果是返回 true，否则返回 false。 <strong>5.格式化字符串</strong> Python字符串格式化符号 <img src="https://img-blog.csdnimg.cn/20191024103129785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">第一种格式化方法： format <img src="https://img-blog.csdnimg.cn/20191024103738468.png" alt="在这里插入图片描述"> 第二种方法 <img src="https://img-blog.csdnimg.cn/20191024104225810.png" alt="在这里插入图片描述"> 二.Python序列 　常见序列类型包括字符串(普通字符串和unicode字符串),列表和元组.所谓序列,即成员有序排列,可通过下标访问. 　序列都有 　1.索引 　2.切片 　3.乘法 　4.成员资格</p>
 
                 
 

@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -214,19 +214,12 @@
 
                 <h2 id="线性回归">线性回归</h2>
 <p>主要内容包括：</p>
-<ol>
-<li>
-<p>线性回归的基本要素</p>
-</li>
-<li>
-<p>线性回归模型从零开始的实现</p>
-</li>
-<li>
-<p>线性回归模型使用pytorch的简洁实现</p>
-</li>
+<ol type="1">
+<li><p>线性回归的基本要素</p></li>
+<li><p>线性回归模型从零开始的实现</p></li>
+<li><p>线性回归模型使用pytorch的简洁实现</p></li>
 </ol>
-<p>第一次打卡链接：<br>
-<a href="https://www.chenxindaaa.com/article/PytorchTotrial1_SoftmaxClassify/">SoftmaxClassify</a></p>
+<p>第一次打卡链接： <a href="https://www.chenxindaaa.com/article/PytorchTotrial1_SoftmaxClassify/">SoftmaxClassify</a></p>
 <p><a href="https://www.chenxindaaa.com/article/PytorchTotrial1_MultilayerPerceptron/">MultilayerPerceptron</a></p>
 <p><a href="https://www.chenxindaaa.com/article/PytorchTotrial2_TextPrepare/">TextPrepare</a></p>
 <p><a href="https://www.chenxindaaa.com/article/PytorchTotrial2_LanguageModel/">LanguageModel</a></p>
@@ -234,57 +227,47 @@
 <h2 id="线性回归的基本要素">线性回归的基本要素</h2>
 <h3 id="模型">模型</h3>
 <p>为了简单起见，这里我们假设价格只取决于房屋状况的两个因素，即面积（平方米）和房龄（年）。接下来我们希望探索价格与这两个因素的具体关系。线性回归假设输出与各个输入之间是线性关系:</p>
-<p>$$price=w_{area}⋅area+w_{age}⋅age+b$$</p>
+<p><span class="math display">\[price=w_{area}⋅area+w_{age}⋅age+b\]</span></p>
 <h3 id="数据集">数据集</h3>
 <p>我们通常收集一系列的真实数据，例如多栋房屋的真实售出价格和它们对应的面积和房龄。我们希望在这个数据上面寻找模型参数来使模型的预测价格与真实价格的误差最小。在机器学习术语里，该数据集被称为训练数据集（training data set）或训练集（training set），一栋房屋被称为一个样本（sample），其真实售出价格叫作标签（label），用来预测标签的两个因素叫作特征（feature）。特征用来表征样本的特点。</p>
 <h3 id="损失函数">损失函数</h3>
-<p><strong>1、$MAE / L1 + MSE / L2$</strong></p>
-<p>在模型训练中，我们需要衡量价格预测值与真实值之间的误差。通常我们会选取一个非负数作为误差，且数值越小表示误差越小。一个常用的选择是平方函数。 它在评估索引为  $i$  的样本误差的表达式为</p>
-<p>$$l^{(i)}(w,b)=\frac{1}{2}(\hat y^{(i)}−y^{(i)})^2,$$</p>
-<p>$$L(w,b)=\frac{1}{n}\sum ^n <em>{i=1}l^{(i)}(w,b)=\frac{1}{n}\sum^n</em>{i=1}\frac{1}{2}(w^⊤x^{(i)}+b−y^{(i)})^2.$$</p>
-<p>上面的损失函数属于$MSE/L_2$损失,令残差$r=f(X)-y$则$MAE/L_1$损失为：</p>
-<p>$$L_1®=|r|$$</p>
-<p><strong>$MSE（L_2损失）$与$MAE（L_1损失）$的分析：</strong></p>
+<p><strong>1、<span class="math inline">\(MAE / L1 + MSE / L2\)</span></strong></p>
+<p>在模型训练中，我们需要衡量价格预测值与真实值之间的误差。通常我们会选取一个非负数作为误差，且数值越小表示误差越小。一个常用的选择是平方函数。 它在评估索引为 <span class="math inline">\(i\)</span> 的样本误差的表达式为</p>
+<p><span class="math display">\[l^{(i)}(w,b)=\frac{1}{2}(\hat y^{(i)}−y^{(i)})^2,\]</span></p>
+<p><span class="math display">\[L(w,b)=\frac{1}{n}\sum ^n _{i=1}l^{(i)}(w,b)=\frac{1}{n}\sum^n_{i=1}\frac{1}{2}(w^⊤x^{(i)}+b−y^{(i)})^2.\]</span></p>
+<p>上面的损失函数属于<span class="math inline">\(MSE/L_2\)</span>损失,令残差<span class="math inline">\(r=f(X)-y\)</span>则<span class="math inline">\(MAE/L_1\)</span>损失为：</p>
+<p><span class="math display">\[L_1(r)=|r|\]</span></p>
+<p><strong><span class="math inline">\(MSE（L_2损失）\)</span>与<span class="math inline">\(MAE（L_1损失）\)</span>的分析：</strong></p>
 <p>简单来说，<em>MSE计算简便，但MAE对异常点有更好的鲁棒性</em>。训练一个机器学习模型时，目标就是找到损失函数达到极小值的点。当预测值等于真实值时，这两种函数都能达到最小。</p>
 <ul>
-<li>
-<p>分析：MSE对误差取了平方（令$r$=真实值-预测值），因此若$r$&gt;1，则MSE会进一步增大误差。如果数据中存在异常点，那么e值就会很大，而e²则会远大于|e|。因此，相对于使用MAE计算损失，使用MSE的模型会赋予异常点更大的权重。用RMSE（即MSE的平方根，同MAE在同一量级中）计算损失的模型会以牺牲了其他样本的误差为代价，朝着减小异常点误差的方向更新。然而这就会降低模型的整体性能。直观上可以这样理解：如果我们最小化MSE来对所有的样本点只给出一个预测值，那么这个值一定是所有目标值的平均值。但如果是最小化MAE，那么这个值，则会是所有样本点目标值的中位数。对异常值而言，中位数比均值更加鲁棒，因此MAE对于异常值也比MSE更稳定。</p>
-</li>
-<li>
-<p>如何选择损失函数：如果训练数据被异常点所污染（比如，在训练数据中存在大量错误的反例和正例标记，但是在测试集中没有这个问题）或者异常点代表在商业中很重要的异常情况，并且需要被检测出来，则应选用MSE损失函数。相反，如果只把异常值当作受损数据，则应选用MAE损失函数。<br>
-MAE存在一个严重的问题（特别是对于神经网络）：更新的梯度始终相同，也就是说，即使对于很小的损失值，梯度也很大。这样不利于模型的学习。为了解决这个缺陷，可以使用变化的学习率，在损失接近最小值时降低学习率。<br>
-MSE在这种情况下的表现就很好，即便使用固定的学习率也可以有效收敛。MSE损失的梯度随损失增大而增大，而损失趋于0时则会减小。这使得在训练结束时，使用MSE模型的结果会更精确。</p>
-</li>
-<li>
-<p>总结：处理异常点时，L1损失函数更稳定，但它的导数不连续，因此求解效率较低。L2损失函数对异常点更敏感，但通过令其导数为0，可以得到更稳定的封闭解。<br>
-二者兼有的问题是：在某些情况下，上述两种损失函数都不能满足需求。例如，若数据中90%的样本对应的目标值为150，剩下10%在0到30之间。那么使用MAE作为损失函数的模型可能会忽视10%的异常点，而对所有样本的预测值都为150。这是因为模型会按中位数来预测。而使用MSE的模型则会给出很多介于0到30的预测值，因为模型会向异常点偏移。上述两种结果在许多商业场景中都是不可取的。最简单的办法是对目标变量进行变换。而另一种办法则是换一个损失函数。</p>
-</li>
+<li><p>分析：MSE对误差取了平方（令<span class="math inline">\(r\)</span>=真实值-预测值），因此若<span class="math inline">\(r\)</span>&gt;1，则MSE会进一步增大误差。如果数据中存在异常点，那么e值就会很大，而e²则会远大于|e|。因此，相对于使用MAE计算损失，使用MSE的模型会赋予异常点更大的权重。用RMSE（即MSE的平方根，同MAE在同一量级中）计算损失的模型会以牺牲了其他样本的误差为代价，朝着减小异常点误差的方向更新。然而这就会降低模型的整体性能。直观上可以这样理解：如果我们最小化MSE来对所有的样本点只给出一个预测值，那么这个值一定是所有目标值的平均值。但如果是最小化MAE，那么这个值，则会是所有样本点目标值的中位数。对异常值而言，中位数比均值更加鲁棒，因此MAE对于异常值也比MSE更稳定。</p></li>
+<li><p>如何选择损失函数：如果训练数据被异常点所污染（比如，在训练数据中存在大量错误的反例和正例标记，但是在测试集中没有这个问题）或者异常点代表在商业中很重要的异常情况，并且需要被检测出来，则应选用MSE损失函数。相反，如果只把异常值当作受损数据，则应选用MAE损失函数。 MAE存在一个严重的问题（特别是对于神经网络）：更新的梯度始终相同，也就是说，即使对于很小的损失值，梯度也很大。这样不利于模型的学习。为了解决这个缺陷，可以使用变化的学习率，在损失接近最小值时降低学习率。 MSE在这种情况下的表现就很好，即便使用固定的学习率也可以有效收敛。MSE损失的梯度随损失增大而增大，而损失趋于0时则会减小。这使得在训练结束时，使用MSE模型的结果会更精确。</p></li>
+<li><p>总结：处理异常点时，L1损失函数更稳定，但它的导数不连续，因此求解效率较低。L2损失函数对异常点更敏感，但通过令其导数为0，可以得到更稳定的封闭解。 二者兼有的问题是：在某些情况下，上述两种损失函数都不能满足需求。例如，若数据中90%的样本对应的目标值为150，剩下10%在0到30之间。那么使用MAE作为损失函数的模型可能会忽视10%的异常点，而对所有样本的预测值都为150。这是因为模型会按中位数来预测。而使用MSE的模型则会给出很多介于0到30的预测值，因为模型会向异常点偏移。上述两种结果在许多商业场景中都是不可取的。最简单的办法是对目标变量进行变换。而另一种办法则是换一个损失函数。</p></li>
 </ul>
 <p><strong>2、Huber Loss</strong></p>
-<p>$$L_\delta (y, f(x))=<br>
-\begin{cases}<br>
-\frac{1}{2}(y-f(x))^2  &amp; for|y-f(x)|\leq \delta \[2ex]<br>
-\delta|y-f(x)|-\frac{1}{2}\delta ^ 2 &amp; otherwise<br>
-\end{cases}$$</p>
-<p>Huber损失，平滑的平均绝对误差。Huber损失对数据中的异常点没有平方误差损失那么敏感。它在0也可微分。<em>本质上，Huber损失是绝对误差，只是在误差很小时，就变为平方误差</em>。误差降到多小时变为平方误差由超参数δ（delta）来控制。当Huber损失在 [0-$\delta$，0+$\delta$] 之间时，等价为MSE，而在 [$-\infty$，$\delta$] 和 [$\delta$，$+\infty$] 时为MAE。</p>
+<p><span class="math display">\[L_\delta (y, f(x))=
+\begin{cases}
+\frac{1}{2}(y-f(x))^2  &amp; for|y-f(x)|\leq \delta \\[2ex]
+\delta|y-f(x)|-\frac{1}{2}\delta ^ 2 &amp; otherwise
+\end{cases}\]</span></p>
+<p>Huber损失，平滑的平均绝对误差。Huber损失对数据中的异常点没有平方误差损失那么敏感。它在0也可微分。<em>本质上，Huber损失是绝对误差，只是在误差很小时，就变为平方误差</em>。误差降到多小时变为平方误差由超参数δ（delta）来控制。当Huber损失在 [0-<span class="math inline">\(\delta\)</span>，0+<span class="math inline">\(\delta\)</span>] 之间时，等价为MSE，而在 [<span class="math inline">\(-\infty\)</span>，<span class="math inline">\(\delta\)</span>] 和 [<span class="math inline">\(\delta\)</span>，<span class="math inline">\(+\infty\)</span>] 时为MAE。</p>
 <p>这里超参数delta的选择非常重要，因为这决定了对异常点的定义。当残差大于delta，应当采用L1（对较大的异常值不那么敏感）来最小化，而残差小于超参数，则用L2来最小化。</p>
 <p><strong>如何选择损失函数</strong>：使用MAE训练神经网络最大的一个问题就是不变的大梯度，这可能导致在使用梯度下降快要结束时，错过了最小点。而对于MSE，梯度会随着损失的减小而减小，使结果更加精确。在这种情况下，Huber损失就非常有用。它会由于梯度的减小而落在最小值附近。比起MSE，它对异常点更加鲁棒。因此，Huber损失结合了MSE和MAE的优点。但是，Huber损失的问题是可能需要不断调整超参数delta。</p>
 <p><strong>3、Log-Cosh Loss</strong></p>
-<p>$$L(y,y^p)=\sum ^n _{i=1}log(cosh(y_i^p)-y_i)$$</p>
+<p><span class="math display">\[L(y,y^p)=\sum ^n _{i=1}log(cosh(y_i^p)-y_i)\]</span></p>
 <p>Log-cosh损失是另一种应用于回归问题中的，且比L2更平滑的的损失函数。它的计算方式是预测误差的双曲余弦的对数。</p>
-<p><strong>优点</strong>：对于较小的$x$，$log(cosh(x))$近似等于$(x^2)/2$，对于较大的$x$，近似等于$abs(x)-log(2)$。这意味着$‘logcosh’$基本类似于均方误差，但不易受到异常点的影响。它具有Huber损失所有的优点，但不同于Huber损失的是，Log-cosh二阶处处可微。</p>
+<p><strong>优点</strong>：对于较小的<span class="math inline">\(x\)</span>，<span class="math inline">\(log(cosh(x))\)</span>近似等于<span class="math inline">\((x^2)/2\)</span>，对于较大的<span class="math inline">\(x\)</span>，近似等于<span class="math inline">\(abs(x)-log(2)\)</span>。这意味着<span class="math inline">\(‘logcosh’\)</span>基本类似于均方误差，但不易受到异常点的影响。它具有Huber损失所有的优点，但不同于Huber损失的是，Log-cosh二阶处处可微。</p>
 <p><strong>如何选择损失函数</strong>：许多机器学习模型如XGBoost，就是采用牛顿法来寻找最优点。而牛顿法就需要求解二阶导数（Hessian）。因此对于诸如XGBoost这类机器学习框架，损失函数的二阶可微是很有必要的。但Log-cosh损失也并非完美，其仍存在某些问题。比如误差很大的话，一阶梯度和Hessian会变成定值，这就导致XGBoost出现缺少分裂点的情况。</p>
 <p><strong>4、Quantile Loss</strong></p>
-<p>$$L_\gamma(u,y^p)=\sum_{i:y_i&lt;y_i^p}(1-\gamma)|y_i-y_i^p|+\sum_{i:y_i\geq y_i^p}\gamma|y_i-y_i^p|$$</p>
+<p><span class="math display">\[L_\gamma(u,y^p)=\sum_{i:y_i&lt;y_i^p}(1-\gamma)|y_i-y_i^p|+\sum_{i:y_i\geq y_i^p}\gamma|y_i-y_i^p|\]</span></p>
 <p>许多商业问题的决策通常希望了解预测中的不确定性，<strong>更关注区间预测而不仅是点预测</strong>时，分位数损失函数就很有用。</p>
-<p>使用最小二乘回归进行区间预测，基于的假设是残差$（y-\hat{y}）$是独立变量，且方差保持不变。一旦违背了这条假设，那么线性回归模型就不成立。这时，就可以使用分位数损失和分位数回归，<strong>因为即便对于具有变化方差或非正态分布的残差，基于分位数损失的回归也能给出合理的预测区间。</strong></p>
+<p>使用最小二乘回归进行区间预测，基于的假设是残差<span class="math inline">\(（y-\hat{y}）\)</span>是独立变量，且方差保持不变。一旦违背了这条假设，那么线性回归模型就不成立。这时，就可以使用分位数损失和分位数回归，<strong>因为即便对于具有变化方差或非正态分布的残差，基于分位数损失的回归也能给出合理的预测区间。</strong></p>
 <p><strong>理解分位数损失函数</strong>：如何选取合适的分位值取决于我们对正误差和反误差的重视程度。损失函数通过分位值（γ）对高估和低估给予不同的惩罚。例如，当分位数损失函数γ=0.25时，对高估的惩罚更大，使得预测值略低于中值。</p>
 <h3 id="优化函数-随机梯度下降">优化函数 - 随机梯度下降</h3>
 <p>当模型和损失函数形式较为简单时，上面的误差最小化问题的解可以直接用公式表达出来。这类解叫作解析解（analytical solution）。本节使用的线性回归和平方误差刚好属于这个范畴。然而，大多数深度学习模型并没有解析解，只能通过优化算法有限次迭代模型参数来尽可能降低损失函数的值。这类解叫作数值解（numerical solution）。</p>
 <p>在求数值解的优化算法中，小批量随机梯度下降（mini-batch stochastic gradient descent）在深度学习中被广泛使用。它的算法很简单：先选取一组模型参数的初始值，如随机选取；接下来对参数进行多次迭代，使每次迭代都可能降低损失函数的值。在每次迭代中，先随机均匀采样一个由固定数目训练数据样本所组成的小批量（mini-batch） B ，然后求小批量中数据样本的平均损失有关模型参数的导数（梯度），最后用此结果与预先设定的一个正数的乘积作为模型参数在本次迭代的减小量。</p>
-<p>$$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)$$</p>
-<p>学习率:  η 代表在每次优化中，能够学习的步长的大小<br>
-批量大小:  B 是小批量计算中的批量大小batch size</p>
+<p><span class="math display">\[(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)\]</span></p>
+<p>学习率: η 代表在每次优化中，能够学习的步长的大小 批量大小: B 是小批量计算中的批量大小batch size</p>
 <p>总结一下，优化函数的有以下两个步骤：</p>
 <ul>
 <li>(i)初始化模型参数，一般来说使用随机初始化；</li>
@@ -292,7 +275,7 @@ MSE在这种情况下的表现就很好，即便使用固定的学习率也可�
 </ul>
 <h2 id="矢量计算">矢量计算</h2>
 <p>在模型训练或预测时，我们常常会同时处理多个数据样本并用到矢量计算。在介绍线性回归的矢量计算表达式之前，让我们先考虑对两个向量相加的两种方法。</p>
-<ol>
+<ol type="1">
 <li>向量相加的一种方法是，将这两个向量按元素逐一做标量加法。</li>
 <li>向量相加的另一种方法是，将这两个向量直接做矢量加法。</li>
 </ol>
@@ -300,24 +283,22 @@ MSE在这种情况下的表现就很好，即便使用固定的学习率也可�
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># define a timer class to record time</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Timer</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Record multiple running times."""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.times = []</span><br><span class="line">        self.start()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># start the timer</span></span><br><span class="line">        self.start_time = time.time()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># stop the timer and record time into a list</span></span><br><span class="line">        self.times.append(time.time() - self.start_time)</span><br><span class="line">        <span class="keyword">return</span> self.times[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">avg</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># calculate the average and return</span></span><br><span class="line">        <span class="keyword">return</span> sum(self.times)/len(self.times)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># return the sum of recorded time</span></span><br><span class="line">        <span class="keyword">return</span> sum(self.times)</span><br></pre></td></tr></table></figure>
 <p>现在我们可以来测试了。首先将两个向量使用for循环按元素逐一做标量加法。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">timer = Timer()</span><br><span class="line">c = torch.zeros(n)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">    c[i] = a[i] + b[i]</span><br><span class="line"><span class="string">'%.5f sec'</span> % timer.stop()</span><br></pre></td></tr></table></figure>
-<pre><code>'0.04067 sec'
-</code></pre>
+<pre><code>&#39;0.04067 sec&#39;</code></pre>
 <p>另外是使用torch来将两个向量直接做矢量加法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timer.start()</span><br><span class="line">d = a + b</span><br><span class="line"><span class="string">'%.5f sec'</span> % timer.stop()</span><br></pre></td></tr></table></figure>
-<pre><code>'0.00000 sec'
-</code></pre>
+<pre><code>&#39;0.00000 sec&#39;</code></pre>
 <p>结果很明显,后者比前者运算速度更快。因此，我们应该尽可能采用矢量计算，以提升计算效率。</p>
 <h2 id="线性回归模型从零开始的实现">线性回归模型从零开始的实现</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import packages and modules</span></span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> IPython <span class="keyword">import</span> display</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">print(torch.__version__)</span><br></pre></td></tr></table></figure>
-<pre><code>1.4.0+cpu
-</code></pre>
+<pre><code>1.4.0+cpu</code></pre>
 <h2 id="生成数据集">生成数据集</h2>
-<p>使用线性模型来生成数据集，生成一个1000个样本的数据集，下面是用来生成数据的线性关系：<br>
-$$price=w_{area}⋅area+w_{age}⋅age+b$$</p>
+<p>使用线性模型来生成数据集，生成一个1000个样本的数据集，下面是用来生成数据的线性关系： <span class="math display">\[price=w_{area}⋅area+w_{age}⋅age+b\]</span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set input feature number </span></span><br><span class="line">num_inputs = <span class="number">2</span></span><br><span class="line"><span class="comment"># set example number</span></span><br><span class="line">num_examples = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set true weight and bias in order to generate corresponded label</span></span><br><span class="line">true_w = [<span class="number">2</span>, <span class="number">-3.4</span>]</span><br><span class="line">true_b = <span class="number">4.2</span></span><br><span class="line"></span><br><span class="line">features = torch.randn(num_examples, num_inputs,</span><br><span class="line">                      dtype=torch.float32)</span><br><span class="line">labels = true_w[<span class="number">0</span>] * features[:, <span class="number">0</span>] + true_w[<span class="number">1</span>] * features[:, <span class="number">1</span>] + true_b</span><br><span class="line">labels += torch.tensor(np.random.normal(<span class="number">0</span>, <span class="number">0.01</span>, size=labels.size()),</span><br><span class="line">                       dtype=torch.float32)</span><br></pre></td></tr></table></figure>
 <p>使用图像来展示生成的数据</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(features[:, <span class="number">1</span>].numpy(), labels.numpy(), <span class="number">1</span>);  <span class="comment"># plt.scatter(x, y, s=20)</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200214205009619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-aHyHVLO6-1581684543305)(output_13_0.png)]"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200214205009619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-aHyHVLO6-1581684543305)(output_13_0.png)]</figcaption>
+</figure>
 <h2 id="读取数据集">读取数据集</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter</span><span class="params">(batch_size, features, labels)</span>:</span></span><br><span class="line">    num_examples = len(features)</span><br><span class="line">    indices = list(range(num_examples))</span><br><span class="line">    random.shuffle(indices)  <span class="comment"># random read 10 samples</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        j = torch.LongTensor(indices[i: min(i + batch_size, num_examples)]) <span class="comment"># the last time may be not enough for a whole batch</span></span><br><span class="line">        <span class="keyword">yield</span>  features.index_select(<span class="number">0</span>, j), labels.index_select(<span class="number">0</span>, j)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter(batch_size, features, labels):</span><br><span class="line">    print(X, <span class="string">'\n'</span>, y)</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
@@ -332,23 +313,18 @@ $$price=w_{area}⋅area+w_{age}⋅age+b$$</p>
         [-0.1157,  0.6430],
         [ 0.2604,  1.9266]]) 
  tensor([ 5.2722, -0.3629,  5.7908, -0.4465,  2.9890, -0.1313,  2.5523, 10.1736,
-         1.7958, -1.8457])
-</code></pre>
+         1.7958, -1.8457])</code></pre>
 <h2 id="初始化模型参数">初始化模型参数</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">w = torch.tensor(np.random.normal(<span class="number">0</span>, <span class="number">0.01</span>, (num_inputs, <span class="number">1</span>)), dtype=torch.float32) <span class="comment"># 正态分布</span></span><br><span class="line">b = torch.zeros(<span class="number">1</span>, dtype=torch.float32)</span><br><span class="line"></span><br><span class="line">w.requires_grad_(requires_grad=<span class="keyword">True</span>)</span><br><span class="line">b.requires_grad_(requires_grad=<span class="keyword">True</span>)  <span class="comment"># 需要求梯度</span></span><br></pre></td></tr></table></figure>
-<pre><code>torch.Size([2, 1])
-</code></pre>
+<pre><code>torch.Size([2, 1])</code></pre>
 <h2 id="定义模型">定义模型</h2>
-<p>定义用来训练参数的训练模型：<br>
-$$price=w_{area}⋅area+w_{age}⋅age+b$$</p>
+<p>定义用来训练参数的训练模型： <span class="math display">\[price=w_{area}⋅area+w_{age}⋅age+b\]</span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">linreg</span><span class="params">(X, w, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> torch.mm(X, w) + b  <span class="comment"># mm矩阵乘法</span></span><br></pre></td></tr></table></figure>
 <h2 id="定义损失函数">定义损失函数</h2>
-<p>我们使用的是均方误差损失函数：<br>
-$$l^{(i)}(w,b)=\frac{1}{2}(\hat{y}^{(i)}-y^{(i)})^2$$</p>
+<p>我们使用的是均方误差损失函数： <span class="math display">\[l^{(i)}(w,b)=\frac{1}{2}(\hat{y}^{(i)}-y^{(i)})^2\]</span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">squared_loss</span><span class="params">(y_hat, y)</span>:</span> </span><br><span class="line">    <span class="keyword">return</span> (y_hat - y.view(y_hat.size())) ** <span class="number">2</span> / <span class="number">2</span>  <span class="comment"># view把y维度弄成和y帽一样</span></span><br></pre></td></tr></table></figure>
 <h2 id="定义优化函数">定义优化函数</h2>
-<p>在这里优化函数使用的是小批量随机梯度下降：<br>
-$$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)$$</p>
+<p>在这里优化函数使用的是小批量随机梯度下降： <span class="math display">\[(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b)\]</span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sgd</span><span class="params">(params, lr, batch_size)</span>:</span> </span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">        param.data -= lr * param.grad / batch_size <span class="comment"># ues .data to operate param without gradient track</span></span><br></pre></td></tr></table></figure>
 <h2 id="训练">训练</h2>
 <p>当数据集、模型、损失函数和优化函数定义完了之后就可来准备进行模型的训练了。</p>
@@ -357,19 +333,16 @@ $$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i 
 epoch 2, loss 0.000143
 epoch 3, loss 0.000048
 epoch 4, loss 0.000048
-epoch 5, loss 0.000048
-</code></pre>
+epoch 5, loss 0.000048</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w, true_w, b, true_b</span><br></pre></td></tr></table></figure>
 <pre><code>(tensor([[ 1.9993],
          [-3.3998]], requires_grad=True),
  [2, -3.4],
  tensor([4.2000], requires_grad=True),
- 4.2)
-</code></pre>
+ 4.2)</code></pre>
 <h2 id="线性回归模型使用pytorch的简洁实现">线性回归模型使用pytorch的简洁实现</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">torch.manual_seed(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(torch.__version__)</span><br><span class="line">torch.set_default_tensor_type(<span class="string">'torch.FloatTensor'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>1.4.0+cpu
-</code></pre>
+<pre><code>1.4.0+cpu</code></pre>
 <h2 id="生成数据集">生成数据集</h2>
 <p>在这里生成数据集跟从零开始的实现中是完全一样的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">num_inputs = <span class="number">2</span></span><br><span class="line">num_examples = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">true_w = [<span class="number">2</span>, <span class="number">-3.4</span>]</span><br><span class="line">true_b = <span class="number">4.2</span></span><br><span class="line"></span><br><span class="line">features = torch.tensor(np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (num_examples, num_inputs)), dtype=torch.float)</span><br><span class="line">labels = true_w[<span class="number">0</span>] * features[:, <span class="number">0</span>] + true_w[<span class="number">1</span>] * features[:, <span class="number">1</span>] + true_b</span><br><span class="line">labels += torch.tensor(np.random.normal(<span class="number">0</span>, <span class="number">0.01</span>, size=labels.size()), dtype=torch.float)</span><br></pre></td></tr></table></figure>
@@ -387,31 +360,26 @@ epoch 5, loss 0.000048
         [ 0.9226, -0.3770],
         [-0.4336,  0.4475]]) 
  tensor([ 5.1815,  4.4663,  5.0981,  2.3221,  6.2576,  1.7511, -0.0654,  6.3130,
-         7.3475,  1.8041])
-</code></pre>
+         7.3475,  1.8041])</code></pre>
 <h2 id="定义模型">定义模型</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_feature)</span>:</span></span><br><span class="line">        super(LinearNet, self).__init__()      <span class="comment"># call father function to init </span></span><br><span class="line">        self.linear = nn.Linear(n_feature, <span class="number">1</span>)  <span class="comment"># function prototype: `torch.nn.Linear(in_features, out_features, bias=True)`</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        y = self.linear(x)</span><br><span class="line">        <span class="keyword">return</span> y</span><br><span class="line">    </span><br><span class="line">net = LinearNet(num_inputs)</span><br><span class="line">print(net)</span><br></pre></td></tr></table></figure>
 <pre><code>LinearNet(
   (linear): Linear(in_features=2, out_features=1, bias=True)
-)
-</code></pre>
+)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ways to init a multilayer network</span></span><br><span class="line"><span class="comment"># method one</span></span><br><span class="line">net = nn.Sequential(</span><br><span class="line">    nn.Linear(num_inputs, <span class="number">1</span>)</span><br><span class="line">    <span class="comment"># other layers can be added here</span></span><br><span class="line">    ) </span><br><span class="line"></span><br><span class="line"><span class="comment"># method two</span></span><br><span class="line">net = nn.Sequential()</span><br><span class="line">net.add_module(<span class="string">'linear'</span>, nn.Linear(num_inputs, <span class="number">1</span>))</span><br><span class="line"><span class="comment"># net.add_module ......</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># method three</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line">net = nn.Sequential(OrderedDict([</span><br><span class="line">          (<span class="string">'linear'</span>, nn.Linear(num_inputs, <span class="number">1</span>))</span><br><span class="line">          <span class="comment"># ......</span></span><br><span class="line">        ]))</span><br><span class="line"></span><br><span class="line">print(net)</span><br><span class="line">print(net[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
 <pre><code>Sequential(
   (linear): Linear(in_features=2, out_features=1, bias=True)
 )
-Linear(in_features=2, out_features=1, bias=True)
-</code></pre>
+Linear(in_features=2, out_features=1, bias=True)</code></pre>
 <h2 id="初始化模型参数">初始化模型参数</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> init</span><br><span class="line"></span><br><span class="line">init.normal_(net[<span class="number">0</span>].weight, mean=<span class="number">0.0</span>, std=<span class="number">0.01</span>)</span><br><span class="line">init.constant_(net[<span class="number">0</span>].bias, val=<span class="number">0.0</span>)  <span class="comment"># or you can use `net[0].bias.data.fill_(0)` to modify it directly</span></span><br></pre></td></tr></table></figure>
 <pre><code>Parameter containing:
-tensor([0.], requires_grad=True)
-</code></pre>
+tensor([0.], requires_grad=True)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> net.parameters():</span><br><span class="line">    print(param)</span><br></pre></td></tr></table></figure>
 <pre><code>Parameter containing:
 tensor([[-0.0142, -0.0161]], requires_grad=True)
 Parameter containing:
-tensor([0.], requires_grad=True)
-</code></pre>
+tensor([0.], requires_grad=True)</code></pre>
 <h2 id="定义损失函数">定义损失函数</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loss = nn.MSELoss()    <span class="comment"># nn built-in squared loss function</span></span><br><span class="line">                       <span class="comment"># function prototype: `torch.nn.MSELoss(size_average=None, reduce=None, reduction='mean')`</span></span><br></pre></td></tr></table></figure>
 <h2 id="定义优化函数">定义优化函数</h2>
@@ -423,24 +391,21 @@ Parameter Group 0
     momentum: 0
     nesterov: False
     weight_decay: 0
-)
-</code></pre>
+)</code></pre>
 <h2 id="训练">训练</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">num_epochs = <span class="number">3</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">1</span>, num_epochs + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter:</span><br><span class="line">        output = net(X)</span><br><span class="line">        l = loss(output, y.view(<span class="number">-1</span>, <span class="number">1</span>))</span><br><span class="line">        optimizer.zero_grad() <span class="comment"># reset gradient, equal to net.zero_grad()</span></span><br><span class="line">        l.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">    print(<span class="string">'epoch %d, loss: %f'</span> % (epoch, l.item()))</span><br></pre></td></tr></table></figure>
 <pre><code>epoch 1, loss: 0.000369
 epoch 2, loss: 0.000100
-epoch 3, loss: 0.000132
-</code></pre>
+epoch 3, loss: 0.000132</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># result comparision</span></span><br><span class="line">dense = net[<span class="number">0</span>]</span><br><span class="line">print(true_w, dense.weight.data)</span><br><span class="line">print(true_b, dense.bias.data)</span><br></pre></td></tr></table></figure>
 <pre><code>[2, -3.4] tensor([[ 2.0004, -3.4000]])
-4.2 tensor([4.1998])
-</code></pre>
+4.2 tensor([4.1998])</code></pre>
 <h2 id="两种实现方式的比较">两种实现方式的比较</h2>
-<ol>
+<ol type="1">
 <li>从零开始的实现（推荐用来学习）</li>
 </ol>
 <p>能够更好的理解模型和神经网络底层的原理</p>
-<ol start="2">
+<ol start="2" type="1">
 <li>使用pytorch的简洁实现</li>
 </ol>
 <p>能够更加快速地完成模型的设计与实现</p>
@@ -457,7 +422,7 @@ epoch 3, loss: 0.000132
                     
                     
                         <li class="next">
-                            <a href="/article/PytorchTotrial1_MultilayerPerceptron/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial1_MultilayerPerceptron">Next Post &rarr;</a>
+                            <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_RecurrentNeuralNetwork">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

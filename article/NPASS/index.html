@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -215,7 +215,7 @@
                 <h2 id="i-work-with-data-by-python3-pandas">I work with data by python3 pandas</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
 <h2 id="calculate-npass-of-the-first-stage-0-50">Calculate npass of the first stage : 0 - 50</h2>
-<p>Sum each Origin’s flowDO and sum each Destnation’s flowOD</p>
+<p>Sum each Origin's flowDO and sum each Destnation's flowOD</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">src = pd.read_csv(<span class="string">'edges0-50.csv'</span>)</span><br><span class="line">source = src.groupby(<span class="string">'COD_ORIGEM'</span>)[<span class="string">'flowDO'</span>].sum()</span><br><span class="line">dest = src.groupby(<span class="string">'COD_DESTINO'</span>)[<span class="string">'flowOD'</span>].sum()</span><br><span class="line">res = pd.read_csv(<span class="string">'sites.csv'</span>).set_index(<span class="string">'ZONA_TRAFE'</span>)</span><br><span class="line">res[<span class="string">'npass1'</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>npass = source + dest</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = source.add(dest, fill_value=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
@@ -235,12 +235,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战： 94. 二叉树的中序遍历/" data-toggle="tooltip" data-placement="top" title="Leetcode实战94:二叉树的中序遍历">&larr; Previous Post</a>
+                            <a href="/article/Leetcode94--二叉树的中序遍历/" data-toggle="tooltip" data-placement="top" title="Leetcode实战94:二叉树的中序遍历">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/PytorchTotrial2_TextPrepare/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_TextPrepare">Next Post &rarr;</a>
+                            <a href="/article/PytorchTotrial1_SoftmaxClassify/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial1_SoftmaxClassify">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

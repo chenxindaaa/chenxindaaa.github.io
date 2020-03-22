@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -222,7 +222,9 @@
 <p>合并排序 + 递归</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class ListNode(object):</span><br><span class="line">    def __init__(self, x):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def sortList(self, head):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type head: ListNode</span><br><span class="line">        :rtype: ListNode</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not head or not head.next:</span><br><span class="line">            return head</span><br><span class="line">        slow = head</span><br><span class="line">        fast = head.next</span><br><span class="line">        while fast and fast.next:</span><br><span class="line">            fast = fast.next.next</span><br><span class="line">            slow = slow.next</span><br><span class="line">        mid = slow.next</span><br><span class="line">        slow.next = None</span><br><span class="line">        left = self.sortList(head)</span><br><span class="line">        right = self.sortList(mid)</span><br><span class="line">        result = temp = ListNode(0)</span><br><span class="line">        while left and right:</span><br><span class="line">            if left.val &gt;= right.val:</span><br><span class="line">                temp.next = right</span><br><span class="line">                right = right.next</span><br><span class="line">            else:</span><br><span class="line">                temp.next = left</span><br><span class="line">                left = left.next</span><br><span class="line">            temp = temp.next</span><br><span class="line">        temp.next = left if left else right</span><br><span class="line">        return result.next</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<p><img src="https://img-blog.csdnimg.cn/20190928204315685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20190928204315685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
 
@@ -231,12 +233,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：155.最小栈/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：155.最小栈">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：206.反转链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：206.反转链表">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战：146.LRU缓存机制/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：146.LRU缓存机制">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：155.最小栈/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：155.最小栈">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

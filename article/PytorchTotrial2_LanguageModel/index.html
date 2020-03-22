@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -213,58 +213,54 @@
                 post-container">
 
                 <h1 id="语言模型">语言模型</h1>
-<p>一段自然语言文本可以看作是一个离散时间序列，给定一个长度为$T$的词的序列$w_1, w_2, \ldots, w_T$，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：</p>
-<p>$$<br>
-P(w_1, w_2, \ldots, w_T).<br>
-$$</p>
-<p>本节我们介绍基于统计的语言模型，主要是$n$元语法（$n$-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。</p>
+<p>一段自然语言文本可以看作是一个离散时间序列，给定一个长度为<span class="math inline">\(T\)</span>的词的序列<span class="math inline">\(w_1, w_2, \ldots, w_T\)</span>，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：</p>
+<p><span class="math display">\[
+P(w_1, w_2, \ldots, w_T).
+\]</span></p>
+<p>本节我们介绍基于统计的语言模型，主要是<span class="math inline">\(n\)</span>元语法（<span class="math inline">\(n\)</span>-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。</p>
 <h2 id="语言模型">语言模型</h2>
-<p>假设序列$w_1, w_2, \ldots, w_T$中的每个词是依次生成的，我们有</p>
+<p>假设序列<span class="math inline">\(w_1, w_2, \ldots, w_T\)</span>中的每个词是依次生成的，我们有</p>
 <p>$$</p>
-<p>\begin{align*}<br>
-P(w_1, w_2, \ldots, w_T)<br>
-&amp;= \prod_{t=1}^T P(w_t \mid w_1, \ldots, w_{t-1})\<br>
-&amp;= P(w_1)P(w_2 \mid w_1) \cdots P(w_T \mid w_1w_2\cdots w_{T-1})<br>
-\end{align*}</p>
+<p><span class="math display">\[\begin{align*}
+P(w_1, w_2, \ldots, w_T)
+&amp;= \prod_{t=1}^T P(w_t \mid w_1, \ldots, w_{t-1})\\
+&amp;= P(w_1)P(w_2 \mid w_1) \cdots P(w_T \mid w_1w_2\cdots w_{T-1})
+\end{align*}\]</span></p>
 <p>$$</p>
 <p>例如，一段含有4个词的文本序列的概率</p>
-<p>$$<br>
-P(w_1, w_2, w_3, w_4) =  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_1, w_2, w_3).<br>
-$$</p>
-<p>语言模型的参数就是词的概率以及给定前几个词情况下的条件概率。设训练数据集为一个大型文本语料库，如维基百科的所有条目，词的概率可以通过该词在训练数据集中的相对词频来计算，例如，$w_1$的概率可以计算为：</p>
+<p><span class="math display">\[
+P(w_1, w_2, w_3, w_4) =  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_1, w_2, w_3).
+\]</span></p>
+<p>语言模型的参数就是词的概率以及给定前几个词情况下的条件概率。设训练数据集为一个大型文本语料库，如维基百科的所有条目，词的概率可以通过该词在训练数据集中的相对词频来计算，例如，<span class="math inline">\(w_1\)</span>的概率可以计算为：</p>
 <p>$$</p>
-<p>\hat P(w_1) = \frac{n(w_1)}{n}</p>
+<p>P(w_1) = </p>
 <p>$$</p>
-<p>其中$n(w_1)$为语料库中以$w_1$作为第一个词的文本的数量，$n$为语料库中文本的总数量。</p>
-<p>类似的，给定$w_1$情况下，$w_2$的条件概率可以计算为：</p>
+<p>其中<span class="math inline">\(n(w_1)\)</span>为语料库中以<span class="math inline">\(w_1\)</span>作为第一个词的文本的数量，<span class="math inline">\(n\)</span>为语料库中文本的总数量。</p>
+<p>类似的，给定<span class="math inline">\(w_1\)</span>情况下，<span class="math inline">\(w_2\)</span>的条件概率可以计算为：</p>
 <p>$$</p>
-<p>\hat P(w_2 \mid w_1) = \frac{n(w_1, w_2)}{n(w_1)}</p>
+<p>P(w_2 w_1) = </p>
 <p>$$</p>
-<p>其中$n(w_1, w_2)$为语料库中以$w_1$作为第一个词，$w_2$作为第二个词的文本的数量。</p>
+<p>其中<span class="math inline">\(n(w_1, w_2)\)</span>为语料库中以<span class="math inline">\(w_1\)</span>作为第一个词，<span class="math inline">\(w_2\)</span>作为第二个词的文本的数量。</p>
 <h2 id="n元语法">n元语法</h2>
-<p>序列长度增加，计算和存储多个词共同出现的概率的复杂度会呈指数级增加。$n$元语法通过马尔可夫假设简化模型，马尔科夫假设是指一个词的出现只与前面$n$个词相关，即$n$阶马尔可夫链（Markov chain of order $n$），如果$n=1$，那么有$P(w_3 \mid w_1, w_2) = P(w_3 \mid w_2)$。基于$n-1$阶马尔可夫链，我们可以将语言模型改写为</p>
-<p>$$<br>
-P(w_1, w_2, \ldots, w_T) = \prod_{t=1}^T P(w_t \mid w_{t-(n-1)}, \ldots, w_{t-1}) .<br>
-$$</p>
-<p>以上也叫$n$元语法（$n$-grams），它是基于$n - 1$阶马尔可夫链的概率语言模型。例如，当$n=2$时，含有4个词的文本序列的概率就可以改写为：</p>
+<p>序列长度增加，计算和存储多个词共同出现的概率的复杂度会呈指数级增加。<span class="math inline">\(n\)</span>元语法通过马尔可夫假设简化模型，马尔科夫假设是指一个词的出现只与前面<span class="math inline">\(n\)</span>个词相关，即<span class="math inline">\(n\)</span>阶马尔可夫链（Markov chain of order <span class="math inline">\(n\)</span>），如果<span class="math inline">\(n=1\)</span>，那么有<span class="math inline">\(P(w_3 \mid w_1, w_2) = P(w_3 \mid w_2)\)</span>。基于<span class="math inline">\(n-1\)</span>阶马尔可夫链，我们可以将语言模型改写为</p>
+<p><span class="math display">\[
+P(w_1, w_2, \ldots, w_T) = \prod_{t=1}^T P(w_t \mid w_{t-(n-1)}, \ldots, w_{t-1}) .
+\]</span></p>
+<p>以上也叫<span class="math inline">\(n\)</span>元语法（<span class="math inline">\(n\)</span>-grams），它是基于<span class="math inline">\(n - 1\)</span>阶马尔可夫链的概率语言模型。例如，当<span class="math inline">\(n=2\)</span>时，含有4个词的文本序列的概率就可以改写为：</p>
 <p>$$</p>
-<p>\begin{align*}<br>
-P(w_1, w_2, w_3, w_4)<br>
-&amp;= P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_1, w_2, w_3)\<br>
-&amp;= P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_2) P(w_4 \mid w_3)<br>
-\end{align*}</p>
+<p><span class="math display">\[\begin{align*}
+P(w_1, w_2, w_3, w_4)
+&amp;= P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_1, w_2, w_3)\\
+&amp;= P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_2) P(w_4 \mid w_3)
+\end{align*}\]</span></p>
 <p>$$</p>
-<p>当$n$分别为1、2和3时，我们将其分别称作一元语法（unigram）、二元语法（bigram）和三元语法（trigram）。例如，长度为4的序列$w_1, w_2, w_3, w_4$在一元语法、二元语法和三元语法中的概率分别为</p>
+<p>当<span class="math inline">\(n\)</span>分别为1、2和3时，我们将其分别称作一元语法（unigram）、二元语法（bigram）和三元语法（trigram）。例如，长度为4的序列<span class="math inline">\(w_1, w_2, w_3, w_4\)</span>在一元语法、二元语法和三元语法中的概率分别为</p>
 <p>$$</p>
-<p>\begin{aligned}<br>
-P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2) P(w_3) P(w_4) ,\<br>
-P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_2) P(w_4 \mid w_3) ,\<br>
-P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_2, w_3) .<br>
-\end{aligned}</p>
+<p>\begin{aligned} P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2) P(w_3) P(w_4) ,\ P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2 w_1) P(w_3 w_2) P(w_4 w_3) ,\ P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2 w_1) P(w_3 w_1, w_2) P(w_4 w_2, w_3) . \end{aligned}</p>
 <p>$$</p>
-<p>当$n$较小时，$n$元语法往往并不准确。例如，在一元语法中，由三个词组成的句子“你走先”和“你先走”的概率是一样的。然而，当$n$较大时，$n$元语法需要计算并存储大量的词频和多词相邻频率。</p>
-<p>思考：$n$元语法可能有哪些缺陷？</p>
-<ol>
+<p>当<span class="math inline">\(n\)</span>较小时，<span class="math inline">\(n\)</span>元语法往往并不准确。例如，在一元语法中，由三个词组成的句子“你走先”和“你先走”的概率是一样的。然而，当<span class="math inline">\(n\)</span>较大时，<span class="math inline">\(n\)</span>元语法需要计算并存储大量的词频和多词相邻频率。</p>
+<p>思考：<span class="math inline">\(n\)</span>元语法可能有哪些缺陷？</p>
+<ol type="1">
 <li>参数空间过大</li>
 <li>数据稀疏</li>
 </ol>
@@ -276,32 +272,20 @@ P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 
 想要和你飞到宇宙去
 想要和你融化在一起
 融化在宇宙里
-我每天每天每
-</code></pre>
+我每天每天每</code></pre>
 <h2 id="建立字符索引">建立字符索引</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">idx_to_char = list(set(corpus_chars)) <span class="comment"># 去重，得到索引到字符的映射</span></span><br><span class="line">char_to_idx = &#123;char: i <span class="keyword">for</span> i, char <span class="keyword">in</span> enumerate(idx_to_char)&#125; <span class="comment"># 字符到索引的映射</span></span><br><span class="line">vocab_size = len(char_to_idx)</span><br><span class="line">print(vocab_size)</span><br><span class="line"></span><br><span class="line">corpus_indices = [char_to_idx[char] <span class="keyword">for</span> char <span class="keyword">in</span> corpus_chars]  <span class="comment"># 将每个字符转化为索引，得到一个索引的序列</span></span><br><span class="line">sample = corpus_indices[: <span class="number">20</span>]</span><br><span class="line">print(<span class="string">'chars:'</span>, <span class="string">''</span>.join([idx_to_char[idx] <span class="keyword">for</span> idx <span class="keyword">in</span> sample]))</span><br><span class="line">print(<span class="string">'indices:'</span>, sample)</span><br></pre></td></tr></table></figure>
 <pre><code>1027
 chars: 想要有直升机 想要和你飞到宇宙去 想要和
-indices: [1022, 648, 1025, 366, 208, 792, 199, 1022, 648, 641, 607, 625, 26, 155, 130, 5, 199, 1022, 648, 641]
-</code></pre>
+indices: [1022, 648, 1025, 366, 208, 792, 199, 1022, 648, 641, 607, 625, 26, 155, 130, 5, 199, 1022, 648, 641]</code></pre>
 <p>定义函数<code>load_data_jay_lyrics</code>，在后续章节中直接调用。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data_jay_lyrics</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'/home/kesci/input/jaychou_lyrics4703/jaychou_lyrics.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        corpus_chars = f.read()</span><br><span class="line">    corpus_chars = corpus_chars.replace(<span class="string">'\n'</span>, <span class="string">' '</span>).replace(<span class="string">'\r'</span>, <span class="string">' '</span>)</span><br><span class="line">    corpus_chars = corpus_chars[<span class="number">0</span>:<span class="number">10000</span>]</span><br><span class="line">    idx_to_char = list(set(corpus_chars))</span><br><span class="line">    char_to_idx = dict([(char, i) <span class="keyword">for</span> i, char <span class="keyword">in</span> enumerate(idx_to_char)])</span><br><span class="line">    vocab_size = len(char_to_idx)</span><br><span class="line">    corpus_indices = [char_to_idx[char] <span class="keyword">for</span> char <span class="keyword">in</span> corpus_chars]</span><br><span class="line">    <span class="keyword">return</span> corpus_indices, char_to_idx, idx_to_char, vocab_size</span><br></pre></td></tr></table></figure>
 <h2 id="时序数据的采样">时序数据的采样</h2>
-<p>在训练中我们需要每次随机读取小批量样本和标签。与之前章节的实验数据不同的是，时序数据的一个样本通常包含连续的字符。假设时间步数为5，样本序列为5个字符，即“想”“要”“有”“直”“升”。该样本的标签序列为这些字符分别在训练集中的下一个字符，即“要”“有”“直”“升”“机”，即$X$=“想要有直升”，$Y$=“要有直升机”。</p>
-<p>现在我们考虑序列“想要有直升机，想要和你飞到宇宙去”，如果时间步数为5，有以下可能的样本和标签：</p>
-<ul>
-<li>$X$：“想要有直升”，$Y$：“要有直升机”</li>
-<li>$X$：“要有直升机”，$Y$：“有直升机，”</li>
-<li>$X$：“有直升机，”，$Y$：“直升机，想”</li>
-<li>…</li>
-<li>$X$：“要和你飞到”，$Y$：“和你飞到宇”</li>
-<li>$X$：“和你飞到宇”，$Y$：“你飞到宇宙”</li>
-<li>$X$：“你飞到宇宙”，$Y$：“飞到宇宙去”</li>
-</ul>
-<p>可以看到，如果序列的长度为$T$，时间步数为$n$，那么一共有$T-n$个合法的样本，但是这些样本有大量的重合，我们通常采用更加高效的采样方式。我们有两种方式对时序数据进行采样，分别是随机采样和相邻采样。</p>
+<p>在训练中我们需要每次随机读取小批量样本和标签。与之前章节的实验数据不同的是，时序数据的一个样本通常包含连续的字符。假设时间步数为5，样本序列为5个字符，即“想”“要”“有”“直”“升”。该样本的标签序列为这些字符分别在训练集中的下一个字符，即“要”“有”“直”“升”“机”，即<span class="math inline">\(X\)</span>=“想要有直升”，<span class="math inline">\(Y\)</span>=“要有直升机”。</p>
+<p>现在我们考虑序列“想要有直升机，想要和你飞到宇宙去”，如果时间步数为5，有以下可能的样本和标签： * <span class="math inline">\(X\)</span>：“想要有直升”，<span class="math inline">\(Y\)</span>：“要有直升机” * <span class="math inline">\(X\)</span>：“要有直升机”，<span class="math inline">\(Y\)</span>：“有直升机，” * <span class="math inline">\(X\)</span>：“有直升机，”，<span class="math inline">\(Y\)</span>：“直升机，想” * ... * <span class="math inline">\(X\)</span>：“要和你飞到”，<span class="math inline">\(Y\)</span>：“和你飞到宇” * <span class="math inline">\(X\)</span>：“和你飞到宇”，<span class="math inline">\(Y\)</span>：“你飞到宇宙” * <span class="math inline">\(X\)</span>：“你飞到宇宙”，<span class="math inline">\(Y\)</span>：“飞到宇宙去”</p>
+<p>可以看到，如果序列的长度为<span class="math inline">\(T\)</span>，时间步数为<span class="math inline">\(n\)</span>，那么一共有<span class="math inline">\(T-n\)</span>个合法的样本，但是这些样本有大量的重合，我们通常采用更加高效的采样方式。我们有两种方式对时序数据进行采样，分别是随机采样和相邻采样。</p>
 <h3 id="随机采样">随机采样</h3>
-<p>下面的代码每次从数据里随机采样一个小批量。其中批量大小<code>batch_size</code>是每个小批量的样本数，<code>num_steps</code>是每个样本所包含的时间步数。<br>
-在随机采样中，每个样本是原始序列上任意截取的一段序列，相邻的两个随机小批量在原始序列上的位置不一定相毗邻。</p>
+<p>下面的代码每次从数据里随机采样一个小批量。其中批量大小<code>batch_size</code>是每个小批量的样本数，<code>num_steps</code>是每个样本所包含的时间步数。 在随机采样中，每个样本是原始序列上任意截取的一段序列，相邻的两个随机小批量在原始序列上的位置不一定相毗邻。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter_random</span><span class="params">(corpus_indices, batch_size, num_steps, device=None)</span>:</span></span><br><span class="line">    <span class="comment"># 减1是因为对于长度为n的序列，X最多只有包含其中的前n - 1个字符</span></span><br><span class="line">    num_examples = (len(corpus_indices) - <span class="number">1</span>) // num_steps  <span class="comment"># 下取整，得到不重叠情况下的样本个数</span></span><br><span class="line">    example_indices = [i * num_steps <span class="keyword">for</span> i <span class="keyword">in</span> range(num_examples)]  <span class="comment"># 每个样本的第一个字符在corpus_indices中的下标</span></span><br><span class="line">    random.shuffle(example_indices)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_data</span><span class="params">(i)</span>:</span></span><br><span class="line">        <span class="comment"># 返回从i开始的长为num_steps的序列</span></span><br><span class="line">        <span class="keyword">return</span> corpus_indices[i: i + num_steps]</span><br><span class="line">    <span class="keyword">if</span> device <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        device = torch.device(<span class="string">'cuda'</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">'cpu'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        <span class="comment"># 每次选出batch_size个随机样本</span></span><br><span class="line">        batch_indices = example_indices[i: i + batch_size]  <span class="comment"># 当前batch的各个样本的首字符的下标</span></span><br><span class="line">        X = [_data(j) <span class="keyword">for</span> j <span class="keyword">in</span> batch_indices]</span><br><span class="line">        Y = [_data(j + <span class="number">1</span>) <span class="keyword">for</span> j <span class="keyword">in</span> batch_indices]</span><br><span class="line">        <span class="keyword">yield</span> torch.tensor(X, device=device), torch.tensor(Y, device=device)</span><br></pre></td></tr></table></figure>
 <p>测试一下这个函数，我们输入从0到29的连续整数作为一个人工序列，设批量大小和时间步数分别为2和6，打印随机采样每次读取的小批量样本的输入<code>X</code>和标签<code>Y</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my_seq = list(range(<span class="number">30</span>))</span><br><span class="line"><span class="keyword">for</span> X, Y <span class="keyword">in</span> data_iter_random(my_seq, batch_size=<span class="number">2</span>, num_steps=<span class="number">6</span>):</span><br><span class="line">    print(<span class="string">'X: '</span>, X, <span class="string">'\nY:'</span>, Y, <span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
@@ -313,8 +297,7 @@ Y: tensor([[ 7,  8,  9, 10, 11, 12],
 X:  tensor([[ 0,  1,  2,  3,  4,  5],
         [18, 19, 20, 21, 22, 23]]) 
 Y: tensor([[ 1,  2,  3,  4,  5,  6],
-        [19, 20, 21, 22, 23, 24]]) 
-</code></pre>
+        [19, 20, 21, 22, 23, 24]]) </code></pre>
 <h3 id="相邻采样">相邻采样</h3>
 <p>在相邻采样中，相邻的两个随机小批量在原始序列上的位置相毗邻。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_iter_consecutive</span><span class="params">(corpus_indices, batch_size, num_steps, device=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> device <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        device = torch.device(<span class="string">'cuda'</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">'cpu'</span>)</span><br><span class="line">    corpus_len = len(corpus_indices) // batch_size * batch_size  <span class="comment"># 保留下来的序列的长度</span></span><br><span class="line">    corpus_indices = corpus_indices[: corpus_len]  <span class="comment"># 仅保留前corpus_len个字符</span></span><br><span class="line">    indices = torch.tensor(corpus_indices, device=device)</span><br><span class="line">    indices = indices.view(batch_size, <span class="number">-1</span>)  <span class="comment"># resize成(batch_size, )</span></span><br><span class="line">    batch_num = (indices.shape[<span class="number">1</span>] - <span class="number">1</span>) // num_steps</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(batch_num):</span><br><span class="line">        i = i * num_steps</span><br><span class="line">        X = indices[:, i: i + num_steps]</span><br><span class="line">        Y = indices[:, i + <span class="number">1</span>: i + num_steps + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">yield</span> X, Y</span><br></pre></td></tr></table></figure>
@@ -328,8 +311,7 @@ Y: tensor([[ 1,  2,  3,  4,  5,  6],
 X:  tensor([[ 6,  7,  8,  9, 10, 11],
         [21, 22, 23, 24, 25, 26]]) 
 Y: tensor([[ 7,  8,  9, 10, 11, 12],
-        [22, 23, 24, 25, 26, 27]])
-</code></pre>
+        [22, 23, 24, 25, 26, 27]])</code></pre>
 
                 
 
@@ -338,12 +320,12 @@ Y: tensor([[ 7,  8,  9, 10, 11, 12],
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/PytorchTotrial1_MultilayerPerceptron/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial1_MultilayerPerceptron">&larr; Previous Post</a>
+                            <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_RecurrentNeuralNetwork">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/numpy基础操作（二）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（二）">Next Post &rarr;</a>
+                            <a href="/article/PytorchTotrial1_MultilayerPerceptron/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial1_MultilayerPerceptron">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

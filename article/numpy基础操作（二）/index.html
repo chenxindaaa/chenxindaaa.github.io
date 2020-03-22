@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -219,22 +219,19 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0,  1,  2,  3,  4],
        [ 5,  6,  7,  8,  9],
-       [10, 11, 12, 13, 14]])
-</code></pre>
+       [10, 11, 12, 13, 14]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.T</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0,  5, 10],
        [ 1,  6, 11],
        [ 2,  7, 12],
        [ 3,  8, 13],
-       [ 4,  9, 14]])
-</code></pre>
+       [ 4,  9, 14]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.transpose(arr)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0,  5, 10],
        [ 1,  6, 11],
        [ 2,  7, 12],
        [ 3,  8, 13],
-       [ 4,  9, 14]])
-</code></pre>
+       [ 4,  9, 14]])</code></pre>
 <p>当进行矩阵计算时，你可能会经常进行一些特定操作，例如，当计算矩阵内积会使用np.dot:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.random.randn(<span class="number">6</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
@@ -243,13 +240,11 @@
        [ 1.7046739 , -0.00777044, -0.6994555 ],
        [ 0.76440228, -0.22231852,  0.0798294 ],
        [-0.37986392, -0.45803112, -0.93404632],
-       [-0.92366358, -0.1957148 , -1.9926958 ]])
-</code></pre>
+       [-0.92366358, -0.1957148 , -1.9926958 ]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.dot(arr.T, arr)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 4.77073923,  0.1572209 ,  0.86343221],
        [ 0.1572209 ,  0.84469385,  1.34137535],
-       [ 0.86343221,  1.34137535,  5.98688207]])
-</code></pre>
+       [ 0.86343221,  1.34137535,  5.98688207]])</code></pre>
 <p>对于更高维度的数组，transpose方法可以接收包含之后编号的元组，用于置换轴（拓展下思维）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">16.</span>).reshape((<span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
@@ -257,15 +252,13 @@
         [  4.,   5.,   6.,   7.]],
 
        [[  8.,   9.,  10.,  11.],
-        [ 12.,  13.,  14.,  15.]]])
-</code></pre>
+        [ 12.,  13.,  14.,  15.]]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.transpose((<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>array([[[  0.,   1.,   2.,   3.],
         [  8.,   9.,  10.,  11.]],
 
        [[  4.,   5.,   6.,   7.],
-        [ 12.,  13.,  14.,  15.]]])
-</code></pre>
+        [ 12.,  13.,  14.,  15.]]])</code></pre>
 <p>三个轴可以看成x，y，z轴，在这里，轴已经被重新排序，使得原先的y轴变成x，原先的x轴变成了y轴，z轴并没有改变。</p>
 <p>使用.T进行转置是转轴的一个特殊案例。ndarray有一个swapaxes方法，该方法接收一对轴编号作为参数，并对轴进行调整用于重组数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
@@ -273,15 +266,13 @@
         [  4.,   5.,   6.,   7.]],
 
        [[  8.,   9.,  10.,  11.],
-        [ 12.,  13.,  14.,  15.]]])
-</code></pre>
+        [ 12.,  13.,  14.,  15.]]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.swapaxes(<span class="number">0</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[[  0.,   1.,   2.,   3.],
         [  8.,   9.,  10.,  11.]],
 
        [[  4.,   5.,   6.,   7.],
-        [ 12.,  13.,  14.,  15.]]])
-</code></pre>
+        [ 12.,  13.,  14.,  15.]]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.swapaxes(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[[  0.,   4.],
         [  1.,   5.],
@@ -291,63 +282,51 @@
        [[  8.,  12.],
         [  9.,  13.],
         [ 10.,  14.],
-        [ 11.,  15.]]])
-</code></pre>
+        [ 11.,  15.]]])</code></pre>
 <h2 id="二-通用函数快速的逐元素数组函数">二、通用函数：快速的逐元素数组函数</h2>
 <p>通用函数，也称为ufunc，是一种在ndarray数据中进行逐元素操作的函数。某些简单函数接受一个或多个标量数值，并产生一个或多个标量结果，而通用函数就是对这些简单函数的向量化封装。</p>
 <p>有很多ufunc是简单的逐元素转换，比如sqrt或exp函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
-<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-</code></pre>
+<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sqrt(arr)</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 0.        ,  1.        ,  1.41421356,  1.73205081,  2.        ,
-        2.23606798,  2.44948974,  2.64575131,  2.82842712,  3.        ])
-</code></pre>
+        2.23606798,  2.44948974,  2.64575131,  2.82842712,  3.        ])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
-<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-</code></pre>
+<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(arr)</span><br></pre></td></tr></table></figure>
 <pre><code>array([  1.00000000e+00,   2.71828183e+00,   7.38905610e+00,
          2.00855369e+01,   5.45981500e+01,   1.48413159e+02,
          4.03428793e+02,   1.09663316e+03,   2.98095799e+03,
-         8.10308393e+03])
-</code></pre>
+         8.10308393e+03])</code></pre>
 <p>这些都是所谓的一元通用函数。还有一些通用函数，比如add或maxiumu则会接受两个数组并返回一个数组作为结果，因此称为二元通用函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = np.random.randn(<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y = np.random.randn(<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 0.25505513,  0.23616009, -0.83815435,  0.08750238,  1.44660586,
-       -0.49278317,  0.01925976,  0.36114295])
-</code></pre>
+       -0.49278317,  0.01925976,  0.36114295])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y</span><br></pre></td></tr></table></figure>
 <pre><code>array([-0.77039858,  0.5399858 , -0.10889914,  0.06090177, -0.85935897,
-        0.72074658, -1.1126588 , -1.4409482 ])
-</code></pre>
+        0.72074658, -1.1126588 , -1.4409482 ])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.maximum(x, y)</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 0.25505513,  0.5399858 , -0.10889914,  0.08750238,  1.44660586,
-        0.72074658,  0.01925976,  0.36114295])
-</code></pre>
+        0.72074658,  0.01925976,  0.36114295])</code></pre>
 <p>这里maximum逐个元素地将x和y中元素的最大值计算出来</p>
 <p>也有一些通用函数返回多个数组。比如modf，是python内建函数divnod的向量化版本，它返回了一个浮点值数组的小数部分和整数部分：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.random.randn(<span class="number">7</span>) * <span class="number">5</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 7.71099483, -0.88693267, -1.70675617, -1.52965618,  4.30903282,
-       -2.30624022,  4.28942247])
-</code></pre>
+       -2.30624022,  4.28942247])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remainder, whole_part = np.modf(arr)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remainder</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 0.71099483, -0.88693267, -0.70675617, -0.52965618,  0.30903282,
-       -0.30624022,  0.28942247])
-</code></pre>
+       -0.30624022,  0.28942247])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whole_part</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 7., -0., -1., -1.,  4., -2.,  4.])
-</code></pre>
+<pre><code>array([ 7., -0., -1., -1.,  4., -2.,  4.])</code></pre>
 <p>通用函数接收一个可选参数out，允许对数组按位置操作：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 7.71099483, -0.88693267, -1.70675617, -1.52965618,  4.30903282,
-       -2.30624022,  4.28942247])
-</code></pre>
+       -2.30624022,  4.28942247])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sqrt(arr)</span><br></pre></td></tr></table></figure>
 <pre><code>/home/cxd/.conda/envs/python36/lib/python3.6/site-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in sqrt
   &quot;&quot;&quot;Entry point for launching an IPython kernel.
@@ -357,12 +336,10 @@
 
 
 array([ 2.77686781,         nan,         nan,         nan,  2.075821  ,
-               nan,  2.0710921 ])
-</code></pre>
+               nan,  2.0710921 ])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 7.71099483, -0.88693267, -1.70675617, -1.52965618,  4.30903282,
-       -2.30624022,  4.28942247])
-</code></pre>
+       -2.30624022,  4.28942247])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sqrt(arr, arr)</span><br></pre></td></tr></table></figure>
 <pre><code>/home/cxd/.conda/envs/python36/lib/python3.6/site-packages/ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in sqrt
   &quot;&quot;&quot;Entry point for launching an IPython kernel.
@@ -372,179 +349,181 @@ array([ 2.77686781,         nan,         nan,         nan,  2.075821  ,
 
 
 array([ 2.77686781,         nan,         nan,         nan,  2.075821  ,
-               nan,  2.0710921 ])
-</code></pre>
+               nan,  2.0710921 ])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([ 2.77686781,         nan,         nan,         nan,  2.075821  ,
-               nan,  2.0710921 ])
-</code></pre>
+               nan,  2.0710921 ])</code></pre>
 <p>下表是常用的一元通用函数：</p>
 <table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center">函数名</th>
-<th style="text-align:center">描述</th>
+<tr class="header">
+<th style="text-align: center;">函数名</th>
+<th style="text-align: center;">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">abs、fabs</td>
-<td style="text-align:center">逐元素地计算整数、浮点数或复数的绝对值</td>
+<tr class="odd">
+<td style="text-align: center;">abs、fabs</td>
+<td style="text-align: center;">逐元素地计算整数、浮点数或复数的绝对值</td>
 </tr>
-<tr>
-<td style="text-align:center">sqrt</td>
-<td style="text-align:center">计算每个元素的平方根（与arr ** 0.5相等）</td>
+<tr class="even">
+<td style="text-align: center;">sqrt</td>
+<td style="text-align: center;">计算每个元素的平方根（与arr ** 0.5相等）</td>
 </tr>
-<tr>
-<td style="text-align:center">square</td>
-<td style="text-align:center">计算每个元素的平方（与arr ** 2 相等）</td>
+<tr class="odd">
+<td style="text-align: center;">square</td>
+<td style="text-align: center;">计算每个元素的平方（与arr ** 2 相等）</td>
 </tr>
-<tr>
-<td style="text-align:center">exp</td>
-<td style="text-align:center">计算每个元素的自然指数</td>
+<tr class="even">
+<td style="text-align: center;">exp</td>
+<td style="text-align: center;">计算每个元素的自然指数</td>
 </tr>
-<tr>
-<td style="text-align:center">log、log10、log2、log1p</td>
-<td style="text-align:center">分别对应：自然对数、对数10为底、对数2为底、log(1+x)</td>
+<tr class="odd">
+<td style="text-align: center;">log、log10、log2、log1p</td>
+<td style="text-align: center;">分别对应：自然对数、对数10为底、对数2为底、log(1+x)</td>
 </tr>
-<tr>
-<td style="text-align:center">sign</td>
-<td style="text-align:center">计算每个元素的符号值：1（正数）、0（0）、\1（负数）即符号函数</td>
+<tr class="even">
+<td style="text-align: center;">sign</td>
+<td style="text-align: center;">计算每个元素的符号值：1（正数）、0（0）、\1（负数）即符号函数</td>
 </tr>
-<tr>
-<td style="text-align:center">ceil</td>
-<td style="text-align:center">计算每个元素的最高整数值（即大于等于给定熟知的最小整数）</td>
+<tr class="odd">
+<td style="text-align: center;">ceil</td>
+<td style="text-align: center;">计算每个元素的最高整数值（即大于等于给定熟知的最小整数）</td>
 </tr>
-<tr>
-<td style="text-align:center">floor</td>
-<td style="text-align:center">计算每个元素的最小正数值</td>
+<tr class="even">
+<td style="text-align: center;">floor</td>
+<td style="text-align: center;">计算每个元素的最小正数值</td>
 </tr>
-<tr>
-<td style="text-align:center">rint</td>
-<td style="text-align:center">将元素保留到整数位，并保持dtype</td>
+<tr class="odd">
+<td style="text-align: center;">rint</td>
+<td style="text-align: center;">将元素保留到整数位，并保持dtype</td>
 </tr>
-<tr>
-<td style="text-align:center">modf</td>
-<td style="text-align:center">分别将数组的小数部分和正数部分按数组形式返回</td>
+<tr class="even">
+<td style="text-align: center;">modf</td>
+<td style="text-align: center;">分别将数组的小数部分和正数部分按数组形式返回</td>
 </tr>
-<tr>
-<td style="text-align:center">isnan</td>
-<td style="text-align:center">返回数组中的元素是否是一个NaN（不是一个数值）、形式为布尔值数组</td>
+<tr class="odd">
+<td style="text-align: center;">isnan</td>
+<td style="text-align: center;">返回数组中的元素是否是一个NaN（不是一个数值）、形式为布尔值数组</td>
 </tr>
-<tr>
-<td style="text-align:center">isfinite、isinf</td>
-<td style="text-align:center">分别返回数组中的元素是否有限（非inf、非NaN）、是否无限的，形式为布尔值数组</td>
+<tr class="even">
+<td style="text-align: center;">isfinite、isinf</td>
+<td style="text-align: center;">分别返回数组中的元素是否有限（非inf、非NaN）、是否无限的，形式为布尔值数组</td>
 </tr>
-<tr>
-<td style="text-align:center">cos、cosh、sin、sinh、tan、tanh、arccos、arccosh、arcsin、arcsinh、arctan、arctanh</td>
-<td style="text-align:center">三角函数反三角函数</td>
+<tr class="odd">
+<td style="text-align: center;">cos、cosh、sin、sinh、tan、tanh、arccos、arccosh、arcsin、arcsinh、arctan、arctanh</td>
+<td style="text-align: center;">三角函数反三角函数</td>
 </tr>
-<tr>
-<td style="text-align:center">logical_not</td>
-<td style="text-align:center">对数组的元素按位取反（与-arr效果一致）</td>
+<tr class="even">
+<td style="text-align: center;">logical_not</td>
+<td style="text-align: center;">对数组的元素按位取反（与-arr效果一致）</td>
 </tr>
 </tbody>
 </table>
 <p>二元通用函数：</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">函数名</th>
-<th style="text-align:center">描述</th>
+<tr class="header">
+<th style="text-align: center;">函数名</th>
+<th style="text-align: center;">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">np.add(ndarray, ndarray)</td>
-<td style="text-align:center">相加</td>
+<tr class="odd">
+<td style="text-align: center;">np.add(ndarray, ndarray)</td>
+<td style="text-align: center;">相加</td>
 </tr>
-<tr>
-<td style="text-align:center">np.subtract(ndarray, ndarray)</td>
-<td style="text-align:center">相减</td>
+<tr class="even">
+<td style="text-align: center;">np.subtract(ndarray, ndarray)</td>
+<td style="text-align: center;">相减</td>
 </tr>
-<tr>
-<td style="text-align:center">np.multiply(ndarray, ndarray)</td>
-<td style="text-align:center">相乘</td>
+<tr class="odd">
+<td style="text-align: center;">np.multiply(ndarray, ndarray)</td>
+<td style="text-align: center;">相乘</td>
 </tr>
-<tr>
-<td style="text-align:center">np.divide(ndarray, ndarray)</td>
-<td style="text-align:center">相除</td>
+<tr class="even">
+<td style="text-align: center;">np.divide(ndarray, ndarray)</td>
+<td style="text-align: center;">相除</td>
 </tr>
-<tr>
-<td style="text-align:center">np.floor_divide(ndarray, ndarray)</td>
-<td style="text-align:center">地板除</td>
+<tr class="odd">
+<td style="text-align: center;">np.floor_divide(ndarray, ndarray)</td>
+<td style="text-align: center;">地板除</td>
 </tr>
-<tr>
-<td style="text-align:center">np.power(ndarray, ndarray)</td>
-<td style="text-align:center">次方</td>
+<tr class="even">
+<td style="text-align: center;">np.power(ndarray, ndarray)</td>
+<td style="text-align: center;">次方</td>
 </tr>
-<tr>
-<td style="text-align:center">np.mod(ndarray, ndarray)</td>
-<td style="text-align:center">取模</td>
+<tr class="odd">
+<td style="text-align: center;">np.mod(ndarray, ndarray)</td>
+<td style="text-align: center;">取模</td>
 </tr>
-<tr>
-<td style="text-align:center">np.maximum(ndarray, ndarray)</td>
-<td style="text-align:center">求最大值</td>
+<tr class="even">
+<td style="text-align: center;">np.maximum(ndarray, ndarray)</td>
+<td style="text-align: center;">求最大值</td>
 </tr>
-<tr>
-<td style="text-align:center">np.fmax(ndarray, ndarray)</td>
-<td style="text-align:center">求最大值（忽略NaN）</td>
+<tr class="odd">
+<td style="text-align: center;">np.fmax(ndarray, ndarray)</td>
+<td style="text-align: center;">求最大值（忽略NaN）</td>
 </tr>
-<tr>
-<td style="text-align:center">np.minimun(ndarray, ndarray)</td>
-<td style="text-align:center">求最小值</td>
+<tr class="even">
+<td style="text-align: center;">np.minimun(ndarray, ndarray)</td>
+<td style="text-align: center;">求最小值</td>
 </tr>
-<tr>
-<td style="text-align:center">np.fmin(ndarray, ndarray)</td>
-<td style="text-align:center">求最小值（忽略NaN）</td>
+<tr class="odd">
+<td style="text-align: center;">np.fmin(ndarray, ndarray)</td>
+<td style="text-align: center;">求最小值（忽略NaN）</td>
 </tr>
-<tr>
-<td style="text-align:center">np.copysign(ndarray, ndarray)</td>
-<td style="text-align:center">将参数2中的符号赋予参数1</td>
+<tr class="even">
+<td style="text-align: center;">np.copysign(ndarray, ndarray)</td>
+<td style="text-align: center;">将参数2中的符号赋予参数1</td>
 </tr>
-<tr>
-<td style="text-align:center">np.greater(ndarray, ndarray)</td>
-<td style="text-align:center">&gt;</td>
+<tr class="odd">
+<td style="text-align: center;">np.greater(ndarray, ndarray)</td>
+<td style="text-align: center;">&gt;</td>
 </tr>
-<tr>
-<td style="text-align:center">np.greater_equal(ndarray, ndarray)</td>
-<td style="text-align:center">&gt;=</td>
+<tr class="even">
+<td style="text-align: center;">np.greater_equal(ndarray, ndarray)</td>
+<td style="text-align: center;">&gt;=</td>
 </tr>
-<tr>
-<td style="text-align:center">np.less(ndarray, ndarray)</td>
-<td style="text-align:center">&lt;</td>
+<tr class="odd">
+<td style="text-align: center;">np.less(ndarray, ndarray)</td>
+<td style="text-align: center;">&lt;</td>
 </tr>
-<tr>
-<td style="text-align:center">np.less_equal(ndarray, ndarray)</td>
-<td style="text-align:center">&lt;=</td>
+<tr class="even">
+<td style="text-align: center;">np.less_equal(ndarray, ndarray)</td>
+<td style="text-align: center;">&lt;=</td>
 </tr>
-<tr>
-<td style="text-align:center">np.equal(ndarray, ndarray)</td>
-<td style="text-align:center">==</td>
+<tr class="odd">
+<td style="text-align: center;">np.equal(ndarray, ndarray)</td>
+<td style="text-align: center;">==</td>
 </tr>
-<tr>
-<td style="text-align:center">np.not_equal(ndarray, ndarray)</td>
-<td style="text-align:center">!=</td>
+<tr class="even">
+<td style="text-align: center;">np.not_equal(ndarray, ndarray)</td>
+<td style="text-align: center;">!=</td>
 </tr>
-<tr>
-<td style="text-align:center">logical_and(ndarray, ndarray)</td>
-<td style="text-align:center">&amp;</td>
+<tr class="odd">
+<td style="text-align: center;">logical_and(ndarray, ndarray)</td>
+<td style="text-align: center;">&amp;</td>
 </tr>
-<tr>
-<td style="text-align:center">logical_or(ndarray, ndarray)</td>
-<td style="text-align:center">$</td>
+<tr class="even">
+<td style="text-align: center;">logical_or(ndarray, ndarray)</td>
+<td style="text-align: center;"><span class="math inline">\(|\)</span></td>
 </tr>
-<tr>
-<td style="text-align:center">logical_xor(ndarray, ndarray)</td>
-<td style="text-align:center">^</td>
+<tr class="odd">
+<td style="text-align: center;">logical_xor(ndarray, ndarray)</td>
+<td style="text-align: center;">^</td>
 </tr>
-<tr>
-<td style="text-align:center">np.dot( ndarray, ndarray)</td>
-<td style="text-align:center">计算两个ndarray的矩阵内积</td>
+<tr class="even">
+<td style="text-align: center;">np.dot( ndarray, ndarray)</td>
+<td style="text-align: center;">计算两个ndarray的矩阵内积</td>
 </tr>
-<tr>
-<td style="text-align:center">np.ix_([x,y,m,n],…)</td>
-<td style="text-align:center">生成一个索引器，用于Fancy indexing(花式索引)</td>
+<tr class="odd">
+<td style="text-align: center;">np.ix_([x,y,m,n],...)</td>
+<td style="text-align: center;">生成一个索引器，用于Fancy indexing(花式索引)</td>
 </tr>
 </tbody>
 </table>
@@ -559,8 +538,7 @@ array([ 2.77686781,         nan,         nan,         nan,  2.075821  ,
 
 
 array([[-0.6468063 , -0.00565824,  0.11765362],
-       [-0.05857401,  0.36904313,  0.09726842]])
-</code></pre>
+       [-0.05857401,  0.36904313,  0.09726842]])</code></pre>
 <h2 id="三-使用数组进行面向数组编程">三、使用数组进行面向数组编程</h2>
 <p>作为一个简单的示例，假设我们想要对一些网格数据来计算函数sqrt(x^2 + y^2)的值。np.meshgrid函数接收两个一位数组，并根据两个数组的所有(x, y)对生成一个二维矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">points = np.arange(<span class="number">-5</span>, <span class="number">5</span>, <span class="number">0.01</span>)</span><br></pre></td></tr></table></figure>
@@ -572,8 +550,7 @@ array([[-0.6468063 , -0.00565824,  0.11765362],
        ..., 
        [ 4.97,  4.97,  4.97, ...,  4.97,  4.97,  4.97],
        [ 4.98,  4.98,  4.98, ...,  4.98,  4.98,  4.98],
-       [ 4.99,  4.99,  4.99, ...,  4.99,  4.99,  4.99]])
-</code></pre>
+       [ 4.99,  4.99,  4.99, ...,  4.99,  4.99,  4.99]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xs</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-5.  , -4.99, -4.98, ...,  4.97,  4.98,  4.99],
        [-5.  , -4.99, -4.98, ...,  4.97,  4.98,  4.99],
@@ -581,8 +558,7 @@ array([[-0.6468063 , -0.00565824,  0.11765362],
        ..., 
        [-5.  , -4.99, -4.98, ...,  4.97,  4.98,  4.99],
        [-5.  , -4.99, -4.98, ...,  4.97,  4.98,  4.99],
-       [-5.  , -4.99, -4.98, ...,  4.97,  4.98,  4.99]])
-</code></pre>
+       [-5.  , -4.99, -4.98, ...,  4.97,  4.98,  4.99]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = np.sqrt(xs ** <span class="number">2</span> + ys ** <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 7.07106781,  7.06400028,  7.05693985, ...,  7.04988652,
@@ -597,56 +573,49 @@ array([[-0.6468063 , -0.00565824,  0.11765362],
        [ 7.05693985,  7.04985815,  7.04278354, ...,  7.03571603,
          7.04278354,  7.04985815],
        [ 7.06400028,  7.05692568,  7.04985815, ...,  7.04279774,
-         7.04985815,  7.05692568]])
-</code></pre>
+         7.04985815,  7.05692568]])</code></pre>
 <p>我们使用matplotlib来生成这个二维数组的可视化：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(z, cmap=plt.cm.gray);plt.colorbar()</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x7fbbfe751b00&gt;
-</code></pre>
+<pre><code>&lt;matplotlib.colorbar.Colorbar at 0x7fbbfe751b00&gt;</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">'image plot of $\sqrt&#123;x^2 + y^2&#125;$ for a grid of values'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0.5, 1.0, 'image plot of $\\sqrt{x^2 + y^2}$ for a grid of values')
-</code></pre>
+<pre><code>Text(0.5, 1.0, &#39;image plot of $\\sqrt{x^2 + y^2}$ for a grid of values&#39;)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200124112647151.png" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jPWTHhic-1579836299553)(output_59_0.png)]"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200124112647151.png" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jPWTHhic-1579836299553)(output_59_0.png)]</figcaption>
+</figure>
 <h2 id="四-将条件逻辑作为数组操作">四、将条件逻辑作为数组操作</h2>
 <p>np.where函数是三元表达式x if condition else y的向量化版本。假设我们有一个布尔值数组和两个数值数组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xarr = np.array([<span class="number">1.1</span>, <span class="number">1.2</span>, <span class="number">1.3</span>, <span class="number">1.4</span>, <span class="number">1.5</span>])</span><br><span class="line">yarr = np.array([<span class="number">2.1</span>, <span class="number">2.2</span>, <span class="number">2.3</span>, <span class="number">2.4</span>, <span class="number">2.5</span>])</span><br><span class="line">cond = np.array([<span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">True</span>, <span class="keyword">False</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = [(x <span class="keyword">if</span> c <span class="keyword">else</span> y) <span class="keyword">for</span> x, y, c <span class="keyword">in</span> zip(xarr, yarr, cond)]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result</span><br></pre></td></tr></table></figure>
-<pre><code>[1.1000000000000001, 2.2000000000000002, 1.3, 1.3999999999999999, 2.5]
-</code></pre>
+<pre><code>[1.1000000000000001, 2.2000000000000002, 1.3, 1.3999999999999999, 2.5]</code></pre>
 <p>这样会产生很多问题。首先，如果数组很大的话，速度会很慢。其次，当数组是多维时，就无法奏效了。而使用np.where时，就可以非常简单地完成：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = np.where(cond, xarr, yarr)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 1.1,  2.2,  1.3,  1.4,  2.5])
-</code></pre>
+<pre><code>array([ 1.1,  2.2,  1.3,  1.4,  2.5])</code></pre>
 <p>np.where第二个和第三个参数并不需要是数组，它们可以是标量：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.random.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0.0462423 ,  1.39587524,  0.7302261 ,  0.21081567],
        [-0.18468851,  0.94854582,  0.70048342,  1.17255176],
        [ 0.72976014,  0.16594239, -1.32911281,  1.61769938],
-       [ 0.98796864, -0.76306741,  0.79224391, -1.05967434]])
-</code></pre>
+       [ 0.98796864, -0.76306741,  0.79224391, -1.05967434]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr &gt; <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <pre><code>array([[ True,  True,  True,  True],
        [False,  True,  True,  True],
        [ True,  True, False,  True],
-       [ True, False,  True, False]], dtype=bool)
-</code></pre>
+       [ True, False,  True, False]], dtype=bool)</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.where(arr &gt; <span class="number">0</span>, <span class="number">2</span>, <span class="number">-2</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 2,  2,  2,  2],
        [-2,  2,  2,  2],
        [ 2,  2, -2,  2],
-       [ 2, -2,  2, -2]])
-</code></pre>
+       [ 2, -2,  2, -2]])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.where(arr &gt; <span class="number">0</span>, <span class="number">2</span>, arr)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 2.        ,  2.        ,  2.        ,  2.        ],
        [-0.18468851,  2.        ,  2.        ,  2.        ],
        [ 2.        ,  2.        , -1.32911281,  2.        ],
-       [ 2.        , -0.76306741,  2.        , -1.05967434]])
-</code></pre>
+       [ 2.        , -0.76306741,  2.        , -1.05967434]])</code></pre>
 
                 
 
@@ -655,12 +624,12 @@ array([[-0.6468063 , -0.00565824,  0.11765362],
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/PytorchTotrial2_LanguageModel/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_LanguageModel">&larr; Previous Post</a>
+                            <a href="/article/numpy基础操作（三）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（三）">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/numpy基础操作（三）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（三）">Next Post &rarr;</a>
+                            <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（三、建立模型与模型检验）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

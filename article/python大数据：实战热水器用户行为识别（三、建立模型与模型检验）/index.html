@@ -149,14 +149,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -221,15 +221,14 @@
 <h3 id="3-建立模型">3. 建立模型</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立模型</span></span><br><span class="line">bpnn = MLPClassifier(hidden_layer_sizes=(<span class="number">15</span>, <span class="number">12</span>),</span><br><span class="line">                     max_iter=<span class="number">200</span>,</span><br><span class="line">                     solver=<span class="string">'lbfgs'</span>,</span><br><span class="line">                     random_state=<span class="number">50</span>)</span><br><span class="line">bpnn.fit(x_stdtrain, y_train)</span><br><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line">joblib.dump(bpnn, <span class="string">'../tmp/water_heater_nnet.m'</span>)</span><br><span class="line">print(<span class="string">'构建的模型为：\n'</span>, bpnn)</span><br></pre></td></tr></table></figure>
 <pre><code>构建的模型为：
- MLPClassifier(activation='relu', alpha=0.0001, batch_size='auto', beta_1=0.9,
+ MLPClassifier(activation=&#39;relu&#39;, alpha=0.0001, batch_size=&#39;auto&#39;, beta_1=0.9,
               beta_2=0.999, early_stopping=False, epsilon=1e-08,
-              hidden_layer_sizes=(15, 12), learning_rate='constant',
+              hidden_layer_sizes=(15, 12), learning_rate=&#39;constant&#39;,
               learning_rate_init=0.001, max_fun=15000, max_iter=200,
               momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
-              power_t=0.5, random_state=50, shuffle=True, solver='lbfgs',
+              power_t=0.5, random_state=50, shuffle=True, solver=&#39;lbfgs&#39;,
               tol=0.0001, validation_fraction=0.1, verbose=False,
-              warm_start=False)
-</code></pre>
+              warm_start=False)</code></pre>
 <h2 id="六-模型检验">六、模型检验</h2>
 <h3 id="1-检验">1. 检验</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="keyword">import</span> joblib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
@@ -242,11 +241,12 @@
 
     accuracy                           0.73        49
    macro avg       0.64      0.63      0.63        49
-weighted avg       0.73      0.73      0.73        49
-</code></pre>
+weighted avg       0.73      0.73      0.73        49</code></pre>
 <h3 id="2-可视化">2. 可视化</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制roc曲线图</span></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = <span class="string">'SimHei'</span>  <span class="comment"># 显示中文</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span>  <span class="comment"># 显示负号</span></span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_pred,y_test)  <span class="comment"># 求出TPR和FPR</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>,<span class="number">4</span>))  <span class="comment"># 创建画布</span></span><br><span class="line">plt.plot(fpr,tpr)  <span class="comment"># 绘制曲线</span></span><br><span class="line">plt.title(<span class="string">'用户用水事件识别ROC曲线'</span>)  <span class="comment"># 标题</span></span><br><span class="line">plt.xlabel(<span class="string">'FPR'</span>)  <span class="comment"># x轴标签</span></span><br><span class="line">plt.ylabel(<span class="string">'TPR'</span>)  <span class="comment"># y轴标签</span></span><br><span class="line">plt.savefig(<span class="string">'../tmp/用户用水事件识别ROC曲线.png'</span>)  <span class="comment"># 保存图片</span></span><br><span class="line">plt.show()  <span class="comment"># 显示图形</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200122163112613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-B5eVc2Tr-1579681861712)(output_13_0.png)]"></p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200122163112613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-B5eVc2Tr-1579681861712)(output_13_0.png)]</figcaption>
+</figure>
 
                 
 
@@ -255,12 +255,12 @@ weighted avg       0.73      0.73      0.73        49
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/numpy简介/" data-toggle="tooltip" data-placement="top" title="numpy简介">&larr; Previous Post</a>
+                            <a href="/article/numpy基础操作（二）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（二）">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/numpy基础操作（一）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（一）">Next Post &rarr;</a>
+                            <a href="/article/numpy简介/" data-toggle="tooltip" data-placement="top" title="numpy简介">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

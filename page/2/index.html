@@ -141,14 +141,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -211,81 +211,6 @@
 
 <div class="post-preview">
 
-    <a href="/article/numpy基础操作（四）/">
-        <h2 class="post-title">
-                                 
-            numpy基础操作（四）
-        </h2>
-        <h3 class="post-subtitle">
-            numpy
-        </h3>
-        <div class="post-content-preview">
-            一、线性代数
-
-
-
-函数
-描述
-
-
-
-
-diag
-返回对角线元素，或者将一个一维数组转换成一方阵，并且非对角线上为0
-
-
-dot 或 @
-矩阵点乘
-
-
-trace
-计算对角线元素和
-
-
-det
-计算矩阵列式
-
-
-eig
-计算方阵的本征值和本征向量
-
-
-inv
-计算方阵的逆
-
-
-pinv
-计算方阵的Moore-Penrose伪逆
-
-
-qr
-计算qr分解
-
-
-svd
-计算奇异值分解svd
-
-
-s......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-01-24
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#python" title="python">python</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/pandas基本操作（一）/">
         <h2 class="post-title">
                                  
@@ -325,24 +250,21 @@ dtype......
 
 <div class="post-preview">
 
-    <a href="/article/pandas基本操作（二）/">
+    <a href="/article/numpy基础操作（三）/">
         <h2 class="post-title">
                                  
-            pandas基本操作（二）
+            numpy基础操作（三）
         </h2>
         <h3 class="post-subtitle">
-            pandas
+            numpy
         </h3>
         <div class="post-content-preview">
-            二、基本功能
-1. 重建索引
-reindex是pandas对象的重要方法，该方法用于创建一个符合新索引的新对象：
-12import numpy as npimport pandas as pd
-12obj = pd.Series([4.5, 7.2, -5.3, 3.6], index=['d', 'b', 'a', 'c'])obj
-d    4.5
-b    7.2
-a   -5.3
-c......
+            一、数学和统计方法
+许多关于计算整个数组统计值或关于轴向数据的数学函数，可以作为数组类型的方法被调用，比如sum、mean和std，既可以直接调用数组实例的方法，也可以使用顶层的numpy函数。这里生成了一些正态分布的随机数，并计算了部分聚合统计数据：
+1import numpy as np
+1arr = np.random.randn(5, 4)
+1arr
+array([[ 0.54234......
         </div>
     </a>
     
@@ -353,6 +275,74 @@ c......
         <div class="tags">
             
               <a href="/tags/#python" title="python">python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/numpy基础操作（二）/">
+        <h2 class="post-title">
+                                 
+            numpy基础操作（二）
+        </h2>
+        <h3 class="post-subtitle">
+            numpy
+        </h3>
+        <div class="post-content-preview">
+            一、数组转置和换轴
+转置是一种特殊的数据重组形式，可以返回底层数据的视图而不需要复制任何内容。数组拥有transpose方法，也有特殊的T属性：
+1import numpy as np
+1arr = np.arange(15).reshape((3, 5))
+1arr
+array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+    ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-01-24
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#python" title="python">python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/">
+        <h2 class="post-title">
+                                 
+            python大数据：实战热水器用户行为识别（三、建立模型与模型检验）
+        </h2>
+        <h3 class="post-subtitle">
+            BIgData
+        </h3>
+        <div class="post-content-preview">
+            五、模型构建
+1234import pandas as pdfrom sklearn.preprocessing import StandardScalerfrom sklearn.neural_network import MLPClassifierimport joblib
+1. 读取数据
+1234# 读取数据Xtrain = pd.read_excel('../tmp/sj_final......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-01-22
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#BIgData" title="BIgData">BIgData</a>
             
         </div>
     
@@ -391,38 +381,6 @@ c......
         <div class="tags">
             
               <a href="/tags/#python" title="python">python</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/">
-        <h2 class="post-title">
-                                 
-            python大数据：实战热水器用户行为识别（三、建立模型与模型检验）
-        </h2>
-        <h3 class="post-subtitle">
-            BIgData
-        </h3>
-        <div class="post-content-preview">
-            五、模型构建
-1234import pandas as pdfrom sklearn.preprocessing import StandardScalerfrom sklearn.neural_network import MLPClassifierimport joblib
-1. 读取数据
-1234# 读取数据Xtrain = pd.read_excel('../tmp/sj_final......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-01-22
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#BIgData" title="BIgData">BIgData</a>
             
         </div>
     
@@ -499,6 +457,36 @@ array([ 6. ,  7.5,  8. ,  0. ,......
 
 <div class="post-preview">
 
+    <a href="/article/python大数据：实战热水器用户行为识别（一、数据分析）/">
+        <h2 class="post-title">
+                                 
+            python大数据：实战热水器用户行为识别（一、数据分析）
+        </h2>
+        <h3 class="post-subtitle">
+            BIgData
+        </h3>
+        <div class="post-content-preview">
+            一、导入相关包
+12345678910#coding:utf-8#导入warnings包，利用过滤器来实现忽略警告语句。import warningswarnings.filterwarnings('ignore')import matplotlib.pyplot as pltimport pandas as pdimport seaborn as snsimport numpy as np......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-01-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#BIgData" title="BIgData">BIgData</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/python大数据：实战热水器用户行为识别（二、数据预处理）/">
         <h2 class="post-title">
                                  
@@ -532,36 +520,6 @@ array([ 6. ,  7.5,  8. ,  0. ,......
 
 <div class="post-preview">
 
-    <a href="/article/python大数据：实战热水器用户行为识别（一、数据分析）/">
-        <h2 class="post-title">
-                                 
-            python大数据：实战热水器用户行为识别（一、数据分析）
-        </h2>
-        <h3 class="post-subtitle">
-            BIgData
-        </h3>
-        <div class="post-content-preview">
-            一、导入相关包
-12345678910#coding:utf-8#导入warnings包，利用过滤器来实现忽略警告语句。import warningswarnings.filterwarnings('ignore')import matplotlib.pyplot as pltimport pandas as pdimport seaborn as snsimport numpy as np......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-01-19
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#BIgData" title="BIgData">BIgData</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/MathematicalModeling_FCE/">
         <h2 class="post-title">
                                  
@@ -572,19 +530,19 @@ array([ 6. ,  7.5,  8. ,  0. ,......
         </h3>
         <div class="post-content-preview">
             一、综合评价法
-$$综合评价法
+\[综合评价法
 \begin{cases}
-主观赋权评价法（定性），\
-例如层次分析法、模糊综合判定法\
-\
-\
-\
-客观赋权评价法(相关关系、各项指标的变异系数)，\
+主观赋权评价法（定性），\\
+例如层次分析法、模糊综合判定法\\
+\\
+\\
+\\
+客观赋权评价法(相关关系、各项指标的变异系数)，\\
 例如灰色关联度法，TOPSIS法、主成分分析法等
-\end{cases}$$
+\end{cases}\]
 二、模糊综合评判法
 （一）模糊综合评价及原理
-1.模糊综合评价就是以模糊数学为基础，应用模糊关系合成的原理，将一些边界不清、不易定......
+1.模糊综合评价就是以模糊数学为基础，应用模糊关系合成的原理，将一些边界......
         </div>
     </a>
     
@@ -751,7 +709,7 @@ $$综合评价法
     <ul>
       
         <li>
-          <a href="/article/Leetcode实战： 94. 二叉树的中序遍历/">Leetcode实战94:二叉树的中序遍历</a>
+          <a href="/article/Leetcode94--二叉树的中序遍历/">Leetcode实战94:二叉树的中序遍历</a>
         </li>
       
         <li>
@@ -759,11 +717,11 @@ $$综合评价法
         </li>
       
         <li>
-          <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/">PytorchTotrial2_RecurrentNeuralNetwork</a>
+          <a href="/article/PytorchTotrial1_LinearRegression/">PytorchTotrial1_LinearRegression</a>
         </li>
       
         <li>
-          <a href="/article/PytorchTotrial1_SoftmaxClassify/">PytorchTotrial1_SoftmaxClassify</a>
+          <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/">PytorchTotrial2_RecurrentNeuralNetwork</a>
         </li>
       
         <li>
