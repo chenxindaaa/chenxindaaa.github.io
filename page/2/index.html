@@ -211,26 +211,24 @@
 
 <div class="post-preview">
 
-    <a href="/article/pandas基本操作（一）/">
+    <a href="/article/pandas基本操作（二）/">
         <h2 class="post-title">
                                  
-            pandas基本操作（一）
+            pandas基本操作（二）
         </h2>
         <h3 class="post-subtitle">
             pandas
         </h3>
         <div class="post-content-preview">
-            一、pandas数据结构介绍
-1. Series
-Series是一种一维的数组性对象，它包含了一个值序列，并且包含了数据标签，称为索引。最简单的序列可以仅仅由一个数组形成：
-12import pandas as pdimport numpy as np
-1obj = pd.Series([4, 7, -5, 3])
-1obj
-0    4
-1    7
-2   -5
-3    3
-dtype......
+            二、基本功能
+1. 重建索引
+reindex是pandas对象的重要方法，该方法用于创建一个符合新索引的新对象：
+12import numpy as npimport pandas as pd
+12obj = pd.Series([4.5, 7.2, -5.3, 3.6], index=['d', 'b', 'a', 'c'])obj
+d    4.5
+b    7.2
+a   -5.3
+c......
         </div>
     </a>
     
@@ -709,7 +707,7 @@ array([ 6. ,  7.5,  8. ,  0. ,......
     <ul>
       
         <li>
-          <a href="/article/Leetcode94--二叉树的中序遍历/">Leetcode实战94:二叉树的中序遍历</a>
+          <a href="/article/Leetcode94/">Leetcode实战94:二叉树的中序遍历</a>
         </li>
       
         <li>
