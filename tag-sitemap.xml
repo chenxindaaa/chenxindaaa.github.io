@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>http://www.chenxindaaa.com/tags/Leetcode/</loc>
+        <lastmod>2020-03-22T11:19:00.405Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://www.chenxindaaa.com/tags/python/</loc>
         <lastmod>2020-02-17T16:23:49.347Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -82,13 +89,6 @@
     <url>
         <loc>http://www.chenxindaaa.com/tags/Matlab/</loc>
         <lastmod>2019-12-07T18:28:49.003Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.chenxindaaa.com/tags/Leetcode/</loc>
-        <lastmod>2019-12-07T18:24:46.347Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
