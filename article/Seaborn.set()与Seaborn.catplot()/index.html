@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -216,85 +216,58 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%config IPCompleter.greedy=<span class="keyword">True</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
 <h2 id="二-seaborn绘图风格设置">二、Seaborn绘图风格设置</h2>
 <h3 id="1snsset设置风格">1.sns.set()设置风格</h3>
-<p>seaborn.set()函数参数：seaborn.set(context='notebook', style='darkgrid', palette='deep', font='sans-serif', font_scale=1, color_codes=True, rc=None)</p>
+<p>seaborn.set()函数参数：seaborn.set(context=‘notebook’, style=‘darkgrid’, palette=‘deep’, font=‘sans-serif’, font_scale=1, color_codes=True, rc=None)</p>
 <p>从这个set()函数，可以看出，通过它我们可以设置背景色、风格、字型、字体等。我们定义一个函数，这个函数主要是生成100个0到15的变量，然后用这个变量画出6条曲线。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sinplot</span><span class="params">(flip=<span class="number">2</span>)</span>:</span></span><br><span class="line">    x = np.linspace(<span class="number">0</span>, <span class="number">15</span>, <span class="number">100</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">        plt.plot(x, np.sin(x + i * <span class="number">.5</span>) * (<span class="number">7</span> - i) * flip)</span><br><span class="line">sns.set()</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120091956492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120091956492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>那么，问题来了，有人会说，这个set()函数这么多参数，只要改变其中任意一个参数的值，绘图效果就会发生变化，那我们怎么知道哪种搭配是最佳效果呢，难道我们要一个个去测试吗？当然不是，seaborn提供了5种默认的风格，我们在实际绘图中只要选择一种喜欢的风格就可以了，下面我们就看看这5种风格的用法及效果。</p>
 <p><strong>seaborn.set()使用5种默认风格</strong></p>
-<p>函数参数：seaborn.set_style(style=None, rc=None)，这里style可选参数值有：darkgrid，whitegrid，dark，white，ticks，下面我们就通过设置不同的风格，看看每种风格的效果。 <strong>1)'white'</strong></p>
+<p>函数参数：seaborn.set_style(style=None, rc=None)，这里style可选参数值有：darkgrid，whitegrid，dark，white，ticks，下面我们就通过设置不同的风格，看看每种风格的效果。<br>
+<strong>1)‘white’</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">'white'</span>)</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092053521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p><strong>2)'whitegrid'</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200120092053521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>2)‘whitegrid’</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">'whitegrid'</span>)</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120091941684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p><strong>3)'darkgrid'</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200120091941684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>3)‘darkgrid’</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">'darkgrid'</span>)</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092110365.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-r0aCsZ5w-1579483126427)(output_9_0.png)]</figcaption>
-</figure>
-<p><strong>4)'dark'</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200120092110365.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-r0aCsZ5w-1579483126427)(output_9_0.png)]"></p>
+<p><strong>4)‘dark’</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">'dark'</span>)</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092118918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-bCT50iIt-1579483126428)(output_11_0.png)]</figcaption>
-</figure>
-<p><strong>5)'ticks'</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200120092118918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-bCT50iIt-1579483126428)(output_11_0.png)]"></p>
+<p><strong>5)‘ticks’</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">'ticks'</span>)</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092128622.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-nmYJohv6-1579483126429)(output_13_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092128622.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-nmYJohv6-1579483126429)(output_13_0.png)]"></p>
 <h3 id="2seaborndespine">2.seaborn.despine()</h3>
 <p>这个函数可以移除图像的上部和右侧的坐标轴，我们看看效果。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sinplot()</span><br><span class="line">sns.despine()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092130107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-82uT7ibT-1579483126430)(output_15_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092130107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-82uT7ibT-1579483126430)(output_15_0.png)]"></p>
 <p>这里默认移除了上部和右侧的轴，当然我们也可以移除其他轴，只要将表示四个边的参数值改为true即可，下面是个这个函数的参数seaborn.despine(fig=None, ax=None, top=True, right=True, left=False, bottom=False, offset=None, trim=False)，其中offset表示偏离左侧轴的距离。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sinplot()</span><br><span class="line">sns.despine(offset=<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092146407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-d3N3guV3-1579483126432)(output_17_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092146407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-d3N3guV3-1579483126432)(output_17_0.png)]"></p>
 <h3 id="3-使用with打开某种风格">3. 使用with打开某种风格</h3>
 <p>在matplotlib中我们已经学过了，在一个figure对象中，我们可以添加多个子图，那么如果不同的子图使用不同的风格，我们该如何做呢？很简单，使用with 打开某种风格，然后在with下画的图都使用with打开的分格，我们来看看代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br><span class="line"><span class="keyword">with</span> sns.axes_style(<span class="string">"darkgrid"</span>):</span><br><span class="line">    ax1 = fig.add_subplot(<span class="number">211</span>)</span><br><span class="line">    sinplot(<span class="number">4</span>)</span><br><span class="line">fig.add_subplot(<span class="number">212</span>)</span><br><span class="line">sinplot(<span class="number">-4</span>)</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092152279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-i6OjEwJD-1579483126433)(output_19_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092152279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-i6OjEwJD-1579483126433)(output_19_0.png)]"></p>
 <h3 id="4-seabornset_context">4. seaborn.set_context（）</h3>
 <p>seaborn.set_context(context=None, font_scale=1, rc=None)这个函数也是来设置绘图背景参数的，它主要来影响标签、线条和其他元素的效果，但不会影响整体的风格，跟style有点区别。这个函数默认使用notebook，其他context可选值有：paper, talk, poster。下面我们看看具体的效果。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set_context(<span class="string">"paper"</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092204273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-cBo6iQI9-1579483126434)(output_21_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092204273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-cBo6iQI9-1579483126434)(output_21_0.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set_context(<span class="string">"talk"</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092212180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6mVYdmKu-1579483126435)(output_22_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092212180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6mVYdmKu-1579483126435)(output_22_0.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set_context(<span class="string">"poster"</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092218898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-CZNRaMcy-1579483126436)(output_23_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092218898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-CZNRaMcy-1579483126436)(output_23_0.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set_context(<span class="string">"notebook"</span>, font_scale=<span class="number">1.5</span>, rc=&#123;<span class="string">"lines.linewidth"</span>: <span class="number">2.5</span>&#125;)</span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line">sinplot()</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092217582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-QDgUohUS-1579483126437)(output_24_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092217582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-QDgUohUS-1579483126437)(output_24_0.png)]"></p>
 <h3 id="5-修改字体">5. 修改字体</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">"ticks"</span>, font=<span class="string">'cmr10'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'font cmr10'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'this is a special font'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0, 0.5, &#39;this is a special font&#39;)</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092233708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-RP1XcxMC-1579483126438)(output_26_1.png)]</figcaption>
-</figure>
+<pre><code>Text(0, 0.5, 'this is a special font')
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092233708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-RP1XcxMC-1579483126438)(output_26_1.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.set(style=<span class="string">"ticks"</span>, font=<span class="string">'cmmi10'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'font cmr10'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'this is a special font'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0, 0.5, &#39;this is a special font&#39;)</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/2020012009224396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-DU01jhtX-1579483126438)(output_27_1.png)]</figcaption>
-</figure>
+<pre><code>Text(0, 0.5, 'this is a special font')
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020012009224396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-DU01jhtX-1579483126438)(output_27_1.png)]"></p>
 <h2 id="三-seaborncatplot分类型数据绘图">三、Seaborn.catplot()分类型数据绘图</h2>
 <p>下面所有函数的最高级别的整合接口：catplot()</p>
 <p><strong>Categorical scatterplots:</strong></p>
@@ -330,88 +303,78 @@ smoker        category
 day           category
 time          category
 size             int64
-dtype: object</code></pre>
+dtype: object
+</code></pre>
 <p>当在同一个类别中出现大量取值相同或接近的观测数据时，他们会挤到一起。seaborn中有两种分类散点图，分别以不同的方式处理了这个问题。 catplot()使用的默认方式是stripplot()，它给这些散点增加了一些随机的偏移量，更容易观察：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="string">"day"</span>, y=<span class="string">"total_bill"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c9aff28&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092303301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-K053aGVE-1579483126439)(output_31_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c9aff28&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092303301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-K053aGVE-1579483126439)(output_31_1.png)]"></p>
 <p>jitter参数控制着偏移量的大小，或者我们可以直接禁止他们偏移：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="string">"day"</span>, y=<span class="string">"tip"</span>, jitter=<span class="keyword">False</span>,data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c8355c0&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092312200.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-dqwq0GOa-1579483126440)(output_33_1.png)]</figcaption>
-</figure>
-<p><strong>蜂群图：catplot(kind=“swarm”)</strong> 相当于swarmplot() 避免了散点之间的重合，提供更好的方式来呈现观测点的分布。 但仅适用于较小的数据集。</p>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c8355c0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092312200.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-dqwq0GOa-1579483126440)(output_33_1.png)]"></p>
+<p><strong>蜂群图：catplot(kind=“swarm”)</strong><br>
+相当于swarmplot() 避免了散点之间的重合，提供更好的方式来呈现观测点的分布。 但仅适用于较小的数据集。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"swarm"</span>, x=<span class="string">"day"</span>, y=<span class="string">"tip"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c7f6160&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092313197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-DCN4sczd-1579483126441)(output_35_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c7f6160&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092313197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-DCN4sczd-1579483126441)(output_35_1.png)]"></p>
 <ul>
 <li>hue参数：利用不同颜色区分</li>
 </ul>
 <p>与关系图类似，也可以通过hue来增加一个维度。BUT分类图不支持size和style</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"swarm"</span>, x=<span class="string">"day"</span>, y=<span class="string">"tip"</span>, hue=<span class="string">"sex"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c816208&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092326645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fsYtqxqG-1579483126441)(output_37_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c816208&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092326645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fsYtqxqG-1579483126441)(output_37_1.png)]"></p>
 <ul>
 <li>col参数, 指定某一切面来考察数据</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"swarm"</span>, x=<span class="string">"day"</span>, y=<span class="string">"tip"</span>, hue=<span class="string">"sex"</span>, col=<span class="string">"smoker"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cee2cc0&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092339201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZJcMFM43-1579483126442)(output_39_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cee2cc0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092339201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZJcMFM43-1579483126442)(output_39_1.png)]"></p>
 <ul>
 <li>考察切面时, 利用height, aspect参数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="string">"day"</span>, y=<span class="string">"tip"</span>, hue=<span class="string">"sex"</span>, col=<span class="string">"smoker"</span>, height=<span class="number">5</span>, aspect=<span class="number">.8</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd847b49fd0&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092339476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-iIj5SBWc-1579483126443)(output_41_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd847b49fd0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092339476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-iIj5SBWc-1579483126443)(output_41_1.png)]"></p>
 <ul>
 <li>切面时, 使用参数 col_wrap, 让每行显示指定数量的图，如果超过该数量，则多行显示。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="string">"day"</span>, y=<span class="string">"tip"</span>, hue=<span class="string">"sex"</span>, col=<span class="string">"size"</span>, height=<span class="number">5</span>, aspect=<span class="number">.8</span>, col_wrap=<span class="number">2</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd847cb1630&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092350242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-03VBCgTZ-1579483126444)(output_43_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd847cb1630&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092350242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-03VBCgTZ-1579483126444)(output_43_1.png)]"></p>
 <ul>
 <li>关于x（分类型数据）轴的分类值的顺序，函数会自己推断。 如果数据是pandas的Categorical类型，那么默认的分类顺序可以在pandas中设置； 如果数据看起来是数值型的（比如1，2，3…），那他们也会被排序。 即使我们使用数字作为不同分类的标签，它们仍然是被当做分类型数据按顺序绘制在分类变量对应的坐标轴上的：</li>
 </ul>
 <p><strong>注意，2和4之间的距离与1和2之间的距离是一样的，它们是不同的分类，只会排序，但是并不会改变它们在坐标轴上的距离</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="string">"size"</span>, y=<span class="string">"tip"</span>, kind=<span class="string">"swarm"</span>, data=tips.query(<span class="string">"size!=3"</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c735710&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/2020012009240179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-CliH8zqz-1579483126445)(output_45_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c735710&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020012009240179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-CliH8zqz-1579483126445)(output_45_1.png)]"></p>
 <ul>
 <li>order参数：指定分类值顺序</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"swarm"</span>,x=<span class="string">"size"</span>, y=<span class="string">"tip"</span>, order=[<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>],data=tips.query(<span class="string">"size!=3"</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c757278&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092406229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ImHJ6pXG-1579483126445)(output_47_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c757278&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092406229.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ImHJ6pXG-1579483126445)(output_47_1.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"swarm"</span>, x=<span class="string">"smoker"</span>,y=<span class="string">"tip"</span>, order=[<span class="string">"No"</span>,<span class="string">"Yes"</span>], data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c91efd0&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092411884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-T0AgGcyu-1579483126446)(output_48_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c91efd0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092411884.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-T0AgGcyu-1579483126446)(output_48_1.png)]"></p>
 <ul>
 <li>有些时候把分类变量放在垂直坐标轴上会更有帮助（尤其是当分类名称较长或者分类较多时）</li>
 </ul>
 <p>只需要交换x和y分配的变量即可：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(x=<span class="string">"total_bill"</span>, y=<span class="string">"day"</span>, hue=<span class="string">"time"</span>, kind=<span class="string">"swarm"</span>, data=tips);</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092417525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-AGuyU7oN-1579483126447)(output_50_0.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200120092417525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-AGuyU7oN-1579483126447)(output_50_0.png)]"></p>
 <h3 id="2-分类分布图">2、分类分布图</h3>
 <p>当数据量越来越大时，散点图在表现不同分类的观测值的分布信息就越来越捉襟见肘了。 此时，有其他的方式：</p>
 <ul>
@@ -421,54 +384,47 @@ dtype: object</code></pre>
 <p><strong>箱线图：catplot(kind=“box”)</strong></p>
 <p>展现了：离群点、上界、上四分位数、均值、中位数、下四分位数、下界、离群点</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"box"</span>, x=<span class="string">"day"</span>, y=<span class="string">"total_bill"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c842240&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092417853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EZkrCoUB-1579483126447)(output_52_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c842240&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092417853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EZkrCoUB-1579483126447)(output_52_1.png)]"></p>
 <p>增加一个维度的信息：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"box"</span>, x=<span class="string">"day"</span>, y=<span class="string">"total_bill"</span>, hue=<span class="string">"smoker"</span>, data=tips)<span class="comment">#增加一个维度的信息</span></span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd889643b38&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092430644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-c79VXF5n-1579483126448)(output_54_1.png)]</figcaption>
-</figure>
-<p>上面的图中，默认了hue参数对应的变量smoker与坐标轴上的分类变量day是相互嵌套的（如，周四吸烟、周四不吸烟），这种操作叫<strong>“dodging”</strong>。 如果不是这种情形，应该禁用dodging，看下面的例子： hue的Weekend和day不是相互嵌套的：</p>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd889643b38&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092430644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-c79VXF5n-1579483126448)(output_54_1.png)]"></p>
+<p>上面的图中，默认了hue参数对应的变量smoker与坐标轴上的分类变量day是相互嵌套的（如，周四吸烟、周四不吸烟），这种操作叫**“dodging”**。 如果不是这种情形，应该禁用dodging，看下面的例子： hue的Weekend和day不是相互嵌套的：</p>
 <p>× 错误的图：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tips[<span class="string">"Weekend"</span>]= tips[<span class="string">"day"</span>].isin([<span class="string">"Sat"</span>,<span class="string">"Sun"</span>])  <span class="comment"># isin 返回布尔值</span></span><br><span class="line">sns.catplot(kind=<span class="string">"box"</span>, x=<span class="string">"day"</span>, y=<span class="string">"total_bill"</span>, hue=<span class="string">"Weekend"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cb5ef98&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092435876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZfTPy38m-1579483126449)(output_56_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cb5ef98&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092435876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZfTPy38m-1579483126449)(output_56_1.png)]"></p>
 <p>√ 正确的图（禁用dodge，dodge=False）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"box"</span>, x=<span class="string">"day"</span>, y=<span class="string">"total_bill"</span>, hue=<span class="string">"Weekend"</span>,dodge=<span class="keyword">False</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84f3754e0&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092442488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-lkCNpOrr-1579483126449)(output_58_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84f3754e0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092442488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-lkCNpOrr-1579483126449)(output_58_1.png)]"></p>
 <p><strong>box的进阶：catplot(kind=“boxen”)</strong></p>
 <p>与箱线图相似但是能展示更多关于数据分布形状的信息，它对大数据更加友好：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"boxen"</span>, x=<span class="string">"day"</span>, y=<span class="string">"total_bill"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84ceff358&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092439556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-rj62y38y-1579483126450)(output_60_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84ceff358&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092439556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-rj62y38y-1579483126450)(output_60_1.png)]"></p>
 <p><strong>小提琴图：catplot(kind=“violin”)</strong></p>
 <ul>
 <li>它将箱线图和核密度估计(kde: kernel density estimation)结合起来</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"violin"</span>, y=<span class="string">"day"</span>, x=<span class="string">"total_bill"</span>,hue=<span class="string">"time"</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cc2bda0&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092454276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-PiGsEK4m-1579483126451)(output_62_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cc2bda0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092454276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-PiGsEK4m-1579483126451)(output_62_1.png)]"></p>
 <ul>
 <li>参数split=Ture</li>
 </ul>
 <p>当一个额外的分类变量仅有2个水平时，我们也可以将它赋给hue参数，并且设置split=True，这样我们可以更加充分地利用空间来表达更多信息：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"violin"</span>, y=<span class="string">"day"</span>, x=<span class="string">"total_bill"</span>,hue=<span class="string">"time"</span>,split=<span class="keyword">True</span>, data=tips)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c6a5048&gt;</code></pre>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092502599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4GHUs0wd-1579483126451)(output_64_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c6a5048&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092502599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4GHUs0wd-1579483126451)(output_64_1.png)]"></p>
 <h3 id="3-分类统计估计图">3. 分类统计估计图</h3>
 <p>在某些应用场景中，相对于展示每类的分布情况，更像展示每类的数据的集中趋势估计（统计量，如均值、中位数、方差等）。 有以下方式：</p>
 <ul>
@@ -479,332 +435,141 @@ dtype: object</code></pre>
 <p><strong>条形图：catplot(kind=“bar”)</strong></p>
 <p>在seaborn中，barplot()函数在整个数据集上运行，并且应用一个函数来获得那些统计量（默认为均值）。当每个分类中有多个观测值时，它还可以通过自助采样法计算出一个置信区间，并且通过误差棒的方式绘制出来。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">titanic = sns.load_dataset(<span class="string">"titanic"</span>)</span><br><span class="line">print(len(titanic))</span><br><span class="line">titanic.head()</span><br></pre></td></tr></table></figure>
-<pre><code>891</code></pre>
+<pre><code>891
+</code></pre>
 <div>
 <style>
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-survived
-</th>
-<th>
-pclass
-</th>
-<th>
-sex
-</th>
-<th>
-age
-</th>
-<th>
-sibsp
-</th>
-<th>
-parch
-</th>
-<th>
-fare
-</th>
-<th>
-embarked
-</th>
-<th>
-class
-</th>
-<th>
-who
-</th>
-<th>
-adult_male
-</th>
-<th>
-deck
-</th>
-<th>
-embark_town
-</th>
-<th>
-alive
-</th>
-<th>
-alone
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-0
-</th>
-<td>
-0
-</td>
-<td>
-3
-</td>
-<td>
-male
-</td>
-<td>
-22.0
-</td>
-<td>
-1
-</td>
-<td>
-0
-</td>
-<td>
-7.2500
-</td>
-<td>
-S
-</td>
-<td>
-Third
-</td>
-<td>
-man
-</td>
-<td>
-True
-</td>
-<td>
-NaN
-</td>
-<td>
-Southampton
-</td>
-<td>
-no
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-1
-</th>
-<td>
-1
-</td>
-<td>
-1
-</td>
-<td>
-female
-</td>
-<td>
-38.0
-</td>
-<td>
-1
-</td>
-<td>
-0
-</td>
-<td>
-71.2833
-</td>
-<td>
-C
-</td>
-<td>
-First
-</td>
-<td>
-woman
-</td>
-<td>
-False
-</td>
-<td>
-C
-</td>
-<td>
-Cherbourg
-</td>
-<td>
-yes
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-2
-</th>
-<td>
-1
-</td>
-<td>
-3
-</td>
-<td>
-female
-</td>
-<td>
-26.0
-</td>
-<td>
-0
-</td>
-<td>
-0
-</td>
-<td>
-7.9250
-</td>
-<td>
-S
-</td>
-<td>
-Third
-</td>
-<td>
-woman
-</td>
-<td>
-False
-</td>
-<td>
-NaN
-</td>
-<td>
-Southampton
-</td>
-<td>
-yes
-</td>
-<td>
-True
-</td>
-</tr>
-<tr>
-<th>
-3
-</th>
-<td>
-1
-</td>
-<td>
-1
-</td>
-<td>
-female
-</td>
-<td>
-35.0
-</td>
-<td>
-1
-</td>
-<td>
-0
-</td>
-<td>
-53.1000
-</td>
-<td>
-S
-</td>
-<td>
-First
-</td>
-<td>
-woman
-</td>
-<td>
-False
-</td>
-<td>
-C
-</td>
-<td>
-Southampton
-</td>
-<td>
-yes
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-4
-</th>
-<td>
-0
-</td>
-<td>
-3
-</td>
-<td>
-male
-</td>
-<td>
-35.0
-</td>
-<td>
-0
-</td>
-<td>
-0
-</td>
-<td>
-8.0500
-</td>
-<td>
-S
-</td>
-<td>
-Third
-</td>
-<td>
-man
-</td>
-<td>
-True
-</td>
-<td>
-NaN
-</td>
-<td>
-Southampton
-</td>
-<td>
-no
-</td>
-<td>
-True
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"bar"</span>, x=<span class="string">"sex"</span>, y=<span class="string">"survived"</span>, hue=<span class="string">"class"</span>, data=titanic)</span><br></pre></td></tr></table></figure>
-<p>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c4d7d30&gt;</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092515411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-UwtGW2Eh-1579483126452)(output_68_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c4d7d30&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092515411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-UwtGW2Eh-1579483126452)(output_68_1.png)]"></p>
 <p>可以清晰明了地看出来： 女性幸存者高于男性； 舱级高的幸存者高于舱级低的。</p>
 <p><strong>catplot(kind=“count”)：展示每个分类下观测值的数量</strong></p>
 <p>“属于分类变量而非连续变量的直方图”</p>
@@ -812,26 +577,22 @@ True
 <p>仅给一个轴（要水平方向画就x:你的分类变量；垂直方向就y:你的分类变量），另一个轴默认为count了：</p>
 <p>如，展示买各个class票的人数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"count"</span>, x=<span class="string">"class"</span>,data=titanic)</span><br></pre></td></tr></table></figure>
-<p>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cbf1cc0&gt;</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092520860.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6KVu0en2-1579483126453)(output_70_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84cbf1cc0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092520860.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6KVu0en2-1579483126453)(output_70_1.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"count"</span>, x=<span class="string">"class"</span>, hue=<span class="string">"alive"</span>,data=titanic)</span><br></pre></td></tr></table></figure>
-<p>&lt;seaborn.axisgrid.FacetGrid at 0x7fd847eb19e8&gt;</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092526631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fPukNozJ-1579483126454)(output_71_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd847eb19e8&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092526631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fPukNozJ-1579483126454)(output_71_1.png)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#也可以将连续型变量当成分类型变量</span></span><br><span class="line">sns.catplot(kind=<span class="string">"count"</span>, y=<span class="string">"size"</span>,data=tips,color=<span class="string">'c'</span>)</span><br></pre></td></tr></table></figure>
-<p>&lt;seaborn.axisgrid.FacetGrid at 0x7fd8474472b0&gt;</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092528767.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-OTNX3b1F-1579483126461)(output_72_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd8474472b0&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092528767.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-OTNX3b1F-1579483126461)(output_72_1.png)]"></p>
 <p><strong>catplot(kind=“point”)：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.catplot(kind=<span class="string">"point"</span>, x=<span class="string">"sex"</span>, y =<span class="string">"fare"</span>, data=titanic)</span><br></pre></td></tr></table></figure>
-<p>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c6a5470&gt;</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200120092536833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-GRxfyXLo-1579483126462)(output_74_1.png)]</figcaption>
-</figure>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fd84c6a5470&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200120092536833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-GRxfyXLo-1579483126462)(output_74_1.png)]"></p>
 
                 
 

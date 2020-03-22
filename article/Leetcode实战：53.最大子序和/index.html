@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -212,11 +212,15 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>题目： 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 示例：</p>
+                <p>题目：<br>
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br>
+示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</span><br><span class="line">输出: 6</span><br><span class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</span><br></pre></td></tr></table></figure>
-<p>算法实现：双指针 今天这题是写的最不满意的，脑子不好使了，明天再修改</p>
+<p>算法实现：双指针<br>
+今天这题是写的最不满意的，脑子不好使了，明天再修改</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxSubArray(self, nums: List[int]) -&gt; int:</span><br><span class="line">        count1 = 0</span><br><span class="line">        count2 = len(nums) - 1</span><br><span class="line">        a = float(&apos;-inf&apos;)</span><br><span class="line">        while True:</span><br><span class="line">            while nums[count1] &lt;= 0 and count1 &lt; count2:</span><br><span class="line">                count1 += 1</span><br><span class="line">            while nums[count2] &lt;= 0 and count2 &gt; count1:</span><br><span class="line">                count2 -= 1</span><br><span class="line">            i = count1 + 1</span><br><span class="line">            j = count2 - 1</span><br><span class="line">            temp1 = sum(nums[count1:i + 1])</span><br><span class="line">            temp2 = sum(nums[j:count2 + 1])</span><br><span class="line">            while (temp1 &gt; 0 or temp2 &gt; 0) and i &lt;= j:</span><br><span class="line">                a = nums[count1] if nums[count1] &gt; a else a</span><br><span class="line">                a = nums[count2] if nums[count2] &gt; a else a</span><br><span class="line">                if temp1 &gt; 0:</span><br><span class="line">                    a = temp1 if temp1 &gt; a else a</span><br><span class="line">                    i += 1</span><br><span class="line">                    temp1 += nums[i]</span><br><span class="line">                else:</span><br><span class="line">                    count1 = i + 1</span><br><span class="line">                    while nums[count1] &lt;= 0 and count1 &lt; count2:</span><br><span class="line">                        count1 += 1</span><br><span class="line">                    i = count1 + 1</span><br><span class="line">                    temp1 = nums[count1]</span><br><span class="line">                if temp2 &gt; 0:</span><br><span class="line">                    a = temp2 if temp2 &gt; a else a</span><br><span class="line">                    j -= 1</span><br><span class="line">                    temp2 += nums[j]</span><br><span class="line">                else:</span><br><span class="line">                    count2 = j - 1</span><br><span class="line">                    while nums[count2] &lt;= 0 and count2 &gt; count1:</span><br><span class="line">                        count2 -= 1</span><br><span class="line">                    j = count2 - 1</span><br><span class="line">                    temp2 = nums[count2]</span><br><span class="line">                if i &gt; j:</span><br><span class="line">                    return sum(nums[count1:count2 + 1]) if sum(nums[count1:count2 + 1]) &gt; a else a</span><br><span class="line">            if count1 == count2:</span><br><span class="line">                return max(nums)</span><br><span class="line">            if sum(nums[count1:i + 1]) &lt;= 0:</span><br><span class="line">                count1 += 1</span><br><span class="line">            if sum(nums[j:count2 + 1]) &lt;= 0:</span><br><span class="line">                count2 -= 1</span><br><span class="line">            if count1 == count2 - 1:</span><br><span class="line">                return sum(nums[count1:count2 + 1]) if sum(nums[count1:count2 + 1]) &gt; a else a</span><br></pre></td></tr></table></figure>
-<p>结果： <img src="https://img-blog.csdnimg.cn/20190912231122593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>结果：<br>
+<img src="https://img-blog.csdnimg.cn/20190912231122593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 

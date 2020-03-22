@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -221,85 +221,94 @@
        [ 0.46031913, -0.22496361,  0.71893436, -0.80612411],
        [-0.4606725 ,  0.9035363 ,  0.62075324,  1.09956632],
        [ 1.48406728,  0.28431111,  0.51643292,  1.30460842],
-       [-0.24962084, -0.41941042, -0.83117976,  1.64538517]])</code></pre>
+       [-0.24962084, -0.41941042, -0.83117976,  1.64538517]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.mean()</span><br></pre></td></tr></table></figure>
-<pre><code>0.50359082495103646</code></pre>
+<pre><code>0.50359082495103646
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.mean(arr)</span><br></pre></td></tr></table></figure>
-<pre><code>0.50359082495103646</code></pre>
+<pre><code>0.50359082495103646
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.sum()</span><br></pre></td></tr></table></figure>
-<pre><code>10.071816499020729</code></pre>
+<pre><code>10.071816499020729
+</code></pre>
 <p>像sum、mean等函数可以接收一个可选参数axis，这个参数可以用于计算戈丁轴向熵的统计值，形成一个下降一维度的数组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.mean(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 1.00646838,  0.03704144,  0.54079584,  0.89735493,  0.03629354])</code></pre>
+<pre><code>array([ 1.00646838,  0.03704144,  0.54079584,  0.89735493,  0.03629354])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.sum(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 1.77643462,  2.77861772,  1.05454325,  4.46222091])</code></pre>
+<pre><code>array([ 1.77643462,  2.77861772,  1.05454325,  4.46222091])
+</code></pre>
 <p>arr.mean(1)表示“计算每一行的平均值”，而arr.sum(0)表示“计算列轴向的和”</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.cumsum()</span><br></pre></td></tr></table></figure>
 <pre><code>array([  0.54234154,   2.77748588,   2.80708839,   4.0258735 ,
          4.48619264,   4.26122903,   4.98016339,   4.17403927,
          3.71336677,   4.61690307,   5.23765631,   6.33722263,
          7.82128991,   8.10560102,   8.62203394,   9.92664235,
-         9.67702152,   9.2576111 ,   8.42643133,  10.0718165 ])</code></pre>
+         9.67702152,   9.2576111 ,   8.42643133,  10.0718165 ])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.cumsum(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0.54234154,  2.23514434,  0.0296025 ,  1.21878512],
        [ 1.00266067,  2.01018074,  0.74853686,  0.412661  ],
        [ 0.54198817,  2.91371703,  1.3692901 ,  1.51222732],
        [ 2.02605545,  3.19802814,  1.88572302,  2.81683574],
-       [ 1.77643462,  2.77861772,  1.05454325,  4.46222091]])</code></pre>
+       [ 1.77643462,  2.77861772,  1.05454325,  4.46222091]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.cumsum(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0.54234154,  2.77748588,  2.80708839,  4.0258735 ],
        [ 0.46031913,  0.23535553,  0.95428988,  0.14816577],
        [-0.4606725 ,  0.44286379,  1.06361703,  2.16318336],
        [ 1.48406728,  1.76837839,  2.28481131,  3.58941972],
-       [-0.24962084, -0.66903126, -1.50021102,  0.14517415]])</code></pre>
+       [-0.24962084, -0.66903126, -1.50021102,  0.14517415]])
+</code></pre>
 <p>基础数组统计方法：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">方法</th>
-<th style="text-align: center;">描述</th>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">ndarray.mean( axis=0 )</td>
-<td style="text-align: center;">平均值</td>
+<tr>
+<td style="text-align:center">ndarray.mean( axis=0 )</td>
+<td style="text-align:center">平均值</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ndarray.sum( axis= 0)</td>
-<td style="text-align: center;">求和</td>
+<tr>
+<td style="text-align:center">ndarray.sum( axis= 0)</td>
+<td style="text-align:center">求和</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ndarray.cumsum( axis=0)</td>
-<td style="text-align: center;">元素累积和</td>
+<tr>
+<td style="text-align:center">ndarray.cumsum( axis=0)</td>
+<td style="text-align:center">元素累积和</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ndarray.cumprod( axis=0)</td>
-<td style="text-align: center;">元素累积积</td>
+<tr>
+<td style="text-align:center">ndarray.cumprod( axis=0)</td>
+<td style="text-align:center">元素累积积</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ndarray.std()</td>
-<td style="text-align: center;">方差</td>
+<tr>
+<td style="text-align:center">ndarray.std()</td>
+<td style="text-align:center">方差</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ndarray.var()</td>
-<td style="text-align: center;">标准差</td>
+<tr>
+<td style="text-align:center">ndarray.var()</td>
+<td style="text-align:center">标准差</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ndarray.max()</td>
-<td style="text-align: center;">最大值</td>
+<tr>
+<td style="text-align:center">ndarray.max()</td>
+<td style="text-align:center">最大值</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ndarray.min()</td>
-<td style="text-align: center;">最小值</td>
+<tr>
+<td style="text-align:center">ndarray.min()</td>
+<td style="text-align:center">最小值</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ndarray.argmax()</td>
-<td style="text-align: center;">最大值索引</td>
+<tr>
+<td style="text-align:center">ndarray.argmax()</td>
+<td style="text-align:center">最大值索引</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ndarray.argmin()</td>
-<td style="text-align: center;">最小值索引</td>
+<tr>
+<td style="text-align:center">ndarray.argmin()</td>
+<td style="text-align:center">最小值索引</td>
 </tr>
 </tbody>
 </table>
@@ -307,13 +316,16 @@
 <p>在前面介绍的方法，布尔值被强制为1(True)和0(False)。因此，sum通常可以用于计算布尔值数组中的True的个数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.random.randn(<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(arr &gt; <span class="number">0</span>).sum()  <span class="comment"># 正值的个数</span></span><br></pre></td></tr></table></figure>
-<pre><code>44</code></pre>
+<pre><code>44
+</code></pre>
 <p>对于布尔值数组，有两个非常有用的方法any和all。any检查数组中是否至少有一个True，而all检查是否每个值都是True：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bools = np.array([<span class="keyword">False</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bools.any()</span><br></pre></td></tr></table></figure>
-<pre><code>True</code></pre>
+<pre><code>True
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bools.all()</span><br></pre></td></tr></table></figure>
-<pre><code>False</code></pre>
+<pre><code>False
+</code></pre>
 <h2 id="三-排序">三、排序</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.random.randn(<span class="number">5</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
@@ -321,58 +333,62 @@
        [ 2.00902633,  0.49447677,  0.44816206],
        [ 0.69969863,  0.80590731,  0.28513687],
        [-0.44268606,  0.90952402, -1.01423976],
-       [ 1.2000551 ,  0.13997115, -0.16253735]])</code></pre>
+       [ 1.2000551 ,  0.13997115, -0.16253735]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.sort() <span class="comment"># 按行排序</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-1.58519267,  0.20999255,  1.8071827 ],
        [ 0.44816206,  0.49447677,  2.00902633],
        [ 0.28513687,  0.69969863,  0.80590731],
        [-1.01423976, -0.44268606,  0.90952402],
-       [-0.16253735,  0.13997115,  1.2000551 ]])</code></pre>
+       [-0.16253735,  0.13997115,  1.2000551 ]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(<span class="number">0</span>) <span class="comment"># 按列排序</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-1.58519267, -0.44268606,  0.80590731],
        [-1.01423976,  0.13997115,  0.90952402],
        [-0.16253735,  0.20999255,  1.2000551 ],
        [ 0.28513687,  0.49447677,  1.8071827 ],
-       [ 0.44816206,  0.69969863,  2.00902633]])</code></pre>
+       [ 0.44816206,  0.69969863,  2.00902633]])
+</code></pre>
 <p>顶层的np.sort方法返回的是以及排序好的数组拷贝，而不是对原数组按位置排序，下面的例子计算的是一个数组的分位数，并选出分位数所对应的值，这是一种应急的方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">large_arr = np.random.randn(<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">large_arr.sort()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">large_arr[int(<span class="number">0.05</span> * len(large_arr))]</span><br></pre></td></tr></table></figure>
-<pre><code>-1.6612131830737684</code></pre>
+<pre><code>-1.6612131830737684
+</code></pre>
 <h2 id="四-唯一值与其他集合逻辑">四、唯一值与其他集合逻辑</h2>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">方法</th>
-<th style="text-align: center;">描述</th>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">unique(x)</td>
-<td style="text-align: center;">计算x的唯一值，并排序</td>
+<tr>
+<td style="text-align:center">unique(x)</td>
+<td style="text-align:center">计算x的唯一值，并排序</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">interect1d(x, y)</td>
-<td style="text-align: center;">计算x和y的交集并排序</td>
+<tr>
+<td style="text-align:center">interect1d(x, y)</td>
+<td style="text-align:center">计算x和y的交集并排序</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">union1d(x, y)</td>
-<td style="text-align: center;">计算x和y的并集并排序</td>
+<tr>
+<td style="text-align:center">union1d(x, y)</td>
+<td style="text-align:center">计算x和y的并集并排序</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ub1d(x, y)</td>
-<td style="text-align: center;">计算x中的元素是否包含在y中，返回一个布尔值数组</td>
+<tr>
+<td style="text-align:center">ub1d(x, y)</td>
+<td style="text-align:center">计算x中的元素是否包含在y中，返回一个布尔值数组</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">setdiff1d(x, y)</td>
-<td style="text-align: center;">差集</td>
+<tr>
+<td style="text-align:center">setdiff1d(x, y)</td>
+<td style="text-align:center">差集</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">setxor1d(x, y)</td>
-<td style="text-align: center;">亦或集</td>
+<tr>
+<td style="text-align:center">setxor1d(x, y)</td>
+<td style="text-align:center">亦或集</td>
 </tr>
 </tbody>
 </table>
@@ -384,12 +400,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/PytorchTotrial2_TextPrepare/" data-toggle="tooltip" data-placement="top" title="PytorchTotrial2_TextPrepare">&larr; Previous Post</a>
+                            <a href="/article/numpy基础操作（二）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（二）">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/numpy基础操作（二）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（二）">Next Post &rarr;</a>
+                            <a href="/article/numpy基础操作（四）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（四）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

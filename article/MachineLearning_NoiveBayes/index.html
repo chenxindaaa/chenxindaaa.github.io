@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,15 +214,25 @@
 
                 <p><strong>朴素贝叶斯（Naive Bayes）是一种简单的分类算法。</strong></p>
 <h2 id="一-朴素贝叶斯的理论基础">一、朴素贝叶斯的理论基础</h2>
-<p>给定训练数据集（X,Y），其中每个样本x都包括n维特征，即<span class="math inline">\(x=(x_1,x_2,x_3,...,x_n)\)</span>，类标记集合含有k种类别，<span class="math inline">\(y=(y_1,y_2,...,y_k)\)</span>。</p>
-<p>如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x),P(y2|x),...,P(yk|x)中最大的那个，即求后验概率最大的。</p>
-<p>P(yk|x)根据贝叶斯定理和全概率公式可以求出。分子中的P(yk)是先验概率，根据训练集就可以简单地计算出来。 <strong>贝叶斯公式：</strong> <img src="https://img-blog.csdnimg.cn/20191130192327601.png" alt="在这里插入图片描述"> <strong>全概率公式：</strong> <img src="https://img-blog.csdnimg.cn/20191130192243876.png" alt="在这里插入图片描述"> 朴素贝叶斯算法对条件概率分布作出了独立性的假设，假设各个维度的特征x1,x2,...,xn互相独立。</p>
-<p><strong>那么条件概率公式可以化为：</strong> <img src="https://img-blog.csdnimg.cn/2019113019270736.png" alt="在这里插入图片描述"> <strong>于是朴素贝叶斯分类器可表示为：</strong> <img src="https://img-blog.csdnimg.cn/20191130193041870.png" alt="在这里插入图片描述"> 因为对所有的yk，上式中的分母的值都是一样的，所以可以忽略分母部分。<strong>朴素贝叶斯分类器最终表示为：</strong> <img src="https://img-blog.csdnimg.cn/20191130192858965.png" alt="在这里插入图片描述"></p>
+<p>给定训练数据集（X,Y），其中每个样本x都包括n维特征，即$x=(x_1,x_2,x_3,…,x_n)$，类标记集合含有k种类别，$y=(y_1,y_2,…,y_k)$。</p>
+<p>如果现在来了一个新样本x，我们要怎么判断它的类别？从概率的角度来看，这个问题就是给定x，它属于哪个类别的概率最大。那么问题就转化为求解P(y1|x),P(y2|x),…,P(yk|x)中最大的那个，即求后验概率最大的。</p>
+<p>P(yk|x)根据贝叶斯定理和全概率公式可以求出。分子中的P(yk)是先验概率，根据训练集就可以简单地计算出来。<br>
+<strong>贝叶斯公式：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130192327601.png" alt="在这里插入图片描述"><br>
+<strong>全概率公式：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130192243876.png" alt="在这里插入图片描述"><br>
+朴素贝叶斯算法对条件概率分布作出了独立性的假设，假设各个维度的特征x1,x2,…,xn互相独立。</p>
+<p><strong>那么条件概率公式可以化为：</strong><br>
+<img src="https://img-blog.csdnimg.cn/2019113019270736.png" alt="在这里插入图片描述"><br>
+<strong>于是朴素贝叶斯分类器可表示为：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130193041870.png" alt="在这里插入图片描述"><br>
+因为对所有的yk，上式中的分母的值都是一样的，所以可以忽略分母部分。<strong>朴素贝叶斯分类器最终表示为：</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191130192858965.png" alt="在这里插入图片描述"></p>
 <h3 id="下面举一个例子"><strong>下面举一个例子：</strong></h3>
 <h4 id="数据集">数据集：</h4>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>编号</th>
 <th>色泽</th>
 <th>根蒂</th>
@@ -236,7 +246,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>1</td>
 <td>青绿</td>
 <td>蜷缩</td>
@@ -248,7 +258,7 @@
 <td>0.460</td>
 <td>是</td>
 </tr>
-<tr class="even">
+<tr>
 <td>2</td>
 <td>乌黑</td>
 <td>蜷缩</td>
@@ -260,7 +270,7 @@
 <td>0.376</td>
 <td>是</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>3</td>
 <td>乌黑</td>
 <td>蜷缩</td>
@@ -272,7 +282,7 @@
 <td>0.264</td>
 <td>是</td>
 </tr>
-<tr class="even">
+<tr>
 <td>4</td>
 <td>青绿</td>
 <td>蜷缩</td>
@@ -284,7 +294,7 @@
 <td>0.318</td>
 <td>是</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>5</td>
 <td>浅白</td>
 <td>蜷缩</td>
@@ -296,7 +306,7 @@
 <td>0.215</td>
 <td>是</td>
 </tr>
-<tr class="even">
+<tr>
 <td>6</td>
 <td>青绿</td>
 <td>稍蜷</td>
@@ -308,7 +318,7 @@
 <td>0.237</td>
 <td>是</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>7</td>
 <td>乌黑</td>
 <td>稍蜷</td>
@@ -320,7 +330,7 @@
 <td>0.149</td>
 <td>是</td>
 </tr>
-<tr class="even">
+<tr>
 <td>8</td>
 <td>乌黑</td>
 <td>稍蜷</td>
@@ -332,7 +342,7 @@
 <td>0.211</td>
 <td>是</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>9</td>
 <td>乌黑</td>
 <td>稍蜷</td>
@@ -344,7 +354,7 @@
 <td>0.091</td>
 <td>否</td>
 </tr>
-<tr class="even">
+<tr>
 <td>10</td>
 <td>青绿</td>
 <td>硬挺</td>
@@ -356,7 +366,7 @@
 <td>0.267</td>
 <td>否</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>11</td>
 <td>浅白</td>
 <td>硬挺</td>
@@ -368,7 +378,7 @@
 <td>0.057</td>
 <td>否</td>
 </tr>
-<tr class="even">
+<tr>
 <td>12</td>
 <td>浅白</td>
 <td>蜷缩</td>
@@ -380,7 +390,7 @@
 <td>0.099</td>
 <td>否</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>13</td>
 <td>青绿</td>
 <td>稍蜷</td>
@@ -392,7 +402,7 @@
 <td>0.161</td>
 <td>否</td>
 </tr>
-<tr class="even">
+<tr>
 <td>14</td>
 <td>浅白</td>
 <td>稍蜷</td>
@@ -404,7 +414,7 @@
 <td>0.198</td>
 <td>否</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>15</td>
 <td>乌黑</td>
 <td>稍蜷</td>
@@ -416,7 +426,7 @@
 <td>0.370</td>
 <td>否</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16</td>
 <td>浅白</td>
 <td>蜷缩</td>
@@ -428,7 +438,7 @@
 <td>0.042</td>
 <td>否</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>17</td>
 <td>青绿</td>
 <td>蜷缩</td>
@@ -445,7 +455,7 @@
 <h4 id="测试集">测试集：</h4>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>编号</th>
 <th>色泽</th>
 <th>根蒂</th>
@@ -459,7 +469,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>测1</td>
 <td>青绿</td>
 <td>蜷缩</td>
@@ -473,25 +483,51 @@
 </tr>
 </tbody>
 </table>
-<p><strong>首先我们估计类先验概率P(c)，显然有</strong></p>
-<p><span class="math inline">\(P(好瓜 = 是) = \frac{8} {17}\approx 0.471\)</span>, <span class="math inline">\(P(好瓜 = 否) = \frac{9} {17}\approx 0.529\)</span>,</p>
-<p><strong>然后，为每个属性估计条件概率<span class="math inline">\(P(X_i|C):\)</span></strong></p>
-<p><span class="math display">\[
-\begin{aligned}
-P_{青绿|是} &amp;= P(色泽 = 青绿 | 好瓜 = 是) \\ 
- &amp;= \frac{3} {8}= 0.375,
- \end{aligned}
- \]</span> <span class="math inline">\(P_{青绿|否} = P(色泽 = 青绿 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{蜷缩|是} = P(根蒂 = 蜷缩 | 好瓜 = 是) = \frac{5} {8} = 0.625\)</span>, <span class="math inline">\(P_{蜷缩|否} = P(根蒂 = 蜷缩 | 好瓜 = 否) = \frac{3} {9}\approx 0.333\)</span>, <span class="math inline">\(P_{浊响|是} = P(敲声 = 浊响 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{浊响|否} = P(敲声 = 浊响 | 好瓜 = 否) = \frac{4} {9}\approx 0.444\)</span>, <span class="math inline">\(P_{清晰|是} = P(纹理 = 清晰 | 好瓜 = 是) = \frac{7} {8} = 0.875\)</span>, <span class="math inline">\(P_{清晰|否} = P(纹理 = 清晰 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{凹陷|是} = P(脐部 = 凹陷 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{凹陷|否} = P(脐部 = 凹陷 | 好瓜 = 否) = \frac{2} {9}\approx 0.222\)</span>, <span class="math inline">\(P_{硬滑|是} = P(触感 = 硬滑 | 好瓜 = 是) = \frac{6} {8} = 0.750\)</span>, <span class="math inline">\(P_{硬滑|否} = P(触感 = 硬滑 | 好瓜 = 否) = \frac{6} {9}\approx 0.667\)</span>, <span class="math inline">\(P_{密度:0.697|是} = P(密度 = 0.697 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.129}exp(-\frac{(0.697-0.574)^2}{2\cdot0.129^2})\approx1.959\)</span>, <span class="math inline">\(P_{密度:0.697|否} = P(密度 = 0.697 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.195}exp(-\frac{(0.697-0.496)^2}{2\cdot0.0.195^2})\approx1.203\)</span>, <span class="math inline">\(P_{含糖率:0.460|是} = P(含糖率 = 0.460 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.101}exp(-\frac{(0.460-0.279)^2}{2\cdot0.101^2})\approx0.788\)</span>, <span class="math inline">\(P_{含糖率:0.460|否} = P(含糖率 = 0.460 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.108}exp(-\frac{(0.460-0.154)^2}{2\cdot0.108^2})\approx0.066\)</span>.</p>
-<p><strong>于是，有：</strong> <span class="math inline">\(P(好瓜 = 是) \times P_{青绿|是} \times P_{蜷缩|是} \times P_{浊响|是} \times P_{清晰|是} \times P_{凹陷|是} \times P_{硬滑|是} \times P_{密度:0.697|是} \times P_{含糖:0.460|是}\approx0.063\)</span></p>
-<p><span class="math inline">\(P(好瓜 = 否) \times P_{青绿|否} \times P_{蜷缩|否} \times P_{浊响|否} \times P_{清晰|否} \times P_{凹陷|否} \times P_{硬滑|否} \times P_{密度:0.697|否} \times P_{含糖:0.460|否}\approx6.80\times10^{-5}\)</span></p>
-<p>由于 0.063 &gt; <span class="math inline">\(6.80\times10^{-5}\)</span>， 因此，朴素贝叶斯分类器将测试样本“测1”判别为“好瓜”</p>
+<p><strong>首先我们估计类先验概率P©，显然有</strong></p>
+<p>$P(好瓜 = 是) =  \frac{8} {17}\approx 0.471$,<br>
+$P(好瓜 = 否) =  \frac{9} {17}\approx 0.529$,</p>
+<p><strong>然后，为每个属性估计条件概率$P(X_i|C):$</strong></p>
+<p>$$<br>
+\begin{aligned}<br>
+P_{青绿|是} &amp;= P(色泽 = 青绿 | 好瓜 = 是) \<br>
+&amp;= \frac{3} {8}= 0.375,<br>
+\end{aligned}<br>
+$$<br>
+$P_{青绿|否} = P(色泽 = 青绿 | 好瓜 = 否)  = \frac{3} {9}\approx 0.333$,<br>
+$P_{蜷缩|是} = P(根蒂 = 蜷缩 | 好瓜 = 是)  = \frac{5} {8} =  0.625$,<br>
+$P_{蜷缩|否} = P(根蒂 = 蜷缩 | 好瓜 = 否)  = \frac{3} {9}\approx 0.333$,<br>
+$P_{浊响|是} = P(敲声 = 浊响 | 好瓜 = 是)  = \frac{6} {8} =  0.750$,<br>
+$P_{浊响|否} = P(敲声 = 浊响 | 好瓜 = 否)  = \frac{4} {9}\approx 0.444$,<br>
+$P_{清晰|是} = P(纹理 = 清晰 | 好瓜 = 是)  = \frac{7} {8} =  0.875$,<br>
+$P_{清晰|否} = P(纹理 = 清晰 | 好瓜 = 否)  = \frac{2} {9}\approx 0.222$,<br>
+$P_{凹陷|是} = P(脐部 = 凹陷 | 好瓜 = 是)  = \frac{6} {8} =  0.750$,<br>
+$P_{凹陷|否} = P(脐部 = 凹陷 | 好瓜 = 否)  = \frac{2} {9}\approx 0.222$,<br>
+$P_{硬滑|是} = P(触感 = 硬滑 | 好瓜 = 是)  = \frac{6} {8} =  0.750$,<br>
+$P_{硬滑|否} = P(触感 = 硬滑 | 好瓜 = 否)  = \frac{6} {9}\approx 0.667$,<br>
+$P_{密度:0.697|是} = P(密度 = 0.697 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.129}exp(-\frac{(0.697-0.574)^2}{2\cdot0.129^2})\approx1.959$,<br>
+$P_{密度:0.697|否} = P(密度 = 0.697 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.195}exp(-\frac{(0.697-0.496)^2}{2\cdot0.0.195^2})\approx1.203$,<br>
+$P_{含糖率:0.460|是} = P(含糖率 = 0.460 | 好瓜 = 是) = \frac{1}{\sqrt{2\pi}\cdot0.101}exp(-\frac{(0.460-0.279)^2}{2\cdot0.101^2})\approx0.788$,<br>
+$P_{含糖率:0.460|否} = P(含糖率 = 0.460 | 好瓜 = 否) = \frac{1}{\sqrt{2\pi}\cdot0.108}exp(-\frac{(0.460-0.154)^2}{2\cdot0.108^2})\approx0.066$.</p>
+<p><strong>于是，有：</strong><br>
+$P(好瓜 = 是) \times P_{青绿|是} \times P_{蜷缩|是} \times P_{浊响|是} \times P_{清晰|是} \times P_{凹陷|是} \times P_{硬滑|是} \times P_{密度:0.697|是} \times P_{含糖:0.460|是}\approx0.063$</p>
+<p>$P(好瓜 = 否) \times P_{青绿|否} \times P_{蜷缩|否} \times P_{浊响|否} \times P_{清晰|否} \times P_{凹陷|否} \times P_{硬滑|否} \times P_{密度:0.697|否} \times P_{含糖:0.460|否}\approx6.80\times10^{-5}$</p>
+<p>由于 0.063 &gt; $6.80\times10^{-5}$， 因此，朴素贝叶斯分类器将测试样本“测1”判别为“好瓜”</p>
 <h2 id="二-三种常见模型">二、三种常见模型</h2>
-<p><strong>2.1.1多项式模型</strong> 当特征是离散的时候，使用多项式模型。多项式模型在计算先验概率P(yk)和条件概率P(xi|yk)时，会做一些平滑处理，具体公式为： <img src="https://img-blog.csdnimg.cn/20191130193612402.png" alt="在这里插入图片描述"> N是总的样本个数，k是总的类别个数，Nyk是类别为yk的样本个数，α是平滑值。 <img src="https://img-blog.csdnimg.cn/20191130193713201.png" alt="在这里插入图片描述"> Nyk是类别为yk的样本个数，n是特征的维数，Nyk,xi是类别为yk的样本中，第i维特征的值是xi的样本个数，α是平滑值。</p>
-<p>当α=1时，称作Laplace平滑，当0&lt;α&lt;1时，称作Lidstone平滑，α=0时不做平滑。如果不做平滑，当某一维特征的值xi没在训练样本中出现过时，会导致P(xi|yk)=0，从而导致后验概率为0。加上平滑就可以克服这个问题。 <strong>2.1.2编程实现：</strong></p>
+<p><strong>2.1.1多项式模型</strong><br>
+当特征是离散的时候，使用多项式模型。多项式模型在计算先验概率P(yk)和条件概率P(xi|yk)时，会做一些平滑处理，具体公式为：<br>
+<img src="https://img-blog.csdnimg.cn/20191130193612402.png" alt="在这里插入图片描述"><br>
+N是总的样本个数，k是总的类别个数，Nyk是类别为yk的样本个数，α是平滑值。<br>
+<img src="https://img-blog.csdnimg.cn/20191130193713201.png" alt="在这里插入图片描述"><br>
+Nyk是类别为yk的样本个数，n是特征的维数，Nyk,xi是类别为yk的样本中，第i维特征的值是xi的样本个数，α是平滑值。</p>
+<p>当α=1时，称作Laplace平滑，当0&lt;α&lt;1时，称作Lidstone平滑，α=0时不做平滑。如果不做平滑，当某一维特征的值xi没在训练样本中出现过时，会导致P(xi|yk)=0，从而导致后验概率为0。加上平滑就可以克服这个问题。<br>
+<strong>2.1.2编程实现：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultinomialNB</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,alpha=<span class="number">1.0</span>,fit_prior=True,class_prior=None)</span>:</span></span><br><span class="line">        self.alpha = alpha</span><br><span class="line">        self.fit_prior = fit_prior</span><br><span class="line">        self.class_prior = class_prior</span><br><span class="line">        self.classes = <span class="keyword">None</span></span><br><span class="line">        self.conditional_prob = <span class="keyword">None</span></span><br><span class="line">	<span class="comment"># 计算条件概率        </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_calculate_feature_prob</span><span class="params">(self,feature)</span>:</span></span><br><span class="line">        values = np.unique(feature) <span class="comment"># 去除数组中的重复数字，并进行排序之后输出</span></span><br><span class="line">        total_num = float(len(feature))</span><br><span class="line">        value_prob = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> values:</span><br><span class="line">        	<span class="comment"># np.equal([2, 3, 4], [2])，返回 [Ture, False , False]</span></span><br><span class="line">        	<span class="comment"># 做Laplace平滑</span></span><br><span class="line">            value_prob[v] = (( np.sum(np.equal(feature,v)) + self.alpha ) /( total_num + len(values)*self.alpha))</span><br><span class="line">        <span class="keyword">return</span> value_prob</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, X, y)</span>:</span></span><br><span class="line">        self.classes = np.unique(y)</span><br><span class="line">        <span class="comment"># calculate class prior probabilities: P(y=ck)</span></span><br><span class="line">        <span class="keyword">if</span> self.class_prior == <span class="keyword">None</span>:</span><br><span class="line">            class_num = len(self.classes) <span class="comment"># 类数</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.fit_prior:</span><br><span class="line">                self.class_prior = [<span class="number">1.0</span> / class_num <span class="keyword">for</span> _ <span class="keyword">in</span> range(class_num)]  <span class="comment"># uniform prior</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.class_prior = []</span><br><span class="line">                sample_num = float(len(y)) <span class="comment"># 样本数</span></span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> self.classes:</span><br><span class="line">                    c_num = np.sum(np.equal(y, c)) </span><br><span class="line">                    self.class_prior.append((c_num + self.alpha) / (sample_num + class_num * self.alpha)) <span class="comment"># P(c)</span></span><br><span class="line">        self.conditional_prob = &#123;&#125;  <span class="comment"># like &#123; c0:&#123; x0:&#123; value0:0.2, value1:0.8 &#125;, x1:&#123;&#125; &#125;, c1:&#123;...&#125; &#125;</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> self.classes:</span><br><span class="line">            self.conditional_prob[c] = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(X[<span class="number">0</span>])):  <span class="comment"># for each feature</span></span><br><span class="line">                feature = X[np.equal(y, c)][:, i] <span class="comment"># 提取出True对应的样本的第i个特征</span></span><br><span class="line">                self.conditional_prob[c][i] = self._calculate_feature_prob(feature)</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get_xj_prob</span><span class="params">(self, values_prob, target_value)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> values_prob[target_value]</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_predict_single_sample</span><span class="params">(self,x)</span>:</span></span><br><span class="line">	    label = <span class="number">-1</span></span><br><span class="line">	    max_posterior_prob = <span class="number">0</span></span><br><span class="line">	    <span class="comment">#for each category, calculate its posterior probability: class_prior * conditional_prob</span></span><br><span class="line">	    <span class="keyword">for</span> c_index <span class="keyword">in</span> range(len(self.classes)):</span><br><span class="line">	        current_class_prior = self.class_prior[c_index]</span><br><span class="line">	        current_conditional_prob = <span class="number">1.0</span></span><br><span class="line">	        feature_prob = self.conditional_prob[self.classes[c_index]]</span><br><span class="line">	        j = <span class="number">0</span></span><br><span class="line">	        <span class="keyword">for</span> feature_i <span class="keyword">in</span> feature_prob.keys():</span><br><span class="line">	            current_conditional_prob *= self._get_xj_prob(feature_prob[feature_i],x[j])</span><br><span class="line">	            j += <span class="number">1</span></span><br><span class="line">	</span><br><span class="line">	        <span class="comment">#compare posterior probability and update max_posterior_prob, label</span></span><br><span class="line">	        <span class="keyword">if</span> current_class_prior * current_conditional_prob &gt; max_posterior_prob:</span><br><span class="line">	            max_posterior_prob = current_class_prior * current_conditional_prob</span><br><span class="line">	            label = self.classes[c_index]</span><br><span class="line">	    <span class="keyword">return</span> label</span><br><span class="line">		 </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self,X)</span>:</span></span><br><span class="line">	    <span class="keyword">if</span> X.ndim == <span class="number">1</span>:</span><br><span class="line">	        <span class="keyword">return</span> self._predict_single_sample(X)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	        <span class="comment">#classify each sample</span></span><br><span class="line">	        labels = []</span><br><span class="line">	        <span class="keyword">for</span> i <span class="keyword">in</span> range(X.shape[<span class="number">0</span>]):</span><br><span class="line">	                label = self._predict_single_sample(X[i])</span><br><span class="line">	                labels.append(label)</span><br><span class="line">	        <span class="keyword">return</span> labels</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    X = np.array([</span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>],</span><br><span class="line">        [<span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>]</span><br><span class="line">    ])</span><br><span class="line">    X = X.T</span><br><span class="line">    y = np.array([<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line">    nb = MultinomialNB(alpha=<span class="number">1.0</span>, fit_prior=<span class="keyword">True</span>)</span><br><span class="line">    nb.fit(X, y)</span><br><span class="line">    print(nb.predict(np.array([<span class="number">2</span>, <span class="number">4</span>])))  <span class="comment"># 输出-1</span></span><br></pre></td></tr></table></figure>
 <p><strong>2.2.1高斯模型</strong></p>
 <p>当特征是连续变量的时候，运用多项式模型就会导致很多P(xi|yk)=0（不做平滑的情况下），此时即使做平滑，所得到的条件概率也难以描述真实情况。所以处理连续的特征变量，应该采用高斯模型</p>
-<p>高斯模型假设每一维特征都服从高斯分布（正态分布）： <img src="https://img-blog.csdnimg.cn/20191130195539110.png" alt="在这里插入图片描述"> μyk,i表示类别为yk的样本中，第i维特征的均值。 σ2yk,i表示类别为yk的样本中，第i维特征的方差。</p>
+<p>高斯模型假设每一维特征都服从高斯分布（正态分布）：<br>
+<img src="https://img-blog.csdnimg.cn/20191130195539110.png" alt="在这里插入图片描述"><br>
+μyk,i表示类别为yk的样本中，第i维特征的均值。<br>
+σ2yk,i表示类别为yk的样本中，第i维特征的方差。</p>
 <p><strong>2.2.2编程实现</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GaussianNB</span><span class="params">(MultinomialNB)</span>:</span></span><br><span class="line">        <span class="comment">#calculate mean(mu) and standard deviation(sigma) of the given feature</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">_calculate_feature_prob</span><span class="params">(self,feature)</span>:</span></span><br><span class="line">                mu = np.mean(feature)</span><br><span class="line">                sigma = np.std(feature)</span><br><span class="line">                <span class="keyword">return</span> (mu,sigma)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#the probability density for the Gaussian distribution </span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">_prob_gaussian</span><span class="params">(self,mu,sigma,x)</span>:</span></span><br><span class="line">                <span class="keyword">return</span> ( <span class="number">1.0</span>/(sigma * np.sqrt(<span class="number">2</span> * np.pi)) *</span><br><span class="line">                        np.exp( - (x - mu)**<span class="number">2</span> / (<span class="number">2</span> * sigma**<span class="number">2</span>)) )</span><br><span class="line"></span><br><span class="line">        <span class="comment">#given mu and sigma , return Gaussian distribution probability for target_value</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">_get_xj_prob</span><span class="params">(self,mu_sigma,target_value)</span>:</span></span><br><span class="line">                <span class="keyword">return</span> self._prob_gaussian(mu_sigma[<span class="number">0</span>],mu_sigma[<span class="number">1</span>],target_value)</span><br></pre></td></tr></table></figure>
 <p><strong>2.3.1伯努利模型</strong></p>
@@ -504,12 +540,12 @@ P_{青绿|是} &amp;= P(色泽 = 青绿 | 好瓜 = 是) \\
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/GitOperation/" data-toggle="tooltip" data-placement="top" title="GitOperation">&larr; Previous Post</a>
+                            <a href="/article/MachineLearning_LogisticsRegression/" data-toggle="tooltip" data-placement="top" title="MachineLearning_LogisticsRegression">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/MachineLearning_LogisticsRegression/" data-toggle="tooltip" data-placement="top" title="MachineLearning_LogisticsRegression">Next Post &rarr;</a>
+                            <a href="/article/BlueBridgeCup11.17/" data-toggle="tooltip" data-placement="top" title="BlueBridgeCup11.17">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

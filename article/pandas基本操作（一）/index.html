@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -222,101 +222,120 @@
 1    7
 2   -5
 3    3
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <p>在交互式环境中Series的索引在左边，值在右边。由于我们不为数据制定索引，默认索引都是从0到N-1.你可以通过values属性和index属性分别获得Series对象的值和索引：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.values</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 4,  7, -5,  3])</code></pre>
+<pre><code>array([ 4,  7, -5,  3])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.index</span><br></pre></td></tr></table></figure>
-<pre><code>RangeIndex(start=0, stop=4, step=1)</code></pre>
+<pre><code>RangeIndex(start=0, stop=4, step=1)
+</code></pre>
 <p>与numpy数组相比，你可以使用标签来进行索引：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj2 = pd.Series([<span class="number">4</span>, <span class="number">7</span>, <span class="number">-5</span>, <span class="number">3</span>], index=[<span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'c'</span>])</span><br><span class="line">obj2</span><br></pre></td></tr></table></figure>
 <pre><code>d    4
 b    7
 a   -5
 c    3
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>-5</code></pre>
+<pre><code>-5
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>7</code></pre>
+<pre><code>7
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[[<span class="string">'c'</span>, <span class="string">'a'</span>, <span class="string">'d'</span>]]</span><br></pre></td></tr></table></figure>
 <pre><code>c    3
 a   -5
 d    4
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <p>与numpy类似，Series可以使用numpy的函数或者操作，比如布尔值数组进行过滤等：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2[obj2 &gt; <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>d    4
 b    7
 c    3
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2 * <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <pre><code>d     8
 b    14
 a   -10
 c     6
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(obj2)</span><br></pre></td></tr></table></figure>
 <pre><code>d      54.598150
 b    1096.633158
 a       0.006738
 c      20.085537
-dtype: float64</code></pre>
+dtype: float64
+</code></pre>
 <p>其实，Series可以看成是一个长度固定且有序的字典：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'b'</span> <span class="keyword">in</span> obj2</span><br></pre></td></tr></table></figure>
-<pre><code>True</code></pre>
+<pre><code>True
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sdata = &#123;<span class="string">'Ohio'</span> : <span class="number">3500</span>, <span class="string">'Texas'</span> : <span class="number">71000</span>, <span class="string">'Oregon'</span> : <span class="number">16000</span>, <span class="string">'Utah'</span> : <span class="number">5000</span>&#125;</span><br><span class="line">obj3 = pd.Series(sdata)</span><br><span class="line">obj3</span><br></pre></td></tr></table></figure>
 <pre><code>Ohio       3500
 Oregon    16000
 Texas     71000
 Utah       5000
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">states = [<span class="string">'California'</span>, <span class="string">'Ohio'</span>, <span class="string">'Oregon'</span>, <span class="string">'Texas'</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj4 = pd.Series(sdata, index=states)</span><br><span class="line">obj4</span><br></pre></td></tr></table></figure>
 <pre><code>California        NaN
 Ohio           3500.0
 Oregon        16000.0
 Texas         71000.0
-dtype: float64</code></pre>
+dtype: float64
+</code></pre>
 <p>pandas利用isnull和notnull来检查缺失数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull(obj4)</span><br></pre></td></tr></table></figure>
 <pre><code>California     True
 Ohio          False
 Oregon        False
 Texas         False
-dtype: bool</code></pre>
+dtype: bool
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.notnull(obj4)</span><br></pre></td></tr></table></figure>
 <pre><code>California    False
 Ohio           True
 Oregon         True
 Texas          True
-dtype: bool</code></pre>
+dtype: bool
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj4.isnull()</span><br></pre></td></tr></table></figure>
 <pre><code>California     True
 Ohio          False
 Oregon        False
 Texas         False
-dtype: bool</code></pre>
+dtype: bool
+</code></pre>
 <p>在很多应用中，数学操作自动对齐索引是Series的一个非常有用的特性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj3</span><br></pre></td></tr></table></figure>
 <pre><code>Ohio       3500
 Oregon    16000
 Texas     71000
 Utah       5000
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj4</span><br></pre></td></tr></table></figure>
 <pre><code>California        NaN
 Ohio           3500.0
 Oregon        16000.0
 Texas         71000.0
-dtype: float64</code></pre>
+dtype: float64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj3 + obj4</span><br></pre></td></tr></table></figure>
 <pre><code>California         NaN
 Ohio            7000.0
 Oregon         32000.0
 Texas         142000.0
 Utah               NaN
-dtype: float64</code></pre>
+dtype: float64
+</code></pre>
 <p>Series对象自身和其索引都有name属性，这个特性与pandas其他重要功能集成在一起：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj4.index.name = <span class="string">'states'</span></span><br><span class="line">obj4</span><br></pre></td></tr></table></figure>
 <pre><code>states
@@ -324,7 +343,8 @@ California        NaN
 Ohio           3500.0
 Oregon        16000.0
 Texas         71000.0
-dtype: float64</code></pre>
+dtype: float64
+</code></pre>
 <h3 id="2-dataframe">2. Dataframe</h3>
 <p>dataframe既有行索引也有列索引，它可以被视为一个共享相同索引的Series。尽管dataframe是二维的，但是你可以利用分层索引在dataframe中展现更高维度的数据。</p>
 <p>有多种方式可以创建Dataframe，其中最常用的方式是利用包含等长度列表或numpy数组的字典来形成dataframe：</p>
@@ -335,117 +355,62 @@ dtype: float64</code></pre>
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-pop
-</th>
-<th>
-state
-</th>
-<th>
-year
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-0
-</th>
-<td>
-1.5
-</td>
-<td>
-Ohio
-</td>
-<td>
-2000
-</td>
-</tr>
-<tr>
-<th>
-1
-</th>
-<td>
-1.7
-</td>
-<td>
-Ohio
-</td>
-<td>
-2001
-</td>
-</tr>
-<tr>
-<th>
-2
-</th>
-<td>
-3.6
-</td>
-<td>
-Ohio
-</td>
-<td>
-2002
-</td>
-</tr>
-<tr>
-<th>
-3
-</th>
-<td>
-2.4
-</td>
-<td>
-Nevada
-</td>
-<td>
-2001
-</td>
-</tr>
-<tr>
-<th>
-4
-</th>
-<td>
-2.9
-</td>
-<td>
-Nevada
-</td>
-<td>
-2002
-</td>
-</tr>
-<tr>
-<th>
-5
-</th>
-<td>
-3.2
-</td>
-<td>
-Nevada
-</td>
-<td>
-2003
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pop</th>
+      <th>state</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.5</td>
+      <td>Ohio</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.7</td>
+      <td>Ohio</td>
+      <td>2001</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.6</td>
+      <td>Ohio</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.4</td>
+      <td>Nevada</td>
+      <td>2001</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.9</td>
+      <td>Nevada</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.2</td>
+      <td>Nevada</td>
+      <td>2003</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <p>如果你指定了列的顺序，Dataframe的列将会按照指定的顺序排列：</p>
@@ -455,121 +420,66 @@ Nevada
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-year
-</th>
-<th>
-state
-</th>
-<th>
-pop
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-0
-</th>
-<td>
-2000
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.5
-</td>
-</tr>
-<tr>
-<th>
-1
-</th>
-<td>
-2001
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.7
-</td>
-</tr>
-<tr>
-<th>
-2
-</th>
-<td>
-2002
-</td>
-<td>
-Ohio
-</td>
-<td>
-3.6
-</td>
-</tr>
-<tr>
-<th>
-3
-</th>
-<td>
-2001
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.4
-</td>
-</tr>
-<tr>
-<th>
-4
-</th>
-<td>
-2002
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.9
-</td>
-</tr>
-<tr>
-<th>
-5
-</th>
-<td>
-2003
-</td>
-<td>
-Nevada
-</td>
-<td>
-3.2
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frame2 = pd.DataFrame(data, columns=[<span class="string">'year'</span>, <span class="string">'state'</span>, <span class="string">'pop'</span>, <span class="string">'debt'</span>],</span><br><span class="line">                      index=[<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>, <span class="string">'four'</span>,</span><br><span class="line">                             <span class="string">'five'</span>, <span class="string">'six'</span>])</span><br><span class="line">print(frame2)</span><br><span class="line">frame2.columns</span><br></pre></td></tr></table></figure>
-<pre><code> year   state  pop debt
+<pre><code>       year   state  pop debt
 one    2000    Ohio  1.5  NaN
 two    2001    Ohio  1.7  NaN
 three  2002    Ohio  3.6  NaN
@@ -581,18 +491,40 @@ six    2003  Nevada  3.2  NaN
 
 
 
-Index([&#39;year&#39;, &#39;state&#39;, &#39;pop&#39;, &#39;debt&#39;], dtype=&#39;object&#39;)</code></pre>
+Index(['year', 'state', 'pop', 'debt'], dtype='object')
+</code></pre>
 <p>dataframe中的一列，可以按字典型标记或属性那样检索为Series：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'state'</span>]</span><br></pre></td></tr></table></figure>
-<p>one Ohio two Ohio three Ohio four Nevada five Nevada six Nevada Name: state, dtype: object</p>
+<pre><code>one        Ohio
+two        Ohio
+three      Ohio
+four     Nevada
+five     Nevada
+six      Nevada
+Name: state, dtype: object
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.state</span><br></pre></td></tr></table></figure>
-<p>one Ohio two Ohio three Ohio four Nevada five Nevada six Nevada Name: state, dtype: object</p>
-<p>frame[colunm]对于任意列名均有效，但是frame2.column只会在列名是有效的python变量名时有效 请注意，返回的Series与原dataframe有相同的索引，且Series的name属性也会被合理地设置。</p>
+<pre><code>one        Ohio
+two        Ohio
+three      Ohio
+four     Nevada
+five     Nevada
+six      Nevada
+Name: state, dtype: object
+</code></pre>
+<p>frame[colunm]对于任意列名均有效，但是frame2.column只会在列名是有效的python变量名时有效<br>
+请注意，返回的Series与原dataframe有相同的索引，且Series的name属性也会被合理地设置。</p>
 <p>行也可以通过位置或特殊属性loc进行选取：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.loc[<span class="string">'three'</span>]</span><br></pre></td></tr></table></figure>
-<p>year 2002 state Ohio pop 3.6 debt NaN Name: three, dtype: object</p>
+<pre><code>year     2002
+state    Ohio
+pop       3.6
+debt      NaN
+Name: three, dtype: object
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.loc[<span class="string">'three'</span>, <span class="string">'state'</span>]</span><br></pre></td></tr></table></figure>
-<p>'Ohio'</p>
+<pre><code>'Ohio'
+</code></pre>
 <p>列的引用是可以修改的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'debt'</span>] = <span class="number">16.5</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2</span><br></pre></td></tr></table></figure>
@@ -601,138 +533,69 @@ Index([&#39;year&#39;, &#39;state&#39;, &#39;pop&#39;, &#39;debt&#39;], dtype=&#
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-year
-</th>
-<th>
-state
-</th>
-<th>
-pop
-</th>
-<th>
-debt
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-one
-</th>
-<td>
-2000
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.5
-</td>
-<td>
-16.5
-</td>
-</tr>
-<tr>
-<th>
-two
-</th>
-<td>
-2001
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.7
-</td>
-<td>
-16.5
-</td>
-</tr>
-<tr>
-<th>
-three
-</th>
-<td>
-2002
-</td>
-<td>
-Ohio
-</td>
-<td>
-3.6
-</td>
-<td>
-16.5
-</td>
-</tr>
-<tr>
-<th>
-four
-</th>
-<td>
-2001
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.4
-</td>
-<td>
-16.5
-</td>
-</tr>
-<tr>
-<th>
-five
-</th>
-<td>
-2002
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.9
-</td>
-<td>
-16.5
-</td>
-</tr>
-<tr>
-<th>
-six
-</th>
-<td>
-2003
-</td>
-<td>
-Nevada
-</td>
-<td>
-3.2
-</td>
-<td>
-16.5
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>16.5</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame2[<span class="string">'debt'</span>] = np.arange(<span class="number">6</span>)</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
@@ -741,138 +604,69 @@ Nevada
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-year
-</th>
-<th>
-state
-</th>
-<th>
-pop
-</th>
-<th>
-debt
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-one
-</th>
-<td>
-2000
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.5
-</td>
-<td>
-0
-</td>
-</tr>
-<tr>
-<th>
-two
-</th>
-<td>
-2001
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.7
-</td>
-<td>
-1
-</td>
-</tr>
-<tr>
-<th>
-three
-</th>
-<td>
-2002
-</td>
-<td>
-Ohio
-</td>
-<td>
-3.6
-</td>
-<td>
-2
-</td>
-</tr>
-<tr>
-<th>
-four
-</th>
-<td>
-2001
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.4
-</td>
-<td>
-3
-</td>
-</tr>
-<tr>
-<th>
-five
-</th>
-<td>
-2002
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.9
-</td>
-<td>
-4
-</td>
-</tr>
-<tr>
-<th>
-six
-</th>
-<td>
-2003
-</td>
-<td>
-Nevada
-</td>
-<td>
-3.2
-</td>
-<td>
-5
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>5</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val = pd.Series([<span class="number">-1.2</span>, <span class="number">-1.5</span>, <span class="number">-1.7</span>], index=[<span class="string">'two'</span>, <span class="string">'four'</span>, <span class="string">'five'</span>])</span><br><span class="line">frame2[<span class="string">'debt'</span>] = val</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
@@ -881,138 +675,69 @@ Nevada
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-year
-</th>
-<th>
-state
-</th>
-<th>
-pop
-</th>
-<th>
-debt
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-one
-</th>
-<td>
-2000
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.5
-</td>
-<td>
-NaN
-</td>
-</tr>
-<tr>
-<th>
-two
-</th>
-<td>
-2001
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.7
-</td>
-<td>
--1.2
-</td>
-</tr>
-<tr>
-<th>
-three
-</th>
-<td>
-2002
-</td>
-<td>
-Ohio
-</td>
-<td>
-3.6
-</td>
-<td>
-NaN
-</td>
-</tr>
-<tr>
-<th>
-four
-</th>
-<td>
-2001
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.4
-</td>
-<td>
--1.5
-</td>
-</tr>
-<tr>
-<th>
-five
-</th>
-<td>
-2002
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.9
-</td>
-<td>
--1.7
-</td>
-</tr>
-<tr>
-<th>
-six
-</th>
-<td>
-2003
-</td>
-<td>
-Nevada
-</td>
-<td>
-3.2
-</td>
-<td>
-NaN
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>-1.2</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>-1.5</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>-1.7</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <p>可以用del关键字删除dataframe的一列，首先我们增加一列：</p>
@@ -1022,180 +747,83 @@ NaN
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-year
-</th>
-<th>
-state
-</th>
-<th>
-pop
-</th>
-<th>
-debt
-</th>
-<th>
-reastern
-</th>
-<th>
-eastern
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-one
-</th>
-<td>
-2000
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.5
-</td>
-<td>
-NaN
-</td>
-<td>
-False
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-two
-</th>
-<td>
-2001
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.7
-</td>
-<td>
--1.2
-</td>
-<td>
-False
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-three
-</th>
-<td>
-2002
-</td>
-<td>
-Ohio
-</td>
-<td>
-3.6
-</td>
-<td>
-NaN
-</td>
-<td>
-False
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-four
-</th>
-<td>
-2001
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.4
-</td>
-<td>
--1.5
-</td>
-<td>
-False
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-five
-</th>
-<td>
-2002
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.9
-</td>
-<td>
--1.7
-</td>
-<td>
-False
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-six
-</th>
-<td>
-2003
-</td>
-<td>
-Nevada
-</td>
-<td>
-3.2
-</td>
-<td>
-NaN
-</td>
-<td>
-False
-</td>
-<td>
-False
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+      <th>reastern</th>
+      <th>eastern</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>-1.2</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>-1.5</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>-1.7</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> frame2[<span class="string">'eastern'</span>]</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
@@ -1204,159 +832,76 @@ False
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-year
-</th>
-<th>
-state
-</th>
-<th>
-pop
-</th>
-<th>
-debt
-</th>
-<th>
-reastern
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-one
-</th>
-<td>
-2000
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.5
-</td>
-<td>
-NaN
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-two
-</th>
-<td>
-2001
-</td>
-<td>
-Ohio
-</td>
-<td>
-1.7
-</td>
-<td>
--1.2
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-three
-</th>
-<td>
-2002
-</td>
-<td>
-Ohio
-</td>
-<td>
-3.6
-</td>
-<td>
-NaN
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-four
-</th>
-<td>
-2001
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.4
-</td>
-<td>
--1.5
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-five
-</th>
-<td>
-2002
-</td>
-<td>
-Nevada
-</td>
-<td>
-2.9
-</td>
-<td>
--1.7
-</td>
-<td>
-False
-</td>
-</tr>
-<tr>
-<th>
-six
-</th>
-<td>
-2003
-</td>
-<td>
-Nevada
-</td>
-<td>
-3.2
-</td>
-<td>
-NaN
-</td>
-<td>
-False
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+      <th>reastern</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>-1.2</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>-1.5</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>-1.7</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <p>从dataframe中选取的列是数据的视图，而不是拷贝。因此，对Series的修改会映射到dataframe中。如果需要复制，则应当显式地使用Series的copy方法。</p>
@@ -1367,63 +912,40 @@ False
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-Nevada
-</th>
-<th>
-Ohio
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-2000
-</th>
-<td>
-NaN
-</td>
-<td>
-1.5
-</td>
-</tr>
-<tr>
-<th>
-2001
-</th>
-<td>
-2.4
-</td>
-<td>
-1.7
-</td>
-</tr>
-<tr>
-<th>
-2002
-</th>
-<td>
-2.9
-</td>
-<td>
-3.6
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nevada</th>
+      <th>Ohio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000</th>
+      <td>NaN</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>2001</th>
+      <td>2.4</td>
+      <td>1.7</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>2.9</td>
+      <td>3.6</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.T</span><br></pre></td></tr></table></figure>
@@ -1432,61 +954,38 @@ NaN
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-2000
-</th>
-<th>
-2001
-</th>
-<th>
-2002
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-Nevada
-</th>
-<td>
-NaN
-</td>
-<td>
-2.4
-</td>
-<td>
-2.9
-</td>
-</tr>
-<tr>
-<th>
-Ohio
-</th>
-<td>
-1.5
-</td>
-<td>
-1.7
-</td>
-<td>
-3.6
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2000</th>
+      <th>2001</th>
+      <th>2002</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Nevada</th>
+      <td>NaN</td>
+      <td>2.4</td>
+      <td>2.9</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>1.5</td>
+      <td>1.7</td>
+      <td>3.6</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <p>包含Series的字典也可以用于构造dataframe：</p>
@@ -1496,52 +995,35 @@ Ohio
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-Nevada
-</th>
-<th>
-Ohio
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-2000
-</th>
-<td>
-NaN
-</td>
-<td>
-1.5
-</td>
-</tr>
-<tr>
-<th>
-2001
-</th>
-<td>
-2.4
-</td>
-<td>
-1.7
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nevada</th>
+      <th>Ohio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000</th>
+      <td>NaN</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>2001</th>
+      <td>2.4</td>
+      <td>1.7</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <p>设置name属性</p>
@@ -1551,100 +1033,102 @@ NaN
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-state
-</th>
-<th>
-Nevada
-</th>
-<th>
-Ohio
-</th>
-</tr>
-<tr>
-<th>
-year
-</th>
-<th>
-</th>
-<th>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-2000
-</th>
-<td>
-NaN
-</td>
-<td>
-1.5
-</td>
-</tr>
-<tr>
-<th>
-2001
-</th>
-<td>
-2.4
-</td>
-<td>
-1.7
-</td>
-</tr>
-<tr>
-<th>
-2002
-</th>
-<td>
-2.9
-</td>
-<td>
-3.6
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th>state</th>
+      <th>Nevada</th>
+      <th>Ohio</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000</th>
+      <td>NaN</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>2001</th>
+      <td>2.4</td>
+      <td>1.7</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>2.9</td>
+      <td>3.6</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <p>dataframe的values属性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.values</span><br></pre></td></tr></table></figure>
-<p>array([[ nan, 1.5], [ 2.4, 1.7], [ 2.9, 3.6]])</p>
+<pre><code>array([[ nan,  1.5],
+       [ 2.4,  1.7],
+       [ 2.9,  3.6]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame2.values</span><br></pre></td></tr></table></figure>
-<p>array([[2000, 'Ohio', 1.5, nan, False], [2001, 'Ohio', 1.7, -1.2, False], [2002, 'Ohio', 3.6, nan, False], [2001, 'Nevada', 2.4, -1.5, False], [2002, 'Nevada', 2.9, -1.7, False], [2003, 'Nevada', 3.2, nan, False]], dtype=object)</p>
+<pre><code>array([[2000, 'Ohio', 1.5, nan, False],
+       [2001, 'Ohio', 1.7, -1.2, False],
+       [2002, 'Ohio', 3.6, nan, False],
+       [2001, 'Nevada', 2.4, -1.5, False],
+       [2002, 'Nevada', 2.9, -1.7, False],
+       [2003, 'Nevada', 3.2, nan, False]], dtype=object)
+</code></pre>
 <h3 id="3-索引对象">3. 索引对象</h3>
 <p>在构造Series或dataframe时，你所使用的任意数组或标签序列都可以在内部转换为索引对象：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj = pd.Series(range(<span class="number">3</span>), index=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])</span><br><span class="line">index = obj.index</span><br><span class="line">index</span><br></pre></td></tr></table></figure>
-<p>Index(['a', 'b', 'c'], dtype='object')</p>
+<pre><code>Index(['a', 'b', 'c'], dtype='object')
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index[<span class="number">1</span>:]</span><br></pre></td></tr></table></figure>
-<p>Index(['b', 'c'], dtype='object')</p>
+<pre><code>Index(['b', 'c'], dtype='object')
+</code></pre>
 <p>索引对象是不可变的，因此用户是无法修改索引对象的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index[<span class="number">1</span>] = <span class="string">'d'</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>TypeError Traceback (most recent call last)</p>
-<p><ipython-input-70-676fdeb26a68> in <module>() ----&gt; 1 index[1] = 'd'</module></ipython-input-70-676fdeb26a68></p>
-<p>~/.conda/envs/python36/lib/python3.6/site-packages/pandas/core/indexes/base.py in <strong>setitem</strong>(self, key, value) 1668 1669 def <strong>setitem</strong>(self, key, value): -&gt; 1670 raise TypeError("Index does not support mutable operations") 1671 1672 def <strong>getitem</strong>(self, key):</p>
-<p>TypeError: Index does not support mutable operations</p>
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-70-676fdeb26a68&gt; in &lt;module&gt;()
+----&gt; 1 index[1] = 'd'
+
+
+~/.conda/envs/python36/lib/python3.6/site-packages/pandas/core/indexes/base.py in __setitem__(self, key, value)
+   1668 
+   1669     def __setitem__(self, key, value):
+-&gt; 1670         raise TypeError(&quot;Index does not support mutable operations&quot;)
+   1671 
+   1672     def __getitem__(self, key):
+
+
+TypeError: Index does not support mutable operations
+</code></pre>
 <p>不可变性使得在多种数据结构中分享索引对象更为安全：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">labels = pd.Index(np.arange(<span class="number">3</span>))</span><br><span class="line">labels</span><br></pre></td></tr></table></figure>
-<p>Int64Index([0, 1, 2], dtype='int64')</p>
+<pre><code>Int64Index([0, 1, 2], dtype='int64')
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj2 = pd.Series([<span class="number">1.5</span>, <span class="number">-2.5</span>, <span class="number">0</span>], index=labels)</span><br><span class="line">obj2</span><br></pre></td></tr></table></figure>
-<p>0 1.5 1 -2.5 2 0.0 dtype: float64</p>
+<pre><code>0    1.5
+1   -2.5
+2    0.0
+dtype: float64
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj2.index <span class="keyword">is</span> labels</span><br></pre></td></tr></table></figure>
-<p>True</p>
+<pre><code>True
+</code></pre>
 <p>除了类似数组，索引对象也像一个固定大小的集合：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3</span><br></pre></td></tr></table></figure>
 <div>
@@ -1652,133 +1136,108 @@ NaN
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-state
-</th>
-<th>
-Nevada
-</th>
-<th>
-Ohio
-</th>
-</tr>
-<tr>
-<th>
-year
-</th>
-<th>
-</th>
-<th>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-2000
-</th>
-<td>
-NaN
-</td>
-<td>
-1.5
-</td>
-</tr>
-<tr>
-<th>
-2001
-</th>
-<td>
-2.4
-</td>
-<td>
-1.7
-</td>
-</tr>
-<tr>
-<th>
-2002
-</th>
-<td>
-2.9
-</td>
-<td>
-3.6
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th>state</th>
+      <th>Nevada</th>
+      <th>Ohio</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000</th>
+      <td>NaN</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>2001</th>
+      <td>2.4</td>
+      <td>1.7</td>
+    </tr>
+    <tr>
+      <th>2002</th>
+      <td>2.9</td>
+      <td>3.6</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame3.columns</span><br></pre></td></tr></table></figure>
-<p>Index(['Nevada', 'Ohio'], dtype='object', name='state')</p>
+<pre><code>Index(['Nevada', 'Ohio'], dtype='object', name='state')
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Ohio'</span> <span class="keyword">in</span> frame3.columns</span><br></pre></td></tr></table></figure>
-<p>True</p>
+<pre><code>True
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2003</span> <span class="keyword">in</span> frame3.index</span><br></pre></td></tr></table></figure>
-<p>False</p>
+<pre><code>False
+</code></pre>
 <p>一些索引对象的方法和属性：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">方法</th>
-<th style="text-align: center;">描述</th>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">append</td>
-<td style="text-align: center;">将额外的索引对象粘贴到原索引后，产生一个新的索引</td>
+<tr>
+<td style="text-align:center">append</td>
+<td style="text-align:center">将额外的索引对象粘贴到原索引后，产生一个新的索引</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">difference</td>
-<td style="text-align: center;">计算两个索引的差集</td>
+<tr>
+<td style="text-align:center">difference</td>
+<td style="text-align:center">计算两个索引的差集</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">intersrction</td>
-<td style="text-align: center;">计算两个索引的交集</td>
+<tr>
+<td style="text-align:center">intersrction</td>
+<td style="text-align:center">计算两个索引的交集</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">union</td>
-<td style="text-align: center;">计算两个索引的并集</td>
+<tr>
+<td style="text-align:center">union</td>
+<td style="text-align:center">计算两个索引的并集</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">isin</td>
-<td style="text-align: center;">计算表示每一个值是否在传值容器中的布尔数组</td>
+<tr>
+<td style="text-align:center">isin</td>
+<td style="text-align:center">计算表示每一个值是否在传值容器中的布尔数组</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">delete</td>
-<td style="text-align: center;">将位置i的元素删除，并产生新的索引</td>
+<tr>
+<td style="text-align:center">delete</td>
+<td style="text-align:center">将位置i的元素删除，并产生新的索引</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">drop</td>
-<td style="text-align: center;">根据传参删除指定索引值，并产生新的索引</td>
+<tr>
+<td style="text-align:center">drop</td>
+<td style="text-align:center">根据传参删除指定索引值，并产生新的索引</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">insert</td>
-<td style="text-align: center;">在位置i插入元素，并产生新的索引</td>
+<tr>
+<td style="text-align:center">insert</td>
+<td style="text-align:center">在位置i插入元素，并产生新的索引</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">is_monotonic</td>
-<td style="text-align: center;">如果索引序列递增则返回True</td>
+<tr>
+<td style="text-align:center">is_monotonic</td>
+<td style="text-align:center">如果索引序列递增则返回True</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">is_unique</td>
-<td style="text-align: center;">如果索引序列唯一则返回True</td>
+<tr>
+<td style="text-align:center">is_unique</td>
+<td style="text-align:center">如果索引序列唯一则返回True</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">unique</td>
-<td style="text-align: center;">计算索引的唯一值序列</td>
+<tr>
+<td style="text-align:center">unique</td>
+<td style="text-align:center">计算索引的唯一值序列</td>
 </tr>
 </tbody>
 </table>
@@ -1790,12 +1249,12 @@ NaN
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/pandas基本操作（二）/" data-toggle="tooltip" data-placement="top" title="pandas基本操作（二）">&larr; Previous Post</a>
+                            <a href="/article/numpy基础操作（四）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（四）">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/numpy基础操作（四）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（四）">Next Post &rarr;</a>
+                            <a href="/article/pandas基本操作（二）/" data-toggle="tooltip" data-placement="top" title="pandas基本操作（二）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

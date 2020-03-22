@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -213,16 +213,34 @@
                 post-container">
 
                 <h2 id="一matlab数据类型概述">一.matlab数据类型概述</h2>
-<p><img src="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>matlab中每一种数据类型都是以数组的方式出现</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<strong>matlab中每一种数据类型都是以数组的方式出现</strong></p>
 <h2 id="二字符型数组">二.字符型数组</h2>
-<p>用单引号括起来的字符和数字的组合称为字符串或称为字符数组 <strong>字符数组的基本运算</strong> <strong>1.水平连接strcat</strong> 例如：</p>
-<p><img src="https://img-blog.csdnimg.cn/20191022165607626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>2.垂直连接stavcat</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022165752175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>3.寻找findstr</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022170229450.png" alt="在这里插入图片描述"></p>
+<p>用单引号括起来的字符和数字的组合称为字符串或称为字符数组<br>
+<strong>字符数组的基本运算</strong><br>
+<strong>1.水平连接strcat</strong><br>
+例如：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191022165607626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<strong>2.垂直连接stavcat</strong><br>
+例如<br>
+<img src="https://img-blog.csdnimg.cn/20191022165752175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<strong>3.寻找findstr</strong><br>
+例如<br>
+<img src="https://img-blog.csdnimg.cn/20191022170229450.png" alt="在这里插入图片描述"></p>
 <h2 id="三数值型数组">三.数值型数组</h2>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20191022170857411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20191022170857411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="四单元型数组">四.单元型数组</h2>
-<p><strong>1,单元数组的创建</strong> C = cell(m) %创建n阶单元空方阵 <img src="https://img-blog.csdnimg.cn/20191022171252406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> cell(m, n) %创建m行n列的单元空矩阵 <img src="https://img-blog.csdnimg.cn/20191022171414180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <strong>2.赋值方法</strong> （1）下标索引 如果A是一个二阶空方阵 A（1， 1） = {1 ： 5}意为在（1， 1）单元里为一个1：5的行向量 （2）单元索引 如果A是一个二阶空方阵</p>
+<p><strong>1,单元数组的创建</strong><br>
+C = cell(m)               %创建n阶单元空方阵<br>
+<img src="https://img-blog.csdnimg.cn/20191022171252406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+cell(m, n)                  %创建m行n列的单元空矩阵<br>
+<img src="https://img-blog.csdnimg.cn/20191022171414180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<strong>2.赋值方法</strong><br>
+（1）下标索引<br>
+如果A是一个二阶空方阵<br>
+A（1， 1） = {1 ： 5}意为在（1， 1）单元里为一个1：5的行向量<br>
+（2）单元索引<br>
+如果A是一个二阶空方阵</p>
 <p>A{1， 1} = 1 ： 5意为在（1， 1）单元里为一个1：5的行向量</p>
 
                 

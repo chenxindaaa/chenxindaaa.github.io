@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -213,207 +213,243 @@
                 post-container">
 
                 <h1 id="softmax和分类模型">softmax和分类模型</h1>
-<p>内容包含： 1. softmax回归的基本概念 2. 如何获取Fashion-MNIST数据集和读取数据 3. softmax回归模型的从零开始实现，实现一个对Fashion-MNIST训练集中的图像数据进行分类的模型 4. 使用pytorch重新实现softmax回归模型</p>
+<p>内容包含：</p>
+<ol>
+<li>softmax回归的基本概念</li>
+<li>如何获取Fashion-MNIST数据集和读取数据</li>
+<li>softmax回归模型的从零开始实现，实现一个对Fashion-MNIST训练集中的图像数据进行分类的模型</li>
+<li>使用pytorch重新实现softmax回归模型</li>
+</ol>
 <h2 id="softmax的基本概念">softmax的基本概念</h2>
 <ul>
-<li><p>分类问题<br>
+<li>
+<p>分类问题<br>
 一个简单的图像分类问题，输入图像的高和宽均为2像素，色彩为灰度。<br>
-图像中的4像素分别记为<span class="math inline">\(x_1, x_2, x_3, x_4\)</span>。<br>
-假设真实标签为狗、猫或者鸡，这些标签对应的离散值为<span class="math inline">\(y_1, y_2, y_3\)</span>。<br>
-我们通常使用离散的数值来表示类别，例如<span class="math inline">\(y_1=1, y_2=2, y_3=3\)</span>。</p></li>
-<li><p>权重矢量<br>
-<span class="math display">\[
- \begin{aligned} o_1 &amp;= x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1 \end{aligned} 
-\]</span></p></li>
+图像中的4像素分别记为$x_1, x_2, x_3, x_4$。<br>
+假设真实标签为狗、猫或者鸡，这些标签对应的离散值为$y_1, y_2, y_3$。<br>
+我们通常使用离散的数值来表示类别，例如$y_1=1, y_2=2, y_3=3$。</p>
+</li>
+<li>
+<p>权重矢量<br>
+$$<br>
+\begin{aligned} o_1 &amp;= x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1 \end{aligned}<br>
+$$</p>
+</li>
 </ul>
-<p><span class="math display">\[
- \begin{aligned} o_2 &amp;= x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2 \end{aligned} 
-\]</span></p>
-<p><span class="math display">\[
- \begin{aligned} o_3 &amp;= x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3 \end{aligned} 
-\]</span></p>
+<p>$$<br>
+\begin{aligned} o_2 &amp;= x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2 \end{aligned}<br>
+$$</p>
+<p>$$<br>
+\begin{aligned} o_3 &amp;= x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3 \end{aligned}<br>
+$$</p>
 <ul>
 <li>神经网络图<br>
-下图用神经网络图描绘了上面的计算。softmax回归同线性回归一样，也是一个单层神经网络。由于每个输出<span class="math inline">\(o_1, o_2, o_3\)</span>的计算都要依赖于所有的输入<span class="math inline">\(x_1, x_2, x_3, x_4\)</span>，softmax回归的输出层也是一个全连接层。</li>
+下图用神经网络图描绘了上面的计算。softmax回归同线性回归一样，也是一个单层神经网络。由于每个输出$o_1, o_2, o_3$的计算都要依赖于所有的输入$x_1, x_2, x_3, x_4$，softmax回归的输出层也是一个全连接层。</li>
 </ul>
-<figure>
-<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ua2VzY2kuY29tL3VwbG9hZC9pbWFnZS9xNWhteW1lem9nLnBuZw?x-oss-process=image/format,png" alt=""><figcaption>Image Name</figcaption>
-</figure>
-<p><span class="math display">\[
-\begin{aligned}softmax回归是一个单层神经网络\end{aligned}
-\]</span></p>
-<p>既然分类问题需要得到离散的预测输出，一个简单的办法是将输出值<span class="math inline">\(o_i\)</span>当作预测类别是<span class="math inline">\(i\)</span>的置信度，并将值最大的输出所对应的类作为预测输出，即输出 <span class="math inline">\(\underset{i}{\arg\max} o_i\)</span>。例如，如果<span class="math inline">\(o_1,o_2,o_3\)</span>分别为<span class="math inline">\(0.1,10,0.1\)</span>，由于<span class="math inline">\(o_2\)</span>最大，那么预测类别为2，其代表猫。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ua2VzY2kuY29tL3VwbG9hZC9pbWFnZS9xNWhteW1lem9nLnBuZw?x-oss-process=image/format,png" alt="Image Name"></p>
+<p>$$<br>
+\begin{aligned}softmax回归是一个单层神经网络\end{aligned}<br>
+$$</p>
+<p>既然分类问题需要得到离散的预测输出，一个简单的办法是将输出值$o_i$当作预测类别是$i$的置信度，并将值最大的输出所对应的类作为预测输出，即输出 $\underset{i}{\arg\max} o_i$。例如，如果$o_1,o_2,o_3$分别为$0.1,10,0.1$，由于$o_2$最大，那么预测类别为2，其代表猫。</p>
 <ul>
 <li>输出问题<br>
 直接使用输出层的输出有两个问题：
-<ol type="1">
-<li>一方面，由于输出层的输出值的范围不确定，我们难以直观上判断这些值的意义。例如，刚才举的例子中的输出值10表示“很置信”图像类别为猫，因为该输出值是其他两类的输出值的100倍。但如果<span class="math inline">\(o_1=o_3=10^3\)</span>，那么输出值10却又表示图像类别为猫的概率很低。</li>
+<ol>
+<li>一方面，由于输出层的输出值的范围不确定，我们难以直观上判断这些值的意义。例如，刚才举的例子中的输出值10表示“很置信”图像类别为猫，因为该输出值是其他两类的输出值的100倍。但如果$o_1=o_3=10^3$，那么输出值10却又表示图像类别为猫的概率很低。</li>
 <li>另一方面，由于真实标签是离散值，这些离散值与不确定范围的输出值之间的误差难以衡量。</li>
-</ol></li>
+</ol>
+</li>
 </ul>
 <p>softmax运算符（softmax operator）解决了以上两个问题。它通过下式将输出值变换成值为正且和为1的概率分布：</p>
-<p><span class="math display">\[
- \hat{y}_1, \hat{y}_2, \hat{y}_3 = \text{softmax}(o_1, o_2, o_3) 
-\]</span></p>
+<p>$$<br>
+\hat{y}_1, \hat{y}_2, \hat{y}_3 = \text{softmax}(o_1, o_2, o_3)<br>
+$$</p>
 <p>其中</p>
-<p><span class="math display">\[
- \hat{y}1 = \frac{ \exp(o_1)}{\sum_{i=1}^3 \exp(o_i)},\quad \hat{y}2 = \frac{ \exp(o_2)}{\sum_{i=1}^3 \exp(o_i)},\quad \hat{y}3 = \frac{ \exp(o_3)}{\sum_{i=1}^3 \exp(o_i)}. 
-\]</span></p>
-<p>容易看出<span class="math inline">\(\hat{y}_1 + \hat{y}_2 + \hat{y}_3 = 1\)</span>且<span class="math inline">\(0 \leq \hat{y}_1, \hat{y}_2, \hat{y}_3 \leq 1\)</span>，因此<span class="math inline">\(\hat{y}_1, \hat{y}_2, \hat{y}_3\)</span>是一个合法的概率分布。这时候，如果<span class="math inline">\(\hat{y}_2=0.8\)</span>，不管<span class="math inline">\(\hat{y}_1\)</span>和<span class="math inline">\(\hat{y}_3\)</span>的值是多少，我们都知道图像类别为猫的概率是80%。此外，我们注意到</p>
-<p><span class="math display">\[
- \underset{i}{\arg\max} o_i = \underset{i}{\arg\max} \hat{y}_i 
-\]</span></p>
+<p>$$<br>
+\hat{y}1 = \frac{ \exp(o_1)}{\sum_{i=1}^3 \exp(o_i)},\quad \hat{y}2 = \frac{ \exp(o_2)}{\sum_{i=1}^3 \exp(o_i)},\quad \hat{y}3 = \frac{ \exp(o_3)}{\sum_{i=1}^3 \exp(o_i)}.<br>
+$$</p>
+<p>容易看出$\hat{y}_1 + \hat{y}_2 + \hat{y}_3 = 1$且$0 \leq \hat{y}_1, \hat{y}_2, \hat{y}_3 \leq 1$，因此$\hat{y}_1, \hat{y}_2, \hat{y}_3$是一个合法的概率分布。这时候，如果$\hat{y}_2=0.8$，不管$\hat{y}_1$和$\hat{y}_3$的值是多少，我们都知道图像类别为猫的概率是80%。此外，我们注意到</p>
+<p>$$<br>
+\underset{i}{\arg\max} o_i = \underset{i}{\arg\max} \hat{y}_i<br>
+$$</p>
 <p>因此softmax运算不改变预测类别输出。</p>
 <ul>
 <li>计算效率
 <ul>
 <li>单样本矢量计算表达式<br>
 为了提高计算效率，我们可以将单样本分类通过矢量计算来表达。在上面的图像分类问题中，假设softmax回归的权重和偏差参数分别为</li>
-</ul></li>
 </ul>
-<p><span class="math display">\[
- \boldsymbol{W} = \begin{bmatrix} w_{11} &amp; w_{12} &amp; w_{13} \\ w_{21} &amp; w_{22} &amp; w_{23} \\ w_{31} &amp; w_{32} &amp; w_{33} \\ w_{41} &amp; w_{42} &amp; w_{43} \end{bmatrix},\quad \boldsymbol{b} = \begin{bmatrix} b_1 &amp; b_2 &amp; b_3 \end{bmatrix}, 
-\]</span></p>
-<p>设高和宽分别为2个像素的图像样本<span class="math inline">\(i\)</span>的特征为</p>
-<p><span class="math display">\[
-\boldsymbol{x}^{(i)} = \begin{bmatrix}x_1^{(i)} &amp; x_2^{(i)} &amp; x_3^{(i)} &amp; x_4^{(i)}\end{bmatrix},
-\]</span></p>
+</li>
+</ul>
+<p>$$<br>
+\boldsymbol{W} = \begin{bmatrix} w_{11} &amp; w_{12} &amp; w_{13} \ w_{21} &amp; w_{22} &amp; w_{23} \ w_{31} &amp; w_{32} &amp; w_{33} \ w_{41} &amp; w_{42} &amp; w_{43} \end{bmatrix},\quad \boldsymbol{b} = \begin{bmatrix} b_1 &amp; b_2 &amp; b_3 \end{bmatrix},<br>
+$$</p>
+<p>设高和宽分别为2个像素的图像样本$i$的特征为</p>
+<p>$$<br>
+\boldsymbol{x}^{(i)} = \begin{bmatrix}x_1^{(i)} &amp; x_2^{(i)} &amp; x_3^{(i)} &amp; x_4^{(i)}\end{bmatrix},<br>
+$$</p>
 <p>输出层的输出为</p>
-<p><span class="math display">\[
-\boldsymbol{o}^{(i)} = \begin{bmatrix}o_1^{(i)} &amp; o_2^{(i)} &amp; o_3^{(i)}\end{bmatrix},
-\]</span></p>
+<p>$$<br>
+\boldsymbol{o}^{(i)} = \begin{bmatrix}o_1^{(i)} &amp; o_2^{(i)} &amp; o_3^{(i)}\end{bmatrix},<br>
+$$</p>
 <p>预测为狗、猫或鸡的概率分布为</p>
-<p><span class="math display">\[
-\boldsymbol{\hat{y}}^{(i)} = \begin{bmatrix}\hat{y}_1^{(i)} &amp; \hat{y}_2^{(i)} &amp; \hat{y}_3^{(i)}\end{bmatrix}.
-\]</span></p>
-<p>softmax回归对样本<span class="math inline">\(i\)</span>分类的矢量计算表达式为</p>
-<p><span class="math display">\[
- \begin{aligned} \boldsymbol{o}^{(i)} &amp;= \boldsymbol{x}^{(i)} \boldsymbol{W} + \boldsymbol{b},\\ \boldsymbol{\hat{y}}^{(i)} &amp;= \text{softmax}(\boldsymbol{o}^{(i)}). \end{aligned} 
-\]</span></p>
+<p>$$<br>
+\boldsymbol{\hat{y}}^{(i)} = \begin{bmatrix}\hat{y}_1^{(i)} &amp; \hat{y}_2^{(i)} &amp; \hat{y}_3^{(i)}\end{bmatrix}.<br>
+$$</p>
+<p>softmax回归对样本$i$分类的矢量计算表达式为</p>
+<p>$$<br>
+\begin{aligned} \boldsymbol{o}^{(i)} &amp;= \boldsymbol{x}^{(i)} \boldsymbol{W} + \boldsymbol{b},\ \boldsymbol{\hat{y}}^{(i)} &amp;= \text{softmax}(\boldsymbol{o}^{(i)}). \end{aligned}<br>
+$$</p>
 <ul>
 <li>小批量矢量计算表达式<br>
-为了进一步提升计算效率，我们通常对小批量数据做矢量计算。广义上讲，给定一个小批量样本，其批量大小为<span class="math inline">\(n\)</span>，输入个数（特征数）为<span class="math inline">\(d\)</span>，输出个数（类别数）为<span class="math inline">\(q\)</span>。设批量特征为<span class="math inline">\(\boldsymbol{X} \in \mathbb{R}^{n \times d}\)</span>。假设softmax回归的权重和偏差参数分别为<span class="math inline">\(\boldsymbol{W} \in \mathbb{R}^{d \times q}\)</span>和<span class="math inline">\(\boldsymbol{b} \in \mathbb{R}^{1 \times q}\)</span>。softmax回归的矢量计算表达式为</li>
+为了进一步提升计算效率，我们通常对小批量数据做矢量计算。广义上讲，给定一个小批量样本，其批量大小为$n$，输入个数（特征数）为$d$，输出个数（类别数）为$q$。设批量特征为$\boldsymbol{X} \in \mathbb{R}^{n \times d}$。假设softmax回归的权重和偏差参数分别为$\boldsymbol{W} \in \mathbb{R}^{d \times q}$和$\boldsymbol{b} \in \mathbb{R}^{1 \times q}$。softmax回归的矢量计算表达式为</li>
 </ul>
-<p><span class="math display">\[
- \begin{aligned} \boldsymbol{O} &amp;= \boldsymbol{X} \boldsymbol{W} + \boldsymbol{b},\\ \boldsymbol{\hat{Y}} &amp;= \text{softmax}(\boldsymbol{O}), \end{aligned} 
-\]</span></p>
-<p>其中的加法运算使用了广播机制，<span class="math inline">\(\boldsymbol{O}, \boldsymbol{\hat{Y}} \in \mathbb{R}^{n \times q}\)</span>且这两个矩阵的第<span class="math inline">\(i\)</span>行分别为样本<span class="math inline">\(i\)</span>的输出<span class="math inline">\(\boldsymbol{o}^{(i)}\)</span>和概率分布<span class="math inline">\(\boldsymbol{\hat{y}}^{(i)}\)</span>。</p>
+<p>$$<br>
+\begin{aligned} \boldsymbol{O} &amp;= \boldsymbol{X} \boldsymbol{W} + \boldsymbol{b},\ \boldsymbol{\hat{Y}} &amp;= \text{softmax}(\boldsymbol{O}), \end{aligned}<br>
+$$</p>
+<p>其中的加法运算使用了广播机制，$\boldsymbol{O}, \boldsymbol{\hat{Y}} \in \mathbb{R}^{n \times q}$且这两个矩阵的第$i$行分别为样本$i$的输出$\boldsymbol{o}^{(i)}$和概率分布$\boldsymbol{\hat{y}}^{(i)}$。</p>
 <h2 id="交叉熵损失函数">交叉熵损失函数</h2>
-<p>对于样本<span class="math inline">\(i\)</span>，我们构造向量<span class="math inline">\(\boldsymbol{y}^{(i)}\in \mathbb{R}^{q}\)</span> ，使其第<span class="math inline">\(y^{(i)}\)</span>（样本<span class="math inline">\(i\)</span>类别的离散数值）个元素为1，其余为0。这样我们的训练目标可以设为使预测概率分布<span class="math inline">\(\boldsymbol{\hat y}^{(i)}\)</span>尽可能接近真实的标签概率分布<span class="math inline">\(\boldsymbol{y}^{(i)}\)</span>。</p>
+<p>对于样本$i$，我们构造向量$\boldsymbol{y}^{(i)}\in \mathbb{R}^{q}$ ，使其第$y^{(i)}$（样本$i$类别的离散数值）个元素为1，其余为0。这样我们的训练目标可以设为使预测概率分布$\boldsymbol{\hat y}^{(i)}$尽可能接近真实的标签概率分布$\boldsymbol{y}^{(i)}$。</p>
 <ul>
 <li>平方损失估计</li>
 </ul>
-<p><span class="math display">\[
-\begin{aligned}Loss = |\boldsymbol{\hat y}^{(i)}-\boldsymbol{y}^{(i)}|^2/2\end{aligned}
-\]</span></p>
-<p>然而，想要预测分类结果正确，我们其实并不需要预测概率完全等于标签概率。例如，在图像分类的例子里，如果<span class="math inline">\(y^{(i)}=3\)</span>，那么我们只需要<span class="math inline">\(\hat{y}^{(i)}_3\)</span>比其他两个预测值<span class="math inline">\(\hat{y}^{(i)}_1\)</span>和<span class="math inline">\(\hat{y}^{(i)}_2\)</span>大就行了。即使<span class="math inline">\(\hat{y}^{(i)}_3\)</span>值为0.6，不管其他两个预测值为多少，类别预测均正确。而平方损失则过于严格，例如<span class="math inline">\(\hat y^{(i)}_1=\hat y^{(i)}_2=0.2\)</span>比<span class="math inline">\(\hat y^{(i)}_1=0, \hat y^{(i)}_2=0.4\)</span>的损失要小很多，虽然两者都有同样正确的分类预测结果。</p>
+<p>$$<br>
+\begin{aligned}Loss = |\boldsymbol{\hat y}^{(i)}-\boldsymbol{y}^{(i)}|^2/2\end{aligned}<br>
+$$</p>
+<p>然而，想要预测分类结果正确，我们其实并不需要预测概率完全等于标签概率。例如，在图像分类的例子里，如果$y^{(i)}=3$，那么我们只需要$\hat{y}^{(i)}_3$比其他两个预测值$\hat{y}^{(i)}_1$和$\hat{y}^{(i)}_2$大就行了。即使$\hat{y}^{(i)}_3$值为0.6，不管其他两个预测值为多少，类别预测均正确。而平方损失则过于严格，例如$\hat y^{(i)}_1=\hat y^{(i)}_2=0.2$比$\hat y^{(i)}_1=0, \hat y^{(i)}_2=0.4$的损失要小很多，虽然两者都有同样正确的分类预测结果。</p>
 <p>改善上述问题的一个方法是使用更适合衡量两个概率分布差异的测量函数。其中，交叉熵（cross entropy）是一个常用的衡量方法：</p>
-<p><span class="math display">\[
-H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ) = -\sum_{j=1}^q y_j^{(i)} \log \hat y_j^{(i)},
-\]</span></p>
-<p>其中带下标的<span class="math inline">\(y_j^{(i)}\)</span>是向量<span class="math inline">\(\boldsymbol y^{(i)}\)</span>中非0即1的元素，需要注意将它与样本<span class="math inline">\(i\)</span>类别的离散数值，即不带下标的<span class="math inline">\(y^{(i)}\)</span>区分。在上式中，我们知道向量<span class="math inline">\(\boldsymbol y^{(i)}\)</span>中只有第<span class="math inline">\(y^{(i)}\)</span>个元素<span class="math inline">\(y^{(i)}{y^{(i)}}\)</span>为1，其余全为0，于是<span class="math inline">\(H(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}) = -\log \hat y_{y^{(i)}}^{(i)}\)</span>。也就是说，交叉熵只关心对正确类别的预测概率，因为只要其值足够大，就可以确保分类结果正确。当然，遇到一个样本有多个标签时，例如图像里含有不止一个物体时，我们并不能做这一步简化。但即便对于这种情况，交叉熵同样只关心对图像中出现的物体类别的预测概率。</p>
-<p>假设训练数据集的样本数为<span class="math inline">\(n\)</span>，交叉熵损失函数定义为 <span class="math display">\[
-\ell(\boldsymbol{\Theta}) = \frac{1}{n} \sum_{i=1}^n H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ),
-\]</span></p>
-<p>其中<span class="math inline">\(\boldsymbol{\Theta}\)</span>代表模型参数。同样地，如果每个样本只有一个标签，那么交叉熵损失可以简写成<span class="math inline">\(\ell(\boldsymbol{\Theta}) = -(1/n) \sum_{i=1}^n \log \hat y_{y^{(i)}}^{(i)}\)</span>。从另一个角度来看，我们知道最小化<span class="math inline">\(\ell(\boldsymbol{\Theta})\)</span>等价于最大化<span class="math inline">\(\exp(-n\ell(\boldsymbol{\Theta}))=\prod_{i=1}^n \hat y_{y^{(i)}}^{(i)}\)</span>，即最小化交叉熵损失函数等价于最大化训练数据集所有标签类别的联合预测概率。</p>
+<p>$$<br>
+H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ) = -\sum_{j=1}^q y_j^{(i)} \log \hat y_j^{(i)},<br>
+$$</p>
+<p>其中带下标的$y_j^{(i)}$是向量$\boldsymbol y^{(i)}$中非0即1的元素，需要注意将它与样本$i$类别的离散数值，即不带下标的$y^{(i)}$区分。在上式中，我们知道向量$\boldsymbol y^{(i)}$中只有第$y^{(i)}$个元素$y^{(i)}{y^{(i)}}$为1，其余全为0，于是$H(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}) = -\log \hat y_{y^{(i)}}^{(i)}$。也就是说，交叉熵只关心对正确类别的预测概率，因为只要其值足够大，就可以确保分类结果正确。当然，遇到一个样本有多个标签时，例如图像里含有不止一个物体时，我们并不能做这一步简化。但即便对于这种情况，交叉熵同样只关心对图像中出现的物体类别的预测概率。</p>
+<p>假设训练数据集的样本数为$n$，交叉熵损失函数定义为<br>
+$$<br>
+\ell(\boldsymbol{\Theta}) = \frac{1}{n} \sum_{i=1}^n H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ),<br>
+$$</p>
+<p>其中$\boldsymbol{\Theta}$代表模型参数。同样地，如果每个样本只有一个标签，那么交叉熵损失可以简写成$\ell(\boldsymbol{\Theta}) = -(1/n) \sum_{i=1}^n \log \hat y_{y^{(i)}}^{(i)}$。从另一个角度来看，我们知道最小化$\ell(\boldsymbol{\Theta})$等价于最大化$\exp(-n\ell(\boldsymbol{\Theta}))=\prod_{i=1}^n \hat y_{y^{(i)}}^{(i)}$，即最小化交叉熵损失函数等价于最大化训练数据集所有标签类别的联合预测概率。</p>
 <h2 id="模型训练和预测">模型训练和预测</h2>
 <p>在训练好softmax回归模型后，给定任一样本特征，就可以预测每个输出类别的概率。通常，我们把预测概率最大的类别作为输出类别。如果它与真实类别（标签）一致，说明这次预测是正确的。在3.6节的实验中，我们将使用准确率（accuracy）来评价模型的表现。它等于正确预测数量与总预测数量之比。</p>
 <h1 id="获取fashion-mnist训练集和读取数据">获取Fashion-MNIST训练集和读取数据</h1>
 <p>在介绍softmax回归的实现前我们先引入一个多类图像分类数据集。它将在后面的章节中被多次使用，以方便我们观察比较算法之间在模型精度和计算效率上的区别。图像分类数据集中最常用的是手写数字识别数据集MNIST[1]。但大部分模型在MNIST上的分类精度都超过了95%。为了更直观地观察算法之间的差异，我们将使用一个图像内容更加复杂的数据集Fashion-MNIST[2]。</p>
-<p>我这里我们会使用torchvision包，它是服务于PyTorch深度学习框架的，主要用来构建计算机视觉模型。torchvision主要由以下几部分构成： 1. torchvision.datasets: 一些加载数据的函数及常用的数据集接口； 2. torchvision.models: 包含常用的模型结构（含预训练模型），例如AlexNet、VGG、ResNet等； 3. torchvision.transforms: 常用的图片变换，例如裁剪、旋转等； 4. torchvision.utils: 其他的一些有用的方法。</p>
+<p>我这里我们会使用torchvision包，它是服务于PyTorch深度学习框架的，主要用来构建计算机视觉模型。torchvision主要由以下几部分构成：</p>
+<ol>
+<li>torchvision.datasets: 一些加载数据的函数及常用的数据集接口；</li>
+<li>torchvision.models: 包含常用的模型结构（含预训练模型），例如AlexNet、VGG、ResNet等；</li>
+<li>torchvision.transforms: 常用的图片变换，例如裁剪、旋转等；</li>
+<li>torchvision.utils: 其他的一些有用的方法。</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import needed package</span></span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">from</span> IPython <span class="keyword">import</span> display</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">".."</span>) </span><br><span class="line"><span class="keyword">import</span> d2lzh_pytorch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line">print(torch.__version__)</span><br><span class="line">print(torchvision.__version__)</span><br></pre></td></tr></table></figure>
 <pre><code>1.4.0+cpu
-0.5.0+cpu</code></pre>
+0.5.0+cpu
+</code></pre>
 <h2 id="get-dataset">get dataset</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mnist_train = torchvision.datasets.FashionMNIST(root=<span class="string">'./input/FashionMNIST2065'</span>, train=<span class="keyword">True</span>, download=<span class="keyword">True</span>, transform=transforms.ToTensor())</span><br><span class="line">mnist_test = torchvision.datasets.FashionMNIST(root=<span class="string">'./input/FashionMNIST2065'</span>, train=<span class="keyword">False</span>, download=<span class="keyword">True</span>, transform=transforms.ToTensor())</span><br></pre></td></tr></table></figure>
-<p>class torchvision.datasets.FashionMNIST(root, train=True, transform=None, target_transform=None, download=False) - root（string）– 数据集的根目录，其中存放processed/training.pt和processed/test.pt文件。 - train（bool, 可选）– 如果设置为True，从training.pt创建数据集，否则从test.pt创建。 - download（bool, 可选）– 如果设置为True，从互联网下载数据并放到root文件夹下。如果root目录下已经存在数据，不会再次下载。 - transform（可被调用 , 可选）– 一种函数或变换，输入PIL图片，返回变换之后的数据。如：transforms.RandomCrop。 - target_transform（可被调用 , 可选）– 一种函数或变换，输入目标，进行变换。</p>
+<p>class torchvision.datasets.FashionMNIST(root, train=True, transform=None, target_transform=None, download=False)</p>
+<ul>
+<li>root（string）– 数据集的根目录，其中存放processed/training.pt和processed/test.pt文件。</li>
+<li>train（bool, 可选）– 如果设置为True，从training.pt创建数据集，否则从test.pt创建。</li>
+<li>download（bool, 可选）– 如果设置为True，从互联网下载数据并放到root文件夹下。如果root目录下已经存在数据，不会再次下载。</li>
+<li>transform（可被调用 , 可选）– 一种函数或变换，输入PIL图片，返回变换之后的数据。如：transforms.RandomCrop。</li>
+<li>target_transform（可被调用 , 可选）– 一种函数或变换，输入目标，进行变换。</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># show result </span></span><br><span class="line">print(type(mnist_train))</span><br><span class="line">print(len(mnist_train), len(mnist_test))</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;class &#39;torchvision.datasets.mnist.FashionMNIST&#39;&gt;
-60000 10000</code></pre>
+<pre><code>&lt;class 'torchvision.datasets.mnist.FashionMNIST'&gt;
+60000 10000
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们可以通过下标来访问任意一个样本</span></span><br><span class="line">feature, label = mnist_train[<span class="number">0</span>]</span><br><span class="line">print(feature.shape, label)  <span class="comment"># Channel x Height x Width</span></span><br></pre></td></tr></table></figure>
-<pre><code>torch.Size([1, 28, 28]) 9</code></pre>
+<pre><code>torch.Size([1, 28, 28]) 9
+</code></pre>
 <p>如果不做变换输入的数据是图像，我们可以看一下图片的类型参数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mnist_PIL = torchvision.datasets.FashionMNIST(root=<span class="string">'/home/kesci/input/FashionMNIST2065'</span>, train=<span class="keyword">True</span>, download=<span class="keyword">True</span>)</span><br><span class="line">PIL_feature, label = mnist_PIL[<span class="number">0</span>]</span><br><span class="line">print(PIL_feature)</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;PIL.Image.Image image mode=L size=28x28 at 0x2C0A7BB9488&gt;</code></pre>
+<pre><code>&lt;PIL.Image.Image image mode=L size=28x28 at 0x2C0A7BB9488&gt;
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本函数已保存在d2lzh包中方便以后使用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_fashion_mnist_labels</span><span class="params">(labels)</span>:</span></span><br><span class="line">    text_labels = [<span class="string">'t-shirt'</span>, <span class="string">'trouser'</span>, <span class="string">'pullover'</span>, <span class="string">'dress'</span>, <span class="string">'coat'</span>,</span><br><span class="line">                   <span class="string">'sandal'</span>, <span class="string">'shirt'</span>, <span class="string">'sneaker'</span>, <span class="string">'bag'</span>, <span class="string">'ankle boot'</span>]</span><br><span class="line">    <span class="keyword">return</span> [text_labels[int(i)] <span class="keyword">for</span> i <span class="keyword">in</span> labels]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_fashion_mnist</span><span class="params">(images, labels)</span>:</span></span><br><span class="line">    d2l.use_svg_display()</span><br><span class="line">    <span class="comment"># 这里的_表示我们忽略（不使用）的变量</span></span><br><span class="line">    _, figs = plt.subplots(<span class="number">1</span>, len(images), figsize=(<span class="number">12</span>, <span class="number">12</span>))</span><br><span class="line">    <span class="keyword">for</span> f, img, lbl <span class="keyword">in</span> zip(figs, images, labels):</span><br><span class="line">        f.imshow(img.view((<span class="number">28</span>, <span class="number">28</span>)).numpy())</span><br><span class="line">        f.set_title(lbl)</span><br><span class="line">        f.axes.get_xaxis().set_visible(<span class="keyword">False</span>)</span><br><span class="line">        f.axes.get_yaxis().set_visible(<span class="keyword">False</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X, y = [], []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    X.append(mnist_train[i][<span class="number">0</span>]) <span class="comment"># 将第i个feature加到X中</span></span><br><span class="line">    y.append(mnist_train[i][<span class="number">1</span>]) <span class="comment"># 将第i个label加到y中</span></span><br><span class="line">show_fashion_mnist(X, get_fashion_mnist_labels(y))</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200214205226660.png" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-74LHzdEF-1581684699583)(output_15_0.svg)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200214205226660.png" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-74LHzdEF-1581684699583)(output_15_0.svg)]"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">batch_size = <span class="number">256</span></span><br><span class="line">num_workers = <span class="number">4</span></span><br><span class="line">train_iter = torch.utils.data.DataLoader(mnist_train, batch_size=batch_size, shuffle=<span class="keyword">True</span>, num_workers=num_workers)</span><br><span class="line">test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=<span class="keyword">False</span>, num_workers=num_workers)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start = time.time()</span><br><span class="line"><span class="keyword">for</span> X, y <span class="keyword">in</span> train_iter:</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">print(<span class="string">'%.2f sec'</span> % (time.time() - start))</span><br></pre></td></tr></table></figure>
-<pre><code>4.64 sec</code></pre>
+<pre><code>4.64 sec
+</code></pre>
 <h1 id="softmax从零开始的实现">softmax从零开始的实现</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">".."</span>) </span><br><span class="line"><span class="keyword">import</span> d2lzh_pytorch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line">print(torch.__version__)</span><br><span class="line">print(torchvision.__version__)</span><br></pre></td></tr></table></figure>
 <pre><code>1.4.0+cpu
-0.5.0+cpu</code></pre>
+0.5.0+cpu
+</code></pre>
 <h2 id="获取训练集数据和测试集数据">获取训练集数据和测试集数据</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">256</span></span><br><span class="line">train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, root=<span class="string">'/home/kesci/input/FashionMNIST2065'</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="模型参数初始化">模型参数初始化</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">num_inputs = <span class="number">784</span></span><br><span class="line">print(<span class="number">28</span>*<span class="number">28</span>)</span><br><span class="line">num_outputs = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">W = torch.tensor(np.random.normal(<span class="number">0</span>, <span class="number">0.01</span>, (num_inputs, num_outputs)), dtype=torch.float)</span><br><span class="line">b = torch.zeros(num_outputs, dtype=torch.float)</span><br></pre></td></tr></table></figure>
-<pre><code>784</code></pre>
+<pre><code>784
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">W.requires_grad_(requires_grad=<span class="keyword">True</span>)</span><br><span class="line">b.requires_grad_(requires_grad=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], requires_grad=True)</code></pre>
+<pre><code>tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], requires_grad=True)
+</code></pre>
 <h2 id="对多维tensor按维度操作">对多维Tensor按维度操作</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X = torch.tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">print(X.sum(dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>))  <span class="comment"># dim为0，按照相同的列求和，并在结果中保留列特征</span></span><br><span class="line">print(X.sum(dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>))  <span class="comment"># dim为1，按照相同的行求和，并在结果中保留行特征</span></span><br><span class="line">print(X.sum(dim=<span class="number">0</span>, keepdim=<span class="keyword">False</span>)) <span class="comment"># dim为0，按照相同的列求和，不在结果中保留列特征</span></span><br><span class="line">print(X.sum(dim=<span class="number">1</span>, keepdim=<span class="keyword">False</span>)) <span class="comment"># dim为1，按照相同的行求和，不在结果中保留行特征</span></span><br></pre></td></tr></table></figure>
 <pre><code>tensor([[5, 7, 9]])
 tensor([[ 6],
         [15]])
 tensor([5, 7, 9])
-tensor([ 6, 15])</code></pre>
+tensor([ 6, 15])
+</code></pre>
 <h2 id="定义softmax操作">定义softmax操作</h2>
-<p><span class="math display">\[
- \hat{y}_j = \frac{ \exp(o_j)}{\sum_{i=1}^3 \exp(o_i)} 
-\]</span></p>
+<p>$$<br>
+\hat{y}<em>j = \frac{ \exp(o_j)}{\sum</em>{i=1}^3 \exp(o_i)}<br>
+$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span><span class="params">(X)</span>:</span></span><br><span class="line">    X_exp = X.exp()</span><br><span class="line">    partition = X_exp.sum(dim=<span class="number">1</span>, keepdim=<span class="keyword">True</span>)</span><br><span class="line">    <span class="comment"># print("X size is ", X_exp.size())</span></span><br><span class="line">    <span class="comment"># print("partition size is ", partition, partition.size())</span></span><br><span class="line">    <span class="keyword">return</span> X_exp / partition  <span class="comment"># 这里应用了广播机制</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X = torch.rand((<span class="number">2</span>, <span class="number">5</span>))</span><br><span class="line">X_prob = softmax(X)</span><br><span class="line">print(X_prob, <span class="string">'\n'</span>, X_prob.sum(dim=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([[0.1880, 0.1848, 0.2668, 0.2236, 0.1368],
         [0.2251, 0.1077, 0.1563, 0.2466, 0.2644]]) 
- tensor([1.0000, 1.0000])</code></pre>
+ tensor([1.0000, 1.0000])
+</code></pre>
 <h2 id="softmax回归模型">softmax回归模型</h2>
-<p><span class="math display">\[
- \begin{aligned} \boldsymbol{o}^{(i)} &amp;= \boldsymbol{x}^{(i)} \boldsymbol{W} + \boldsymbol{b},\\ \boldsymbol{\hat{y}}^{(i)} &amp;= \text{softmax}(\boldsymbol{o}^{(i)}). \end{aligned} 
-\]</span></p>
+<p>$$<br>
+\begin{aligned} \boldsymbol{o}^{(i)} &amp;= \boldsymbol{x}^{(i)} \boldsymbol{W} + \boldsymbol{b},\ \boldsymbol{\hat{y}}^{(i)} &amp;= \text{softmax}(\boldsymbol{o}^{(i)}). \end{aligned}<br>
+$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">net</span><span class="params">(X)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> softmax(torch.mm(X.view((<span class="number">-1</span>, num_inputs)), W) + b)</span><br></pre></td></tr></table></figure>
 <h2 id="定义损失函数">定义损失函数</h2>
-<p><span class="math display">\[
-H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ) = -\sum_{j=1}^q y_j^{(i)} \log \hat y_j^{(i)},
-\]</span></p>
-<p><span class="math display">\[
-\ell(\boldsymbol{\Theta}) = \frac{1}{n} \sum_{i=1}^n H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ),
-\]</span></p>
-<p><span class="math display">\[
-\ell(\boldsymbol{\Theta}) = -(1/n) \sum_{i=1}^n \log \hat y_{y^{(i)}}^{(i)}
-\]</span></p>
+<p>$$<br>
+H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ) = -\sum_{j=1}^q y_j^{(i)} \log \hat y_j^{(i)},<br>
+$$</p>
+<p>$$<br>
+\ell(\boldsymbol{\Theta}) = \frac{1}{n} \sum_{i=1}^n H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ),<br>
+$$</p>
+<p>$$<br>
+\ell(\boldsymbol{\Theta}) = -(1/n) \sum_{i=1}^n \log \hat y_{y^{(i)}}^{(i)}<br>
+$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y_hat = torch.tensor([[<span class="number">0.1</span>, <span class="number">0.3</span>, <span class="number">0.6</span>], [<span class="number">0.3</span>, <span class="number">0.2</span>, <span class="number">0.5</span>]])</span><br><span class="line">y = torch.LongTensor([<span class="number">0</span>, <span class="number">2</span>])</span><br><span class="line">y_hat.gather(<span class="number">1</span>, y.view(<span class="number">-1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([[0.1000],
-        [0.5000]])</code></pre>
+        [0.5000]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cross_entropy</span><span class="params">(y_hat, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> - torch.log(y_hat.gather(<span class="number">1</span>, y.view(<span class="number">-1</span>, <span class="number">1</span>)))</span><br></pre></td></tr></table></figure>
 <h2 id="定义准确率">定义准确率</h2>
 <p>我们模型训练完了进行模型预测的时候，会用到我们这里定义的准确率。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">accuracy</span><span class="params">(y_hat, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (y_hat.argmax(dim=<span class="number">1</span>) == y).float().mean().item()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(accuracy(y_hat, y))</span><br></pre></td></tr></table></figure>
-<pre><code>0.5</code></pre>
+<pre><code>0.5
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本函数已保存在d2lzh_pytorch包中方便以后使用。该函数将被逐步改进：它的完整实现将在“图像增广”一节中描述</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluate_accuracy</span><span class="params">(data_iter, net)</span>:</span></span><br><span class="line">    acc_sum, n = <span class="number">0.0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter:</span><br><span class="line">        acc_sum += (net(X).argmax(dim=<span class="number">1</span>) == y).float().sum().item()</span><br><span class="line">        n += y.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> acc_sum / n</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(evaluate_accuracy(test_iter, net))</span><br></pre></td></tr></table></figure>
-<pre><code>0.0407</code></pre>
+<pre><code>0.0407
+</code></pre>
 <h2 id="训练模型">训练模型</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">num_epochs, lr = <span class="number">5</span>, <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 本函数已保存在d2lzh_pytorch包中方便以后使用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_ch3</span><span class="params">(net, train_iter, test_iter, loss, num_epochs, batch_size,</span></span></span><br><span class="line"><span class="function"><span class="params">              params=None, lr=None, optimizer=None)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(num_epochs):</span><br><span class="line">        train_l_sum, train_acc_sum, n = <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> X, y <span class="keyword">in</span> train_iter:</span><br><span class="line">            y_hat = net(X)</span><br><span class="line">            l = loss(y_hat, y).sum()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 梯度清零</span></span><br><span class="line">            <span class="keyword">if</span> optimizer <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                optimizer.zero_grad()</span><br><span class="line">            <span class="keyword">elif</span> params <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">and</span> params[<span class="number">0</span>].grad <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">                    param.grad.data.zero_()</span><br><span class="line">            </span><br><span class="line">            l.backward()</span><br><span class="line">            <span class="keyword">if</span> optimizer <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                d2l.sgd(params, lr, batch_size)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                optimizer.step() </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            train_l_sum += l.item()</span><br><span class="line">            train_acc_sum += (y_hat.argmax(dim=<span class="number">1</span>) == y).sum().item()</span><br><span class="line">            n += y.shape[<span class="number">0</span>]</span><br><span class="line">        test_acc = evaluate_accuracy(test_iter, net)</span><br><span class="line">        print(<span class="string">'epoch %d, loss %.4f, train acc %.3f, test acc %.3f'</span></span><br><span class="line">              % (epoch + <span class="number">1</span>, train_l_sum / n, train_acc_sum / n, test_acc))</span><br><span class="line"></span><br><span class="line">train_ch3(net, train_iter, test_iter, cross_entropy, num_epochs, batch_size, [W, b], lr)</span><br></pre></td></tr></table></figure>
 <pre><code>epoch 1, loss 0.7852, train acc 0.749, test acc 0.787
 epoch 2, loss 0.5708, train acc 0.812, test acc 0.813
 epoch 3, loss 0.5249, train acc 0.826, test acc 0.821
 epoch 4, loss 0.5014, train acc 0.833, test acc 0.819
-epoch 5, loss 0.4868, train acc 0.836, test acc 0.828</code></pre>
+epoch 5, loss 0.4868, train acc 0.836, test acc 0.828
+</code></pre>
 <h2 id="模型预测">模型预测</h2>
-<p>现在我们的模型训练完了，可以进行一下预测，我们的这个模型训练的到底准确不准确。 现在就可以演示如何对图像进行分类了。给定一系列图像（第三行图像输出），我们比较一下它们的真实标签（第一行文本输出）和模型预测结果（第二行文本输出）。</p>
+<p>现在我们的模型训练完了，可以进行一下预测，我们的这个模型训练的到底准确不准确。<br>
+现在就可以演示如何对图像进行分类了。给定一系列图像（第三行图像输出），我们比较一下它们的真实标签（第一行文本输出）和模型预测结果（第二行文本输出）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X, y = iter(test_iter).next()</span><br><span class="line"></span><br><span class="line">true_labels = d2l.get_fashion_mnist_labels(y.numpy())</span><br><span class="line">pred_labels = d2l.get_fashion_mnist_labels(net(X).argmax(dim=<span class="number">1</span>).numpy())</span><br><span class="line">titles = [true + <span class="string">'\n'</span> + pred <span class="keyword">for</span> true, pred <span class="keyword">in</span> zip(true_labels, pred_labels)]</span><br><span class="line"></span><br><span class="line">d2l.show_fashion_mnist(X[<span class="number">0</span>:<span class="number">9</span>], titles[<span class="number">0</span>:<span class="number">9</span>])</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200214205251788.png" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-43eetIzM-1581684699584)(output_43_0.svg)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200214205251788.png" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-43eetIzM-1581684699584)(output_43_0.svg)]"></p>
 <h1 id="softmax的简洁实现">softmax的简洁实现</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载各种包或者模块</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> init</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">".."</span>) </span><br><span class="line"><span class="keyword">import</span> d2lzh_pytorch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line">print(torch.__version__)</span><br></pre></td></tr></table></figure>
-<pre><code>1.4.0+cpu</code></pre>
+<pre><code>1.4.0+cpu
+</code></pre>
 <h2 id="初始化参数和获取数据">初始化参数和获取数据</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">batch_size = <span class="number">256</span></span><br><span class="line">train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, root=<span class="string">'/home/kesci/input/FashionMNIST2065'</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="定义网络模型">定义网络模型</h2>
@@ -421,7 +457,8 @@ epoch 5, loss 0.4868, train acc 0.836, test acc 0.828</code></pre>
 <h2 id="初始化模型参数">初始化模型参数</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init.normal_(net.linear.weight, mean=<span class="number">0</span>, std=<span class="number">0.01</span>)</span><br><span class="line">init.constant_(net.linear.bias, val=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>Parameter containing:
-tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], requires_grad=True)</code></pre>
+tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], requires_grad=True)
+</code></pre>
 <h2 id="定义损失函数">定义损失函数</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loss = nn.CrossEntropyLoss() <span class="comment"># 下面是他的函数原型</span></span><br><span class="line"><span class="comment"># class torch.nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean')</span></span><br></pre></td></tr></table></figure>
 <h2 id="定义优化函数">定义优化函数</h2>
@@ -432,7 +469,8 @@ tensor([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], requires_grad=True)</code></pre
 epoch 2, loss 0.0022, train acc 0.813, test acc 0.809
 epoch 3, loss 0.0021, train acc 0.825, test acc 0.821
 epoch 4, loss 0.0020, train acc 0.833, test acc 0.822
-epoch 5, loss 0.0019, train acc 0.838, test acc 0.824</code></pre>
+epoch 5, loss 0.0019, train acc 0.838, test acc 0.824
+</code></pre>
 
                 
 

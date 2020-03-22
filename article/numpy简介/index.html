@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -228,32 +228,40 @@
 <p>现在我们同时对每个序列乘以2：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%time <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>): my_arr2 = my_arr * <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <pre><code>CPU times: user 1.31 ms, sys: 4.08 ms, total: 5.39 ms
-Wall time: 4.95 ms</code></pre>
+Wall time: 4.95 ms
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%time <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>): my_list2 = [x * <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> my_list]</span><br></pre></td></tr></table></figure>
 <pre><code>CPU times: user 77.3 ms, sys: 8.11 ms, total: 85.4 ms
-Wall time: 84.9 ms</code></pre>
+Wall time: 84.9 ms
+</code></pre>
 <p>由此可以看出，numpy的方法比python方法快10到100倍，并且使用的内存也更少</p>
 <h2 id="三-numpy-ndarray多维数组对象">三、numpy ndarray：多维数组对象</h2>
 <p><strong>为了让你感受下numpy如何使用类似于python内建对象的标量计算语法进行批量计算，这里举一个例子：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randn(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-0.95909317, -0.86735722, -2.12730064],
-       [ 1.55107167,  0.34639641,  0.98348208]])</code></pre>
+       [ 1.55107167,  0.34639641,  0.98348208]])
+</code></pre>
 <p>然后给data加上一个数学操作：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data * <span class="number">10</span></span><br></pre></td></tr></table></figure>
 <pre><code>array([[ -9.59093173,  -8.67357218, -21.27300638],
-       [ 15.51071672,   3.46396414,   9.83482081]])</code></pre>
+       [ 15.51071672,   3.46396414,   9.83482081]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data + <span class="number">10</span></span><br></pre></td></tr></table></figure>
 <pre><code>array([[  9.04090683,   9.13264278,   7.87269936],
-       [ 11.55107167,  10.34639641,  10.98348208]])</code></pre>
+       [ 11.55107167,  10.34639641,  10.98348208]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data + data</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-1.91818635, -1.73471444, -4.25460128],
-       [ 3.10214334,  0.69279283,  1.96696416]])</code></pre>
+       [ 3.10214334,  0.69279283,  1.96696416]])
+</code></pre>
 <p>每个数据都有一个shape属性，用来表征数组每一维度的数量；每一个数组都有一个dtype属性，用来描述数组的数据类型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
-<pre><code>(2, 3)</code></pre>
+<pre><code>(2, 3)
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.dtype</span><br></pre></td></tr></table></figure>
-<pre><code>dtype(&#39;float64&#39;)</code></pre>
+<pre><code>dtype('float64')
+</code></pre>
 
                 
 
@@ -262,12 +270,12 @@ Wall time: 84.9 ms</code></pre>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（三、建立模型与模型检验）">&larr; Previous Post</a>
+                            <a href="/article/pandas基本操作（二）/" data-toggle="tooltip" data-placement="top" title="pandas基本操作（二）">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/numpy基础操作（一）/" data-toggle="tooltip" data-placement="top" title="numpy基础操作（一）">Next Post &rarr;</a>
+                            <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（三、建立模型与模型检验）">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

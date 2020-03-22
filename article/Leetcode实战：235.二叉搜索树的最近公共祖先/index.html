@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -215,20 +215,20 @@
                 <h2 id="题目">题目：</h2>
 <p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
 <p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
-<p>例如，给定如下二叉搜索树: root = [6,2,8,0,4,7,9,null,null,3,5] <img src="https://img-blog.csdnimg.cn/201910081047296.png" alt="在这里插入图片描述"></p>
+<p>例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]<br>
+<img src="https://img-blog.csdnimg.cn/201910081047296.png" alt="在这里插入图片描述"></p>
 <p>示例1：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: root = [<span class="number">6</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,null,null,<span class="number">3</span>,<span class="number">5</span>], p = <span class="number">2</span>, q = <span class="number">8</span></span><br><span class="line">输出: <span class="number">6</span> </span><br><span class="line">解释: 节点 <span class="number">2</span> 和节点 <span class="number">8</span> 的最近公共祖先是 <span class="number">6</span>。</span><br></pre></td></tr></table></figure>
 <p>示例2：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: root = [<span class="number">6</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,null,null,<span class="number">3</span>,<span class="number">5</span>], p = <span class="number">2</span>, q = <span class="number">4</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: 节点 <span class="number">2</span> 和节点 <span class="number">4</span> 的最近公共祖先是 <span class="number">2</span>, 因为根据定义最近公共祖先节点可以为节点本身。</span><br></pre></td></tr></table></figure>
 <p>说明:</p>
 <pre><code>所有节点的值都是唯一的。
-p、q 为不同节点且均存在于给定的二叉搜索树中。</code></pre>
+p、q 为不同节点且均存在于给定的二叉搜索树中。
+</code></pre>
 <h2 id="算法实现递归">算法实现：递归</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, root, p, q)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :type p: TreeNode</span></span><br><span class="line"><span class="string">        :type q: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> q.val &gt; root.val <span class="keyword">and</span> p.val &gt; root.val:</span><br><span class="line">            <span class="keyword">return</span> self.lowestCommonAncestor(root.right, p, q)</span><br><span class="line">        <span class="keyword">elif</span> q.val &lt; root.val <span class="keyword">and</span> p.val &lt; root.val:</span><br><span class="line">            <span class="keyword">return</span> self.lowestCommonAncestor(root.left, p, q)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20191008105016397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20191008105016397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 
@@ -237,12 +237,12 @@ p、q 为不同节点且均存在于给定的二叉搜索树中。</code></pre>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：292. Nim 游戏/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：292. Nim 游戏">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：236.二叉树的最近公共祖先/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：236.二叉树的最近公共祖先">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/Leetcode实战215：数组中的第K个最大元素/" data-toggle="tooltip" data-placement="top" title="Leetcode实战215：数组中的第K个最大元素">Next Post &rarr;</a>
+                            <a href="/article/Leetcode实战：292. Nim 游戏/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：292. Nim 游戏">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

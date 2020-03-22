@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -216,7 +216,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="comment">#导入warnings包，利用过滤器来实现忽略警告语句。</span></span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
 <h2 id="二-总体情况一览">二、总体情况一览</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inputfile = <span class="string">'../data/original_data.xls'</span>  <span class="comment"># 输入的数据文件</span></span><br><span class="line">data = pd.read_excel(inputfile)  <span class="comment"># 读取数据</span></span><br><span class="line">print(data.info())</span><br><span class="line">print(data.describe())</span><br><span class="line">print(data.count())</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 18840 entries, 0 to 18839
 Data columns (total 12 columns):
 热水器编号     18840 non-null object
@@ -255,284 +255,126 @@ max    2.014111e+13     77.000000
 节能模式      18840
 加热剩余时间    18840
 当前设置温度    18840
-dtype: int64</code></pre>
+dtype: int64
+</code></pre>
 <div>
 <style>
     .dataframe thead tr:only-child th {
         text-align: right;
     }
+<pre><code>.dataframe thead th {
+    text-align: left;
+}
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+</code></pre>
 </style>
 <table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>
-</th>
-<th>
-热水器编号
-</th>
-<th>
-发生时间
-</th>
-<th>
-开关机状态
-</th>
-<th>
-加热中
-</th>
-<th>
-保温中
-</th>
-<th>
-有无水流
-</th>
-<th>
-实际温度
-</th>
-<th>
-热水量
-</th>
-<th>
-水流量
-</th>
-<th>
-节能模式
-</th>
-<th>
-加热剩余时间
-</th>
-<th>
-当前设置温度
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>
-0
-</th>
-<td>
-R_00001
-</td>
-<td>
-20141019063917
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-无
-</td>
-<td>
-30°C
-</td>
-<td>
-0%
-</td>
-<td>
-0
-</td>
-<td>
-关
-</td>
-<td>
-0分钟
-</td>
-<td>
-50°C
-</td>
-</tr>
-<tr>
-<th>
-1
-</th>
-<td>
-R_00001
-</td>
-<td>
-20141019070154
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-无
-</td>
-<td>
-30°C
-</td>
-<td>
-0%
-</td>
-<td>
-0
-</td>
-<td>
-关
-</td>
-<td>
-0分钟
-</td>
-<td>
-50°C
-</td>
-</tr>
-<tr>
-<th>
-2
-</th>
-<td>
-R_00001
-</td>
-<td>
-20141019070156
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-无
-</td>
-<td>
-30°C
-</td>
-<td>
-0%
-</td>
-<td>
-8
-</td>
-<td>
-关
-</td>
-<td>
-0分钟
-</td>
-<td>
-50°C
-</td>
-</tr>
-<tr>
-<th>
-3
-</th>
-<td>
-R_00001
-</td>
-<td>
-20141019071230
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-无
-</td>
-<td>
-30°C
-</td>
-<td>
-0%
-</td>
-<td>
-0
-</td>
-<td>
-关
-</td>
-<td>
-0分钟
-</td>
-<td>
-50°C
-</td>
-</tr>
-<tr>
-<th>
-4
-</th>
-<td>
-R_00001
-</td>
-<td>
-20141019071236
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-关
-</td>
-<td>
-无
-</td>
-<td>
-29°C
-</td>
-<td>
-0%
-</td>
-<td>
-0
-</td>
-<td>
-关
-</td>
-<td>
-0分钟
-</td>
-<td>
-50°C
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>热水器编号</th>
+      <th>发生时间</th>
+      <th>开关机状态</th>
+      <th>加热中</th>
+      <th>保温中</th>
+      <th>有无水流</th>
+      <th>实际温度</th>
+      <th>热水量</th>
+      <th>水流量</th>
+      <th>节能模式</th>
+      <th>加热剩余时间</th>
+      <th>当前设置温度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>R_00001</td>
+      <td>20141019063917</td>
+      <td>关</td>
+      <td>关</td>
+      <td>关</td>
+      <td>无</td>
+      <td>30°C</td>
+      <td>0%</td>
+      <td>0</td>
+      <td>关</td>
+      <td>0分钟</td>
+      <td>50°C</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>R_00001</td>
+      <td>20141019070154</td>
+      <td>关</td>
+      <td>关</td>
+      <td>关</td>
+      <td>无</td>
+      <td>30°C</td>
+      <td>0%</td>
+      <td>0</td>
+      <td>关</td>
+      <td>0分钟</td>
+      <td>50°C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>R_00001</td>
+      <td>20141019070156</td>
+      <td>关</td>
+      <td>关</td>
+      <td>关</td>
+      <td>无</td>
+      <td>30°C</td>
+      <td>0%</td>
+      <td>8</td>
+      <td>关</td>
+      <td>0分钟</td>
+      <td>50°C</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>R_00001</td>
+      <td>20141019071230</td>
+      <td>关</td>
+      <td>关</td>
+      <td>关</td>
+      <td>无</td>
+      <td>30°C</td>
+      <td>0%</td>
+      <td>0</td>
+      <td>关</td>
+      <td>0分钟</td>
+      <td>50°C</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>R_00001</td>
+      <td>20141019071236</td>
+      <td>关</td>
+      <td>关</td>
+      <td>关</td>
+      <td>无</td>
+      <td>29°C</td>
+      <td>0%</td>
+      <td>0</td>
+      <td>关</td>
+      <td>0分钟</td>
+      <td>50°C</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 <h2 id="三-数据分析">三、数据分析</h2>
 <p><strong>水流状态</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制条形图</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">6</span>, <span class="number">5</span>))  <span class="comment"># 设置画布大小</span></span><br><span class="line">sns.set(style=<span class="string">"darkgrid"</span>)</span><br><span class="line">sns.set_context(<span class="string">"notebook"</span>, font_scale=<span class="number">1.2</span>, rc=&#123;<span class="string">"lines.linewidth"</span>: <span class="number">2.5</span>&#125;)</span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>] = <span class="string">'SimHei'</span>  <span class="comment"># 设置中文显示</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line">sns.catplot(kind=<span class="string">"count"</span>,</span><br><span class="line">            data=data,</span><br><span class="line">            x=<span class="string">"有无水流"</span>,</span><br><span class="line">            aspect=<span class="number">1</span>,</span><br><span class="line">            height=<span class="number">5</span>,</span><br><span class="line">            palette=<span class="string">'tab20'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'水流状态'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'记录数'</span>)</span><br><span class="line">plt.title(<span class="string">'不同水流状态记录数'</span>)</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200119224153334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-j9KrTBA6-1579444860710)(https://i.loli.net/2020/01/19/fsQGqCW9EN4BXtz.png)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200119224153334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-j9KrTBA6-1579444860710)(https://i.loli.net/2020/01/19/fsQGqCW9EN4BXtz.png)]"></p>
 <p><strong>水流量分布</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制水流量分布箱型图</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">5</span>, <span class="number">8</span>))</span><br><span class="line">sns.catplot(</span><br><span class="line">    kind=<span class="string">"box"</span>,</span><br><span class="line">    data=data,</span><br><span class="line">    y=<span class="string">'水流量'</span>,  <span class="comment"># 设置x轴标题</span></span><br><span class="line">    aspect=<span class="number">1</span>,</span><br><span class="line">    height=<span class="number">5</span>,</span><br><span class="line">    palette=<span class="string">'tab20'</span>)</span><br><span class="line">plt.title(<span class="string">'水流量分布箱线图'</span>)</span><br><span class="line"><span class="comment">#显示y坐标轴的底线</span></span><br><span class="line"><span class="comment">#plt.grid(axis='y')</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjAvMDEvMTkvZDdBR1ZKbW5XekhVdndnLnBuZw?x-oss-process=image/format,png" alt=""><figcaption>output_7_2.png</figcaption>
-</figure>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMjAvMDEvMTkvZDdBR1ZKbW5XekhVdndnLnBuZw?x-oss-process=image/format,png" alt="output_7_2.png"></p>
 <p>由分箱图可以看出，用户一半以上的时间都没在用水，刚好和条形图对应</p>
 
                 

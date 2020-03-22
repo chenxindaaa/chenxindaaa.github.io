@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -218,26 +218,32 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data1 = [<span class="number">6</span>, <span class="number">7.5</span>,  <span class="number">8</span>,  <span class="number">0</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr1 = np.array(data1)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr1</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 6. ,  7.5,  8. ,  0. ,  1. ])</code></pre>
+<pre><code>array([ 6. ,  7.5,  8. ,  0. ,  1. ])
+</code></pre>
 <h4 id="2嵌套序列例如同等长度的列表将会自动转换成多维数组">2.嵌套序列，例如同等长度的列表，将会自动转换成多维数组</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data2 = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2 = np.array(data2)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2</span><br></pre></td></tr></table></figure>
 <pre><code>array([[1, 2, 3, 4],
-       [5, 6, 7, 8]])</code></pre>
+       [5, 6, 7, 8]])
+</code></pre>
 <p>通过ndim和shape可以查看属性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2.ndim</span><br></pre></td></tr></table></figure>
-<pre><code>2</code></pre>
+<pre><code>2
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2.shape</span><br></pre></td></tr></table></figure>
-<pre><code>(2, 4)</code></pre>
+<pre><code>(2, 4)
+</code></pre>
 <h4 id="3-除了用nparray还有很多其他的函数可以创建新数组">3. 除了用np.array，还有很多其他的函数可以创建新数组。</h4>
 <p>例如，给定长度和形状后，zeros可以一次性创建全为0的数组，ones可以创建全为1的数组。empty可以创建一个没有初始化数组的数组。想要创建高维数组，则需要为shape传递一个元组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</code></pre>
+<pre><code>array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros((<span class="number">3</span>, <span class="number">6</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0.,  0.,  0.,  0.,  0.,  0.],
        [ 0.,  0.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.,  0.]])</code></pre>
+       [ 0.,  0.,  0.,  0.,  0.,  0.]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.empty((<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>array([[[  6.93191462e-310,   1.59160125e-316],
         [  0.00000000e+000,   0.00000000e+000],
@@ -245,67 +251,69 @@
 
        [[  3.59789606e+179,   6.52172099e-038],
         [  1.41915235e+161,   4.42531362e-062],
-        [  1.46169329e+185,   7.13064093e-067]]])</code></pre>
+        [  1.46169329e+185,   7.13064093e-067]]])
+</code></pre>
 <p>想要用np.empty创建一个全为0的数组并不安全，有些时候它可能返回未初始化的垃圾数值</p>
 <p>arange是python内建函数range的数组版：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])</code></pre>
+<pre><code>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14])
+</code></pre>
 <p>下表是标准数组的生成函数，如果没有特别声明。默认的数据类型都是float64</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">函数名</th>
-<th style="text-align: center;">描述</th>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">array</td>
-<td style="text-align: center;">将输入数据转换为ndarray，如不显式致命数据类型，将自动推断</td>
+<tr>
+<td style="text-align:center">array</td>
+<td style="text-align:center">将输入数据转换为ndarray，如不显式致命数据类型，将自动推断</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">asarray</td>
-<td style="text-align: center;">将输入转为ndarray，如果已经是ndarray则不再复制</td>
+<tr>
+<td style="text-align:center">asarray</td>
+<td style="text-align:center">将输入转为ndarray，如果已经是ndarray则不再复制</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">arange</td>
-<td style="text-align: center;">python内建函数range的数组版，返回一个数组</td>
+<tr>
+<td style="text-align:center">arange</td>
+<td style="text-align:center">python内建函数range的数组版，返回一个数组</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">ones</td>
-<td style="text-align: center;">根据形状生成一个全1的数组</td>
+<tr>
+<td style="text-align:center">ones</td>
+<td style="text-align:center">根据形状生成一个全1的数组</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">ones_like</td>
-<td style="text-align: center;">根据所给的数组生成一个形状一样的全1数组</td>
+<tr>
+<td style="text-align:center">ones_like</td>
+<td style="text-align:center">根据所给的数组生成一个形状一样的全1数组</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">zeros</td>
-<td style="text-align: center;">根据形状生成一个全0的数组</td>
+<tr>
+<td style="text-align:center">zeros</td>
+<td style="text-align:center">根据形状生成一个全0的数组</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">zeros_like</td>
-<td style="text-align: center;">根据所给的数组生成一个形状一样的全0数组</td>
+<tr>
+<td style="text-align:center">zeros_like</td>
+<td style="text-align:center">根据所给的数组生成一个形状一样的全0数组</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">empty</td>
-<td style="text-align: center;">根据形状生成一个没有初始化数值的空数组</td>
+<tr>
+<td style="text-align:center">empty</td>
+<td style="text-align:center">根据形状生成一个没有初始化数值的空数组</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">empty_like</td>
-<td style="text-align: center;">根据所给的数组生成一个形状一样但没有初始化数据的空数组</td>
+<tr>
+<td style="text-align:center">empty_like</td>
+<td style="text-align:center">根据所给的数组生成一个形状一样但没有初始化数据的空数组</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">full</td>
-<td style="text-align: center;">根据形状生成一个制定数值的数组</td>
+<tr>
+<td style="text-align:center">full</td>
+<td style="text-align:center">根据形状生成一个制定数值的数组</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">full_like</td>
-<td style="text-align: center;">根据所给的数组生成一个形状一样但内容是指定数值的数组</td>
+<tr>
+<td style="text-align:center">full_like</td>
+<td style="text-align:center">根据所给的数组生成一个形状一样但内容是指定数值的数组</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">eye,identity</td>
-<td style="text-align: center;">生成一个<span class="math inline">\(N\cdot N\)</span>的单位矩阵</td>
+<tr>
+<td style="text-align:center">eye,identity</td>
+<td style="text-align:center">生成一个$N\cdot N$的单位矩阵</td>
 </tr>
 </tbody>
 </table>
@@ -313,134 +321,153 @@
 <p>numpy数据类型如下表所示：</p>
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: center;">类型</th>
-<th style="text-align: center;">类型代码</th>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">类型代码</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: center;">int8,uint8</td>
-<td style="text-align: center;">i1,u1</td>
+<tr>
+<td style="text-align:center">int8,uint8</td>
+<td style="text-align:center">i1,u1</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">int16,uint16</td>
-<td style="text-align: center;">i2,u2</td>
+<tr>
+<td style="text-align:center">int16,uint16</td>
+<td style="text-align:center">i2,u2</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">int32,uint32</td>
-<td style="text-align: center;">i4,u4</td>
+<tr>
+<td style="text-align:center">int32,uint32</td>
+<td style="text-align:center">i4,u4</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">int64,uint64</td>
-<td style="text-align: center;">i8,u8</td>
+<tr>
+<td style="text-align:center">int64,uint64</td>
+<td style="text-align:center">i8,u8</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">float16</td>
-<td style="text-align: center;">f2</td>
+<tr>
+<td style="text-align:center">float16</td>
+<td style="text-align:center">f2</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">float32</td>
-<td style="text-align: center;">f4或f</td>
+<tr>
+<td style="text-align:center">float32</td>
+<td style="text-align:center">f4或f</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">float64</td>
-<td style="text-align: center;">f8或d</td>
+<tr>
+<td style="text-align:center">float64</td>
+<td style="text-align:center">f8或d</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">float128</td>
-<td style="text-align: center;">f16或g</td>
+<tr>
+<td style="text-align:center">float128</td>
+<td style="text-align:center">f16或g</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">complex64</td>
-<td style="text-align: center;">c8</td>
+<tr>
+<td style="text-align:center">complex64</td>
+<td style="text-align:center">c8</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">complex128</td>
-<td style="text-align: center;">c16</td>
+<tr>
+<td style="text-align:center">complex128</td>
+<td style="text-align:center">c16</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">complex256</td>
-<td style="text-align: center;">c32</td>
+<tr>
+<td style="text-align:center">complex256</td>
+<td style="text-align:center">c32</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">bool</td>
-<td style="text-align: center;">?</td>
+<tr>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">?</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">object</td>
-<td style="text-align: center;">o</td>
+<tr>
+<td style="text-align:center">object</td>
+<td style="text-align:center">o</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">string_</td>
-<td style="text-align: center;">S</td>
+<tr>
+<td style="text-align:center">string_</td>
+<td style="text-align:center">S</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">unicode_</td>
-<td style="text-align: center;">U</td>
+<tr>
+<td style="text-align:center">unicode_</td>
+<td style="text-align:center">U</td>
 </tr>
 </tbody>
 </table>
 <p>你可以使用astype方法显式地转换数组的数据类型</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.dtype</span><br></pre></td></tr></table></figure>
-<pre><code>dtype(&#39;int64&#39;)</code></pre>
+<pre><code>dtype('int64')
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float_arr = arr.astype(np.float64)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float_arr.dtype</span><br></pre></td></tr></table></figure>
-<pre><code>dtype(&#39;float64&#39;)</code></pre>
+<pre><code>dtype('float64')
+</code></pre>
 <p>在上面例子中，整数被转换成了浮点数，如果我把浮点数转换成整数，则小数点后的部分将被消除</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array([<span class="number">3.7</span>, <span class="number">-1.2</span>, <span class="number">-2.6</span>, <span class="number">0.5</span>, <span class="number">12.9</span>, <span class="number">10.1</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.dtype</span><br></pre></td></tr></table></figure>
-<pre><code>dtype(&#39;float64&#39;)</code></pre>
+<pre><code>dtype('float64')
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.astype(np.int32)</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 3, -1, -2,  0, 12, 10], dtype=int32)</code></pre>
+<pre><code>array([ 3, -1, -2,  0, 12, 10], dtype=int32)
+</code></pre>
 <h2 id="三-基础索引与切片">三、基础索引与切片</h2>
 <p>一位数组比较简单，看起来和python的列表很类似：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>5</code></pre>
+<pre><code>5
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">5</span>:<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>array([5, 6, 7])</code></pre>
+<pre><code>array([5, 6, 7])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[<span class="number">5</span>:<span class="number">8</span>] = <span class="number">12</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])</code></pre>
+<pre><code>array([ 0,  1,  2,  3,  4, 12, 12, 12,  8,  9])
+</code></pre>
 <p>如你所见，如果你传入了一个数值给数组的切片，数值被传递给了整个切片，区别于python的内建列表，数组的切片是原数组的视图。这意味着数据并不是被复制了，任何对于视图的修改都会放映到原数组上。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr_slice = arr[<span class="number">5</span>:<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr_slice</span><br></pre></td></tr></table></figure>
-<pre><code>array([12, 12, 12])</code></pre>
+<pre><code>array([12, 12, 12])
+</code></pre>
 <p>当我改变arr_slice，变化也会体现在原数组上：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr_slice[<span class="number">1</span>] = <span class="number">12345</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
-<pre><code>array([    0,     1,     2,     3,     4,    12, 12345,    12,     8,     9])</code></pre>
-<p>如果你想要一份数组切片的拷贝而不是一份视图的化话，你就逆序显式地复制这个数组，例如arr[5:8].copy 对于更高唯独的数组，你会有更多选择。在一个二维数组中，每个索引值对应的元素不再是一个值，而是一个数组:</p>
+<pre><code>array([    0,     1,     2,     3,     4,    12, 12345,    12,     8,     9])
+</code></pre>
+<p>如果你想要一份数组切片的拷贝而不是一份视图的化话，你就逆序显式地复制这个数组，例如arr[5:8].copy<br>
+对于更高唯独的数组，你会有更多选择。在一个二维数组中，每个索引值对应的元素不再是一个值，而是一个数组:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>array([7, 8, 9])</code></pre>
+<pre><code>array([7, 8, 9])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">0</span>][<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>3</code></pre>
+<pre><code>3
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">0</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>3</code></pre>
+<pre><code>3
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[:<span class="number">2</span>, <span class="number">1</span>:]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[2, 3],
-       [5, 6]])</code></pre>
+       [5, 6]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>array([7, 8, 9])</code></pre>
+<pre><code>array([7, 8, 9])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[:, :<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[1, 2],
        [4, 5],
-       [7, 8]])</code></pre>
+       [7, 8]])
+</code></pre>
 <p>arr2d[1, :2]和arr2d[1:2, :2]有所不同</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">1</span>, :<span class="number">2</span>] <span class="comment"># shape = (2, )</span></span><br></pre></td></tr></table></figure>
-<pre><code>array([4, 5])</code></pre>
+<pre><code>array([4, 5])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr2d[<span class="number">1</span>:<span class="number">2</span>, :<span class="number">2</span>] <span class="comment">#　shape = (1, 2)</span></span><br></pre></td></tr></table></figure>
-<pre><code>array([[4, 5]])</code></pre>
+<pre><code>array([[4, 5]])
+</code></pre>
 <h2 id="四-布尔索引">四、布尔索引</h2>
 <p>让我们考虑以下例子，假设我们的数据都在数组中，并且数组中的数据是一些存在重复的人名。我会使用numpy.random中的randn函数来生成一些随机正态分布的数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names = np.array([<span class="string">'Bob'</span>, <span class="string">'Joe'</span>, <span class="string">'Will'</span>, <span class="string">'Bob'</span>, <span class="string">'Will'</span>, <span class="string">'Joe'</span>, <span class="string">'Joe'</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randn(<span class="number">7</span>, <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names</span><br></pre></td></tr></table></figure>
-<pre><code>array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Joe&#39;, &#39;Joe&#39;],
-      dtype=&#39;&lt;U4&#39;)</code></pre>
+<pre><code>array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'],
+      dtype='&lt;U4')
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-0.70522835,  1.47087563,  0.35250176,  0.02848163],
        [-0.78749969, -0.72789731, -0.7797904 ,  0.77486765],
@@ -448,32 +475,38 @@
        [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308],
        [ 1.46165639,  0.42842885,  0.24971774,  0.26540473],
        [-1.34049878,  0.39110936, -1.40111365,  0.6045064 ],
-       [ 0.30309953,  1.29267219,  0.66753705, -0.86407424]])</code></pre>
-<p>假设每个人名都和data数组中的一行相对应，并且我们想要选中所有的‘Bob’对应的行。与数学操作类似，数组的比较操作（比如 == ）也是可以向量化的。因此，比较names数组和字符串'Bob'会产生一个布尔值数组：</p>
+       [ 0.30309953,  1.29267219,  0.66753705, -0.86407424]])
+</code></pre>
+<p>假设每个人名都和data数组中的一行相对应，并且我们想要选中所有的‘Bob’对应的行。与数学操作类似，数组的比较操作（比如 == ）也是可以向量化的。因此，比较names数组和字符串’Bob’会产生一个布尔值数组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names == <span class="string">'Bob'</span></span><br></pre></td></tr></table></figure>
-<pre><code>array([ True, False, False,  True, False, False, False], dtype=bool)</code></pre>
+<pre><code>array([ True, False, False,  True, False, False, False], dtype=bool)
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[names == <span class="string">'Bob'</span>]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[-0.70522835,  1.47087563,  0.35250176,  0.02848163],
-       [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308]])</code></pre>
+       [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308]])
+</code></pre>
 <p>布尔值数组的长度必须和数组轴索引长度一致。你甚至还可以用切片或者整数值（或整数值的序列）对布尔值数组进行混合和匹配。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[names == <span class="string">'Bob'</span>, <span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 0.35250176,  0.02848163],
-       [ 0.89749706,  0.09828308]])</code></pre>
+       [ 0.89749706,  0.09828308]])
+</code></pre>
 <p>当要选择三个名字中的两个来组合多个布尔值条件时，需要使用布尔算术运算符，如&amp;(and)和|(or):</p>
 <p><strong>注意：当使用复合条件时，只能用&amp;和|，不能用and和or</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask = (names == <span class="string">'Bob'</span>) | (names == <span class="string">'Will'</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask</span><br></pre></td></tr></table></figure>
-<pre><code>array([ True, False,  True,  True,  True, False, False], dtype=bool)</code></pre>
+<pre><code>array([ True, False,  True,  True,  True, False, False], dtype=bool)
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask = (names == <span class="string">'Bob'</span>) <span class="keyword">or</span> (names == <span class="string">'Will'</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>---------------------------------------------------------------------------
 
 ValueError                                Traceback (most recent call last)
 
 &lt;ipython-input-58-bae01d3eeda5&gt; in &lt;module&gt;()
-----&gt; 1 mask = (names == &#39;Bob&#39;) or (names == &#39;Will&#39;)
+----&gt; 1 mask = (names == 'Bob') or (names == 'Will')
 
 
-ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()</code></pre>
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+</code></pre>
 <p>基于常识来设置布尔值数组的值也是可行的。将data中所有的负值设置为0，我们需要做：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data[data &lt; <span class="number">0</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
@@ -483,7 +516,8 @@ ValueError: The truth value of an array with more than one element is ambiguous.
        [ 0.9931709 ,  0.96859579,  0.89749706,  0.09828308],
        [ 1.46165639,  0.42842885,  0.24971774,  0.26540473],
        [ 0.        ,  0.39110936,  0.        ,  0.6045064 ],
-       [ 0.30309953,  1.29267219,  0.66753705,  0.        ]])</code></pre>
+       [ 0.30309953,  1.29267219,  0.66753705,  0.        ]])
+</code></pre>
 <h2 id="五-神奇索引">五、神奇索引</h2>
 <p>假设我们有一个8 × 4的数组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.empty((<span class="number">8</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
@@ -496,17 +530,20 @@ ValueError: The truth value of an array with more than one element is ambiguous.
        [ 4.,  4.,  4.,  4.],
        [ 5.,  5.,  5.,  5.],
        [ 6.,  6.,  6.,  6.],
-       [ 7.,  7.,  7.,  7.]])</code></pre>
+       [ 7.,  7.,  7.,  7.]])
+</code></pre>
 <p>为了选出一个符合特定顺序的子集，你可以简单地通过传递一个包含指明所需顺序的列表或数组来完成：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">4</span>, <span class="number">3</span>, <span class="number">0</span> ,<span class="number">6</span>]]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 4.,  4.,  4.,  4.],
        [ 3.,  3.,  3.,  3.],
        [ 0.,  0.,  0.,  0.],
-       [ 6.,  6.,  6.,  6.]])</code></pre>
+       [ 6.,  6.,  6.,  6.]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">-3</span>, <span class="number">-5</span>, <span class="number">-7</span>]]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 5.,  5.,  5.,  5.],
        [ 3.,  3.,  3.,  3.],
-       [ 1.,  1.,  1.,  1.]])</code></pre>
+       [ 1.,  1.,  1.,  1.]])
+</code></pre>
 <p>传递多个索引数组时情况有些许不同，这样会根据每个索引元组对应的元素选出一个一位数组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(<span class="number">32</span>).reshape((<span class="number">8</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr</span><br></pre></td></tr></table></figure>
@@ -517,15 +554,18 @@ ValueError: The truth value of an array with more than one element is ambiguous.
        [16, 17, 18, 19],
        [20, 21, 22, 23],
        [24, 25, 26, 27],
-       [28, 29, 30, 31]])</code></pre>
+       [28, 29, 30, 31]])
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
-<pre><code>array([ 4, 23, 29, 10])</code></pre>
+<pre><code>array([ 4, 23, 29, 10])
+</code></pre>
 <p>通常情况下，我们所设想的结果是通过选择矩阵中行列的子集所形成的矩形区域。下面是实现我们想法的一种方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr[[<span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>]] [:, [<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
 <pre><code>array([[ 4,  7,  5,  6],
        [20, 23, 21, 22],
        [28, 31, 29, 30],
-       [ 8, 11,  9, 10]])</code></pre>
+       [ 8, 11,  9, 10]])
+</code></pre>
 <p><strong>注意，神奇索引与切片不同，它总是将数据负值到一个新的数组中</strong></p>
 
                 
@@ -535,7 +575,7 @@ ValueError: The truth value of an array with more than one element is ambiguous.
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/numpy简介/" data-toggle="tooltip" data-placement="top" title="numpy简介">&larr; Previous Post</a>
+                            <a href="/article/python大数据：实战热水器用户行为识别（三、建立模型与模型检验）/" data-toggle="tooltip" data-placement="top" title="python大数据：实战热水器用户行为识别（三、建立模型与模型检验）">&larr; Previous Post</a>
                         </li>
                     
                     

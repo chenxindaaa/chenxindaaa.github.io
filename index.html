@@ -134,13 +134,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -149,6 +142,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,7 +214,7 @@
     <a href="/article/Leetcode实战： 94. 二叉树的中序遍历/">
         <h2 class="post-title">
                                  
-            Leetcode实战： 94. 二叉树的中序遍历
+            Leetcode实战94:二叉树的中序遍历
         </h2>
         <h3 class="post-subtitle">
             Leetcode
@@ -224,11 +224,9 @@
 给定一个二叉树，返回它的中序 遍历。
 示例
 
-在这里插入图片描述
-
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
 算法实现：递归
-1234567891011121314class Solution &#123;public:    vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;        vector&lt;......
+1234567891011121314class Solution &#123;public:    vector&lt;int&gt; inorderTraversal(TreeNode* root) &#123;        vector&lt;int&gt; res......
         </div>
     </a>
     
@@ -260,7 +258,7 @@
             I work with data by python3 pandas
 1import pandas as pd
 Calculate npass of the first stage : 0 - 50
-Sum each Origin's flowDO and sum each Destnation's flowOD
+Sum each Origin’s flowDO and sum each Destnation’s flowOD
 12345src = pd.read_csv('edges0-50.csv')......
         </div>
     </a>
@@ -272,190 +270,6 @@ Sum each Origin's flowDO and sum each Destnation's flowOD
         <div class="tags">
             
               <a href="/tags/#python" title="python">python</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/">
-        <h2 class="post-title">
-                                 
-            PytorchTotrial2_RecurrentNeuralNetwork
-        </h2>
-        <h3 class="post-subtitle">
-            pytorch
-        </h3>
-        <div class="post-content-preview">
-            循环神经网络
-本节介绍循环神经网络，下图展示了如何基于循环神经网络实现语言模型。我们的目的是基于当前的输入与过去的输入序列，预测序列的下一个字符。循环神经网络引入一个隐藏变量\(H\)，用\(H_{t}\)表示\(H\)在时间步\(t\)的值。\(H_{t}\)的计算基于\(X_{t}\)和\(H_{t-1}\)，可以认为\(H_{t}\)记录了到当前字符为止的序列信息，利用\(H_{t}\......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-02-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/PytorchTotrial1_SoftmaxClassify/">
-        <h2 class="post-title">
-                                 
-            PytorchTotrial1_SoftmaxClassify
-        </h2>
-        <h3 class="post-subtitle">
-            pytorch
-        </h3>
-        <div class="post-content-preview">
-            softmax和分类模型
-内容包含： 1. softmax回归的基本概念 2. 如何获取Fashion-MNIST数据集和读取数据 3. softmax回归模型的从零开始实现，实现一个对Fashion-MNIST训练集中的图像数据进行分类的模型 4. 使用pytorch重新实现softmax回归模型
-softmax的基本概念
-
-分类问题
-一个简单的图像分类问题，输入图像的高和宽均为2像素，色......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-02-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/PytorchTotrial1_LinearRegression/">
-        <h2 class="post-title">
-                                 
-            PytorchTotrial1_LinearRegression
-        </h2>
-        <h3 class="post-subtitle">
-            pytorch
-        </h3>
-        <div class="post-content-preview">
-            线性回归
-主要内容包括：
-
-线性回归的基本要素
-线性回归模型从零开始的实现
-线性回归模型使用pytorch的简洁实现
-
-第一次打卡链接： SoftmaxClassify
-MultilayerPerceptron
-TextPrepare
-LanguageModel
-RecurrentNeuralNetwork
-线性回归的基本要素
-模型
-为了简单起见，这里我们假设价格只取决于房屋状况的两个因素，......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-02-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/PytorchTotrial2_LanguageModel/">
-        <h2 class="post-title">
-                                 
-            PytorchTotrial2_LanguageModel
-        </h2>
-        <h3 class="post-subtitle">
-            pytorch
-        </h3>
-        <div class="post-content-preview">
-            语言模型
-一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：
-\[
-P(w_1, w_2, \ldots, w_T).
-\]
-本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-02-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/PytorchTotrial1_MultilayerPerceptron/">
-        <h2 class="post-title">
-                                 
-            PytorchTotrial1_MultilayerPerceptron
-        </h2>
-        <h3 class="post-subtitle">
-            pytorch
-        </h3>
-        <div class="post-content-preview">
-            多层感知机
-
-多层感知机的基本知识
-使用多层感知机图像分类的从零开始的实现
-使用pytorch的简洁实现
-
-多层感知机的基本知识
-深度学习主要关注多层模型。在这里，我们将以多层感知机（multilayer perceptron，MLP）为例，介绍多层神经网络的概念。
-隐藏层
-下图展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。
-
-Image Name
-
-表达公式
-具......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Xinda Chen on
-            2020-02-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
             
         </div>
     
@@ -504,31 +318,198 @@ Image Name
 
 <div class="post-preview">
 
-    <a href="/article/numpy基础操作（三）/">
+    <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/">
         <h2 class="post-title">
                                  
-            numpy基础操作（三）
+            PytorchTotrial2_RecurrentNeuralNetwork
         </h2>
         <h3 class="post-subtitle">
-            numpy
+            pytorch
         </h3>
         <div class="post-content-preview">
-            一、数学和统计方法
-许多关于计算整个数组统计值或关于轴向数据的数学函数，可以作为数组类型的方法被调用，比如sum、mean和std，既可以直接调用数组实例的方法，也可以使用顶层的numpy函数。这里生成了一些正态分布的随机数，并计算了部分聚合统计数据：
-1import numpy as np
-1arr = np.random.randn(5, 4)
-1arr
-array([[ 0.54234......
+            循环神经网络
+本节介绍循环神经网络，下图展示了如何基于循环神经网络实现语言模型。我们的目的是基于当前的输入与过去的输入序列，预测序列的下一个字符。循环神经网络引入一个隐藏变量$H$，用$H_{t}$表示$H$在时间步$t$的值。$H_{t}$的计算基于$X_{t}$和$H_{t-1}$，可以认为$H_{t}$记录了到当前字符为止的序列信息，利用$H_{t}$对序列的下一个字符进行预测。
+
+循......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Xinda Chen on
-            2020-01-24
+            2020-02-14
         </p>
         <div class="tags">
             
-              <a href="/tags/#python" title="python">python</a>
+              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/PytorchTotrial1_SoftmaxClassify/">
+        <h2 class="post-title">
+                                 
+            PytorchTotrial1_SoftmaxClassify
+        </h2>
+        <h3 class="post-subtitle">
+            pytorch
+        </h3>
+        <div class="post-content-preview">
+            softmax和分类模型
+内容包含：
+
+softmax回归的基本概念
+如何获取Fashion-MNIST数据集和读取数据
+softmax回归模型的从零开始实现，实现一个对Fashion-MNIST训练集中的图像数据进行分类的模型
+使用pytorch重新实现softmax回归模型
+
+softmax的基本概念
+
+
+分类问题
+一个简单的图像分类问题，输入图像的高和宽均为2像素，色彩为灰度。
+图像中......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-02-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/PytorchTotrial1_LinearRegression/">
+        <h2 class="post-title">
+                                 
+            PytorchTotrial1_LinearRegression
+        </h2>
+        <h3 class="post-subtitle">
+            pytorch
+        </h3>
+        <div class="post-content-preview">
+            线性回归
+主要内容包括：
+
+
+线性回归的基本要素
+
+
+线性回归模型从零开始的实现
+
+
+线性回归模型使用pytorch的简洁实现
+
+
+第一次打卡链接：
+SoftmaxClassify
+MultilayerPerceptron
+TextPrepare
+LanguageModel
+RecurrentNeuralNetwork
+线性回归的基本要素
+模型
+为了简单起见，这里我们假设价格只取决于房屋状况......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-02-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/PytorchTotrial1_MultilayerPerceptron/">
+        <h2 class="post-title">
+                                 
+            PytorchTotrial1_MultilayerPerceptron
+        </h2>
+        <h3 class="post-subtitle">
+            pytorch
+        </h3>
+        <div class="post-content-preview">
+            多层感知机
+
+多层感知机的基本知识
+使用多层感知机图像分类的从零开始的实现
+使用pytorch的简洁实现
+
+多层感知机的基本知识
+深度学习主要关注多层模型。在这里，我们将以多层感知机（multilayer perceptron，MLP）为例，介绍多层神经网络的概念。
+隐藏层
+下图展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。
+
+表达公式
+具体来说，给定一个小批量样......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-02-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/PytorchTotrial2_LanguageModel/">
+        <h2 class="post-title">
+                                 
+            PytorchTotrial2_LanguageModel
+        </h2>
+        <h3 class="post-subtitle">
+            pytorch
+        </h3>
+        <div class="post-content-preview">
+            语言模型
+一段自然语言文本可以看作是一个离散时间序列，给定一个长度为$T$的词的序列$w_1, w_2, \ldots, w_T$，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：
+$$
+P(w_1, w_2, \ldots, w_T).
+$$
+本节我们介绍基于统计的语言模型，主要是$n$元语法（$n$-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。
+语言模型
+假设......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-02-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#pytorch" title="pytorch">pytorch</a>
             
         </div>
     
@@ -555,6 +536,40 @@ array([[ 0.54234......
 array([[ 0,  1,  2,  3,  4],
        [ 5,  6,  7,  8,  9],
     ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Xinda Chen on
+            2020-01-24
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#python" title="python">python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/numpy基础操作（三）/">
+        <h2 class="post-title">
+                                 
+            numpy基础操作（三）
+        </h2>
+        <h3 class="post-subtitle">
+            numpy
+        </h3>
+        <div class="post-content-preview">
+            一、数学和统计方法
+许多关于计算整个数组统计值或关于轴向数据的数学函数，可以作为数组类型的方法被调用，比如sum、mean和std，既可以直接调用数组实例的方法，也可以使用顶层的numpy函数。这里生成了一些正态分布的随机数，并计算了部分聚合统计数据：
+1import numpy as np
+1arr = np.random.randn(5, 4)
+1arr
+array([[ 0.54234......
         </div>
     </a>
     
@@ -613,11 +628,11 @@ array([[ 0,  1,  2,  3,  4],
     <div class="tags">
         
             
-            <a href="/tags/#Leetcode" title="Leetcode" rel="51">Leetcode</a>
+            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
             
         
             
-            <a href="/tags/#BlueBridgeCup" title="BlueBridgeCup" rel="1">BlueBridgeCup</a>
+            <a href="/tags/#Leetcode" title="Leetcode" rel="51">Leetcode</a>
             
         
             
@@ -625,19 +640,19 @@ array([[ 0,  1,  2,  3,  4],
             
         
             
-            <a href="/tags/#Matlab" title="Matlab" rel="11">Matlab</a>
-            
-        
-            
             <a href="/tags/#MathematicalModeling" title="MathematicalModeling" rel="2">MathematicalModeling</a>
             
         
             
-            <a href="/tags/#Python" title="Python" rel="7">Python</a>
+            <a href="/tags/#Matlab" title="Matlab" rel="11">Matlab</a>
             
         
             
             <a href="/tags/#python" title="python" rel="8">python</a>
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="7">Python</a>
             
         
             
@@ -717,7 +732,7 @@ array([[ 0,  1,  2,  3,  4],
     <ul>
       
         <li>
-          <a href="/article/Leetcode实战： 94. 二叉树的中序遍历/">Leetcode实战： 94. 二叉树的中序遍历</a>
+          <a href="/article/Leetcode实战： 94. 二叉树的中序遍历/">Leetcode实战94:二叉树的中序遍历</a>
         </li>
       
         <li>
@@ -725,11 +740,11 @@ array([[ 0,  1,  2,  3,  4],
         </li>
       
         <li>
-          <a href="/article/PytorchTotrial1_SoftmaxClassify/">PytorchTotrial1_SoftmaxClassify</a>
+          <a href="/article/PytorchTotrial2_RecurrentNeuralNetwork/">PytorchTotrial2_RecurrentNeuralNetwork</a>
         </li>
       
         <li>
-          <a href="/article/PytorchTotrial1_LinearRegression/">PytorchTotrial1_LinearRegression</a>
+          <a href="/article/PytorchTotrial1_SoftmaxClassify/">PytorchTotrial1_SoftmaxClassify</a>
         </li>
       
         <li>

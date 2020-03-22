@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -226,16 +226,24 @@
 </ul>
 <p><strong>1.建立层次结构模型</strong></p>
 <ul>
-<li><p>将决策的目标、考虑的因素(决策准则)和决策对象按他们之间的相互关系分成最高层、中间层和最低层，绘制层次结构图。</p></li>
-<li><p>最高层(目标层)：决策的目的、要解决的问题；</p></li>
-<li><p>中间层(准则层或指标层)：考虑的因素、决策的准则；</p></li>
-<li><p>最低层(方案层)：决策时的备选方案；</p></li>
-<li><p>对于相邻的两层，称高层为目标层，低层为因素层。</p></li>
+<li>
+<p>将决策的目标、考虑的因素(决策准则)和决策对象按他们之间的相互关系分成最高层、中间层和最低层，绘制层次结构图。</p>
+</li>
+<li>
+<p>最高层(目标层)：决策的目的、要解决的问题；</p>
+</li>
+<li>
+<p>中间层(准则层或指标层)：考虑的因素、决策的准则；</p>
+</li>
+<li>
+<p>最低层(方案层)：决策时的备选方案；</p>
+</li>
+<li>
+<p>对于相邻的两层，称高层为目标层，低层为因素层。</p>
+</li>
 </ul>
 <p>下面以选择旅游地为例进行分析：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200103003322308.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200103003322308.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>层次分析法所要解决的问题是关于最低层对最高层的相对权重问题，按此相对权重可以对最低层中的各种方案、措施进行排序，从而在不同的方案中作出选择或形成选择方案的原则</p>
 <p><strong>2. 构造判断（成对比较）矩阵</strong></p>
 <p>在确定各层次各因素之间的权重时，如果只是定性的结果(就是我认为景色占80%，费用10%等等)，则常常不容易被别人接受，因此Santy等人提出：一致矩阵法，即：</p>
@@ -243,61 +251,77 @@
 <li>1.不把所有因素放在一起比较，而是两两比较；</li>
 <li>2.对此时采用相对尺度，以尽可能减少性质不同的诸因素相互比较的困难，以提高准去性；</li>
 </ul>
-<p>成对比较矩阵是表示<strong>本层所有因素针对上一层某一个因素(准侧或目标)的相对重要性</strong>的比较。成对比较矩阵的元素<span class="math inline">\(a_{ij}\)</span>表示的是第 <span class="math inline">\(i\)</span>个因素相对于第 <span class="math inline">\(j\)</span> 个因素的比较结果，这个值使用的是Santy的1-9标度方法给出。</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/2020010300394170.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>biaodu</figcaption>
-</figure>
+<p>成对比较矩阵是表示<strong>本层所有因素针对上一层某一个因素(准侧或目标)的相对重要性</strong>的比较。成对比较矩阵的元素$a_{ij}$表示的是第 $i$个因素相对于第 $j$ 个因素的比较结果，这个值使用的是Santy的1-9标度方法给出。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020010300394170.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="biaodu"></p>
 <p>比如上面举的旅游的例子，在旅游问题中第二层A的各个因素对目标层Z的影响两两比较的结果如下图：</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200103004543284.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200103004543284.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><strong>3.层次单排序及一致性检验</strong></p>
 <p><strong>层次单排序</strong>：W的元素为同一层次因素对于上一层次因素某因素相对重要性的排序权值，这一过程称为层次单排序，那能否确认层次单排序，需要进行一致性检验，所谓一致性检验是指对成对比较矩阵确定不一致的允许范围。</p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200103005209949.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p>这里 <span class="math inline">\(a_{23}=7\)</span> 但是根据 <span class="math inline">\(a_{21},a_{13}\)</span> 的值计算出来的 <span class="math inline">\(a_{23}=8\)</span> 。在构造成对矩阵的时候，很容易出现这种状况。如果<span class="math inline">\(a_{23}=a_{21} \cdot a_{13}\)</span> 则称成对矩阵为一致阵，<strong>一致阵的性质</strong>：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200103005209949.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这里 $a_{23}=7$ 但是根据 $a_{21},a_{13}$ 的值计算出来的 $a_{23}=8$ 。在构造成对矩阵的时候，很容易出现这种状况。如果$a_{23}=a_{21} \cdot a_{13}$  则称成对矩阵为一致阵，<strong>一致阵的性质</strong>：</p>
 <ul>
-<li>1.<span class="math inline">\(a_{ij}=\frac{1}{a_{ji}},a_{ii} = 1\quad(i,j=1,2,...,n)\)</span> ；</li>
-<li>2.<span class="math inline">\(A^T\)</span>也是一致阵；</li>
-<li>3.<span class="math inline">\(A\)</span> 的各行成比例，则<span class="math inline">\(A\)</span>矩阵秩为1；</li>
-<li>4.<span class="math inline">\(A\)</span> 的最大特征根(值)为 <span class="math inline">\(\lambda=n\)</span> ，其余的 <span class="math inline">\(n-1\)</span>特征根均等于0； 事实上， <span class="math display">\[A=\left[
- \begin{matrix}
- a \\
- a \\
- \vdots\\
- a\\
-\end{matrix} 
-\right] \cdot \left[1, 1, \cdots,1\right]=\alpha \cdot \beta^T\]</span> <span class="math display">\[A^2= \alpha \cdot \beta ^T \cdot \alpha \cdot \beta ^T\]</span> 由于<span class="math inline">\(\beta^T \cdot \alpha = na\)</span> 所以<span class="math inline">\(A^2=na\alpha \cdot \beta ^T\)</span> <span class="math inline">\(\lambda^2 = na\lambda\)</span> <span class="math inline">\(\lambda = na 或\lambda = 0\)</span></li>
-<li>5.<span class="math inline">\(A\)</span>的任一列(行)都是对应于特征根 <span class="math inline">\(n\)</span> 的特征向量， <span class="math inline">\(AW=nW\)</span>;</li>
+<li>1.$a_{ij}=\frac{1}{a_{ji}},a_{ii} = 1\quad(i,j=1,2,…,n)$ ；</li>
+<li>2.$A^T$也是一致阵；</li>
+<li>3.$A$ 的各行成比例，则$A$矩阵秩为1；</li>
+<li>4.$A$ 的最大特征根(值)为 $\lambda=n$ ，其余的 $n-1$特征根均等于0；<br>
+事实上，<br>
+$$A=\left[<br>
+\begin{matrix}<br>
+a \<br>
+a \<br>
+\vdots\<br>
+a\<br>
+\end{matrix}<br>
+\right] \cdot \left[1, 1, \cdots,1\right]=\alpha \cdot \beta^T$$<br>
+$$A^2= \alpha \cdot \beta ^T \cdot \alpha \cdot \beta ^T$$<br>
+由于$\beta^T \cdot \alpha = na$<br>
+所以$A^2=na\alpha \cdot \beta ^T$<br>
+$\lambda^2 = na\lambda$<br>
+$\lambda = na 或\lambda = 0$</li>
+<li>5.$A$的任一列(行)都是对应于特征根 $n$ 的特征向量， $AW=nW$;</li>
 </ul>
 <p>这里的成对比较矩阵有两种可能，一致阵或者不是一致阵。</p>
 <ul>
-<li>1.如果成对比较矩阵是一致阵，则我们自然回取对应于最大特征根 <span class="math inline">\(n\)</span> 的归一化特征向量 <span class="math inline">\(\{w_1,w_2,...,w_n\}\)</span> ，且 <span class="math inline">\(\sum^n_{i=1}w_i=1\)</span> ， <span class="math inline">\(w_i\)</span> 表示下层第 <span class="math inline">\(i\)</span> 个因素对上层某个因素影响程度的权值。</li>
-<li>2.若成对比较矩阵不是一致阵，Saaty等人建议用其最大特征根对应的归一化特征向量作为权向量 <span class="math inline">\(W\)</span>，则 <span class="math inline">\(AW=\lambda W \quad W=\{w_1, w_2,...,w_n\}\)</span> ，这样确定权向量的方法称为特征根法；</li>
+<li>1.如果成对比较矩阵是一致阵，则我们自然回取对应于最大特征根 $n$ 的归一化特征向量 ${w_1,w_2,…,w_n}$ ，且 $\sum^n_{i=1}w_i=1$ ， $w_i$ 表示下层第 $i$ 个因素对上层某个因素影响程度的权值。</li>
+<li>2.若成对比较矩阵不是一致阵，Saaty等人建议用其最大特征根对应的归一化特征向量作为权向量 $W$，则 $AW=\lambda W \quad W={w_1, w_2,…,w_n}$ ，这样确定权向量的方法称为特征根法；</li>
 </ul>
 <p><strong>定理：</strong></p>
-<p>1.<span class="math inline">\(n\)</span>阶一致阵的唯一非零特征根为 <span class="math inline">\(n\)</span> ； 2.<span class="math inline">\(n\)</span> 阶互反阵 <span class="math inline">\(A\)</span> ( <span class="math inline">\(a_{ij}&gt;0,a_{ij}=\frac{1}{a_{ji}},a_{ii}=1\)</span> )最大特征根 <span class="math inline">\(\lambda \geq n\)</span> ，当且仅当 <span class="math inline">\(\lambda=n\)</span> 时， <span class="math inline">\(A\)</span> 为一致矩阵。</p>
-<p>由于 <span class="math inline">\(\lambda\)</span> 连续的依赖于 <span class="math inline">\(a_{ij}\)</span> ，则 <span class="math inline">\(\lambda\)</span> 比 <span class="math inline">\(n\)</span> 大的越多， <span class="math inline">\(A\)</span>的不一致性越严重。用最大特征值对应的特征向量作为被比较因素对上层某因素影响程度的权向量，其不一致程度越大，引起的判断误差越大。因而可以用 <span class="math inline">\(\lambda-n\)</span>数值大小来衡量 <span class="math inline">\(A\)</span> 的不一致程度。</p>
-<p><strong>一致性指标：</strong> <span class="math display">\[CI=\frac{\lambda-n}{n-1}\]</span></p>
-<p>1.<span class="math inline">\(CI=0\)</span>,有完全的一致性； 2.<span class="math inline">\(CI\)</span>接近于0，有满意的一致性； 3.<span class="math inline">\(CI\)</span>越大，不一致性月严重；</p>
-<p>为了衡量 <span class="math inline">\(CI\)</span>的大小，引入随机一致性指标 <span class="math inline">\(RI\)</span> 。方法为随机构造500个成对比较矩阵 <span class="math inline">\(A_1,A_2,...,A_{500}\)</span> ，则可得一致性指标 <span class="math inline">\(CI_1,CI_2,...,CI_{500}\)</span></p>
-<p><span class="math display">\[RI=\frac{CI_1+CI_2+...CI_{500}}{500}=\frac{\frac{\lambda_1+\lambda_2+...+\lambda_{500}}{500}-n}{n-1}\]</span></p>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200106194636123.png" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
-<p><strong>定义一致性比率：</strong> <span class="math inline">\(CR=\frac{CI}{RI}\)</span></p>
-<p>一般，当一致性比率CR=&lt;0.1时，认为 <span class="math inline">\(A\)</span> 的不一致程度在容许的范围之内，有满意的一致性，通过一致性检验，可用其归一化特征向量作为权向量，否则要重新构造成对比较矩阵 <span class="math inline">\(A\)</span> ，对 <span class="math inline">\(a_{ij}\)</span> 加以调整。</p>
-<p><strong>一致性检验：</strong>利用一致性指标和一致性比率&lt;0.1及随机一致性指标的数值表，对 <span class="math inline">\(\lambda\)</span>进行检验的过程。 <img src="https://img-blog.csdnimg.cn/20200106194902945.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106194948525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>1.$n$阶一致阵的唯一非零特征根为 $n$ ；<br>
+2.$n$ 阶互反阵 $A$ ( $a_{ij}&gt;0,a_{ij}=\frac{1}{a_{ji}},a_{ii}=1$ )最大特征根 $\lambda \geq n$ ，当且仅当 $\lambda=n$ 时， $A$ 为一致矩阵。</p>
+<p>由于 $\lambda$ 连续的依赖于 $a_{ij}$ ，则 $\lambda$ 比 $n$ 大的越多， $A$的不一致性越严重。用最大特征值对应的特征向量作为被比较因素对上层某因素影响程度的权向量，其不一致程度越大，引起的判断误差越大。因而可以用 $\lambda-n$数值大小来衡量 $A$ 的不一致程度。</p>
+<p><strong>一致性指标：</strong><br>
+$$CI=\frac{\lambda-n}{n-1}$$</p>
+<p>1.$CI=0$,有完全的一致性；<br>
+2.$CI$接近于0，有满意的一致性；<br>
+3.$CI$越大，不一致性月严重；</p>
+<p>为了衡量 $CI$的大小，引入随机一致性指标 $RI$ 。方法为随机构造500个成对比较矩阵 $A_1,A_2,…,A_{500}$ ，则可得一致性指标 $CI_1,CI_2,…,CI_{500}$</p>
+<p>$$RI=\frac{CI_1+CI_2+…CI_{500}}{500}=\frac{\frac{\lambda_1+\lambda_2+…+\lambda_{500}}{500}-n}{n-1}$$</p>
+<p><img src="https://img-blog.csdnimg.cn/20200106194636123.png" alt="在这里插入图片描述"></p>
+<p><strong>定义一致性比率：</strong> $CR=\frac{CI}{RI}$</p>
+<p>一般，当一致性比率CR=\frac{CI}{RI}&lt;0.1时，认为 $A$ 的不一致程度在容许的范围之内，有满意的一致性，通过一致性检验，可用其归一化特征向量作为权向量，否则要重新构造成对比较矩阵 $A$ ，对 $a_{ij}$ 加以调整。</p>
+<p>**一致性检验：**利用一致性指标和一致性比率&lt;0.1及随机一致性指标的数值表，对 $\lambda$进行检验的过程。<br>
+<img src="https://img-blog.csdnimg.cn/20200106194902945.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106194948525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>如果成对比较矩阵属于可接受的一致性或者是一致性矩阵，那么就可以使用这种方式来近似的计算层次单排序权重，也就是<strong>同一层次的每个因素</strong>对于上一层次因素某因素相对重要性的排序权值。</p>
-<p>比如对于"一致性检验以及求得权重"这个图，权向量中有5个元素，那每一个元素代表的是每一个因素对上一层的因素的权重，比如说第一个值为0.263，那这代表的含义就是景色对于选择旅游地的重要性为0.263。 <strong>4. 层次总排序及其一致性检验</strong></p>
+<p>比如对于&quot;一致性检验以及求得权重&quot;这个图，权向量中有5个元素，那每一个元素代表的是每一个因素对上一层的因素的权重，比如说第一个值为0.263，那这代表的含义就是景色对于选择旅游地的重要性为0.263。<br>
+<strong>4. 层次总排序及其一致性检验</strong></p>
 <p>计算某一层次所有因素对于最高层(总目标)相对重要性的权值，称为层次总排序。</p>
 <p>这一过程是从最高层到最低层次依次进行的。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020010619530958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106195322589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106195348457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106195414132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106195437175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020010619530958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106195322589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106195348457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106195414132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106195437175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><strong>4.层次分析法的基本步骤归纳</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200106195516539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106195533560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200106195516539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106195533560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p><strong>5.应用实例：</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/2020010621090550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106210918756.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106210935957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106210943797.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/2020010621100241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200106211011109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020010621090550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106210918756.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106210935957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106210943797.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/2020010621100241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+<img src="https://img-blog.csdnimg.cn/20200106211011109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="四-代码">四、代码：</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">AHP demo: 第一层：A, 第二层：B1 B2 B3, 第三层：C1 C2 C3, 完全相关性结构。</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">1. 成对比较矩阵 </span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">comparision</span><span class="params">(W0)</span>:</span>  <span class="comment"># W为每个信息值的权重</span></span><br><span class="line">    n = len(W0)</span><br><span class="line">    F = np.zeros([n, n])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> i == j:</span><br><span class="line">                F[i, j] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                F[i, j] = W0[i] / W0[j]</span><br><span class="line">    <span class="keyword">return</span> F</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">2. 单层排序,相对重要度</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ReImpo</span><span class="params">(F)</span>:</span></span><br><span class="line">    n = np.shape(F)[<span class="number">0</span>]</span><br><span class="line">    W = np.zeros([<span class="number">1</span>, n])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        t = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            t = F[i, j] * t</span><br><span class="line">        W[<span class="number">0</span>, i] = t ** (<span class="number">1</span> / n)</span><br><span class="line">    W = W / sum(W[<span class="number">0</span>, :])  <span class="comment"># 归一化 W=[0.874,2.467,0.464]</span></span><br><span class="line">    <span class="keyword">return</span> W.T</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">3. 一致性检验</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isConsist</span><span class="params">(F)</span>:</span></span><br><span class="line">    n = np.shape(F)[<span class="number">0</span>]</span><br><span class="line">    a, b = np.linalg.eig(F)</span><br><span class="line">    maxlam = a[<span class="number">0</span>].real</span><br><span class="line">    CI = (maxlam - n) / (n - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> CI &lt; <span class="number">0.1</span>:</span><br><span class="line">        <span class="keyword">return</span> bool(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> bool(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">4. 计算综合重要性</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ComImpo</span><span class="params">(W12, W231, W232, W233)</span>:</span>  <span class="comment"># 综合重要性</span></span><br><span class="line">    <span class="comment"># F12=comparision(W12)  # 实际应用中可以根据特征的权重求解成对比较矩阵。</span></span><br><span class="line">    <span class="comment"># F231=comparision(W231)</span></span><br><span class="line">    <span class="comment"># F232=comparision(W232)</span></span><br><span class="line">    <span class="comment"># F233=comparision(W233)</span></span><br><span class="line">    F12 = np.array([[<span class="number">1</span>, <span class="number">1</span> / <span class="number">3</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>], [<span class="number">1</span> / <span class="number">2</span>, <span class="number">1</span> / <span class="number">5</span>, <span class="number">1</span>]])  <span class="comment"># 此处直接假设出成对比较矩阵</span></span><br><span class="line">    F231 = np.array([[<span class="number">1</span>, <span class="number">1</span> / <span class="number">3</span>, <span class="number">1</span> / <span class="number">5</span>], [<span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span> / <span class="number">3</span>], [<span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>]])</span><br><span class="line">    F232 = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span>], [<span class="number">1</span> / <span class="number">2</span>, <span class="number">1</span>, <span class="number">5</span>], [<span class="number">1</span> / <span class="number">7</span>, <span class="number">1</span> / <span class="number">5</span>, <span class="number">1</span>]])</span><br><span class="line">    F233 = np.array([[<span class="number">1</span>, <span class="number">1</span> / <span class="number">3</span>, <span class="number">1</span> / <span class="number">7</span>], [<span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span> / <span class="number">5</span>], [<span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> isConsist(F12) <span class="keyword">and</span> isConsist(F231) <span class="keyword">and</span> isConsist(F232) <span class="keyword">and</span> isConsist(F233):</span><br><span class="line">        W12 = ReImpo(F12)</span><br><span class="line">        W231 = ReImpo(F231)</span><br><span class="line">        W232 = ReImpo(F232)</span><br><span class="line">        W233 = ReImpo(F233)</span><br><span class="line">        W23 = np.hstack([W231, W232, W233])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"成对比较矩阵不一致，请调整权重后重试！"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    n = len(W12)</span><br><span class="line">    C = np.zeros([<span class="number">1</span>, n])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        t = W23[i, :]</span><br><span class="line">        C[<span class="number">0</span>, i] = sum((W12.T * t)[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> C</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"这里是AHP的演示程序："</span>)</span><br><span class="line">    w = np.ones([<span class="number">3</span>])  <span class="comment"># W 为成对比较矩阵</span></span><br><span class="line">    C = ComImpo(w, w, w, w)</span><br><span class="line">    print(<span class="string">'最佳方案为第'</span>, np.argmax(C) + <span class="number">1</span>, <span class="string">'个方案.'</span>, <span class="string">'综合推荐指数为'</span>, max(C[<span class="number">0</span>, :]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br><span class="line">    <span class="comment"># print(__name__)</span></span><br></pre></td></tr></table></figure>
 

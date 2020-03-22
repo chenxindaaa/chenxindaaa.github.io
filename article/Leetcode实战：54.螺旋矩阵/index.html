@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -213,16 +213,16 @@
                 post-container">
 
                 <h2 id="题目">题目：</h2>
-<p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。 示例1：</p>
+<p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。<br>
+示例1：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
 <p>示例2：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">输出: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
 <h2 id="算法实现">算法实现：</h2>
-<p>通过不断删除矩阵实现 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def spiralOrder(self, matrix: List[List[int]]) -&gt; List[int]:</span><br><span class="line">        def fun(matrix):</span><br><span class="line">            if len(matrix) == 1:</span><br><span class="line">                a.extend(matrix[0])</span><br><span class="line">                return</span><br><span class="line">            if not matrix:</span><br><span class="line">                return</span><br><span class="line">            a.extend(matrix[0])</span><br><span class="line">            del matrix[0]</span><br><span class="line">            i = len(matrix[0]) - 1</span><br><span class="line">            j = 0</span><br><span class="line">            while j &lt; len(matrix):</span><br><span class="line">                a.append(matrix[j][i])</span><br><span class="line">                del matrix[j][i]</span><br><span class="line">                if not matrix[j]:</span><br><span class="line">                    del matrix[j]</span><br><span class="line">                    j -= 1</span><br><span class="line">                j += 1</span><br><span class="line">            j -= 1</span><br><span class="line">            if matrix:</span><br><span class="line">                matrix[j].reverse()</span><br><span class="line">                a.extend(matrix[j])</span><br><span class="line">                del matrix[j]</span><br><span class="line">            while j &gt; 0:</span><br><span class="line">                j -= 1</span><br><span class="line">                a.append(matrix[j][0])</span><br><span class="line">                del matrix[j][0]</span><br><span class="line">                if not matrix[j]:</span><br><span class="line">                    del matrix[j]</span><br><span class="line">            fun(matrix)</span><br><span class="line">        a = []</span><br><span class="line">        fun(matrix)</span><br><span class="line">        return a</span><br></pre></td></tr></table></figure></p>
+<p>通过不断删除矩阵实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def spiralOrder(self, matrix: List[List[int]]) -&gt; List[int]:</span><br><span class="line">        def fun(matrix):</span><br><span class="line">            if len(matrix) == 1:</span><br><span class="line">                a.extend(matrix[0])</span><br><span class="line">                return</span><br><span class="line">            if not matrix:</span><br><span class="line">                return</span><br><span class="line">            a.extend(matrix[0])</span><br><span class="line">            del matrix[0]</span><br><span class="line">            i = len(matrix[0]) - 1</span><br><span class="line">            j = 0</span><br><span class="line">            while j &lt; len(matrix):</span><br><span class="line">                a.append(matrix[j][i])</span><br><span class="line">                del matrix[j][i]</span><br><span class="line">                if not matrix[j]:</span><br><span class="line">                    del matrix[j]</span><br><span class="line">                    j -= 1</span><br><span class="line">                j += 1</span><br><span class="line">            j -= 1</span><br><span class="line">            if matrix:</span><br><span class="line">                matrix[j].reverse()</span><br><span class="line">                a.extend(matrix[j])</span><br><span class="line">                del matrix[j]</span><br><span class="line">            while j &gt; 0:</span><br><span class="line">                j -= 1</span><br><span class="line">                a.append(matrix[j][0])</span><br><span class="line">                del matrix[j][0]</span><br><span class="line">                if not matrix[j]:</span><br><span class="line">                    del matrix[j]</span><br><span class="line">            fun(matrix)</span><br><span class="line">        a = []</span><br><span class="line">        fun(matrix)</span><br><span class="line">        return a</span><br></pre></td></tr></table></figure>
 <h2 id="结果">结果：</h2>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20190913123438364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt=""><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20190913123438364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 
                 
 
@@ -231,7 +231,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/Leetcode实战：59.螺旋矩阵二/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：59.螺旋矩阵二">&larr; Previous Post</a>
+                            <a href="/article/Leetcode实战：61.旋转链表/" data-toggle="tooltip" data-placement="top" title="Leetcode实战：61.旋转链表">&larr; Previous Post</a>
                         </li>
                     
                     

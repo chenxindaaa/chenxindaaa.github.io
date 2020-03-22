@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -213,157 +213,163 @@
                 post-container">
 
                 <h2 id="一python变量">一.Python变量：</h2>
-<p><strong>标识符</strong> 1.第一个字符必须是字母表中字母或下划线 _ 。 2.标识符的其他的部分由字母、数字和下划线组成。 3.标识符对大小写敏感。 4.在使用变量前，需要对其先赋值。 <strong>注意：在 Python 3 中，可以用中文作为变量名，非 ASCII 标识符也是允许的了。</strong> <img src="https://img-blog.csdnimg.cn/20191020170250126.png" alt="在这里插入图片描述"> <strong>保留字</strong> 保留字即关键字，我们不能把它们用作任何标识符名称。Python 的标准库提供了一个 keyword 模块，可以输出当前版本的所有关键字： <img src="https://img-blog.csdnimg.cn/2019102017111520.png" alt="在这里插入图片描述"></p>
+<p><strong>标识符</strong><br>
+1.第一个字符必须是字母表中字母或下划线 _ 。<br>
+2.标识符的其他的部分由字母、数字和下划线组成。<br>
+3.标识符对大小写敏感。<br>
+4.在使用变量前，需要对其先赋值。<br>
+<strong>注意：在 Python 3 中，可以用中文作为变量名，非 ASCII 标识符也是允许的了。</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191020170250126.png" alt="在这里插入图片描述"><br>
+<strong>保留字</strong><br>
+保留字即关键字，我们不能把它们用作任何标识符名称。Python 的标准库提供了一个 keyword 模块，可以输出当前版本的所有关键字：<br>
+<img src="https://img-blog.csdnimg.cn/2019102017111520.png" alt="在这里插入图片描述"></p>
 <h2 id="二python注释">二.Python注释</h2>
-<p>单行注释：# 多行注释:''' '''或""" """</p>
+<p>单行注释：#<br>
+多行注释:’’’ ‘’'或&quot;&quot;&quot; “”&quot;</p>
 <h2 id="三python运算符">三.Python运算符</h2>
 <table>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>运算符</th>
 <th>描述</th>
 <th>示例</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>+</td>
 <td>两个对象相加</td>
 <td>1 + 1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>-</td>
 <td>得到负数或是一个数减去另一个数</td>
 <td>5 - 3</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>*</td>
 <td>两个数相乘或是返回一个被重复若干次的字符串</td>
 <td>2 * 4</td>
 </tr>
-<tr class="even">
+<tr>
 <td>/</td>
 <td>x 除以 y</td>
 <td>2 / 4</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>%</td>
 <td>返回除法的余数</td>
 <td>15 % 2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>**</td>
 <td>返回x的y次幂</td>
 <td>5 ** 2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>//</td>
 <td>向下取接近除数的整数</td>
 <td>9 // 4</td>
 </tr>
-<tr class="even">
+<tr>
 <td>==</td>
 <td>比较对象是否相等</td>
 <td>a == b</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>!=</td>
 <td>比较两个对象是否不相等</td>
 <td>a != b</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&gt;</td>
 <td>返回x是否大于y</td>
 <td>a &gt; b</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>&lt;</td>
 <td>返回x是否小于y。所有比较运算符返回1表示真，返回0表示假。这分别与特殊的变量True和False等价。注意，这些变量名的大写。</td>
 <td>a &lt; b</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&gt;=</td>
 <td>返回x是否大于等于y。</td>
 <td>a &gt;= b</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>&lt;=</td>
 <td>小于等于 - 返回x是否小于等于y。</td>
 <td>a &lt;= b</td>
 </tr>
-<tr class="even">
+<tr>
 <td>=</td>
 <td>简单的赋值运算符</td>
 <td>a = 4</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>+=</td>
 <td>加法赋值运算符</td>
 <td>a += 1</td>
 </tr>
-<tr class="even">
+<tr>
 <td>-=</td>
 <td>减法赋值运算符</td>
 <td>a -= 1</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>*=</td>
 <td>乘法赋值运算符</td>
 <td>a *= 4</td>
 </tr>
-<tr class="even">
+<tr>
 <td>/=</td>
 <td>除法赋值运算符</td>
 <td>a /= 2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>%=</td>
 <td>取模赋值运算符</td>
 <td>a %= 2</td>
 </tr>
-<tr class="even">
+<tr>
 <td>**=</td>
 <td>幂赋值运算符</td>
 <td>a **= 2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>//=</td>
 <td>取整除赋值运算符</td>
 <td>a //= 3</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&amp;</td>
 <td>参与运算的两个值,如果两个相应位都为1,则该位的结果为1,否则为0只要对应的二个二进位有一个为1时，结果位就为1。</td>
 <td>100001 &amp; 111001结果为100001</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>^</td>
 <td>当两对应的二进位相异时，结果为1</td>
 <td>100001 ^ 111001结果为011000</td>
 </tr>
-<tr class="even">
+<tr>
 <td>~</td>
 <td>对数据的每个二进制位取反,即把1变为0,把0变为1。~x 类似于 -x-1</td>
 <td>~100001结果为-34</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>&lt;&lt;</td>
-<td>运算数的各二进位全部左移若干位，由"&lt;&lt;"右边的数指定移动的位数，高位丢弃，低位补0。</td>
+<td>运算数的各二进位全部左移若干位，由&quot;&lt;&lt;&quot;右边的数指定移动的位数，高位丢弃，低位补0。</td>
 <td>0011 1100 &lt;&lt; 2输出结果 240 ，二进制解释： 1111 0000</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&gt;&gt;</td>
-<td>把"&gt;&gt;"左边的运算数的各二进位全部右移若干位，"&gt;&gt;"右边的数指定移动的位数</td>
+<td>把&quot;&gt;&gt;“左边的运算数的各二进位全部右移若干位，”&gt;&gt;&quot;右边的数指定移动的位数</td>
 <td>0011 1100 &gt;&gt; 2输出结果 15 ，二进制解释： 0000 1111</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Python算术运算符</strong> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">21</span></span><br><span class="line">b = <span class="number">10</span></span><br><span class="line">c = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">c = a + b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"1 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a - b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"2 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a * b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"3 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a / b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"4 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a % b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"5 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 修改变量 a 、b 、c</span></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">c = a**b </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"6 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">5</span></span><br><span class="line">c = a//b </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"7 - c 的值为："</span>, c)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Python算术运算符</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">21</span></span><br><span class="line">b = <span class="number">10</span></span><br><span class="line">c = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">c = a + b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"1 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a - b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"2 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a * b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"3 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a / b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"4 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a % b</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"5 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 修改变量 a 、b 、c</span></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">c = a**b </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"6 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">a = <span class="number">10</span></span><br><span class="line">b = <span class="number">5</span></span><br><span class="line">c = a//b </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"7 - c 的值为："</span>, c)</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> - c 的值为： <span class="number">31</span></span><br><span class="line"><span class="number">2</span> - c 的值为： <span class="number">11</span></span><br><span class="line"><span class="number">3</span> - c 的值为： <span class="number">210</span></span><br><span class="line"><span class="number">4</span> - c 的值为： <span class="number">2.1</span></span><br><span class="line"><span class="number">5</span> - c 的值为： <span class="number">1</span></span><br><span class="line"><span class="number">6</span> - c 的值为： <span class="number">8</span></span><br><span class="line"><span class="number">7</span> - c 的值为： <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p><strong>Python比较运算符</strong></p>
@@ -378,11 +384,16 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">60</span>            <span class="comment"># 60 = 0011 1100 </span></span><br><span class="line">b = <span class="number">13</span>            <span class="comment"># 13 = 0000 1101 </span></span><br><span class="line">c = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">c = a &amp; b;        <span class="comment"># 12 = 0000 1100</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"1 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a | b;        <span class="comment"># 61 = 0011 1101 </span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"2 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a ^ b;        <span class="comment"># 49 = 0011 0001</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"3 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = ~a;           <span class="comment"># -61 = 1100 0011</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"4 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a &lt;&lt; <span class="number">2</span>;       <span class="comment"># 240 = 1111 0000</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"5 - c 的值为："</span>, c)</span><br><span class="line"> </span><br><span class="line">c = a &gt;&gt; <span class="number">2</span>;       <span class="comment"># 15 = 0000 1111</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"6 - c 的值为："</span>, c)</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> - c 的值为： <span class="number">12</span></span><br><span class="line"><span class="number">2</span> - c 的值为： <span class="number">61</span></span><br><span class="line"><span class="number">3</span> - c 的值为： <span class="number">49</span></span><br><span class="line"><span class="number">4</span> - c 的值为： <span class="number">-61</span></span><br><span class="line"><span class="number">5</span> - c 的值为： <span class="number">240</span></span><br><span class="line"><span class="number">6</span> - c 的值为： <span class="number">15</span></span><br></pre></td></tr></table></figure>
-<p><strong>Python运算符优先级</strong> <img src="https://img-blog.csdnimg.cn/20191020190642993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>Python运算符优先级</strong><br>
+<img src="https://img-blog.csdnimg.cn/20191020190642993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <h2 id="四python数据类型">四.Python数据类型</h2>
-<p><strong>数字</strong> 数值类型包括三种： 整型(Int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 Long 类型。</p>
+<p><strong>数字</strong><br>
+数值类型包括三种：<br>
+整型(Int) - 通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作 Long 类型使用，所以 Python3 没有 Python2 的 Long 类型。</p>
 <p>浮点型(float) - 浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示（2.5e2 = 2.5 x 102 = 250）</p>
-<p>复数( (complex)) - 复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型。 <strong>布尔类型</strong> 布尔 (boolean) 型变量只能取两个值，True 和 False。当把布尔变量用在数字运算中，用 1 和 0 代表 True 和 False。</p>
+<p>复数( (complex)) - 复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型。<br>
+<strong>布尔类型</strong><br>
+布尔 (boolean) 型变量只能取两个值，True 和 False。当把布尔变量用在数字运算中，用 1 和 0 代表 True 和 False。</p>
 
                 
 
