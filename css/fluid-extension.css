@@ -1,3 +1,13 @@
+h1,h2,h3,h4,h5,h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+    overflow: hidden;
+}
+
 .col-lg-8.nopadding-x-md > .container.nopadding-x-md > #board.py-5 {
     width: 123%;
     left: -23%; 
