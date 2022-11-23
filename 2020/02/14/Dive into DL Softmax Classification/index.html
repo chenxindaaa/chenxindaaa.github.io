@@ -18,24 +18,21 @@
   
     <meta name="description" content="softmax和分类模型 内容包含： 1. softmax回归的基本概念 2. 如何获取Fashion-MNIST数据集和读取数据 3. softmax回归模型的从零开始实现，实现一个对Fashion-MNIST训练集中的图像数据进行分类的模型 4. 使用pytorch重新实现softmax回归模型 softmax的基本概念  分类问题 一个简单的图像分类问题，输入图像的高和宽均为2像素，色彩为灰">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PytorchTotrial1_SoftmaxClassify">
-<meta property="og:url" content="http://chenxindaaa.com/2020/02/14/PytorchTotrial1_SoftmaxClassify/index.html">
+<meta property="og:title" content="Dive into DL Softmax Classification">
+<meta property="og:url" content="http://chenxindaaa.com/2020/02/14/Dive%20into%20DL%20Softmax%20Classification/index.html">
 <meta property="og:site_name" content="chenxindaaa">
 <meta property="og:description" content="softmax和分类模型 内容包含： 1. softmax回归的基本概念 2. 如何获取Fashion-MNIST数据集和读取数据 3. softmax回归模型的从零开始实现，实现一个对Fashion-MNIST训练集中的图像数据进行分类的模型 4. 使用pytorch重新实现softmax回归模型 softmax的基本概念  分类问题 一个简单的图像分类问题，输入图像的高和宽均为2像素，色彩为灰">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ua2VzY2kuY29tL3VwbG9hZC9pbWFnZS9xNWhteW1lem9nLnBuZw?x-oss-process=image/format,png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200214205226660.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200214205251788.png">
+<meta property="og:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
 <meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-23T07:43:39.565Z">
+<meta property="article:modified_time" content="2022-11-23T11:18:46.104Z">
 <meta property="article:author" content="chenxindaaa">
-<meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ua2VzY2kuY29tL3VwbG9hZC9pbWFnZS9xNWhteW1lem9nLnBuZw?x-oss-process=image/format,png">
+<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
   
   
   
-  <title>PytorchTotrial1_SoftmaxClassify - chenxindaaa</title>
+  <title>Dive into DL Softmax Classification - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -157,18 +154,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 About
@@ -198,19 +183,24 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pytorch"></span>
+            <span id="subtitle" data-typed-text="Dive into DL Softmax Classification"></span>
           
         </div>
 
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
     
     
       <span class="post-meta">
@@ -238,7 +228,7 @@
         
         
         
-          119 mins
+          117 mins
         
       </span>
     
@@ -276,7 +266,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">pytorch</h1>
+            <h1 style="display: none">Dive into DL Softmax Classification</h1>
             
             
               <div class="markdown-body">
@@ -407,9 +397,7 @@ H\left(\boldsymbol y^{(i)}, \boldsymbol {\hat y}^{(i)}\right ) = -\sum_{j=1}^q y
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 本函数已保存在d2lzh包中方便以后使用</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_fashion_mnist_labels</span>(<span class="hljs-params">labels</span>):<br>    text_labels = [<span class="hljs-string">&#x27;t-shirt&#x27;</span>, <span class="hljs-string">&#x27;trouser&#x27;</span>, <span class="hljs-string">&#x27;pullover&#x27;</span>, <span class="hljs-string">&#x27;dress&#x27;</span>, <span class="hljs-string">&#x27;coat&#x27;</span>,<br>                   <span class="hljs-string">&#x27;sandal&#x27;</span>, <span class="hljs-string">&#x27;shirt&#x27;</span>, <span class="hljs-string">&#x27;sneaker&#x27;</span>, <span class="hljs-string">&#x27;bag&#x27;</span>, <span class="hljs-string">&#x27;ankle boot&#x27;</span>]<br>    <span class="hljs-keyword">return</span> [text_labels[<span class="hljs-built_in">int</span>(i)] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> labels]<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">show_fashion_mnist</span>(<span class="hljs-params">images, labels</span>):<br>    d2l.use_svg_display()<br>    <span class="hljs-comment"># 这里的_表示我们忽略（不使用）的变量</span><br>    _, figs = plt.subplots(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(images), figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">12</span>))<br>    <span class="hljs-keyword">for</span> f, img, lbl <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(figs, images, labels):<br>        f.imshow(img.view((<span class="hljs-number">28</span>, <span class="hljs-number">28</span>)).numpy())<br>        f.set_title(lbl)<br>        f.axes.get_xaxis().set_visible(<span class="hljs-literal">False</span>)<br>        f.axes.get_yaxis().set_visible(<span class="hljs-literal">False</span>)<br>    plt.show()<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">X, y = [], []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    X.append(mnist_train[i][<span class="hljs-number">0</span>]) <span class="hljs-comment"># 将第i个feature加到X中</span><br>    y.append(mnist_train[i][<span class="hljs-number">1</span>]) <span class="hljs-comment"># 将第i个label加到y中</span><br>show_fashion_mnist(X, get_fashion_mnist_labels(y))<br></code></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200214205226660.png" srcset="/img/loading.gif" lazyload alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-74LHzdEF-1581684699583)(output_15_0.svg)]" /><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-74LHzdEF-1581684699583)(output_15_0.svg)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200214205226660.png" srcset="/img/loading.gif" lazyload /></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 读取数据</span><br>batch_size = <span class="hljs-number">256</span><br>num_workers = <span class="hljs-number">4</span><br>train_iter = torch.utils.data.DataLoader(mnist_train, batch_size=batch_size, shuffle=<span class="hljs-literal">True</span>, num_workers=num_workers)<br>test_iter = torch.utils.data.DataLoader(mnist_test, batch_size=batch_size, shuffle=<span class="hljs-literal">False</span>, num_workers=num_workers)<br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">start = time.time()<br><span class="hljs-keyword">for</span> X, y <span class="hljs-keyword">in</span> train_iter:<br>    <span class="hljs-keyword">continue</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;%.2f sec&#x27;</span> % (time.time() - start))<br></code></pre></td></tr></table></figure>
 <pre><code class="hljs">4.64 sec</code></pre>
@@ -477,9 +465,7 @@ epoch 5, loss 0.4868, train acc 0.836, test acc 0.828</code></pre>
 <h2 id="模型预测">模型预测</h2>
 <p>现在我们的模型训练完了，可以进行一下预测，我们的这个模型训练的到底准确不准确。 现在就可以演示如何对图像进行分类了。给定一系列图像（第三行图像输出），我们比较一下它们的真实标签（第一行文本输出）和模型预测结果（第二行文本输出）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">X, y = <span class="hljs-built_in">iter</span>(test_iter).<span class="hljs-built_in">next</span>()<br><br>true_labels = d2l.get_fashion_mnist_labels(y.numpy())<br>pred_labels = d2l.get_fashion_mnist_labels(net(X).argmax(dim=<span class="hljs-number">1</span>).numpy())<br>titles = [true + <span class="hljs-string">&#x27;\n&#x27;</span> + pred <span class="hljs-keyword">for</span> true, pred <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(true_labels, pred_labels)]<br><br>d2l.show_fashion_mnist(X[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>], titles[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>])<br></code></pre></td></tr></table></figure>
-<figure>
-<img src="https://img-blog.csdnimg.cn/20200214205251788.png" srcset="/img/loading.gif" lazyload alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-43eetIzM-1581684699584)(output_43_0.svg)]" /><figcaption>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-43eetIzM-1581684699584)(output_43_0.svg)]</figcaption>
-</figure>
+<p><img src="https://img-blog.csdnimg.cn/20200214205251788.png" srcset="/img/loading.gif" lazyload /></p>
 <h1 id="softmax的简洁实现">softmax的简洁实现</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 加载各种包或者模块</span><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torch <span class="hljs-keyword">import</span> nn<br><span class="hljs-keyword">from</span> torch.nn <span class="hljs-keyword">import</span> init<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> sys<br>sys.path.append(<span class="hljs-string">&quot;..&quot;</span>) <br><span class="hljs-keyword">import</span> d2lzh_pytorch <span class="hljs-keyword">as</span> d2l<br><br><span class="hljs-built_in">print</span>(torch.__version__)<br></code></pre></td></tr></table></figure>
 <pre><code class="hljs">1.4.0+cpu</code></pre>
@@ -510,13 +496,34 @@ epoch 5, loss 0.0019, train acc 0.838, test acc 0.824</code></pre>
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/pytorch/">#pytorch</a>
-      
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/DL/" class="category-chain-item">DL</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/DL/PyTorch/" class="category-chain-item">PyTorch</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
+  
   
 </div>
 
@@ -526,8 +533,8 @@ epoch 5, loss 0.0019, train acc 0.838, test acc 0.824</code></pre>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PytorchTotrial1_SoftmaxClassify</div>
-      <div>http://chenxindaaa.com/2020/02/14/PytorchTotrial1_SoftmaxClassify/</div>
+      <div>Dive into DL Softmax Classification</div>
+      <div>http://chenxindaaa.com/2020/02/14/Dive into DL Softmax Classification/</div>
     </div>
     <div class="license-meta">
       
@@ -570,12 +577,6 @@ epoch 5, loss 0.0019, train acc 0.838, test acc 0.824</code></pre>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2022/11/23/hello-world/" title="Hello World">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
