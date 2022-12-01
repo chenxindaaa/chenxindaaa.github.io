@@ -59,8 +59,6 @@
       
       <category>PyTorch</category>
       
-      <category>CV</category>
-      
     </categories>
     
     
@@ -105,7 +103,7 @@
       
       <category>PyTorch</category>
       
-      <category>CV</category>
+      <category>NLP</category>
       
     </categories>
     
@@ -128,7 +126,7 @@
       
       <category>PyTorch</category>
       
-      <category>CV</category>
+      <category>NLP</category>
       
     </categories>
     
@@ -151,7 +149,7 @@
       
       <category>PyTorch</category>
       
-      <category>CV</category>
+      <category>NLP</category>
       
     </categories>
     
