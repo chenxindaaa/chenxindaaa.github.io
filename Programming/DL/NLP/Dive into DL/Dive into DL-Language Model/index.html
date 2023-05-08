@@ -16,16 +16,16 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="语言模型 一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率： \[ P(w_1, w_2, \ldots, w_T). \] 本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。 语言">
+    <meta name="description" content="语言模型 一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率： \[ P(w_1, w_2, \ldots, w_T). \] 本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。 语">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dive into DL: Language Model">
 <meta property="og:url" content="http://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="语言模型 一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率： \[ P(w_1, w_2, \ldots, w_T). \] 本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。 语言">
+<meta property="og:description" content="语言模型 一段自然语言文本可以看作是一个离散时间序列，给定一个长度为\(T\)的词的序列\(w_1, w_2, \ldots, w_T\)，语言模型的目标就是评估该序列是否合理，即计算该序列的概率： \[ P(w_1, w_2, \ldots, w_T). \] 本节我们介绍基于统计的语言模型，主要是\(n\)元语法（\(n\)-gram）。在后续内容中，我们将会介绍基于神经网络的语言模型。 语">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
 <meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T10:25:32.673Z">
+<meta property="article:modified_time" content="2023-05-08T10:49:41.247Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
@@ -271,7 +271,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="语言模型">语言模型</h1>
+                <meta name="referrer" content="no-referrer"/>
+<h1 id="语言模型">语言模型</h1>
 <p>一段自然语言文本可以看作是一个离散时间序列，给定一个长度为<span class="math inline">\(T\)</span>的词的序列<span class="math inline">\(w_1, w_2, \ldots, w_T\)</span>，语言模型的目标就是评估该序列是否合理，即计算该序列的概率：</p>
 <p><span class="math display">\[
 P(w_1, w_2, \ldots, w_T).
