@@ -16,19 +16,19 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目： 反转一个单链表。 示例： 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL 算法实现： 方法一： 把链表转成数组，再将数组翻转，最后将数组转成链表 123456789101112131415161718192021class ListNode(object):    def __in">
+    <meta name="description" content="题目： 反转一个单链表。 示例： 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL 算法实现： 方法一： 把链表转成数组，再将数组翻转，最后将数组转成链表 123456789101112131415161718192021class ListNode(object):    def __i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode实战：206.反转链表">
 <meta property="og:url" content="http://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode%E5%AE%9E%E6%88%98%EF%BC%9A206.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="题目： 反转一个单链表。 示例： 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL 算法实现： 方法一： 把链表转成数组，再将数组翻转，最后将数组转成链表 123456789101112131415161718192021class ListNode(object):    def __in">
+<meta property="og:description" content="题目： 反转一个单链表。 示例： 12输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL 算法实现： 方法一： 把链表转成数组，再将数组翻转，最后将数组转成链表 123456789101112131415161718192021class ListNode(object):    def __i">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190929163635831.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190929163926676.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190929164034620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190929164132140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2019-09-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T08:58:55.693Z">
+<meta property="article:modified_time" content="2023-05-08T11:11:14.558Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190929163635831.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
@@ -274,7 +274,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目：</h2>
+                <meta name="referrer" content="no-referrer"/>
+<h2 id="题目">题目：</h2>
 <p>反转一个单链表。</p>
 <p>示例：</p>
 <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs clean">输入: <span class="hljs-number">1</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">4</span>-&gt;<span class="hljs-number">5</span>-&gt;NULL<br>输出: <span class="hljs-number">5</span>-&gt;<span class="hljs-number">4</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">1</span>-&gt;NULL<br></code></pre></td></tr></table></figure>

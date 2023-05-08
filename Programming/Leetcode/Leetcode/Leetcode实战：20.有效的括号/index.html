@@ -16,16 +16,16 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目： 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&#39; 的字符串，判断字符串是否有效。 有效字符串需满足： 1.左括号必须用相同类型的右括号闭合。 2.左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串 示例1： 12输入: &quot;()&quot;输出: true 示例2： 12输入: &quot;()[]&amp;#123;&amp;#125;&quot;输出: true 示例">
+    <meta name="description" content="题目： 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&#39; 的字符串，判断字符串是否有效。 有效字符串需满足： 1.左括号必须用相同类型的右括号闭合。 2.左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串 示例1： 12输入: &quot;()&quot;输出: true 示例2： 12输入: &quot;()[]&amp;#123;&amp;#125;&quot;输出: true 示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode实战：20.有效的括号">
 <meta property="og:url" content="http://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode%E5%AE%9E%E6%88%98%EF%BC%9A20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="题目： 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&#39; 的字符串，判断字符串是否有效。 有效字符串需满足： 1.左括号必须用相同类型的右括号闭合。 2.左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串 示例1： 12输入: &quot;()&quot;输出: true 示例2： 12输入: &quot;()[]&amp;#123;&amp;#125;&quot;输出: true 示例">
+<meta property="og:description" content="题目： 给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;{&#39;，&#39;}&#39;，&#39;[&#39;，&#39;]&#39; 的字符串，判断字符串是否有效。 有效字符串需满足： 1.左括号必须用相同类型的右括号闭合。 2.左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串 示例1： 12输入: &quot;()&quot;输出: true 示例2： 12输入: &quot;()[]&amp;#123;&amp;#125;&quot;输出: true 示">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190904225520251.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2019-09-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T08:58:55.692Z">
+<meta property="article:modified_time" content="2023-05-08T11:11:14.557Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190904225520251.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
@@ -271,7 +271,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目：</h2>
+                <meta name="referrer" content="no-referrer"/>
+<h2 id="题目">题目：</h2>
 <p>给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。 有效字符串需满足： 1.左括号必须用相同类型的右括号闭合。 2.左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串 示例1：</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">输入: <span class="hljs-string">&quot;()&quot;</span><br>输出: <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 <p>示例2：</p>
