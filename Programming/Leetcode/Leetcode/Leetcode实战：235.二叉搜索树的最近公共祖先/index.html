@@ -16,23 +16,24 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2.两数相加 4.寻找两个有序数组的中位数 5.最长回文子串 7.整数反转 8.字符串转换整数 9.回文数 11.盛最多水的容器 14.最长公共前缀 15.三数之和 16.最接近的三数之和 20.有效的括号 21.合并两个有序链表 23.合并K个排序链表 26.删除排序数组中重复的项 33.搜索旋转排序数组 43.字符串相乘 46.全排列 53.最大子序和 54.螺旋矩阵 59.螺旋矩阵二 61.">
+    <meta name="description" content="题目： 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。” 例如，给定如下二叉搜索树: root &#x3D; [6,2,8,0,4,7,9,null,null,3,5]  示例1： 123输入: root &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/Leetcode/Leetcode/index.html">
+<meta property="og:title" content="Leetcode实战：235.二叉搜索树的最近公共祖先">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode%E5%AE%9E%E6%88%98%EF%BC%9A235.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="2.两数相加 4.寻找两个有序数组的中位数 5.最长回文子串 7.整数反转 8.字符串转换整数 9.回文数 11.盛最多水的容器 14.最长公共前缀 15.三数之和 16.最接近的三数之和 20.有效的括号 21.合并两个有序链表 23.合并K个排序链表 26.删除排序数组中重复的项 33.搜索旋转排序数组 43.字符串相乘 46.全排列 53.最大子序和 54.螺旋矩阵 59.螺旋矩阵二 61.">
+<meta property="og:description" content="题目： 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。” 例如，给定如下二叉搜索树: root &#x3D; [6,2,8,0,4,7,9,null,null,3,5]  示例1： 123输入: root &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
-<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T08:41:38.179Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/201910081047296.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191008105016397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T08:58:55.701Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/201910081047296.png">
   
   
   
-  <title>Leetcode - chenxindaaa</title>
+  <title>Leetcode实战：235.二叉搜索树的最近公共祖先 - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -171,13 +172,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Leetcode"></span>
+            <span id="subtitle" data-typed-text="Leetcode实战：235.二叉搜索树的最近公共祖先"></span>
           
         </div>
 
@@ -193,8 +194,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-02-14 00:00" pubdate>
-          February 14, 2020 am
+        <time datetime="2019-10-08 00:00" pubdate>
+          October 8, 2019 am
         </time>
       </span>
     
@@ -205,7 +206,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          487 words
+          856 words
         
       </span>
     
@@ -216,7 +217,7 @@
         
         
         
-          5 mins
+          8 mins
         
       </span>
     
@@ -254,61 +255,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Leetcode</h1>
+            <h1 style="display: none">Leetcode实战：235.二叉搜索树的最近公共祖先</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：2.两数相加/">2.两数相加</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：4.寻找两个有序数组的中位数/">4.寻找两个有序数组的中位数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：5.最长回文子串/">5.最长回文子串</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：7.整数反转/">7.整数反转</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：8.字符串转换整数/">8.字符串转换整数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：9.回文数/">9.回文数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：11.盛最多水的容器/">11.盛最多水的容器</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：14.最长公共前缀/">14.最长公共前缀</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：15.三数之和/">15.三数之和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：16.最接近的三数之和/">16.最接近的三数之和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：20.有效的括号/">20.有效的括号</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：21.合并两个有序链表/">21.合并两个有序链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：23.合并K个排序链表/">23.合并K个排序链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：26.删除排序数组中重复的项/">26.删除排序数组中重复的项</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：33.搜索旋转排序数组/">33.搜索旋转排序数组</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：43.字符串相乘/">43.字符串相乘</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：46.全排列/">46.全排列</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：53.最大子序和/">53.最大子序和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：54.螺旋矩阵/">54.螺旋矩阵</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：59.螺旋矩阵二/">59.螺旋矩阵二</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：61.旋转链表/">61.旋转链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：62.不同路径/">62.不同路径</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：70.爬楼梯/">70.爬楼梯</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：78.子集/">78.子集</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：88.合并两个有序数组/">88.合并两个有序数组</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：89.格雷编码/">89.格雷编码</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：104.二叉树最大深度/">104.二叉树最大深度</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：121.买卖股票的最佳时机/">121.买卖股票的最佳时机</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：122.买卖股票的最佳时机II/">122.买卖股票的最佳时机II</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：124.二叉树最大路径和/">124.二叉树最大路径和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：136.只出现一次的数字/">136.只出现一次的数字</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：141.环形链表/">141.环形链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：142.环形链表II/">142.环形链表II</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：146.LRU缓存机制/">146.LRU缓存机制</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：148.排序链表/">148.排序链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：155.最小栈/">155.最小栈</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：160.相交链表/">160.相交链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：169.众数/">169.众数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：206.反转链表/">206.反转链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：215.数组中的第K个最大元素/">215.数组中的第K个最大元素</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：217.存在重复元素/">217.存在重复元素</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：230.二叉搜索树中第K小的元素/">230.二叉搜索树中第K小的元素</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：231.2的幂/">231.2的幂</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：235.二叉搜索树的最近公共祖先/">235.二叉搜索树的最近公共祖先</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：236.二叉树的最近公共祖先/">236.二叉树的最近公共祖先</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：237.%20删除链表中的节点/">237. 删除链表中的节点</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：238.%20除自身以外数组的乘积/">238. 除自身以外数组的乘积</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：292.%20Nim%20游戏/">292. Nim 游戏</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：344.%20反转字符串/">344. 反转字符串</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：557.%20反转字符串中的单词%20III/">557. 反转字符串中的单词 III</a></p>
+                <h2 id="题目">题目：</h2>
+<p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
+<p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
+<p>例如，给定如下二叉搜索树: root = [6,2,8,0,4,7,9,null,null,3,5] <img src="https://img-blog.csdnimg.cn/201910081047296.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<p>示例1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">输入: root = [<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">9</span>,null,null,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>], p = <span class="hljs-number">2</span>, q = <span class="hljs-number">8</span><br>输出: <span class="hljs-number">6</span> <br>解释: 节点 <span class="hljs-number">2</span> 和节点 <span class="hljs-number">8</span> 的最近公共祖先是 <span class="hljs-number">6</span>。<br></code></pre></td></tr></table></figure>
+<p>示例2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">输入: root = [<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">8</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">9</span>,null,null,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>], p = <span class="hljs-number">2</span>, q = <span class="hljs-number">4</span><br>输出: <span class="hljs-number">2</span><br>解释: 节点 <span class="hljs-number">2</span> 和节点 <span class="hljs-number">4</span> 的最近公共祖先是 <span class="hljs-number">2</span>, 因为根据定义最近公共祖先节点可以为节点本身。<br></code></pre></td></tr></table></figure>
+<p>说明:</p>
+<pre><code class="hljs">所有节点的值都是唯一的。
+p、q 为不同节点且均存在于给定的二叉搜索树中。</code></pre>
+<h2 id="算法实现递归">算法实现：递归</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeNode</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, x</span>):<br>        self.val = x<br>        self.left = <span class="hljs-literal">None</span><br>        self.right = <span class="hljs-literal">None</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lowestCommonAncestor</span>(<span class="hljs-params">self, root, p, q</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type root: TreeNode</span><br><span class="hljs-string">        :type p: TreeNode</span><br><span class="hljs-string">        :type q: TreeNode</span><br><span class="hljs-string">        :rtype: TreeNode</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> q.val &gt; root.val <span class="hljs-keyword">and</span> p.val &gt; root.val:<br>            <span class="hljs-keyword">return</span> self.lowestCommonAncestor(root.right, p, q)<br>        <span class="hljs-keyword">elif</span> q.val &lt; root.val <span class="hljs-keyword">and</span> p.val &lt; root.val:<br>            <span class="hljs-keyword">return</span> self.lowestCommonAncestor(root.left, p, q)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> root<br></code></pre></td></tr></table></figure>
+<h2 id="结果">结果：</h2>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20191008105016397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
               </div>
@@ -354,8 +322,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Leetcode</div>
-      <div>http://chenxindaaa.com/Programming/Leetcode/Leetcode/</div>
+      <div>Leetcode实战：235.二叉搜索树的最近公共祖先</div>
+      <div>http://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：235.二叉搜索树的最近公共祖先/</div>
     </div>
     <div class="license-meta">
       
@@ -367,7 +335,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 14, 2020</div>
+          <div>October 8, 2019</div>
         </div>
       
       
@@ -394,29 +362,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/Programming/DL/Dive%20into%20DL/" title="Dive into DL">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Dive into DL</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/" title="Dive into DL: Language Model">
-                        <span class="hidden-mobile">Dive into DL: Language Model</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
@@ -464,12 +409,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -663,49 +602,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

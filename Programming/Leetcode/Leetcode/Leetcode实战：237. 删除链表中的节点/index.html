@@ -16,23 +16,24 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2.两数相加 4.寻找两个有序数组的中位数 5.最长回文子串 7.整数反转 8.字符串转换整数 9.回文数 11.盛最多水的容器 14.最长公共前缀 15.三数之和 16.最接近的三数之和 20.有效的括号 21.合并两个有序链表 23.合并K个排序链表 26.删除排序数组中重复的项 33.搜索旋转排序数组 43.字符串相乘 46.全排列 53.最大子序和 54.螺旋矩阵 59.螺旋矩阵二 61.">
+    <meta name="description" content="题目： 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。 现有一个链表 -- head &#x3D; [4,5,1,9]，它可以表示为:  示例1： 123输入: head &#x3D; [4,5,1,9], node &#x3D; 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9. 示例2：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/Leetcode/Leetcode/index.html">
+<meta property="og:title" content="Leetcode实战：237. 删除链表中的节点">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode%E5%AE%9E%E6%88%98%EF%BC%9A237.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="2.两数相加 4.寻找两个有序数组的中位数 5.最长回文子串 7.整数反转 8.字符串转换整数 9.回文数 11.盛最多水的容器 14.最长公共前缀 15.三数之和 16.最接近的三数之和 20.有效的括号 21.合并两个有序链表 23.合并K个排序链表 26.删除排序数组中重复的项 33.搜索旋转排序数组 43.字符串相乘 46.全排列 53.最大子序和 54.螺旋矩阵 59.螺旋矩阵二 61.">
+<meta property="og:description" content="题目： 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。 现有一个链表 -- head &#x3D; [4,5,1,9]，它可以表示为:  示例1： 123输入: head &#x3D; [4,5,1,9], node &#x3D; 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9. 示例2：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
-<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T08:41:38.179Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019100823150952.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191008231649898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T08:58:55.702Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019100823150952.png">
   
   
   
-  <title>Leetcode - chenxindaaa</title>
+  <title>Leetcode实战：237. 删除链表中的节点 - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -171,13 +172,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Leetcode"></span>
+            <span id="subtitle" data-typed-text="Leetcode实战：237. 删除链表中的节点"></span>
           
         </div>
 
@@ -193,8 +194,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-02-14 00:00" pubdate>
-          February 14, 2020 am
+        <time datetime="2019-10-08 00:00" pubdate>
+          October 8, 2019 am
         </time>
       </span>
     
@@ -205,7 +206,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          487 words
+          679 words
         
       </span>
     
@@ -216,7 +217,7 @@
         
         
         
-          5 mins
+          6 mins
         
       </span>
     
@@ -254,61 +255,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Leetcode</h1>
+            <h1 style="display: none">Leetcode实战：237. 删除链表中的节点</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：2.两数相加/">2.两数相加</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：4.寻找两个有序数组的中位数/">4.寻找两个有序数组的中位数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：5.最长回文子串/">5.最长回文子串</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：7.整数反转/">7.整数反转</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：8.字符串转换整数/">8.字符串转换整数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：9.回文数/">9.回文数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：11.盛最多水的容器/">11.盛最多水的容器</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：14.最长公共前缀/">14.最长公共前缀</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：15.三数之和/">15.三数之和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：16.最接近的三数之和/">16.最接近的三数之和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：20.有效的括号/">20.有效的括号</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：21.合并两个有序链表/">21.合并两个有序链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：23.合并K个排序链表/">23.合并K个排序链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：26.删除排序数组中重复的项/">26.删除排序数组中重复的项</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：33.搜索旋转排序数组/">33.搜索旋转排序数组</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：43.字符串相乘/">43.字符串相乘</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：46.全排列/">46.全排列</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：53.最大子序和/">53.最大子序和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：54.螺旋矩阵/">54.螺旋矩阵</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：59.螺旋矩阵二/">59.螺旋矩阵二</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：61.旋转链表/">61.旋转链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：62.不同路径/">62.不同路径</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：70.爬楼梯/">70.爬楼梯</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：78.子集/">78.子集</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：88.合并两个有序数组/">88.合并两个有序数组</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：89.格雷编码/">89.格雷编码</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：104.二叉树最大深度/">104.二叉树最大深度</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：121.买卖股票的最佳时机/">121.买卖股票的最佳时机</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：122.买卖股票的最佳时机II/">122.买卖股票的最佳时机II</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：124.二叉树最大路径和/">124.二叉树最大路径和</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：136.只出现一次的数字/">136.只出现一次的数字</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：141.环形链表/">141.环形链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：142.环形链表II/">142.环形链表II</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：146.LRU缓存机制/">146.LRU缓存机制</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：148.排序链表/">148.排序链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：155.最小栈/">155.最小栈</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：160.相交链表/">160.相交链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：169.众数/">169.众数</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：206.反转链表/">206.反转链表</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：215.数组中的第K个最大元素/">215.数组中的第K个最大元素</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：217.存在重复元素/">217.存在重复元素</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：230.二叉搜索树中第K小的元素/">230.二叉搜索树中第K小的元素</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：231.2的幂/">231.2的幂</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：235.二叉搜索树的最近公共祖先/">235.二叉搜索树的最近公共祖先</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：236.二叉树的最近公共祖先/">236.二叉树的最近公共祖先</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：237.%20删除链表中的节点/">237. 删除链表中的节点</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：238.%20除自身以外数组的乘积/">238. 除自身以外数组的乘积</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：292.%20Nim%20游戏/">292. Nim 游戏</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：344.%20反转字符串/">344. 反转字符串</a></p>
-<p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode实战：557.%20反转字符串中的单词%20III/">557. 反转字符串中的单词 III</a></p>
+                <h2 id="题目">题目：</h2>
+<p>请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。</p>
+<p>现有一个链表 -- head = [4,5,1,9]，它可以表示为: <img src="https://img-blog.csdnimg.cn/2019100823150952.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<p>示例1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], node = <span class="hljs-number">5</span><br>输出: [<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>]<br>解释: 给定你链表中值为 <span class="hljs-number">5</span> 的第二个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">1</span> -&gt; <span class="hljs-number">9.</span><br></code></pre></td></tr></table></figure>
+<p>示例2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], node = <span class="hljs-number">1</span><br>输出: [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>]<br>解释: 给定你链表中值为 <span class="hljs-number">1</span> 的第三个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">5</span> -&gt; <span class="hljs-number">9.</span><br></code></pre></td></tr></table></figure>
+<p>说明:</p>
+<p>链表至少包含两个节点。 链表中所有节点的值都是唯一的。 给定的节点为非末尾节点并且一定是链表中的一个有效节点。 不要从你的函数中返回任何结果。</p>
+<h2 id="算法实现">算法实现：</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode(object):</span><br><span class="hljs-comment">#     def __init__(self, x):</span><br><span class="hljs-comment">#         self.val = x</span><br><span class="hljs-comment">#         self.next = None</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">deleteNode</span>(<span class="hljs-params">self, node</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type node: ListNode</span><br><span class="hljs-string">        :rtype: void Do not return anything, modify node in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        node.val = node.<span class="hljs-built_in">next</span>.val<br>        node.<span class="hljs-built_in">next</span> = node.<span class="hljs-built_in">next</span>.<span class="hljs-built_in">next</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="结果">结果：</h2>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20191008231649898.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
 
                 
               </div>
@@ -354,8 +320,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Leetcode</div>
-      <div>http://chenxindaaa.com/Programming/Leetcode/Leetcode/</div>
+      <div>Leetcode实战：237. 删除链表中的节点</div>
+      <div>http://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：237. 删除链表中的节点/</div>
     </div>
     <div class="license-meta">
       
@@ -367,7 +333,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 14, 2020</div>
+          <div>October 8, 2019</div>
         </div>
       
       
@@ -394,29 +360,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/Programming/DL/Dive%20into%20DL/" title="Dive into DL">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Dive into DL</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/" title="Dive into DL: Language Model">
-                        <span class="hidden-mobile">Dive into DL: Language Model</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
@@ -464,12 +407,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -663,49 +600,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
