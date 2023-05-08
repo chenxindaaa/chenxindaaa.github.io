@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200108205316647.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020010820560282.png">
 <meta property="article:published_time" content="2020-01-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T10:31:02.342Z">
+<meta property="article:modified_time" content="2023-05-08T10:47:08.781Z">
 <meta property="article:author" content="chenxindaaa">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary_large_image">
@@ -762,6 +762,12 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -953,6 +959,49 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -16,18 +16,18 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title: &quot;MachineLearning_K-NN&quot; date: 2019-11-15 subtitle: &quot;K-NN&quot; header-img: &quot;&#x2F;img&#x2F;article_header&#x2F;1.jpg&quot; tags: - MachineLearning categories: - [Programming, ML] updateDate: 2019-11-15 hide: true --- ﻿#">
+    <meta name="description" content="title: &quot;MachineLearning_K-NN&quot; date: 2019-11-15 subtitle: &quot;K-NN&quot; header-img: &quot;&#x2F;img&#x2F;article_header&#x2F;1.jpg&quot; tags: - MachineLearning categories: - [Programming, ML] updateDate: 2019-11-15 hide: true math:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="chenxindaaa">
 <meta property="og:url" content="http://chenxindaaa.com/uncategorized/ML/MachineLearning_K-NN/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="title: &quot;MachineLearning_K-NN&quot; date: 2019-11-15 subtitle: &quot;K-NN&quot; header-img: &quot;&#x2F;img&#x2F;article_header&#x2F;1.jpg&quot; tags: - MachineLearning categories: - [Programming, ML] updateDate: 2019-11-15 hide: true --- ﻿#">
+<meta property="og:description" content="title: &quot;MachineLearning_K-NN&quot; date: 2019-11-15 subtitle: &quot;K-NN&quot; header-img: &quot;&#x2F;img&#x2F;article_header&#x2F;1.jpg&quot; tags: - MachineLearning categories: - [Programming, ML] updateDate: 2019-11-15 hide: true math:">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191115203142896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191115210034273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191115211815605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-08T10:31:02.382Z">
+<meta property="article:modified_time" content="2023-05-08T10:47:08.783Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191115203142896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
@@ -273,7 +273,7 @@
             
               <div class="markdown-body">
                 
-                <p>title: "MachineLearning_K-NN" date: 2019-11-15 subtitle: "K-NN" header-img: "/img/article_header/1.jpg" tags: - MachineLearning categories: - [Programming, ML] updateDate: 2019-11-15 hide: true --- ﻿## 什么是机器学习？</p>
+                <p>title: "MachineLearning_K-NN" date: 2019-11-15 subtitle: "K-NN" header-img: "/img/article_header/1.jpg" tags: - MachineLearning categories: - [Programming, ML] updateDate: 2019-11-15 hide: true math: true --- ﻿## 什么是机器学习？</p>
 <p>在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。</p>
 <p>机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论。简单的一句话：==机器学习就是让机器从大量的数据集中学习，进而得到一个更加符合现实规律的模型，通过对模型的使用使得机器比以往表现的更好。==</p>
 <h2 id="k-近邻算法">k-近邻算法：</h2>
@@ -401,6 +401,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -594,6 +600,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
