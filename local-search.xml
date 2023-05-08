@@ -69,27 +69,6 @@
   
   
   <entry>
-    <title>Dive into DL</title>
-    <link href="/Programming/DL/Dive%20into%20DL/"/>
-    <url>/Programming/DL/Dive%20into%20DL/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/">Language Model</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>DL</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Leetcode</title>
     <link href="/Programming/Leetcode/Leetcode/"/>
     <url>/Programming/Leetcode/Leetcode/</url>
@@ -102,6 +81,27 @@
       <category>Programming</category>
       
       <category>Leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Dive into DL</title>
+    <link href="/Programming/DL/Dive%20into%20DL/"/>
+    <url>/Programming/DL/Dive%20into%20DL/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/">Language Model</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>DL</category>
       
     </categories>
     
