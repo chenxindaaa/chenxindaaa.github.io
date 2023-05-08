@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="主成分分析法 一、PCA简介 1.基本概念 主成分分析（Principal Component Analysis, PCA）是研究如何将多指标问题转化为较少的综合指标的一种重要的统计方法，它能将高维空间的问题转化到低维空间去处理，使问题变得比较简单、直观，而且这些较少的综合指标之间互不相关，又能提供原有指标的绝大部分信息。 PCA是一个无监督问题，不是基于标签，而是基于方差。我们可以认为原始的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MachineLearning_PCA">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/ML/ML/MachineLeaning_PCA/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="主成分分析法 一、PCA简介 1.基本概念 主成分分析（Principal Component Analysis, PCA）是研究如何将多指标问题转化为较少的综合指标的一种重要的统计方法，它能将高维空间的问题转化到低维空间去处理，使问题变得比较简单、直观，而且这些较少的综合指标之间互不相关，又能提供原有指标的绝大部分信息。 PCA是一个无监督问题，不是基于标签，而是基于方差。我们可以认为原始的数据">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108195325534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108202817781.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010820285283.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108202959772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108203543761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108203611951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204054239.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204111807.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204141238.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204205381.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010820450178.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204513197.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010820453137.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204543789.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204606640.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204617947.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204642192.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204700633.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204718645.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204810149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204927603.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204943795.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108204951444.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108205227764.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108205234625.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108205251922.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108205303956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200108205316647.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020010820560282.png">
+<meta property="article:published_time" content="2020-01-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T10:31:02.342Z">
+<meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200108195325534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+  
+  
+  
+  <title>MachineLearning_PCA - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/publications/">
+                <i class="iconfont icon-book"></i>
+                publication
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PCA"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-01-08 00:00" pubdate>
+          January 8, 2020 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PCA</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="主成分分析法">主成分分析法</h2>
+<h4 id="一pca简介">一、PCA简介</h4>
+<p><strong>1.基本概念</strong></p>
+<p>主成分分析（Principal Component Analysis, PCA）是研究如何将多指标问题转化为较少的综合指标的一种重要的统计方法，它能将高维空间的问题转化到低维空间去处理，使问题变得比较简单、直观，而且这些较少的综合指标之间互不相关，又能提供原有指标的绝大部分信息。</p>
+<p>PCA是一个无监督问题，不是基于标签，而是基于方差。我们可以认为原始的数据在某一个维度上是非常密集的，PCA就是需要把这些密集的点给扩散大，相当于基于方差出找方差最大的方向，越大的方差方向数据点更会分分开，便于分类。</p>
+<p>主成分分析除了降低多变量数据系统的维度以外，同时还简化了变量系统的统计数字特征。主成分分析在对多变量数据系统进行最佳简化的同时，还可以提供许多重要的系统信息，例如数据点的重心位置(或称为平均水平)，数据变异的最大方向，群点的散布范围等。</p>
+<p>主成分分析作为最重要的多元统计方法之一，其核心是K-L变换，在高维信号压缩和特征提取等领域已获得广泛应用。主成分分析的基本思路可概述如下：借助一个正交变换矩阵，将分量相关的原随机变量转换成分量不相关的新变量。从代数角度，即将原变量的协方差矩阵转换成对角矩阵。从几何角度，将原变量系统变换成新的正交系统，使之指向样本点散布最开的正交方向，进而对多维变量系统进行降维处理。按照特征提取的观点，主成分分析相当于一种基于最小均方误差的提取方法。</p>
+<p><strong>2.问题描述</strong></p>
+<p>下表1是某些学生的语文、数学、物理、化学成绩统计：</p>
+<table>
+<thead>
+<tr class="header">
+<th>学生编号</th>
+<th>语文</th>
+<th>数学</th>
+<th>物理</th>
+<th>化学</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>90</td>
+<td>140</td>
+<td>99</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>90</td>
+<td>97</td>
+<td>88</td>
+<td>92</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>90</td>
+<td>110</td>
+<td>79</td>
+<td>83</td>
+</tr>
+<tr class="even">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>首先，假设这些科目成绩不相关，也就是说某一科目考多少分与其他科目没有关系。那么一眼就能看出来，数学、物理、化学这三门课的成绩构成了这组数据的主成分（很显然，数学作为第一主成分，因为数学成绩拉的最开）。为什么一眼能看出来？因为坐标轴选对了！下面再看一组学生的数学、物理、化学、语文、历史、英语成绩统计，见表2，还能不能一眼看出来：</p>
+<table>
+<thead>
+<tr class="header">
+<th>学生编号</th>
+<th>数学</th>
+<th>物理</th>
+<th>化学</th>
+<th>语文</th>
+<th>历史</th>
+<th>英语</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>65</td>
+<td>61</td>
+<td>72</td>
+<td>84</td>
+<td>81</td>
+<td>79</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>77</td>
+<td>77</td>
+<td>76</td>
+<td>64</td>
+<td>70</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>67</td>
+<td>63</td>
+<td>49</td>
+<td>65</td>
+<td>67</td>
+<td>57</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>80</td>
+<td>69</td>
+<td>75</td>
+<td>74</td>
+<td>74</td>
+<td>63</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>74</td>
+<td>70</td>
+<td>80</td>
+<td>84</td>
+<td>82</td>
+<td>74</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>78</td>
+<td>84</td>
+<td>75</td>
+<td>62</td>
+<td>72</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>66</td>
+<td>71</td>
+<td>67</td>
+<td>52</td>
+<td>65</td>
+<td>57</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>77</td>
+<td>71</td>
+<td>57</td>
+<td>72</td>
+<td>86</td>
+<td>71</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>83</td>
+<td>100</td>
+<td>79</td>
+<td>41</td>
+<td>67</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>数据太多了，以至于看起来有些凌乱！也就是说，无法直接看出这组数据的主成分，因为在坐标系下这组数据分布的很散乱。究其原因，是因为无法拨开遮住肉眼的迷雾~如果把这些数据在相应的空间中表示出来，也许你就能换一个观察角度找出主成分。如下图所示：</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200108195325534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<p>但是，对于更高维的数据，能想象其分布吗？就算能描述分布，如何精确地找到这些主成分的轴？如何衡量你提取的主成分到底占了整个数据的多少信息？所以，我们就要用到主成分分析的处理方法。</p>
+<p><strong>3.数据降维</strong> 　　</p>
+<p>　　为了说明什么是数据的主成分，先从数据降维说起。数据降维是怎么回事儿？假设三维空间中有一系列点，这些点分布在一个过原点的斜面上，如果你用自然坐标系x,y,z这三个轴来表示这组数据的话，需要使用三个维度，而事实上，这些点的分布仅仅是在一个二维的平面上，那么，问题出在哪里？如果你再仔细想想，能不能把x,y,z坐标系旋转一下，使数据所在平面与x,y平面重合？这就对了！如果把旋转后的坐标系记为x',y',z'，那么这组数据的表示只用x'和y'两个维度表示即可！当然了，如果想恢复原来的表示方式，那就得把这两个坐标之间的变换矩阵存下来。这样就能把数据维度降下来了！但是，我们要看到这个过程的本质，如果把这些数据按行或者按列排成一个矩阵，那么这个矩阵的秩就是2！这些数据之间是有相关性的，这些数据构成的过原点的向量的最大线性无关组包含2个向量，这就是为什么一开始就假设平面过原点的原因！那么如果平面不过原点呢？这就是数据中心化的缘故！将坐标原点平移到数据中心，这样原本不相关的数据在这个新坐标系中就有相关性了！有趣的是，三点一定共面，也就是说三维空间中任意三点中心化后都是线性相关的，一般来讲n维空间中的n个点一定能在一个n-1维子空间中分析！ 　　上一段文字中，认为把数据降维后并没有丢弃任何东西，因为这些数据在平面以外的第三个维度的分量都为0。现在，假设这些数据在z'轴有一个很小的抖动，那么我们仍然用上述的二维表示这些数据，理由是我们可以认为这两个轴的信息是数据的主成分，而这些信息对于我们的分析已经足够了，z'轴上的抖动很有可能是噪声，也就是说本来这组数据是有相关性的，噪声的引入，导致了数据不完全相关，但是，这些数据在z'轴上的分布与原点构成的夹角非常小，也就是说在z'轴上有很大的相关性，综合这些考虑，就可以认为数据在x',y' 轴上的投影构成了数据的主成分！ 　　课堂上老师谈到的特征选择的问题，其实就是要剔除的特征主要是和类标签无关的特征。而这里的特征很多是和类标签有关的，但里面存在噪声或者冗余。在这种情况下，需要一种特征降维的方法来减少特征数，减少噪音和冗余，减少过度拟合的可能性。 　　PCA的思想是将n维特征映射到k维上（k&lt;n），这k维是全新的正交特征。这k维特征称为主成分，是重新构造出来的k维特征，而不是简单地从n维特征中去除其余n-k维特征。</p>
+<h4 id="二pca实例">二、PCA实例</h4>
+<p>现在假设有一组数据如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th>ｘ</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2.5</td>
+<td>2.4</td>
+</tr>
+<tr class="even">
+<td>0.5</td>
+<td>0.7</td>
+</tr>
+<tr class="odd">
+<td>2.2</td>
+<td>2.9</td>
+</tr>
+<tr class="even">
+<td>1.9</td>
+<td>2.2</td>
+</tr>
+<tr class="odd">
+<td>3.1</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<td>2.3</td>
+<td>2.7</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1.6</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1.1</td>
+</tr>
+<tr class="odd">
+<td>1.5</td>
+<td>1.6</td>
+</tr>
+<tr class="even">
+<td>1.1</td>
+<td>0.9</td>
+</tr>
+</tbody>
+</table>
+<p>行代表了样例，列代表特征，这里有10个样例，每个样例两个特征。可以这样认为，有10篇文档，x是10篇文档中“learn”出现的TF-IDF，y是10篇文档中“study”出现的TF-IDF。</p>
+<p><strong>第一步</strong>，分别求x和y的平均值，然后对于所有的样例，都减去对应的均值。这里x的均值是1.81，y的均值是1.91，那么一个样例减去均值后即为（0.69,0.49），得到</p>
+<table>
+<thead>
+<tr class="header">
+<th>ｘ</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.69</td>
+<td>0.49</td>
+</tr>
+<tr class="even">
+<td>-1.31</td>
+<td>-1.21</td>
+</tr>
+<tr class="odd">
+<td>0.39</td>
+<td>0.99</td>
+</tr>
+<tr class="even">
+<td>0.09</td>
+<td>0.29</td>
+</tr>
+<tr class="odd">
+<td>1.29</td>
+<td>1.09</td>
+</tr>
+<tr class="even">
+<td>0.49</td>
+<td>0.79</td>
+</tr>
+<tr class="odd">
+<td>0.19</td>
+<td>-0.31</td>
+</tr>
+<tr class="even">
+<td>-0.81</td>
+<td>-0.81</td>
+</tr>
+<tr class="odd">
+<td>-0.31</td>
+<td>-0.31</td>
+</tr>
+<tr class="even">
+<td>-0.71</td>
+<td>-1.01</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二步</strong>，求特征协方差矩阵，如果数据是３维，那么协方差矩阵是</p>
+<p><span class="math display">\[C = \left(
+\begin{matrix}
+cov(x,x) &amp;cov(x,y)&amp;cov(x,z)\\
+cov(y,x) &amp; cov(y,y) &amp; cov(y,z)\\
+cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
+\end{matrix}
+\right)\]</span> 这里只有ｘ和ｙ，解得： <span class="math display">\[cov= \left(
+\begin{matrix}
+0.616555556 &amp; 0.615444444\\
+0.615444444 &amp; 0.716555556
+\end{matrix}
+\right)\]</span></p>
+<p>对角线上分别是x和y的方差，非对角线上是协方差。协方差是衡量两个变量同时变化的变化程度。协方差大于0表示x和y若一个增，另一个也增；小于0表示一个增，一个减。如果ｘ和ｙ是统计独立的，那么二者之间的协方差就是０；但是协方差是０，并不能说明ｘ和ｙ是独立的。协方差绝对值越大，两者对彼此的影响越大，反之越小。协方差是没有单位的量，因此，如果同样的两个变量所采用的量纲发生变化，它们的协方差也会产生树枝上的变化。</p>
+<p><strong>第三步</strong>，求协方差的特征值和特征向量，得到</p>
+<p><span class="math display">\[ eigenvalues= \left(
+\begin{matrix}
+0.490833989\\
+1.28402771
+\end{matrix}
+\right)\]</span></p>
+<p><span class="math display">\[ eigenvectors= \left(
+\begin{matrix}
+-0.735178656 &amp; -0.677873399\\
+0.677873399 &amp; -0.735178656
+\end{matrix}
+\right)\]</span></p>
+<p>上面是两个特征值，下面是对应的特征向量，特征值0.0490833989对应特征向量为<span class="math inline">\((-0.735178656,0.677873399)^T\)</span>，这里的特征向量都归一化为单位向量。</p>
+<p><strong>第四步</strong>，将特征值按照从大到小的顺序排序，选择其中最大的k个，然后将其对应的k个特征向量分别作为列向量组成特征向量矩阵。</p>
+<p>　　这里特征值只有两个，我们选择其中最大的那个，这里是1.28402771，对应的特征向量是<span class="math inline">\((-0.677873399, -0.735178656)^T\)</span>。</p>
+<p><strong>第五步</strong>，将样本点投影到选取的特征向量上。假设样例数为m，特征数为n，减去均值后的样本矩阵为<span class="math inline">\(DataAdjust(m*n)\)</span>，协方差矩阵是<span class="math inline">\(n*n\)</span>，选取的k个特征向量组成的矩阵为<span class="math inline">\(EigenVectors(n*k)\)</span>。那么投影后的数据<span class="math inline">\(FinalData\)</span>为</p>
+<p><span class="math inline">\(FinalData(10*1) = DataAdjust(10*2矩阵) * 特征向量(-0.677873399, -0.735178656)^T\)</span></p>
+<p>得到的结果是 <img src="https://img-blog.csdnimg.cn/20200108202817781.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　这样，就将原始样例的n维特征变成了k维，这k维就是原始特征在k维上的投影。 　　上面的数据可以认为是learn和study特征融合为一个新的特征叫做LS特征，该特征基本上代表了这两个特征。上述过程如下图2描述：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020010820285283.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　正号表示预处理后的样本点，斜着的两条线就分别是正交的特征向量（由于协方差矩阵是对称的，因此其特征向量正交），最后一步的矩阵乘法就是将原始样本点分别往特征向量对应的轴上做投影。 　　整个PCA过程貌似及其简单，就是求协方差的特征值和特征向量，然后做数据转换。但是有没有觉得很神奇，为什么求协方差的特征向量就是最理想的k维向量？其背后隐藏的意义是什么？整个PCA的意义是什么？</p>
+<h4 id="三pca推导">三、PCA推导</h4>
+<p>先看下面这幅图： <img src="https://img-blog.csdnimg.cn/20200108202959772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　在第一部分中，我们举了一个学生成绩的例子，里面的数据点是六维的，即每个观测值是6维空间中的一个点。我们希望将6维空间用低维空间表示。 　　先假定只有二维，即只有两个变量，它们由横坐标和纵坐标所代表；因此每个观测值都有相应于这两个坐标轴的两个坐标值；如果这些数据形成一个椭圆形状的点阵，那么这个椭圆有一个长轴和一个短轴。在短轴方向上，数据变化很少；在极端的情况，短轴如果退化成一点，那只有在长轴的方向才能够解释这些点的变化了；这样，由二维到一维的降维就自然完成了。 　　上图中，u1就是主成分方向，然后在二维空间中取和u1方向正交的方向，就是u2的方向。则n个数据在u1轴的离散程度最大（方差最大），数据在u1上的投影代表了原始数据的绝大部分信息，即使不考虑u2，信息损失也不多。而且，u1、u2不相关。只考虑u1时，二维降为一维。 　　<strong>椭圆的长短轴相差得越大，降维也越有道理。</strong></p>
+<p><strong>1. 最大方差理论</strong> 　　 　　在信号处理中认为信号具有较大的方差，噪声有较小的方差，信噪比就是信号与噪声的方差比，越大越好。如前面的图，样本在u1上的投影方差较大，在u2上的投影方差较小，那么可认为u2上的投影是由噪声引起的。 　　因此我们认为，最好的k维特征是将n维样本点转换为k维后，每一维上的样本方差都很大。 　　比如我们将下图中的5个点投影到某一维上，这里用一条过原点的直线表示（数据已经中心化）： 　　<img src="https://img-blog.csdnimg.cn/20200108203543761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　假设我们选择两条不同的直线做投影，那么左右两条中哪个好呢？根据我们之前的方差最大化理论，左边的好，因为投影后的样本点之间方差最大（也可以说是投影的绝对值之和最大）。 　　计算投影的方法见下图5： 　　 <img src="https://img-blog.csdnimg.cn/20200108203611951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　图中，红色点表示样例，蓝色点表示在u上的投影，u是直线的斜率也是直线的方向向量，而且是单位向量。蓝色点是在u上的投影点，离原点的距离是&lt;x,u&gt;（即xTu或者uTx）。</p>
+<p><strong>２．最小二乘法</strong> 　　 　　我们使用最小二乘法来确定各个主轴（主成分）的方向。 　　对给定的一组数据（下面的阐述中，向量一般均指列向量）： <img src="https://img-blog.csdnimg.cn/20200108204054239.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 其数据中心位于:</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200108204111807.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<p>数据中心化（将坐标原点移到样本点的中心点）：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200108204141238.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　中心化后的数据在第一主轴u1方向上分布散的最开，也就是说在u1方向上的投影的绝对值之和最大（也可以说方差最大），计算投影的方法上面已经阐述，就是将x与u1做内积，由于只需要求u1的方向，所以设u1也是单位向量。 　　在这里，也就是最大化下式： <img src="https://img-blog.csdnimg.cn/20200108204205381.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　由矩阵代数相关知识可知，可以对绝对值符号项进行平方处理，比较方便。所以进而就是最大化下式： <img src="https://img-blog.csdnimg.cn/2020010820450178.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　两个向量做内积，可以转化成矩阵乘法：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200108204513197.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　所以目标函数可以表示为： <img src="https://img-blog.csdnimg.cn/2020010820453137.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　括号里面就是矩阵乘法表示向量内积，由于列向量转置以后是行向量，行向量乘以列向量得到一个数，一个数的转置还是其本身，所以又可以将目标函数化为： 　　 <img src="https://img-blog.csdnimg.cn/20200108204543789.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　去括号： <img src="https://img-blog.csdnimg.cn/20200108204606640.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　又由于u1和i无关，可以拿到求和符外面，上式化简为： <img src="https://img-blog.csdnimg.cn/20200108204617947.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　学过矩阵代数的同学可能已经发现了，上式括号里面求和后的结果，就相当于一个大矩阵乘以自身的转置，其中，这个大矩阵的形式如下： <img src="https://img-blog.csdnimg.cn/20200108204642192.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> X矩阵的第i列就是xi 于是有： <img src="https://img-blog.csdnimg.cn/20200108204700633.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 所以目标函数最终化为： <img src="https://img-blog.csdnimg.cn/20200108204718645.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 其中的<span class="math inline">\(u_1^TXX^Tu_1\)</span>就是一个二次型， 我们假设<span class="math inline">\(XX^T\)</span>的某一特征值为λ，对应的特征向量为ξ，有 <img src="https://img-blog.csdnimg.cn/20200108204810149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 所以<span class="math inline">\(\lambda \geq 0\)</span>，<span class="math inline">\(XX^T\)</span>是半正定的对称矩阵，即<span class="math inline">\(u_1^TXX^Tu_1\)</span>是半正定阵的二次型，由矩阵代数知识得出，目标函数存在最大值！ 下面我们求解最大值、取得最大值时u1的方向这两个问题。 先解决第一个问题，对于向量x的二范数平方为: <img src="https://img-blog.csdnimg.cn/20200108204927603.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 同样，目标函数也可以表示成映射后的向量的二范数平方： <img src="https://img-blog.csdnimg.cn/20200108204943795.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 把二次型化成一个范数的形式，由于u1取单位向量，最大化目标函数的基本问题也就转化为：对一个矩阵，它对一个向量做变换，变换前后的向量的模长伸缩尺度如何才能最大？我们有矩阵代数中的定理知，向量经矩阵映射前后的向量长度之比的最大值就是这个矩阵的最大奇异值，即： <img src="https://img-blog.csdnimg.cn/20200108204951444.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 式中，<span class="math inline">\(\sigma_1\)</span>是矩阵A的最大奇异值（亦是矩阵A的二范数），它等于<span class="math inline">\(AA^T\)</span>（或<span class="math inline">\(A^TA\)</span>）的最大特征值开平方。 　　针对本问题来说，<span class="math inline">\(XX^T\)</span>是半正定对称阵，也就意味着它的特征值都大于等于0，且不同特征值对应的特征向量是正交的，构成所在空间的一组单位正交基。<br />
+　　再解决第二个问题，对一般情况，设对称阵<span class="math inline">\(A^TA \in C^{n\times n}\)</span>的n个特征值分别为： <img src="https://img-blog.csdnimg.cn/20200108205227764.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 相应的单位特征向量为:</p>
+<p><img src="https://img-blog.csdnimg.cn/20200108205234625.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 任取一个向量x，用特征向量构成的空间中的这组基表示为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200108205251922.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 则：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200108205303956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 所以：</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20200108205316647.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<p>针对第二个问题，我们取上式中的<span class="math inline">\(x=u_1,A=X^T\)</span>，目标函数<span class="math inline">\(u_1^TXX^tu_1\)</span>取得最大值，也就是<span class="math inline">\(max(u_1^TXX^Tu_1)=max(||X^Tu_1||^2_2)=XX^T\)</span>的最大特征值时，对应的特征向量的方向，就是第一主成分u1的方向！（第二主成分的方向为<span class="math inline">\(XX^T\)</span>的第二大特征值对应的特征向量的方向，以此类推）。 证明完毕。 主成分所占整个信息的百分比可用下式计算： <img src="https://img-blog.csdnimg.cn/2020010820560282.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 式中分母为<span class="math inline">\(XX^T\)</span>所有奇异值平方和，分子为所选取的前k大奇异值平方和。 有些研究工作表明，所选的主轴总长度占所有主轴长度之和的大约85% 即可，其实，这只是一个大体的说法，具体选多少个，要看实际情况而定。</p>
+<h4 id="四代码">四、代码</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> *<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">loadDataSet</span>(<span class="hljs-params">fileName, delim=<span class="hljs-string">&#x27;\t&#x27;</span></span>):<br>    fr = <span class="hljs-built_in">open</span>(fileName)<br>    stringArr = [line.strip().split(delim) <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> fr.readlines()]<br>    datArr = [<span class="hljs-built_in">map</span>(<span class="hljs-built_in">float</span>,line) <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> stringArr]<br>    <span class="hljs-keyword">return</span> mat(datArr)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pca</span>(<span class="hljs-params">dataMat, topNfeat=<span class="hljs-number">9999999</span></span>):<br>    meanVals = mean(dataMat, axis=<span class="hljs-number">0</span>)<br>    meanRemoved = dataMat - meanVals <span class="hljs-comment">#remove mean</span><br>    covMat = cov(meanRemoved, rowvar=<span class="hljs-number">0</span>)<br>    eigVals,eigVects = linalg.eig(mat(covMat))<br>    eigValInd = argsort(eigVals)            <span class="hljs-comment">#sort, sort goes smallest to largest</span><br>    eigValInd = eigValInd[:-(topNfeat+<span class="hljs-number">1</span>):-<span class="hljs-number">1</span>]  <span class="hljs-comment">#cut off unwanted dimensions</span><br>    redEigVects = eigVects[:,eigValInd]       <span class="hljs-comment">#reorganize eig vects largest to smallest</span><br>    lowDDataMat = meanRemoved * redEigVects<span class="hljs-comment">#transform data into new dimensions</span><br>    reconMat = (lowDDataMat * redEigVects.T) + meanVals<br>    <span class="hljs-keyword">return</span> lowDDataMat, reconMat<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">replaceNanWithMean</span>(): <br>    datMat = loadDataSet(<span class="hljs-string">&#x27;secom.data&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>)<br>    numFeat = shape(datMat)[<span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numFeat):<br>        meanVal = mean(datMat[nonzero(~isnan(datMat[:,i].A))[<span class="hljs-number">0</span>],i]) <span class="hljs-comment">#values that are not NaN (a number)</span><br>        datMat[nonzero(isnan(datMat[:,i].A))[<span class="hljs-number">0</span>],i] = meanVal  <span class="hljs-comment">#set NaN values to mean</span><br>    <span class="hljs-keyword">return</span> datMat<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/ML/" class="category-chain-item">ML</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MachineLearning/">#MachineLearning</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MachineLearning_PCA</div>
+      <div>http://chenxindaaa.com/Programming/ML/ML/MachineLeaning_PCA/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 8, 2020</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

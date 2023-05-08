@@ -69,6 +69,27 @@
   
   
   <entry>
+    <title>Dive into DL</title>
+    <link href="/Programming/DL/Dive%20into%20DL/"/>
+    <url>/Programming/DL/Dive%20into%20DL/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL-Language%20Model/">Language Model</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>DL</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Leetcode</title>
     <link href="/Programming/Leetcode/Leetcode/"/>
     <url>/Programming/Leetcode/Leetcode/</url>
@@ -90,18 +111,18 @@
   
   
   <entry>
-    <title>Dive into DL</title>
-    <link href="/Programming/DL/Dive%20into%20DL/"/>
-    <url>/Programming/DL/Dive%20into%20DL/</url>
+    <title>Machine Learning</title>
+    <link href="/Programming/ML/ML/"/>
+    <url>/Programming/ML/ML/</url>
     
-    <content type="html"><![CDATA[<p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p><p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL-Language%20Model/">Language Model</a></p><p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLeaning_PCA/">PCA</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLearning_AdaBoost/">AdaBoost</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLearning_FP-growth/">FP-growth</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLearning_K-NN/">K-NN</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLearning_LogisticsRegression/">LogisticsRegression</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLearning_NoiveBayes/">NoiveBayes</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachineLearning_Regression/">Regression</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachinLearning_Apriori/">Apriori</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachinLearning_Cluster/">Cluster</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachinLearning_DecisionTree/">DecisionTree</a></p><p><a href="https://chenxindaaa.com/Programming/ML/ML/MachinLearning_SVM/">SVM</a></p>]]></content>
     
     
     <categories>
       
       <category>Programming</category>
       
-      <category>DL</category>
+      <category>ML</category>
       
     </categories>
     

@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一.线性回归  线性回归形式简单、易于建模，但却蕴涵着机器学习中一些重要的基本思想。许多功能更为强大的非线性模型(nonlinear model)可在线性模型的基础上通过引入层级结构或高维映射而得。此外，由于线性回归的解𝜃直观表达了各属性在预测中的重要性，因此线性回归有很好的可解释性。  1.线性回归原理 线性回归遇到的问题一般是这样的。我们有𝑚个样本，每个样本对应于𝑛维特征和一个结果输出。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MachineLearning_Regression">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/ML/ML/MachineLearning_Regression/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="一.线性回归  线性回归形式简单、易于建模，但却蕴涵着机器学习中一些重要的基本思想。许多功能更为强大的非线性模型(nonlinear model)可在线性模型的基础上通过引入层级结构或高维映射而得。此外，由于线性回归的解𝜃直观表达了各属性在预测中的重要性，因此线性回归有很好的可解释性。  1.线性回归原理 线性回归遇到的问题一般是这样的。我们有𝑚个样本，每个样本对应于𝑛维特征和一个结果输出。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191215175302811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019121517541562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191215180011977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-12-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T10:31:02.419Z">
+<meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191215175302811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+  
+  
+  
+  <title>MachineLearning_Regression - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/publications/">
+                <i class="iconfont icon-book"></i>
+                publication
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Regression"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-12-15 00:00" pubdate>
+          December 15, 2019 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Regression</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一.线性回归">一.线性回归</h1>
+<ul>
+<li>线性回归形式简单、易于建模，但却蕴涵着机器学习中一些重要的基本思想。许多功能更为强大的非线性模型(nonlinear model)可在线性模型的基础上通过引入层级结构或高维映射而得。此外，由于线性回归的解𝜃直观表达了各属性在预测中的重要性，因此线性回归有很好的可解释性。</li>
+</ul>
+<h4 id="线性回归原理">1.线性回归原理</h4>
+<p>线性回归遇到的问题一般是这样的。我们有𝑚个样本，每个样本对应于𝑛维特征和一个结果输出。 训练数据的形式： <span class="math display">\[(x_1^{(0)}, x_2^{(0)},...x_n^{(0)},y_0), (x_1^{(1)}, x_2^{(1)}, ...x_n^{(1)}, y_1),...(x_1^{(m)}, x_2^{(m)},...x_n^{(m)},y_n)\]</span> 我们主要做的是通过找到参数<span class="math inline">\((\theta _0, \theta_1,...\theta_m)\)</span>，线性回归模型如下： <span class="math display">\[h_\theta, (x_1, x_2, ...x_n) = \theta_0 + \theta_1x_1 + ... + \theta_nx_n\]</span> 矩阵化如下： <span class="math display">\[h_\theta(X) = X\theta\]</span></p>
+<p>得到了模型，我们需要求出需要的损失函数，一般线性回归我们用均方误差作为损失函数。损失函数的代数法表示如下： <span class="math display">\[J(\theta_0,\theta_1,...\theta_n) = \sum _{i=0}^m (h_\theta (x_0, x_1, ... x_n) - y_i)^2\]</span> 矩阵化如下： <span class="math display">\[J(\theta) = \frac{1}{2}(X\theta - Y)^T(X\theta - Y)\]</span></p>
+<h4 id="线性回归的算法">2.线性回归的算法</h4>
+<p>对于线性回归的损失函数<span class="math inline">\(J(\theta) = \frac{1}{2}(X\theta - Y)^T(X\theta - Y)\)</span>，<span class="math inline">\(J(\theta)&#39;=X^T(X\theta -Y)\)</span>我们常用的有两种方法来求损失函数最小化时候的θ参数：一种是梯度下降法，一种是最小二乘法。 - <strong>如果采用梯度下降法，则𝜃的迭代公式是这样的：</strong> <span class="math display">\[\theta = \theta - \alpha X^T(X\theta - Y)\]</span> 其中<span class="math inline">\(\alpha\)</span>是学习率(步长)，<span class="math inline">\(X^T(X\theta -Y)\)</span>是梯度 通过若干次迭代后，我们可以得到最终的𝜃的结果 - <strong>如果采用最小二乘法，则<span class="math inline">\(\theta\)</span>的结果公式如下：</strong> <span class="math display">\[\theta = (X^TX)^{-1}X^TY\]</span> 推导如下： 令<span class="math inline">\(J(\theta)&#39;=0\)</span>，即<span class="math inline">\(X^T(X\theta -Y)\)</span> 所以<span class="math inline">\(\theta = (X^TX)^{-1}X^TY\)</span> 当然线性回归，还有其他的常用算法，比如牛顿法和拟牛顿法，这里不详细描述。</p>
+<h3 id="多项式线性回归">3.多项式线性回归</h3>
+<p>我们遇到的数据不一定都是线性的形式，如果是<span class="math inline">\(y = x_1^2+x_2^2\)</span>的模型，那线性回归很难拟合这个函数，这时候就需要用到多项式回归了。 回到我们开始的线性模型，<span class="math inline">\(h_\theta, (x_1, x_2, ...x_n) = \theta_0 + \theta_1x_1 +... + \theta_nx_n\)</span>，如果这里不仅仅是x的一次方，而是二次方，那么模型就变成了多项式回归。这里写一个只有两个特征的2次多项式回归的模型： <span class="math display">\[h_\theta(x_1, x_2) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_1^2 + \theta_4x_2^2 + \theta_5x_1x_2\]</span> 我们令<span class="math inline">\(x_0=1, x_1 = x_1, x_2 = x_2, x_3 = x_1^2, x_4 = x_2^2, x_5 = x_1x_2\)</span>，这样我们就得到下式： <span class="math display">\[h_\theta(x_1, x_2) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3 + \theta_4x_4 + \theta_5x_5\]</span> 可以发现，我们又重新回到了线性回归，这是一个五元线性回归，可以用线性回归的方法来完成算法。对于每个二元样本特征<span class="math inline">\((x_1,x_2)\)</span>,我们得到一个五元样本特征<span class="math inline">\((1, x_1, x_2, x_1^2, x_2^2, x_1, x_2)\)</span>，通过这个改进的五元样本特征，我们重新把不是线性回归的函数变回线性回归，但是达到了非线性拟合的效果。</p>
+<h2 id="二.岭回归">二.岭回归</h2>
+<h4 id="参数推导">1.参数推导</h4>
+<p>线性回归模型的目标函数 <span class="math display">\[J(\beta) = \sum(y - X\beta)\]</span> 为了保证回归系数<span class="math inline">\(\beta\)</span>可求，岭回归模型在目标函数上加了一个L2范数的惩罚项 <span class="math display">\[\begin{aligned}
+J(\beta) = \sum(y - X\beta)^2 + \lambda ||\beta||^2 \\
+=\sum(y - X\beta)^2 + \sum\lambda\beta^2
+\end{aligned}\]</span> 其中<span class="math inline">\(\lambda\)</span>为非负数，<span class="math inline">\(\lambda\)</span>越大，则为了使<span class="math inline">\(J(\beta)\)</span>最小，回归系数<span class="math inline">\(\beta\)</span>就越小。 推导过程： <span class="math display">\[\begin{aligned}
+J(\beta) &amp;= (y - X\beta)^T(y - X\beta)+\lambda\beta^T\beta \\ 
+&amp;=y^Ty-y^TX\beta-\beta^TX^Ty + \beta^TX^TX\beta + \lambda\beta^T\beta 
+\end{aligned}\]</span></p>
+<p><span class="math display">\[令\frac{\partial J(\beta)}{\partial \beta} = 0\]</span></p>
+<p><span class="math display">\[\Rightarrow0-X^Ty-X^Ty + 2X^TX\beta + 2\lambda\beta = 0\]</span></p>
+<p><span class="math display">\[\Rightarrow \beta = (X^TX+\lambda I)^{-1}X^Ty\]</span> L2范数惩罚项的加入使得<span class="math inline">\((X^TX+\lambda I)\)</span>满秩，保证了可逆，但是也由于惩罚项的加入，使得回归系数<span class="math inline">\(\beta\)</span>的估计不再是无偏估计。所以岭回归是以放弃无偏性、降低精度为代价解决病态矩阵问题的回归方法。 单位矩阵<span class="math inline">\(I\)</span>的对角线上全是1，像一条山岭一样，这也是岭回归名称的由来。</p>
+<h4 id="λ的选择">2.λ的选择</h4>
+<ul>
+<li>模型的方差：回归系数的方差</li>
+<li>模型的偏差：预测值和真实值的差异 随着模型复杂度的提升，在训练集上的效果就越好，即模型的偏差就越小；但是同时模型的方差就越大。对于岭回归的<span class="math inline">\(\lambda\)</span>而言，随着<span class="math inline">\(\lambda\)</span>的增大，<span class="math inline">\(|X^TX+\lambda I|\)</span>就越大，<span class="math inline">\((X^TX+\lambda I)^{-1}\)</span>就越小，模型的方差就越小；而<span class="math inline">\(\lambda\)</span>越大使得<span class="math inline">\(\beta\)</span>的估计值更加偏离真实值，模型的偏差就越大。所以岭回归的关键是找到一个合理的<span class="math inline">\(\lambda\)</span>值来平衡模型的方差和偏差。 根据凸优化，可以将岭回归模型的目标函数<span class="math inline">\(J(\beta)\)</span>最小化问题等价于 <span class="math display">\[f(x)=
+\begin{cases}
+argmin\{\sum(y - X\beta^2)\}\\
+\sum\beta^2\leq t
+\end{cases}\]</span> 其中t为一个常数。以最简单的二维为例，即<span class="math inline">\(\beta(\beta_1, \beta_2)\)</span>其几何图形是 <img src="https://img-blog.csdnimg.cn/20191215175302811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><img src="https://img-blog.csdnimg.cn/2019121517541562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" />抛物面代表的是<span class="math inline">\(\sum(y-X\beta)^2\)</span>的部分，圆柱体代表的是<span class="math inline">\(\beta_1^2+\beta_2^2\leq t\)</span>的部分。最小二乘解是抛物面的中心，岭回归解是抛物面与圆柱体的交点。岭回归的惩罚项<span class="math inline">\(\sum\lambda\beta^2\)</span>是关于回归系数<span class="math inline">\(\beta\)</span>的二次函数，对目标函数求偏导时会保留<span class="math inline">\(\beta\)</span>，抛物面与圆柱体很难相交于轴上使某个变量的回归系数为0，因此岭回归不能实现变量的剔除。 <strong>(1) 岭迹法确定λ值</strong></li>
+</ul>
+<p>由<span class="math inline">\(\beta=(X^TX+\lambda I)^{-1}X^Ty\)</span>可知<span class="math inline">\(\beta\)</span>是<span class="math inline">\(\lambda\)</span>的函数，当<span class="math inline">\(\lambda \in [0,\infty)\)</span>时，在平面直角坐标系中的<span class="math inline">\(\beta-\lambda\)</span>曲线称为岭迹曲线。当<span class="math inline">\(\beta\)</span>趋于稳定的点就是所要寻找的<span class="math inline">\(\lambda\)</span>值。 <img src="https://img-blog.csdnimg.cn/20191215180011977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<p>**（2）交叉验证法确定λ* 交叉验证法的思想是，将数据集拆分为k个数据组(每组样本量大体相当)，从k组中挑选k-1组用于模型的训练，剩下的1组用于模型的测试，则会有k-1个训练集和测试集配对，每一种训练集和测试集下都会有对应的一个模型及模型评分（如均方误差），进而可以得到一个平均评分。对于<span class="math inline">\(\lambda\)</span>值则选择平均评分最优的<span class="math inline">\(\lambda\)</span>值。</p>
+<h2 id="三.lasso回归">三.LASSO回归</h2>
+<h4 id="参数推导-1">1.参数推导</h4>
+<p>岭回归无法剔除变量，而LASSO回归模型，将惩罚项由L2范数变为L1范数，可以将一些不重要的回归系数缩减为0，达到剔除变量的目的。 <span class="math display">\[\begin{aligned}
+J(\beta)&amp;=\sum(y-X\beta)^2+\lambda||\beta||_1 \\
+&amp;=\sum(y-X\beta)^2+\sum\lambda|\beta| \\
+&amp;=ESS(\beta)+\lambda l_1(\beta)
+\end{aligned}\]</span> 其中<span class="math inline">\(ESS(\beta)\)</span>表示误差平方和，<span class="math inline">\(\lambda l_1(\beta)\)</span>表示惩罚项。由于惩罚项变成了绝对值，则在零点处就不可导，故采用坐标下降法（对于p维参数的可微凸函数<span class="math inline">\(J(\beta)\)</span>，如果存在<span class="math inline">\(\hat\beta\)</span>使得<span class="math inline">\(J(\beta)\)</span>在每个坐标轴上均达到最小值，则<span class="math inline">\(J(\hat{\beta})\)</span> 就是点<span class="math inline">\(\hat\beta\)</span>上的全局最小值），控制其他p-1个参数不变，对目标函数中的某一个<span class="math inline">\(\beta_j\)</span>求偏导，以此类推对剩下的p-1个参数求偏导，最终令每个分量下的导函数为0，得到使目标函数达到全局最小的<span class="math inline">\(\hat\beta\)</span> <span class="math display">\[\begin{aligned}
+ESS(\beta)&amp;=\sum_{i = 1}^{n}(y_i-\sum _{j=1}^{n}\beta x_{ij})^2\\
+&amp;=\sum _{i=1}^n(y_i^2+(\sum_{j=1}^p\beta_jx_{ij})^2-2y_i(\sum_{j=1}^p\beta_jx_{ij}))
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\Longrightarrow\frac{\partial ESS(\beta)}{\partial \beta_j}&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum^{p}_{j=1}\beta_jx_{ij})\\
+&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik}-\beta_jx_{ij})\\
+&amp;=-2\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik})+2\beta_j\sum_{i=1}^n
+x_{ij}^2\\
+&amp;=-2m_j+2\beta_jn_j
+\end{aligned}\]</span></p>
+<p>其中<span class="math inline">\(m_j=\sum_{i-1}^nx_{ij}(y_i-\sum_{k=j}\beta_kx_{ik}),n_j=\sum_{i=1}^nx_{ij}^2\)</span> 惩罚项不可导，则使用次导数： <span class="math display">\[\frac{\partial \lambda l_1(\beta)}{\partial \beta_j}=
+\begin{cases}
+\lambda,&amp;当\beta_j&gt;0\\
+[-\lambda,\lambda], &amp;当\beta_j=0\\
+-\lambda, &amp;当\beta_j&lt;0
+\end{cases}\]</span> 于是令两个偏导数相加等于0 <span class="math display">\[\frac{\partial ESS(\beta)}{\partial \beta_j} + \frac{\partial \lambda l_1(\beta)}{\partial \beta_j} =
+\begin{cases}
+-2m_j+2\beta_jn_j+\lambda=0\\
+[-2m_j-\lambda,-2m_j+\lambda]=0\\
+-2m_j+2\beta_jn_j-\lambda=0
+\end{cases}\\
+\Longrightarrow\beta_j = \begin{cases}
+(m_j-\frac{\lambda}{2})/n_j,&amp;当m_j&gt;\frac{\lambda}{2}\\
+0, &amp;当m_j\in[-\frac{\lambda}{2},\frac{\lambda}{2}]\\
+(m_j+\frac{\lambda}{2})/n_j,&amp;当m_j&lt;\frac{\lambda}{2}
+\end{cases}
+\]</span></p>
+<h4 id="lambda的选择">2.<span class="math inline">\(\lambda\)</span>的选择</h4>
+<p>直接使用交叉验证法</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/ML/" class="category-chain-item">ML</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MachineLearning/">#MachineLearning</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MachineLearning_Regression</div>
+      <div>http://chenxindaaa.com/Programming/ML/ML/MachineLearning_Regression/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 15, 2019</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
