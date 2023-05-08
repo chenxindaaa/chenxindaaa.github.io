@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="最小配置示例 CMakelists.txt 1234cmake_minimum_required(VERSION 3.0)  # cmake最低版本project(sample CXX)  # 项目名称add_library(sample sample.cpp)  # 添加库add_executable(sample_exe sample_exe.cpp)  # 添加可执行程序 相关函数  pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMake">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/C-C/CMake/CMake/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="最小配置示例 CMakelists.txt 1234cmake_minimum_required(VERSION 3.0)  # cmake最低版本project(sample CXX)  # 项目名称add_library(sample sample.cpp)  # 添加库add_executable(sample_exe sample_exe.cpp)  # 添加可执行程序 相关函数  pro">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
+<meta property="article:published_time" content="2022-11-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T07:37:36.355Z">
+<meta property="article:author" content="chenxindaaa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
+  
+  
+  
+  <title>CMake - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CMake"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-01 00:00" pubdate>
+          December 1, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CMake</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="最小配置示例">最小配置示例</h1>
+<h2 id="cmakelists.txt">CMakelists.txt</h2>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">cmake<span class="hljs-constructor">_minimum_required(VERSION 3.0)</span>  # cmake最低版本<br>project(sample CXX)  # 项目名称<br>add<span class="hljs-constructor">_library(<span class="hljs-params">sample</span> <span class="hljs-params">sample</span>.<span class="hljs-params">cpp</span>)</span>  # 添加库<br>add<span class="hljs-constructor">_executable(<span class="hljs-params">sample_exe</span> <span class="hljs-params">sample_exe</span>.<span class="hljs-params">cpp</span>)</span>  # 添加可执行程序<br></code></pre></td></tr></table></figure>
+<h2 id="相关函数">相关函数</h2>
+<ul>
+<li>project：定义工程名称，并可指定工程支持的语言
+<ul>
+<li>project(projectname [CXX] [C] [Java][C CXX])</li>
+<li>项目对应的变量：
+<ul>
+<li>PROJECT_NAME：项目名称</li>
+<li>PROJECT_SOURCE_DIR：项目源码根目录</li>
+<li>PROJECT_VERSION：项目版本</li>
+<li>PROJECT_BINARY_DIR：项目生成的临时二进制目录，用于存放配置/编译中间文件。</li>
+</ul></li>
+</ul></li>
+<li>add_library：生成库文件
+<ul>
+<li>add_library(libname [SHARED|STATIC|MODULE][EXCLUDE_FROM_ALL] source)
+<ul>
+<li>libname： 库名称</li>
+<li>source：源文件，可以使用列表变量，也可以直接添加源文件名称，还可以使用函数 target_source 添加源文件</li>
+<li>SHARED：声明该库仅被作为动态库生成</li>
+<li>STATIC 声明该库仅被作为静态库生成</li>
+</ul></li>
+</ul></li>
+<li>add_executable：生成可执行文件
+<ul>
+<li>add_executable(exename source)</li>
+</ul></li>
+</ul>
+<h2 id="生成项目">生成项目</h2>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs erlang">cmake -G <span class="hljs-string">&quot;Unix Makefiles&quot;</span> ..<br>make<br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cmake.exe -S .<span class="hljs-regexp">/sample -B ./</span>sample/binary -G <span class="hljs-string">&quot;Visual Studio 16 2019&quot;</span> -A x64<br>cmake.exe --build .<span class="hljs-regexp">/sample/</span>binary<br></code></pre></td></tr></table></figure>
+<h3 id="命令行参数">命令行参数</h3>
+<ul>
+<li>-S 顶级CMakeLists.txt（包含project声明）所在路径。</li>
+<li>-B 存放临时编译的二进制文件（.obj、.ilk等）和编译器对应的配置文件路径。</li>
+<li>-G 编译器名称</li>
+<li>-A 架构名称</li>
+<li>-D 使用该变量以向cmake传入各种参数，包括选项及覆盖cmake提供的各种默认变量值。</li>
+<li>--toolchain cmake toolchain文件路径。</li>
+<li>--install-prefix 安装的二进制存放路径。</li>
+<li>--trace / --trace-expand 调试时使用，用于打印已执行的cmake代码及行号。否则仅输出函数message中的内容。</li>
+<li>--build 使用cmake直接调用编译器编译项目。</li>
+<li>--config 选择需要编译的项目配置类型。</li>
+<li>--install 安装已编译好的二进制文件至 CMAKE_INSTALL_PREFIX 中。</li>
+</ul>
+<h1 id="依赖管理">依赖管理</h1>
+<h2 id="查找依赖">查找依赖</h2>
+<ul>
+<li><p><a href="https://link.zhihu.com/?target=https://cmake.org/cmake/help/latest/command/find_package.html#id7">find_package</a>：使用预先设置的配置文件来查找依赖项 <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs inform7">find_package(PACKAGE_NAME_CASE_SENSITIVE<br>             <span class="hljs-comment">[version]</span> <span class="hljs-comment">[EXACT]</span> <span class="hljs-comment">[QUIET]</span><br>             <span class="hljs-comment">[REQUIRED]</span> <span class="hljs-comment">[<span class="hljs-comment">[COMPONENTS]</span> <span class="hljs-comment">[components...]</span>]</span><br>             <span class="hljs-comment">[OPTIONAL_COMPONENTS components...]</span><br>             <span class="hljs-comment">[CONFIG|NO_MODULE]</span><br>             <span class="hljs-comment">[NO_POLICY_SCOPE]</span><br>             <span class="hljs-comment">[NAMES name1 <span class="hljs-comment">[name2 ...]</span>]</span><br>             <span class="hljs-comment">[CONFIGS config1 <span class="hljs-comment">[config2 ...]</span>]</span><br>             <span class="hljs-comment">[HINTS path1 <span class="hljs-comment">[path2 ... ]</span>]</span><br>             <span class="hljs-comment">[PATHS path1 <span class="hljs-comment">[path2 ... ]</span>]</span><br>             <span class="hljs-comment">[PATH_SUFFIXES suffix1 <span class="hljs-comment">[suffix2 ...]</span>]</span><br>             <span class="hljs-comment">[NO_DEFAULT_PATH]</span><br>             <span class="hljs-comment">[NO_PACKAGE_ROOT_PATH]</span><br>             <span class="hljs-comment">[NO_CMAKE_PATH]</span><br>             <span class="hljs-comment">[NO_CMAKE_ENVIRONMENT_PATH]</span><br>             <span class="hljs-comment">[NO_SYSTEM_ENVIRONMENT_PATH]</span><br>             <span class="hljs-comment">[NO_CMAKE_PACKAGE_REGISTRY]</span><br>             <span class="hljs-comment">[NO_CMAKE_BUILDS_PATH]</span> # Deprecated; does nothing.<br>             <span class="hljs-comment">[NO_CMAKE_SYSTEM_PATH]</span><br>             <span class="hljs-comment">[NO_CMAKE_SYSTEM_PACKAGE_REGISTRY]</span><br>             <span class="hljs-comment">[CMAKE_FIND_ROOT_PATH_BOTH |</span><br><span class="hljs-comment">              ONLY_CMAKE_FIND_ROOT_PATH |</span><br><span class="hljs-comment">              NO_CMAKE_FIND_ROOT_PATH)</span><br></code></pre></td></tr></table></figure></p>
+<p>常用参数：</p>
+<ul>
+<li>PACKAGE_NAME_CASE_SENSITIVE 查找的库的名称，大小写敏感，与之对应的是调用了包含此名称的配置文件。</li>
+<li>version 依赖的版本号。如果依赖的配置同时提供了版本文件，则会使用该值对比配置中的版本而确定是否可以使用。</li>
+<li>EXACT 版本号必须严格对应配置中的版本号。</li>
+<li>QUIET 关闭了查找信息（不包含查找失败/错误信息）的输出。</li>
+<li>REQUIRED 如果库没找到就报错。</li>
+<li>CONFIG 该关键字声明了需要使用 依赖项通过自己的cmake代码 使用cmake 自动生成的 配置文件，入口配置文件名称一般为 <LOW_CASE_PACKAGE_NAME>-config.cmake 或 <ALL_CASE_PACKAGE_NAME>Config.cmake 。</li>
+</ul></li>
+<li><p>find_library：原始的cmake查找依赖方式，直接查找依赖项库文件。 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs prolog">find_library (<br>          &lt;<span class="hljs-symbol">LIBRARY_NAME</span>&gt;<br>          name | <span class="hljs-symbol">NAMES</span> name1 [name2 ...] [<span class="hljs-symbol">NAMES_PER_DIR</span>]<br>          [<span class="hljs-symbol">HINTS</span> [path | <span class="hljs-symbol">ENV</span> var]... ]<br>          [<span class="hljs-symbol">PATHS</span> [path | <span class="hljs-symbol">ENV</span> var]... ]<br>          [<span class="hljs-symbol">PATH_SUFFIXES</span> suffix1 [suffix2 ...]]<br>          [<span class="hljs-symbol">DOC</span> <span class="hljs-string">&quot;cache documentation string&quot;</span>]<br>          [<span class="hljs-symbol">NO_CACHE</span>]<br>          [<span class="hljs-symbol">REQUIRED</span>]<br>          [<span class="hljs-symbol">NO_DEFAULT_PATH</span>]<br>          [<span class="hljs-symbol">NO_PACKAGE_ROOT_PATH</span>]<br>          [<span class="hljs-symbol">NO_CMAKE_PATH</span>]<br>          [<span class="hljs-symbol">NO_CMAKE_ENVIRONMENT_PATH</span>]<br>          [<span class="hljs-symbol">NO_SYSTEM_ENVIRONMENT_PATH</span>]<br>          [<span class="hljs-symbol">NO_CMAKE_SYSTEM_PATH</span>]<br>          [<span class="hljs-symbol">CMAKE_FIND_ROOT_PATH_BOTH</span> |<br>           <span class="hljs-symbol">ONLY_CMAKE_FIND_ROOT_PATH</span> |<br>           <span class="hljs-symbol">NO_CMAKE_FIND_ROOT_PATH</span>]<br>         )<br></code></pre></td></tr></table></figure></p>
+<ul>
+<li>LIBRARY_NAME：由于直接查找库文件而不是查找配置文件，此名称仅作为结果中宏的前缀使用。</li>
+<li>NAMES：此项声明了库文件的名称。值得注意的是，在UNIX-style系统中，自动添加“lib”作为库名称的前缀。</li>
+<li>NAMES_PER_DIR：一个名称遍历查找一次，再用另一个名称遍历查找一次。而不是根据路径使用多个名称遍历。</li>
+<li>查找完成后：
+<ul>
+<li>如果查找到，则会设置 LIBRARY_NAME 为查找到的库文件的名称（包含全路径）。</li>
+<li>如果没有查找到，则会将 LIBRARY_NAME 设置为 <LIBRARY_NAME>-NOTFOUND 。</li>
+</ul>
+<p>所以这里和 find_package 又有不同，我们应当使用以下代码判断是否查找到:</p>
+<p><figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable"><span class="hljs-keyword">if</span></span> (<span class="hljs-variable">PACKAGE_NAME</span> <span class="hljs-variable">MATCHES</span> <span class="hljs-string">&quot;-NOTFOUND&quot;</span>)<br>    <span class="hljs-function"><span class="hljs-title">message</span>(<span class="hljs-variable">FATAL_ERROR</span> <span class="hljs-string">&quot;$&#123;PACKAGE_NAME&#125; not found!&quot;</span>)</span><br><span class="hljs-function"><span class="hljs-title">endif</span>()</span><br></code></pre></td></tr></table></figure></p></li>
+</ul></li>
+<li><p>find_path：这个函数一般是查找头文件或其他的 非库文件 且 非可执行程序。其函数原型为： <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs prolog">find_path (<br>         &lt;<span class="hljs-symbol">FILE_NAME</span>&gt;<br>         name | <span class="hljs-symbol">NAMES</span> name1 [name2 ...]<br>         [<span class="hljs-symbol">HINTS</span> [path | <span class="hljs-symbol">ENV</span> var]... ]<br>         [<span class="hljs-symbol">PATHS</span> [path | <span class="hljs-symbol">ENV</span> var]... ]<br>         [<span class="hljs-symbol">PATH_SUFFIXES</span> suffix1 [suffix2 ...]]<br>         [<span class="hljs-symbol">DOC</span> <span class="hljs-string">&quot;cache documentation string&quot;</span>]<br>         [<span class="hljs-symbol">NO_CACHE</span>]<br>         [<span class="hljs-symbol">REQUIRED</span>]<br>         [<span class="hljs-symbol">NO_DEFAULT_PATH</span>]<br>         [<span class="hljs-symbol">NO_PACKAGE_ROOT_PATH</span>]<br>         [<span class="hljs-symbol">NO_CMAKE_PATH</span>]<br>         [<span class="hljs-symbol">NO_CMAKE_ENVIRONMENT_PATH</span>]<br>         [<span class="hljs-symbol">NO_SYSTEM_ENVIRONMENT_PATH</span>]<br>         [<span class="hljs-symbol">NO_CMAKE_SYSTEM_PATH</span>]<br>         [<span class="hljs-symbol">CMAKE_FIND_ROOT_PATH_BOTH</span> |<br>          <span class="hljs-symbol">ONLY_CMAKE_FIND_ROOT_PATH</span> |<br>          <span class="hljs-symbol">NO_CMAKE_FIND_ROOT_PATH</span>]<br>        )<br></code></pre></td></tr></table></figure> 一般情况下，由于需要cmake表达式来让cmake判断使用哪个配置的库，我们通常这么写：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">find_path</span><span class="hljs-params">(&lt;PACKAGE_NAME&gt;_INCLUDE_DIR NAMES header.h PATH_SUFFIXES include/...)</span></span><br><br><span class="hljs-function"><span class="hljs-title">find_library</span><span class="hljs-params">(&lt;PACKAGE_NAME&gt;_LIBRARY_RELEASE NAMES name1 name2)</span></span><br><span class="hljs-function"><span class="hljs-title">find_library</span><span class="hljs-params">(&lt;PACKAGE_NAME&gt;_LIBRARY_DEBUG NAMES name1d name2d)</span></span><br><span class="hljs-function"><span class="hljs-title">select_library_configurations</span><span class="hljs-params">(&lt;PACKAGE_NAME&gt;)</span></span><br>...<br>target_*(target_name $&#123;&lt;PACKAGE_NAME&gt;&#125;)<br></code></pre></td></tr></table></figure></li>
+<li><p>find_program：这个函数专门用于查找可执行程序</p></li>
+</ul>
+<h2 id="使用依赖">使用依赖</h2>
+<p>经过了上面的狂轰乱炸，我们终于可以使用依赖项了。我们可以将查找到的依赖项用于多个函数中，例如添加头文件路径，添加链接库，添加编译选项等。</p>
+<p>对于不同的查找方式，配置文件或cmake提供了不同的使用方式：</p>
+<ul>
+<li><p>宏 例如 <PACKAGE_NAME>_INCLUDE_DIRS 和 <PACKAGE_NAME>_LIBRARIES 这种方式。</p>
+<p>对于头文件来讲，直接加到include_directories中就好了。而对于库来讲，则复杂点：</p>
+<p>由于不能混合使用debug库及release库，cmake必须明确知道在不同配置下使用哪个库。所以宏中一般使用到了cmake表达式来处理这种情况，比如： <span class="math inline">\(&lt;\)</span><CONFIG:DEBUG>:library.lib&gt; <span class="math inline">\(&lt;\)</span>{NOT:$<CONFIG:DEBUG>&gt;:libraryd.lib&gt; 所以我们在写配置时，尽量将debug和release库均查找后使用 select_library_configurations 来生成表达式以便不同配置下使用。</p></li>
+<li><p>target target 就简单的多了，因为它是一个object，cmake函数可以轻松提取 target 包含的需要使用的属性来使用。 当然，target 包含非namespace与namespace两种形式，不过使用上没区别。 ## 内部依赖</p></li>
+<li><p>add_dependencies： <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">add<span class="hljs-constructor">_dependencies(&lt;<span class="hljs-params">target</span>&gt; [&lt;<span class="hljs-params">target</span>-<span class="hljs-params">dependency</span>&gt;]<span class="hljs-operator">...</span>)</span><br></code></pre></td></tr></table></figure> 向前者添加依赖项（后者），可以添加多个。在编译或某些配置时，优先处理后者。</p></li>
+</ul>
+<h1 id="编译相关函数">编译相关函数</h1>
+<h2 id="关键字">关键字</h2>
+<ul>
+<li><p>target target在cmake中是一个很重要的概念，可以理解为一个实例化对象， 一般是由add_executable()，add_library() 或 add_custom_target() 命令之一创建，它包含了例如以下内容：</p>
+<ul>
+<li>相关的源文件列表</li>
+<li>相关的编译选项</li>
+<li>相关的依赖库</li>
+<li>相关的头文件路径列表</li>
+<li>相关的库文件路径列表</li>
+<li>相关的其他属性</li>
+</ul></li>
+<li>PUBLC PRIVATE INTERFACE 例如 target_link_libraries(A [PUBLIC/PRIVATE/INTERFACE] B)
+<ul>
+<li>PUBLIC 依赖项B仅链接到目标A，若有C链接了目标A，C不链接依赖项B。</li>
+<li>PRIVATE 依赖项B并不链接到目标A，若有C链接了目标A，C会链接依赖项B。</li>
+<li>INTERFACE 依赖项B链接到目标A，若有C链接了目标A，C也会链接依赖项B。 &gt; <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/07761ff7838e">CMake 中的 PUBLIC，PRIVATE，INTERFACE</a></li>
+</ul></li>
+</ul>
+<h2 id="相关函数-1">相关函数</h2>
+<ul>
+<li><p>target_compile_options：向目标添加编译选项 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">target_compile_options(&lt;<span class="hljs-keyword">target</span>&gt; [BEFORE]<br>  &lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items1...]<br>  [&lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items2...] ...])<br></code></pre></td></tr></table></figure> 例如： <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">target<span class="hljs-constructor">_compile_options(<span class="hljs-params">sample</span> PUBLIC <span class="hljs-operator">/</span><span class="hljs-params">arch</span>=<span class="hljs-params">avx2</span> <span class="hljs-operator">/</span>Wall)</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>target_compile_definitions：向目标添加预设宏声明及定义</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">target_compile_definitions(&lt;<span class="hljs-keyword">target</span>&gt;<br>  &lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items1...]<br>  [&lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items2...] ...])<br></code></pre></td></tr></table></figure> 例如： <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">target_compile_definitions</span><span class="hljs-params">(sample PRIVATE BUILD_DLL PUBLIC <span class="hljs-string">&quot;-DPI=3.14159&quot;</span>)</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>target_include_directories：声明了编译目标时查找使用头文件的路径。</p>
+<p><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">target_include_directories(&lt;<span class="hljs-keyword">target</span>&gt; [SYSTEM] [AFTER|BEFORE]<br>  &lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items1...]<br>  [&lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items2...] ...])<br></code></pre></td></tr></table></figure></p>
+例如： <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">target<span class="hljs-constructor">_include_directories(<span class="hljs-params">sample</span> PUBLIC <span class="hljs-params">public</span><span class="hljs-operator">/</span><span class="hljs-params">include</span><span class="hljs-operator">/</span><span class="hljs-params">sample</span> PRIVATE <span class="hljs-params">sample</span>)</span><br></code></pre></td></tr></table></figure></li>
+<li><p>target_link_libraries：声明了链接时需要参与的依赖库名称或target，其名称可包含完整路径。</p>
+<p><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">target_link_libraries(&lt;<span class="hljs-keyword">target</span>&gt;<br>  &lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items1...]<br>  [&lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items2...] ...])<br></code></pre></td></tr></table></figure> 例如： <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">target<span class="hljs-constructor">_link_libraries(<span class="hljs-params">sample</span> PUBLIC CURL::<span class="hljs-params">curl</span> <span class="hljs-params">glib</span> <span class="hljs-params">m</span>)</span><br></code></pre></td></tr></table></figure> 注意：由于一个target中包含多个属性，一般情况下包含了头文件路径。所以使用target作为参数传入此函数时，无需调用 target_include_directories 再次声明添加头文件路径。</p></li>
+<li><p>target_link_libraries：声明了链接时查找依赖库的路径。 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs fortran">target_link_libraries(&lt;<span class="hljs-keyword">target</span>&gt; [BEFORE]<br>  &lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items1...]<br>  [&lt;<span class="hljs-keyword">INTERFACE</span>|<span class="hljs-keyword">PUBLIC</span>|<span class="hljs-keyword">PRIVATE</span>&gt; [items2...] ...])<br></code></pre></td></tr></table></figure> 例如： <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">target<span class="hljs-constructor">_link_libraries(<span class="hljs-params">sample</span> PUBLIC <span class="hljs-params">third_party</span><span class="hljs-operator">/</span><span class="hljs-params">libs</span><span class="hljs-operator">/</span><span class="hljs-params">x86</span><span class="hljs-operator">/</span><span class="hljs-params">rel</span>)</span><br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="target族函数注意事项">target族函数注意事项</h2>
+<p>当需要使用cmake export关键字导出声明的target并附带其中的 PUBLIC 属性时，我们必须 将PUBLIC / PRIVATE / INTERFACE 关键字向这类 target 族函数补齐。且如果一个 target 族函数声明了这三个关键字其中之一，该 target 所属的其他 target 族函数均应当声明关键字。且对于包含路径的值，我们需要声明此值的使用范围：</p>
+<p>编译/链接时使用。必须使用绝对路径。 导出以向下游提供。必须使用相对路径。 所以，我们通常情况下使用以下方式：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby">target_include_directories(sample <span class="hljs-variable constant_">PRIVATE</span> <span class="hljs-variable">$&lt;</span><span class="hljs-variable constant_">BUILD_INTERFACE</span><span class="hljs-symbol">:</span><span class="hljs-variable">$&#123;</span><span class="hljs-variable constant_">CMAKE_SOURCE_DIR</span>&#125;/header/<span class="hljs-keyword">include</span>&gt; <span class="hljs-variable constant_">PUBLIC</span> <span class="hljs-variable">$&lt;</span><span class="hljs-variable constant_">INSTALL_INTERFACE</span><span class="hljs-symbol">:include&gt;</span>)<br></code></pre></td></tr></table></figure>
+<h1 id="reference">Reference</h1>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1490802622991306752">CMake教程系列</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/C-C/" class="category-chain-item">C/C++</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/C-C/CMake/" class="category-chain-item">CMake</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CMake</div>
+      <div>http://chenxindaaa.com/Programming/C-C/CMake/CMake/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 1, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Programming/Docker/Docker/" title="Docker">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Research/Academic-Writing/Effective%20Academic%20Writing/" title="Effective Academic Writing">
+                        <span class="hidden-mobile">Effective Academic Writing</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="多层感知机  多层感知机的基本知识 使用多层感知机图像分类的从零开始的实现 使用pytorch的简洁实现  多层感知机的基本知识 深度学习主要关注多层模型。在这里，我们将以多层感知机（multilayer perceptron，MLP）为例，介绍多层神经网络的概念。 隐藏层 下图展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。  Image Name  表达公式 具体来说">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dive into DL: Multilayer Perceptron">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Multilayer%20Perceptron/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="多层感知机  多层感知机的基本知识 使用多层感知机图像分类的从零开始的实现 使用pytorch的简洁实现  多层感知机的基本知识 深度学习主要关注多层模型。在这里，我们将以多层感知机（multilayer perceptron，MLP）为例，介绍多层神经网络的概念。 隐藏层 下图展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。  Image Name  表达公式 具体来说">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
+<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-08T07:03:17.866Z">
+<meta property="article:author" content="chenxindaaa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/1.jpg">
+  
+  
+  
+  <title>Dive into DL: Multilayer Perceptron - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Dive into DL: Multilayer Perceptron"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-02-14 00:00" pubdate>
+          February 14, 2020 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          53 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Dive into DL: Multilayer Perceptron</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="多层感知机">多层感知机</h2>
+<ol type="1">
+<li>多层感知机的基本知识</li>
+<li>使用多层感知机图像分类的从零开始的实现</li>
+<li>使用pytorch的简洁实现</li>
+</ol>
+<h2 id="多层感知机的基本知识">多层感知机的基本知识</h2>
+<p>深度学习主要关注多层模型。在这里，我们将以多层感知机（multilayer perceptron，MLP）为例，介绍多层神经网络的概念。</p>
+<h3 id="隐藏层">隐藏层</h3>
+<p>下图展示了一个多层感知机的神经网络图，它含有一个隐藏层，该层中有5个隐藏单元。</p>
+<figure>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4ua2VzY2kuY29tL3VwbG9hZC9pbWFnZS9xNWhvNjg0am1oLnBuZw?x-oss-process=image/format,png" srcset="/img/loading.gif" lazyload alt="Image Name" /><figcaption>Image Name</figcaption>
+</figure>
+<h3 id="表达公式">表达公式</h3>
+<p>具体来说，给定一个小批量样本<span class="math inline">\(\boldsymbol{X} \in \mathbb{R}^{n \times d}\)</span>，其批量大小为<span class="math inline">\(n\)</span>，输入个数为<span class="math inline">\(d\)</span>。假设多层感知机只有一个隐藏层，其中隐藏单元个数为<span class="math inline">\(h\)</span>。记隐藏层的输出（也称为隐藏层变量或隐藏变量）为<span class="math inline">\(\boldsymbol{H}\)</span>，有<span class="math inline">\(\boldsymbol{H} \in \mathbb{R}^{n \times h}\)</span>。因为隐藏层和输出层均是全连接层，可以设隐藏层的权重参数和偏差参数分别为<span class="math inline">\(\boldsymbol{W}_h \in \mathbb{R}^{d \times h}\)</span>和 <span class="math inline">\(\boldsymbol{b}_h \in \mathbb{R}^{1 \times h}\)</span>，输出层的权重和偏差参数分别为<span class="math inline">\(\boldsymbol{W}_o \in \mathbb{R}^{h \times q}\)</span>和<span class="math inline">\(\boldsymbol{b}_o \in \mathbb{R}^{1 \times q}\)</span>。</p>
+<p>我们先来看一种含单隐藏层的多层感知机的设计。其输出<span class="math inline">\(\boldsymbol{O} \in \mathbb{R}^{n \times q}\)</span>的计算为</p>
+<p><span class="math display">\[
+ \begin{aligned} \boldsymbol{H} &amp;= \boldsymbol{X} \boldsymbol{W}_h + \boldsymbol{b}_h,\\ \boldsymbol{O} &amp;= \boldsymbol{H} \boldsymbol{W}_o + \boldsymbol{b}_o, \end{aligned}
+\]</span></p>
+<p>也就是将隐藏层的输出直接作为输出层的输入。如果将以上两个式子联立起来，可以得到</p>
+<p><span class="math display">\[
+ \boldsymbol{O} = (\boldsymbol{X} \boldsymbol{W}_h + \boldsymbol{b}_h)\boldsymbol{W}_o + \boldsymbol{b}_o = \boldsymbol{X} \boldsymbol{W}_h\boldsymbol{W}_o + \boldsymbol{b}_h \boldsymbol{W}_o + \boldsymbol{b}_o. 
+\]</span></p>
+<p>从联立后的式子可以看出，虽然神经网络引入了隐藏层，却依然等价于一个单层神经网络：其中输出层权重参数为<span class="math inline">\(\boldsymbol{W}_h\boldsymbol{W}_o\)</span>，偏差参数为<span class="math inline">\(\boldsymbol{b}_h \boldsymbol{W}_o + \boldsymbol{b}_o\)</span>。不难发现，即便再添加更多的隐藏层，以上设计依然只能与仅含输出层的单层神经网络等价。</p>
+<h3 id="激活函数">激活函数</h3>
+<p>上述问题的根源在于全连接层只是对数据做仿射变换（affine transformation），而多个仿射变换的叠加仍然是一个仿射变换。解决问题的一个方法是引入非线性变换，例如对隐藏变量使用按元素运算的非线性函数进行变换，然后再作为下一个全连接层的输入。这个非线性函数被称为激活函数（activation function）。</p>
+<p>下面我们介绍几个常用的激活函数：</p>
+<h4 id="relu函数">ReLU函数</h4>
+<p>ReLU（rectified linear unit）函数提供了一个很简单的非线性变换。给定元素<span class="math inline">\(x\)</span>，该函数定义为</p>
+<p><span class="math display">\[
+\text{ReLU}(x) = \max(x, 0).
+\]</span></p>
+<p>可以看出，ReLU函数只保留正数元素，并将负数元素清零。为了直观地观察这一非线性变换，我们先定义一个绘图函数xyplot。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">%matplotlib inline<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> sys<br>sys.path.append(<span class="hljs-string">&quot;/home/kesci/input&quot;</span>)<br><span class="hljs-keyword">import</span> d2lzh1981 <span class="hljs-keyword">as</span> d2l<br><span class="hljs-built_in">print</span>(torch.__version__)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">1.3.0</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">xyplot</span>(<span class="hljs-params">x_vals, y_vals, name</span>):<br>    <span class="hljs-comment"># d2l.set_figsize(figsize=(5, 2.5))</span><br>    plt.plot(x_vals.detach().numpy(), y_vals.detach().numpy())<br>    plt.xlabel(<span class="hljs-string">&#x27;x&#x27;</span>)<br>    plt.ylabel(name + <span class="hljs-string">&#x27;(x)&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">x = torch.arange(-<span class="hljs-number">8.0</span>, <span class="hljs-number">8.0</span>, <span class="hljs-number">0.1</span>, requires_grad=<span class="hljs-literal">True</span>)<br>y = x.relu()<br>xyplot(x, y, <span class="hljs-string">&#x27;relu&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.kesci.com/rt_upload/070825B6A382411DA5BD7D14E67E8D54/q5hv7cdtna.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">y.<span class="hljs-built_in">sum</span>().backward()<br>xyplot(x, x.grad, <span class="hljs-string">&#x27;grad of relu&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.kesci.com/rt_upload/BFB05150DBD1474D9A9ECCB9CDF1DD39/q5hv7c3pxb.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="sigmoid函数">Sigmoid函数</h4>
+<p>sigmoid函数可以将元素的值变换到0和1之间：</p>
+<p><span class="math display">\[
+\text{sigmoid}(x) = \frac{1}{1 + \exp(-x)}.
+\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">y = x.sigmoid()<br>xyplot(x, y, <span class="hljs-string">&#x27;sigmoid&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.kesci.com/rt_upload/68FCB4E8142144458F13128B370D1C91/q5hv7dor11.png" srcset="/img/loading.gif" lazyload></p>
+<p>依据链式法则，sigmoid函数的导数</p>
+<p><span class="math display">\[
+\text{sigmoid}&#39;(x) = \text{sigmoid}(x)\left(1-\text{sigmoid}(x)\right).
+\]</span></p>
+<p>下面绘制了sigmoid函数的导数。当输入为0时，sigmoid函数的导数达到最大值0.25；当输入越偏离0时，sigmoid函数的导数越接近0。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">x.grad.zero_()<br>y.<span class="hljs-built_in">sum</span>().backward()<br>xyplot(x, x.grad, <span class="hljs-string">&#x27;grad of sigmoid&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.kesci.com/rt_upload/878C7B8823304F72860965E119A21412/q5hv7dpse9.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="tanh函数">tanh函数</h4>
+<p>tanh（双曲正切）函数可以将元素的值变换到-1和1之间：</p>
+<p><span class="math display">\[
+\text{tanh}(x) = \frac{1 - \exp(-2x)}{1 + \exp(-2x)}.
+\]</span></p>
+<p>我们接着绘制tanh函数。当输入接近0时，tanh函数接近线性变换。虽然该函数的形状和sigmoid函数的形状很像，但tanh函数在坐标系的原点上对称。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">y = x.tanh()<br>xyplot(x, y, <span class="hljs-string">&#x27;tanh&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.kesci.com/rt_upload/92D16076309F42169482834C0B6ABB24/q5hv7dfeso.png" srcset="/img/loading.gif" lazyload></p>
+<p>依据链式法则，tanh函数的导数</p>
+<p><span class="math display">\[
+\text{tanh}&#39;(x) = 1 - \text{tanh}^2(x).
+\]</span></p>
+<p>下面绘制了tanh函数的导数。当输入为0时，tanh函数的导数达到最大值1；当输入越偏离0时，tanh函数的导数越接近0。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">x.grad.zero_()<br>y.<span class="hljs-built_in">sum</span>().backward()<br>xyplot(x, x.grad, <span class="hljs-string">&#x27;grad of tanh&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.kesci.com/rt_upload/CB16F4B33E664E14BCE8E52D8B37C47F/q5hv7ejc8y.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="关于激活函数的选择">关于激活函数的选择</h3>
+<p>ReLu函数是一个通用的激活函数，目前在大多数情况下使用。但是，ReLU函数只能在隐藏层中使用。</p>
+<p>用于分类器时，sigmoid函数及其组合通常效果更好。由于梯度消失问题，有时要避免使用sigmoid和tanh函数。</p>
+<p>在神经网络层数较多的时候，最好使用ReLu函数，ReLu函数比较简单计算量少，而sigmoid和tanh函数计算量大很多。</p>
+<p>在选择激活函数的时候可以先选用ReLu函数如果效果不理想可以尝试其他激活函数。</p>
+<h3 id="多层感知机-1">多层感知机</h3>
+<p>多层感知机就是含有至少一个隐藏层的由全连接层组成的神经网络，且每个隐藏层的输出通过激活函数进行变换。多层感知机的层数和各隐藏层中隐藏单元个数都是超参数。以单隐藏层为例并沿用本节之前定义的符号，多层感知机按以下方式计算输出：</p>
+<p><span class="math display">\[
+ \begin{aligned} \boldsymbol{H} &amp;= \phi(\boldsymbol{X} \boldsymbol{W}_h + \boldsymbol{b}_h),\\ \boldsymbol{O} &amp;= \boldsymbol{H} \boldsymbol{W}_o + \boldsymbol{b}_o, \end{aligned} 
+\]</span></p>
+<p>其中<span class="math inline">\(\phi\)</span>表示激活函数。</p>
+<h2 id="多层感知机从零开始的实现">多层感知机从零开始的实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> sys<br>sys.path.append(<span class="hljs-string">&quot;..&quot;</span>) <br><span class="hljs-keyword">import</span> d2lzh_pytorch <span class="hljs-keyword">as</span> d2l<br><span class="hljs-built_in">print</span>(torch.__version__)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">1.4.0+cpu</code></pre>
+<h3 id="获取训练集">获取训练集</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">batch_size = <span class="hljs-number">256</span><br>train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size,root=<span class="hljs-string">&#x27;./input/FashionMNIST2065&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="定义模型参数">定义模型参数</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">num_inputs, num_outputs, num_hiddens = <span class="hljs-number">784</span>, <span class="hljs-number">10</span>, <span class="hljs-number">256</span><br><br>W1 = torch.tensor(np.random.normal(<span class="hljs-number">0</span>, <span class="hljs-number">0.01</span>, (num_inputs, num_hiddens)), dtype=torch.<span class="hljs-built_in">float</span>)<br>b1 = torch.zeros(num_hiddens, dtype=torch.<span class="hljs-built_in">float</span>)<br>W2 = torch.tensor(np.random.normal(<span class="hljs-number">0</span>, <span class="hljs-number">0.01</span>, (num_hiddens, num_outputs)), dtype=torch.<span class="hljs-built_in">float</span>)<br>b2 = torch.zeros(num_outputs, dtype=torch.<span class="hljs-built_in">float</span>)<br><br>params = [W1, b1, W2, b2]<br><span class="hljs-keyword">for</span> param <span class="hljs-keyword">in</span> params:<br>    param.requires_grad_(requires_grad=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="定义激活函数">定义激活函数</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">relu</span>(<span class="hljs-params">X</span>):<br>    <span class="hljs-keyword">return</span> torch.<span class="hljs-built_in">max</span>(<span class="hljs-built_in">input</span>=X, other=torch.tensor(<span class="hljs-number">0.0</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="定义网络">定义网络</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">net</span>(<span class="hljs-params">X</span>):<br>    X = X.view((-<span class="hljs-number">1</span>, num_inputs))<br>    H = relu(torch.matmul(X, W1) + b1)<br>    <span class="hljs-keyword">return</span> torch.matmul(H, W2) + b2<br></code></pre></td></tr></table></figure>
+<h3 id="定义损失函数">定义损失函数</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">loss = torch.nn.CrossEntropyLoss()<br></code></pre></td></tr></table></figure>
+<h3 id="训练">训练</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python">num_epochs, lr = <span class="hljs-number">5</span>, <span class="hljs-number">100.0</span><br><span class="hljs-comment"># def train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size,</span><br><span class="hljs-comment">#               params=None, lr=None, optimizer=None):</span><br><span class="hljs-comment">#     for epoch in range(num_epochs):</span><br><span class="hljs-comment">#         train_l_sum, train_acc_sum, n = 0.0, 0.0, 0</span><br><span class="hljs-comment">#         for X, y in train_iter:</span><br><span class="hljs-comment">#             y_hat = net(X)</span><br><span class="hljs-comment">#             l = loss(y_hat, y).sum()</span><br><span class="hljs-comment">#             </span><br><span class="hljs-comment">#             # 梯度清零</span><br><span class="hljs-comment">#             if optimizer is not None:</span><br><span class="hljs-comment">#                 optimizer.zero_grad()</span><br><span class="hljs-comment">#             elif params is not None and params[0].grad is not None:</span><br><span class="hljs-comment">#                 for param in params:</span><br><span class="hljs-comment">#                     param.grad.data.zero_()</span><br><span class="hljs-comment">#            </span><br><span class="hljs-comment">#             l.backward()</span><br><span class="hljs-comment">#             if optimizer is None:</span><br><span class="hljs-comment">#                 d2l.sgd(params, lr, batch_size)</span><br><span class="hljs-comment">#             else:</span><br><span class="hljs-comment">#                 optimizer.step()  # “softmax回归的简洁实现”一节将用到</span><br><span class="hljs-comment">#             </span><br><span class="hljs-comment">#             </span><br><span class="hljs-comment">#             train_l_sum += l.item()</span><br><span class="hljs-comment">#             train_acc_sum += (y_hat.argmax(dim=1) == y).sum().item()</span><br><span class="hljs-comment">#             n += y.shape[0]</span><br><span class="hljs-comment">#         test_acc = evaluate_accuracy(test_iter, net)</span><br><span class="hljs-comment">#         print(&#x27;epoch %d, loss %.4f, train acc %.3f, test acc %.3f&#x27;</span><br><span class="hljs-comment">#               % (epoch + 1, train_l_sum / n, train_acc_sum / n, test_acc))</span><br><br>d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size, params, lr)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">epoch 1, loss 0.0030, train acc 0.713, test acc 0.774
+epoch 2, loss 0.0019, train acc 0.823, test acc 0.800
+epoch 3, loss 0.0017, train acc 0.845, test acc 0.838
+epoch 4, loss 0.0015, train acc 0.856, test acc 0.850
+epoch 5, loss 0.0014, train acc 0.865, test acc 0.849</code></pre>
+<h2 id="多层感知机pytorch实现">多层感知机pytorch实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torch <span class="hljs-keyword">import</span> nn<br><span class="hljs-keyword">from</span> torch.nn <span class="hljs-keyword">import</span> init<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> sys<br>sys.path.append(<span class="hljs-string">&quot;..&quot;</span>) <br><span class="hljs-keyword">import</span> d2lzh_pytorch <span class="hljs-keyword">as</span> d2l<br><br><span class="hljs-built_in">print</span>(torch.__version__)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">1.4.0+cpu</code></pre>
+<h3 id="初始化模型和各个参数">初始化模型和各个参数</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">num_inputs, num_outputs, num_hiddens = <span class="hljs-number">784</span>, <span class="hljs-number">10</span>, <span class="hljs-number">256</span><br>    <br>net = nn.Sequential(<br>        d2l.FlattenLayer(),<br>        nn.Linear(num_inputs, num_hiddens),<br>        nn.ReLU(),<br>        nn.Linear(num_hiddens, num_outputs), <br>        )<br>    <br><span class="hljs-keyword">for</span> params <span class="hljs-keyword">in</span> net.parameters():<br>    init.normal_(params, mean=<span class="hljs-number">0</span>, std=<span class="hljs-number">0.01</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="训练-1">训练</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">batch_size = <span class="hljs-number">256</span><br>train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size,root=<span class="hljs-string">&#x27;/home/kesci/input/FashionMNIST2065&#x27;</span>)<br>loss = torch.nn.CrossEntropyLoss()<br><br>optimizer = torch.optim.SGD(net.parameters(), lr=<span class="hljs-number">0.5</span>)<br><br>num_epochs = <span class="hljs-number">5</span><br>d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, batch_size, <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>, optimizer)<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs">epoch 1, loss 0.0032, train acc 0.696, test acc 0.683
+epoch 2, loss 0.0019, train acc 0.818, test acc 0.707
+epoch 3, loss 0.0017, train acc 0.841, test acc 0.817
+epoch 4, loss 0.0015, train acc 0.854, test acc 0.843
+epoch 5, loss 0.0015, train acc 0.864, test acc 0.855</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/DL/" class="category-chain-item">DL</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/DL/PyTorch/" class="category-chain-item">PyTorch</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Dive into DL: Multilayer Perceptron</div>
+      <div>http://chenxindaaa.com/Programming/DL/CV/Dive into DL/Dive into DL-Multilayer Perceptron/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 14, 2020</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
