@@ -16,23 +16,30 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linear Regression Softmax Classification Multilayer Perceptron Text Prepare Language Model Recurrent Neural Network">
+    <meta name="description" content="一.matlab数据类型概述  matlab中每一种数据类型都是以数组的方式出现 二.字符型数组 用单引号括起来的字符和数字的组合称为字符串或称为字符数组 字符数组的基本运算 1.水平连接strcat 例如：  2.垂直连接stavcat 例如  3.寻找findstr 例如  三.数值型数组  在这里插入图片描述  四.单元型数组 1,单元数组的创建 C &#x3D; cell(m) %创建n阶单元空方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dive into DL">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/DL/Dive%20into%20DL/index.html">
+<meta property="og:title" content="Matlab基础03.数据类型">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/MATLAB/MATLAB/Matlab%E5%9F%BA%E7%A1%8003.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="Linear Regression Softmax Classification Multilayer Perceptron Text Prepare Language Model Recurrent Neural Network">
+<meta property="og:description" content="一.matlab数据类型概述  matlab中每一种数据类型都是以数组的方式出现 二.字符型数组 用单引号括起来的字符和数字的组合称为字符串或称为字符数组 字符数组的基本运算 1.水平连接strcat 例如：  2.垂直连接stavcat 例如  3.寻找findstr 例如  三.数值型数组  在这里插入图片描述  四.单元型数组 1,单元数组的创建 C &#x3D; cell(m) %创建n阶单元空方">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/diveintodl.jpg">
-<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-09T03:25:04.830Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022165607626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022165752175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022170229450.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022170857411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022171252406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191022171414180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T09:54:46.280Z">
 <meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/diveintodl.jpg">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
   
   
   
-  <title>Dive into DL - chenxindaaa</title>
+  <title>Matlab基础03.数据类型 - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,13 +190,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Dive into DL"></span>
+            <span id="subtitle" data-typed-text="Matlab"></span>
           
         </div>
 
@@ -205,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-02-14 00:00" pubdate>
-          February 14, 2020 am
+        <time datetime="2019-10-22 00:00" pubdate>
+          October 22, 2019 am
         </time>
       </span>
     
@@ -217,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          103 words
+          304 words
         
       </span>
     
@@ -228,7 +235,7 @@
         
         
         
-          1 mins
+          3 mins
         
       </span>
     
@@ -266,18 +273,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Dive into DL</h1>
+            <h1 style="display: none">Matlab</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer"/>
-<p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/">Language Model</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>
+<h2 id="一.matlab数据类型概述">一.matlab数据类型概述</h2>
+<p><img src="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>matlab中每一种数据类型都是以数组的方式出现</strong></p>
+<h2 id="二.字符型数组">二.字符型数组</h2>
+<p>用单引号括起来的字符和数字的组合称为字符串或称为字符数组 <strong>字符数组的基本运算</strong> <strong>1.水平连接strcat</strong> 例如：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191022165607626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>2.垂直连接stavcat</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022165752175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>3.寻找findstr</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022170229450.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h2 id="三.数值型数组">三.数值型数组</h2>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20191022170857411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="四.单元型数组">四.单元型数组</h2>
+<p><strong>1,单元数组的创建</strong> C = cell(m) %创建n阶单元空方阵 <img src="https://img-blog.csdnimg.cn/20191022171252406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> cell(m, n) %创建m行n列的单元空矩阵 <img src="https://img-blog.csdnimg.cn/20191022171414180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>2.赋值方法</strong> （1）下标索引 如果A是一个二阶空方阵 A（1， 1） = {1 ： 5}意为在（1， 1）单元里为一个1：5的行向量 （2）单元索引 如果A是一个二阶空方阵</p>
+<p>A{1， 1} = 1 ： 5意为在（1， 1）单元里为一个1：5的行向量</p>
 
                 
               </div>
@@ -301,7 +314,7 @@
   
     <span>></span>
     
-  <a href="/categories/Programming/DL/" class="category-chain-item">DL</a>
+  <a href="/categories/Programming/MATLAB/" class="category-chain-item">MATLAB</a>
   
   
 
@@ -315,6 +328,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Matlab/">#Matlab</a>
+      
+    </div>
+  
 </div>
 
 
@@ -323,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Dive into DL</div>
-      <div>http://chenxindaaa.com/Programming/DL/Dive into DL/</div>
+      <div>Matlab基础03.数据类型</div>
+      <div>http://chenxindaaa.com/Programming/MATLAB/MATLAB/Matlab基础03.数据类型/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 14, 2020</div>
+          <div>October 22, 2019</div>
         </div>
       
       
@@ -363,23 +383,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/Programming/ML/ML/" title="Machine Learning">
-                        <span class="hidden-mobile">Machine Learning</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

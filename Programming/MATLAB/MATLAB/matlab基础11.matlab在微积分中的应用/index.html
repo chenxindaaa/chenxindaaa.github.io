@@ -16,23 +16,31 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linear Regression Softmax Classification Multilayer Perceptron Text Prepare Language Model Recurrent Neural Network">
+    <meta name="description" content="一.差分与近似微分  diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分 近似微商：diff(Y).&#x2F;diff(X) 二.微分计算  在这里插入图片描述  三.不定积分与定积分计算   四.数值积分 1.梯形积分法   2.递推的辛普森积分法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dive into DL">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/DL/Dive%20into%20DL/index.html">
+<meta property="og:title" content="matlab基础11.matlab在微积分中的应用">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/MATLAB/MATLAB/matlab%E5%9F%BA%E7%A1%8011.matlab%E5%9C%A8%E5%BE%AE%E7%A7%AF%E5%88%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="Linear Regression Softmax Classification Multilayer Perceptron Text Prepare Language Model Recurrent Neural Network">
+<meta property="og:description" content="一.差分与近似微分  diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分 近似微商：diff(Y).&#x2F;diff(X) 二.微分计算  在这里插入图片描述  三.不定积分与定积分计算   四.数值积分 1.梯形积分法   2.递推的辛普森积分法">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/diveintodl.jpg">
-<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-09T03:25:04.830Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019110700081073.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191107000932267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019110700160448.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019110700202580.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191107002211775.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019110700230468.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191107002400830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191107002532926.png">
+<meta property="article:published_time" content="2019-11-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T09:55:33.293Z">
 <meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/diveintodl.jpg">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019110700081073.png">
   
   
   
-  <title>Dive into DL - chenxindaaa</title>
+  <title>matlab基础11.matlab在微积分中的应用 - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,13 +191,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Dive into DL"></span>
+            <span id="subtitle" data-typed-text="Matlab"></span>
           
         </div>
 
@@ -205,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-02-14 00:00" pubdate>
-          February 14, 2020 am
+        <time datetime="2019-11-07 00:00" pubdate>
+          November 7, 2019 am
         </time>
       </span>
     
@@ -217,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          103 words
+          133 words
         
       </span>
     
@@ -228,7 +236,7 @@
         
         
         
-          1 mins
+          2 mins
         
       </span>
     
@@ -266,18 +274,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Dive into DL</h1>
+            <h1 style="display: none">Matlab</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer"/>
-<p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/">Language Model</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>
+<h2 id="一.差分与近似微分">一.差分与近似微分</h2>
+<p><img src="https://img-blog.csdnimg.cn/2019110700081073.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分<img src="https://img-blog.csdnimg.cn/20191107000932267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 近似微商：diff(Y)./diff(X)</p>
+<h2 id="二.微分计算">二.微分计算</h2>
+<figure>
+<img src="https://img-blog.csdnimg.cn/2019110700160448.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="三.不定积分与定积分计算">三.不定积分与定积分计算</h2>
+<p><img src="https://img-blog.csdnimg.cn/2019110700202580.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191107002211775.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h2 id="四.数值积分">四.数值积分</h2>
+<p>1.梯形积分法 <img src="https://img-blog.csdnimg.cn/2019110700230468.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191107002400830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 2.递推的辛普森积分法 <img src="https://img-blog.csdnimg.cn/20191107002532926.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
 
                 
               </div>
@@ -301,7 +313,7 @@
   
     <span>></span>
     
-  <a href="/categories/Programming/DL/" class="category-chain-item">DL</a>
+  <a href="/categories/Programming/MATLAB/" class="category-chain-item">MATLAB</a>
   
   
 
@@ -315,6 +327,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Matlab/">#Matlab</a>
+      
+    </div>
+  
 </div>
 
 
@@ -323,8 +342,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Dive into DL</div>
-      <div>http://chenxindaaa.com/Programming/DL/Dive into DL/</div>
+      <div>matlab基础11.matlab在微积分中的应用</div>
+      <div>http://chenxindaaa.com/Programming/MATLAB/MATLAB/matlab基础11.matlab在微积分中的应用/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +355,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 14, 2020</div>
+          <div>November 7, 2019</div>
         </div>
       
       
@@ -363,23 +382,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/Programming/ML/ML/" title="Machine Learning">
-                        <span class="hidden-mobile">Machine Learning</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

@@ -90,27 +90,6 @@
   
   
   <entry>
-    <title>Leetcode</title>
-    <link href="/Programming/Leetcode/Leetcode/"/>
-    <url>/Programming/Leetcode/Leetcode/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1/">1.两数之和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：2.两数相加/">2.两数相加</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode3/">3.无重复字符的最长子串</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：4.寻找两个有序数组的中位数/">4.寻找两个有序数组的中位数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：5.最长回文子串/">5.最长回文子串</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：7.整数反转/">7.整数反转</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：8.字符串转换整数/">8.字符串转换整数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：9.回文数/">9.回文数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode10/">10.正则表达式匹配</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：11.盛最多水的容器/">11.盛最多水的容器</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode13/">13. 罗马数字转整数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：14.最长公共前缀/">14.最长公共前缀</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：15.三数之和/">15.三数之和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：16.最接近的三数之和/">16.最接近的三数之和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode17/">17. 电话号码的字母组合</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode19/">19. 删除链表的倒数第 N 个结点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：20.有效的括号/">20.有效的括号</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：21.合并两个有序链表/">21.合并两个有序链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode22/">22. 括号生成</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：23.合并K个排序链表/">23.合并K个排序链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode24/">24. 两两交换链表中的节点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode25/">25. K 个一组翻转链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：26.删除排序数组中重复的项/">26.删除排序数组中重复的项</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode27/">27. 移除元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：33.搜索旋转排序数组/">33.搜索旋转排序数组</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：43.字符串相乘/">43.字符串相乘</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode44/">44. 通配符匹配</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：46.全排列/">46.全排列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：53.最大子序和/">53.最大子序和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：54.螺旋矩阵/">54.螺旋矩阵</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode55/">55. 跳跃游戏</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：59.螺旋矩阵二/">59.螺旋矩阵二</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：61.旋转链表/">61.旋转链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：62.不同路径/">62.不同路径</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：70.爬楼梯/">70.爬楼梯</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：78.子集/">78.子集</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode82/">82. 删除排序链表中的重复元素 II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：88.合并两个有序数组/">88.合并两个有序数组</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：89.格雷编码/">89.格雷编码</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode94/">94. 二叉树的中序遍历</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode95/">95. 不同的二叉搜索树 II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode99/">99. 恢复二叉搜索树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode100/">100.相同的树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode101/">101. 对称二叉树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：104.二叉树最大深度/">104.二叉树最大深度</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode105/">105. 从前序与中序遍历序列构造二叉树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode106/">106. 从中序与后序遍历序列构造二叉树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode108/">108. 将有序数组转换为二叉搜索树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：121.买卖股票的最佳时机/">121.买卖股票的最佳时机</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：122.买卖股票的最佳时机II/">122.买卖股票的最佳时机II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：124.二叉树最大路径和/">124.二叉树最大路径和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode134/">134. 加油站</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：136.只出现一次的数字/">136.只出现一次的数字</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：141.环形链表/">141.环形链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：142.环形链表II/">142.环形链表II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：146.LRU缓存机制/">146.LRU缓存机制</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：148.排序链表/">148.排序链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：155.最小栈/">155.最小栈</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：160.相交链表/">160.相交链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：169.众数/">169.众数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode203/">203. 移除链表元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：206.反转链表/">206.反转链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode208/">208. 实现 Trie (前缀树)</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：215.数组中的第K个最大元素/">215.数组中的第K个最大元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：217.存在重复元素/">217.存在重复元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：230.二叉搜索树中第K小的元素/">230.二叉搜索树中第K小的元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：231.2的幂/">231.2的幂</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：235.二叉搜索树的最近公共祖先/">235.二叉搜索树的最近公共祖先</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：236.二叉树的最近公共祖先/">236.二叉树的最近公共祖先</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：237.%20删除链表中的节点/">237. 删除链表中的节点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：238.%20除自身以外数组的乘积/">238. 除自身以外数组的乘积</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：292.%20Nim%20游戏/">292. Nim 游戏</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode322/">322. 零钱兑换</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：344.%20反转字符串/">344. 反转字符串</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode392/">392. 判断子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode415/">415. 字符串相加</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode435/">435. 无重叠区间</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode455/">455. 分发饼干</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode516/">516. 最长回文子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：557.%20反转字符串中的单词%20III/">557. 反转字符串中的单词 III</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1012/">1012. 至少有 1 位重复的数字</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1143/">1143. 最长公共子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1260/">1260. 二维网格迁移</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1487/">1487. 保证文件名唯一</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1605/">1605. 给定行和列的和求可行矩阵</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1615/">1615. 最大网络秩</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1626/">1626. 无矛盾的最佳球队</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1653/">1653. 使字符串平衡的最少删除次数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1721/">1721. 交换链表中的节点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1775/">1775. 通过最少操作次数使数组的和相等</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1780/">1780. 判断一个数字是否可以表示成三的幂的和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1812/">1812. 判断国际象棋棋盘中一个格子的颜色</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2363/">2363. 合并相似的物品</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2373/">2373. 矩阵中的局部最大值</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2379/">2379. 得到 K 个黑块的最少涂色次数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2383/">2383. 赢得比赛需要的最少训练时长</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2389/">2389. 和有限的最长子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2469/">2469. 温度转换</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2488/">2488. 统计中位数为 K 的子数组</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/offer16/">剑指 Offer 16. 数值的整数次方</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/offer47/">剑指 Offer 47. 礼物的最大价值</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/面试题05.02/">面试题 05.02. 二进制数转字符串</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>Leetcode</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Machine Learning</title>
     <link href="/Programming/ML/ML/"/>
     <url>/Programming/ML/ML/</url>
@@ -123,6 +102,27 @@
       <category>Programming</category>
       
       <category>ML</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Leetcode</title>
+    <link href="/Programming/Leetcode/Leetcode/"/>
+    <url>/Programming/Leetcode/Leetcode/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1/">1.两数之和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：2.两数相加/">2.两数相加</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode3/">3.无重复字符的最长子串</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：4.寻找两个有序数组的中位数/">4.寻找两个有序数组的中位数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：5.最长回文子串/">5.最长回文子串</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：7.整数反转/">7.整数反转</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：8.字符串转换整数/">8.字符串转换整数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：9.回文数/">9.回文数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode10/">10.正则表达式匹配</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：11.盛最多水的容器/">11.盛最多水的容器</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode13/">13. 罗马数字转整数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：14.最长公共前缀/">14.最长公共前缀</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：15.三数之和/">15.三数之和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：16.最接近的三数之和/">16.最接近的三数之和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode17/">17. 电话号码的字母组合</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode19/">19. 删除链表的倒数第 N 个结点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：20.有效的括号/">20.有效的括号</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：21.合并两个有序链表/">21.合并两个有序链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode22/">22. 括号生成</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：23.合并K个排序链表/">23.合并K个排序链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode24/">24. 两两交换链表中的节点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode25/">25. K 个一组翻转链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：26.删除排序数组中重复的项/">26.删除排序数组中重复的项</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode27/">27. 移除元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：33.搜索旋转排序数组/">33.搜索旋转排序数组</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：43.字符串相乘/">43.字符串相乘</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode44/">44. 通配符匹配</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：46.全排列/">46.全排列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：53.最大子序和/">53.最大子序和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：54.螺旋矩阵/">54.螺旋矩阵</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode55/">55. 跳跃游戏</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：59.螺旋矩阵二/">59.螺旋矩阵二</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：61.旋转链表/">61.旋转链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：62.不同路径/">62.不同路径</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：70.爬楼梯/">70.爬楼梯</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：78.子集/">78.子集</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode82/">82. 删除排序链表中的重复元素 II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：88.合并两个有序数组/">88.合并两个有序数组</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：89.格雷编码/">89.格雷编码</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode94/">94. 二叉树的中序遍历</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode95/">95. 不同的二叉搜索树 II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode99/">99. 恢复二叉搜索树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode100/">100.相同的树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode101/">101. 对称二叉树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：104.二叉树最大深度/">104.二叉树最大深度</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode105/">105. 从前序与中序遍历序列构造二叉树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode106/">106. 从中序与后序遍历序列构造二叉树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode108/">108. 将有序数组转换为二叉搜索树</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：121.买卖股票的最佳时机/">121.买卖股票的最佳时机</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：122.买卖股票的最佳时机II/">122.买卖股票的最佳时机II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：124.二叉树最大路径和/">124.二叉树最大路径和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode134/">134. 加油站</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：136.只出现一次的数字/">136.只出现一次的数字</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：141.环形链表/">141.环形链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：142.环形链表II/">142.环形链表II</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：146.LRU缓存机制/">146.LRU缓存机制</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：148.排序链表/">148.排序链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：155.最小栈/">155.最小栈</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：160.相交链表/">160.相交链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：169.众数/">169.众数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode203/">203. 移除链表元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：206.反转链表/">206.反转链表</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode208/">208. 实现 Trie (前缀树)</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：215.数组中的第K个最大元素/">215.数组中的第K个最大元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：217.存在重复元素/">217.存在重复元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：230.二叉搜索树中第K小的元素/">230.二叉搜索树中第K小的元素</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：231.2的幂/">231.2的幂</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：235.二叉搜索树的最近公共祖先/">235.二叉搜索树的最近公共祖先</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：236.二叉树的最近公共祖先/">236.二叉树的最近公共祖先</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：237.%20删除链表中的节点/">237. 删除链表中的节点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：238.%20除自身以外数组的乘积/">238. 除自身以外数组的乘积</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：292.%20Nim%20游戏/">292. Nim 游戏</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode322/">322. 零钱兑换</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：344.%20反转字符串/">344. 反转字符串</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode392/">392. 判断子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode415/">415. 字符串相加</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode435/">435. 无重叠区间</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode455/">455. 分发饼干</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode516/">516. 最长回文子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode实战：557.%20反转字符串中的单词%20III/">557. 反转字符串中的单词 III</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1012/">1012. 至少有 1 位重复的数字</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1143/">1143. 最长公共子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1260/">1260. 二维网格迁移</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1487/">1487. 保证文件名唯一</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1605/">1605. 给定行和列的和求可行矩阵</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1615/">1615. 最大网络秩</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1626/">1626. 无矛盾的最佳球队</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1653/">1653. 使字符串平衡的最少删除次数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1721/">1721. 交换链表中的节点</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1775/">1775. 通过最少操作次数使数组的和相等</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1780/">1780. 判断一个数字是否可以表示成三的幂的和</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode1812/">1812. 判断国际象棋棋盘中一个格子的颜色</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2363/">2363. 合并相似的物品</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2373/">2373. 矩阵中的局部最大值</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2379/">2379. 得到 K 个黑块的最少涂色次数</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2383/">2383. 赢得比赛需要的最少训练时长</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2389/">2389. 和有限的最长子序列</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2469/">2469. 温度转换</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/Leetcode2488/">2488. 统计中位数为 K 的子数组</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/offer16/">剑指 Offer 16. 数值的整数次方</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/offer47/">剑指 Offer 47. 礼物的最大价值</a></p><p><a href="https://chenxindaaa.com/Programming/Leetcode/Leetcode/面试题05.02/">面试题 05.02. 二进制数转字符串</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>Leetcode</category>
       
     </categories>
     
@@ -147,325 +147,6 @@
       
     </categories>
     
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>matlab基础11.matlab在微积分中的应用</title>
-    <link href="/object-Object/MATLAB/matlab%E5%9F%BA%E7%A1%8011.matlab%E5%9C%A8%E5%BE%AE%E7%A7%AF%E5%88%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
-    <url>/object-Object/MATLAB/matlab%E5%9F%BA%E7%A1%8011.matlab%E5%9C%A8%E5%BE%AE%E7%A7%AF%E5%88%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.差分与近似微分">一.差分与近似微分</h2><p><img src="https://img-blog.csdnimg.cn/2019110700081073.png" alt="在这里插入图片描述" /> diff(X)一阶差分向量 diff(X, n)n阶差分向量 diff(X, n, dim)沿dim的维度进行差分<img src="https://img-blog.csdnimg.cn/20191107000932267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 近似微商：diff(Y)./diff(X)</p><h2 id="二.微分计算">二.微分计算</h2><figure><img src="https://img-blog.csdnimg.cn/2019110700160448.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="三.不定积分与定积分计算">三.不定积分与定积分计算</h2><p><img src="https://img-blog.csdnimg.cn/2019110700202580.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191107002211775.png" alt="在这里插入图片描述" /></p><h2 id="四.数值积分">四.数值积分</h2><p>1.梯形积分法 <img src="https://img-blog.csdnimg.cn/2019110700230468.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191107002400830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 2.递推的辛普森积分法 <img src="https://img-blog.csdnimg.cn/20191107002532926.png" alt="在这里插入图片描述" /></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>matlab基础10.线性代数</title>
-    <link href="/object-Object/MATLAB/matlab%E5%9F%BA%E7%A1%8010.%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
-    <url>/object-Object/MATLAB/matlab%E5%9F%BA%E7%A1%8010.%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.数组的表示冒号的用法">一.数组的表示，冒号的用法</h2><p><strong>1.a : b</strong> <img src="https://img-blog.csdnimg.cn/20191103235256862.png" alt="在这里插入图片描述" /> <strong>2.a : b : c</strong> b为步长 <img src="https://img-blog.csdnimg.cn/20191103235430888.png" alt="在这里插入图片描述" /></p><h2 id="二.矩阵的大小size">二.矩阵的大小size()</h2><p><strong>1.二维数组</strong> <img src="https://img-blog.csdnimg.cn/20191103235902694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>2.三维数组</strong> <img src="https://img-blog.csdnimg.cn/20191104155248704.png" alt="在这里插入图片描述" /> ## 三.矩阵的秩rank() <img src="https://img-blog.csdnimg.cn/20191104000024796.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="四.向量范数norm">四.向量范数norm()</h2><figure><img src="https://img-blog.csdnimg.cn/20191104155813625.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="五.矩阵的逆inv">五.矩阵的逆inv()</h2><figure><img src="https://img-blog.csdnimg.cn/20191104000310854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="六.矩阵的转置">六.矩阵的转置'</h2><figure><img src="https://img-blog.csdnimg.cn/2019110400044087.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="七.矩阵的特征值和特征向量eig">七.矩阵的特征值和特征向量eig()</h2><figure><img src="https://img-blog.csdnimg.cn/20191104161244417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="八.矩阵的左右翻转上下翻转和矩阵的的逆时针旋转90操作">八.矩阵的左右翻转，上下翻转和矩阵的的逆时针旋转90°操作</h2><p><strong>1.左右翻转fliplr(A)</strong> <img src="https://img-blog.csdnimg.cn/2019110419562940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>2.上下翻转flipud(A)</strong> <img src="https://img-blog.csdnimg.cn/20191104195746358.png" alt="在这里插入图片描述" /> <strong>3.逆时针旋转90°rot90(A)</strong> <img src="https://img-blog.csdnimg.cn/20191104195833303.png" alt="在这里插入图片描述" /></p><h2 id="九.对角矩阵">九.对角矩阵</h2><p><img src="https://img-blog.csdnimg.cn/20191104200444811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191104200502275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础09.图形属性设置及习题</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8009.%20%E5%9B%BE%E5%BD%A2%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E5%8F%8A%E4%B9%A0%E9%A2%98/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8009.%20%E5%9B%BE%E5%BD%A2%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E5%8F%8A%E4%B9%A0%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.图形属性设置view">一.图形属性设置view：</h2><p><img src="https://img-blog.csdnimg.cn/20191031234113692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191031234802461.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191031234831532.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191031234855513.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191031234613340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="二.习题">二.习题</h2><ol type="1"><li><img src="https://img-blog.csdnimg.cn/20191031235449139.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/2019103123541580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191031235359490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191031235523703.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101002409691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101002434334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/2019110100263131.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/2019110100374727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101003723746.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 4 <img src="https://img-blog.csdnimg.cn/20191101003818178.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101004308759.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101004256236.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191101004326379.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101004501564.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101004512252.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191101004543851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101005024670.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191101005010730.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础08.三维图</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8008.%E4%B8%89%E7%BB%B4%E5%9B%BE/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8008.%E4%B8%89%E7%BB%B4%E5%9B%BE/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.三维线性图plotx-y-z">一.三维线性图plot(X, Y, Z)</h2><p>二维正态分布： <img src="https://img-blog.csdnimg.cn/2019102918402924.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029184037616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="二.三维表面图surf">二.三维表面图surf</h2><p><img src="https://img-blog.csdnimg.cn/20191029184210495.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029184302638.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029184307303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="三.简易表面图ezsurf">三.简易表面图ezsurf</h2><p><img src="https://img-blog.csdnimg.cn/2019102918464416.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029185051367.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029185056942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础07.二维图</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8007.%E4%BA%8C%E7%BB%B4%E5%9B%BE/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8007.%E4%BA%8C%E7%BB%B4%E5%9B%BE/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.plot">一.plot</h2><p><strong>1.plot(Y)</strong> <img src="https://img-blog.csdnimg.cn/20191028194929404.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191027235726826.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/2019102723582828.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191027235837591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>2.plot(X,Y)</strong> 画出反正切函数及其微分函数在(-5, 5)上的图像 <img src="https://img-blog.csdnimg.cn/20191028194646445.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028194444582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="二.简易线性函数ezplot">二.简易线性函数ezplot</h2><figure><img src="https://img-blog.csdnimg.cn/20191029183313345.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><p><img src="https://img-blog.csdnimg.cn/20191028195614904.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028195628705.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="三.散点图scatter">三.散点图scatter</h2><p><img src="https://img-blog.csdnimg.cn/20191029183304315.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028200129750.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028200121169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="四.极坐标图及其与直角坐标图的转换polar">四.极坐标图及其与直角坐标图的转换polar</h2><p><img src="https://img-blog.csdnimg.cn/20191029183220971.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029183236493.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/2019102820165977.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028201706576.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="五.条形图bar">五.条形图bar</h2><p><img src="https://img-blog.csdnimg.cn/20191029183208348.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028202427683.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028202434632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="六.饼图pie">六.饼图pie</h2><p><img src="https://img-blog.csdnimg.cn/20191029183056890.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028203103848.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191028203050874.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="七.阶梯图stairs">七.阶梯图stairs</h2><figure><img src="https://img-blog.csdnimg.cn/2019102918290445.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="八.茎干图stem">八.茎干图stem</h2><figure><img src="https://img-blog.csdnimg.cn/20191029183011958.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础06.第三章习题</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8006.%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%B9%A0%E9%A2%98/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8006.%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%B9%A0%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<ol type="1"><li><img src="https://img-blog.csdnimg.cn/20191026191817305.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026191722186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026191749960.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026192436738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026192637273.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026194415452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026194550382.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200443678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200524966.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200534284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200549660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026200604977.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026202153719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026202213707.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026202549817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026202618343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026203425614.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026205253230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026205302175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li><li><img src="https://img-blog.csdnimg.cn/20191026205337155.png" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/201910262105361.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026210546193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础05.多维数组</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8005.%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8005.%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
-    
-    <content type="html"><![CDATA[<h2 id="matlab多维数组">matlab多维数组</h2><p><strong>创建多维数组</strong> 1.直接赋值 <img src="https://img-blog.csdnimg.cn/20191025144923599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 2.通过函数创建多维数组 <img src="https://img-blog.csdnimg.cn/20191025145100174.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 2.多维数组的运算 <img src="https://img-blog.csdnimg.cn/20191025145314635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础04.结构数组</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8004.%E7%BB%93%E6%9E%84%E6%95%B0%E7%BB%84/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8004.%E7%BB%93%E6%9E%84%E6%95%B0%E7%BB%84/</url>
-    
-    <content type="html"><![CDATA[<h2 id="matlab结构数组">matlab结构数组</h2><p>1.直接赋值 <img src="https://img-blog.csdnimg.cn/20191024234225732.png" alt="在这里插入图片描述" /> 访问结构对象：通过.访问 <img src="https://img-blog.csdnimg.cn/20191024234150114.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 2.使用struct函数创建结构 struct函数格式：s = struct('field1',values1,'field2',values2,...) <img src="https://img-blog.csdnimg.cn/2019102423475972.png" alt="在这里插入图片描述" /> 删除字段名（域名） 用rmfield()函数删除结构数组里的域</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础03.数据类型</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8003.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8003.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.matlab数据类型概述">一.matlab数据类型概述</h2><p><img src="https://img-blog.csdnimg.cn/20191022164837886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>matlab中每一种数据类型都是以数组的方式出现</strong></p><h2 id="二.字符型数组">二.字符型数组</h2><p>用单引号括起来的字符和数字的组合称为字符串或称为字符数组 <strong>字符数组的基本运算</strong> <strong>1.水平连接strcat</strong> 例如：</p><p><img src="https://img-blog.csdnimg.cn/20191022165607626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>2.垂直连接stavcat</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022165752175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>3.寻找findstr</strong> 例如 <img src="https://img-blog.csdnimg.cn/20191022170229450.png" alt="在这里插入图片描述" /></p><h2 id="三.数值型数组">三.数值型数组</h2><figure><img src="https://img-blog.csdnimg.cn/20191022170857411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><h2 id="四.单元型数组">四.单元型数组</h2><p><strong>1,单元数组的创建</strong> C = cell(m) %创建n阶单元空方阵 <img src="https://img-blog.csdnimg.cn/20191022171252406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> cell(m, n) %创建m行n列的单元空矩阵 <img src="https://img-blog.csdnimg.cn/20191022171414180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>2.赋值方法</strong> （1）下标索引 如果A是一个二阶空方阵 A（1， 1） = {1 ： 5}意为在（1， 1）单元里为一个1：5的行向量 （2）单元索引 如果A是一个二阶空方阵</p><p>A{1， 1} = 1 ： 5意为在（1， 1）单元里为一个1：5的行向量</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础01. .m文件</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8001.%20.m%E6%96%87%E4%BB%B6/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8001.%20.m%E6%96%87%E4%BB%B6/</url>
-    
-    <content type="html"><![CDATA[<p><strong>1. .m文件的用处：</strong> 1.matlab脚本文件，将代码集合起来，用来执行重复的工作，并且能将代码保存在计算机里，方便下次调用 2.matlab函数文件，以function开头，用来定义一个函数，当调用matlab函数时，在命令窗口输入函数名，则该函数的程序及被调用并执行</p><p><strong>2. 创建并运行.m脚本文件：</strong> <img src="https://img-blog.csdnimg.cn/2019102120415812.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 点击左上角新建脚本，然后点击保存即可创建.m文件 <img src="https://img-blog.csdnimg.cn/20191021204504404.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" />写好代码，我这里写的是计算[1 2 3; 4 5 6]矩阵乘[1 2; 3 4; 5 6],点击上方绿色按钮“运行”即可运行脚本 <strong>3.编写.m函数文件</strong> <strong>m函数文件的构成</strong> 1.函数定义行 2.帮助文本的标题行 3.帮助文本的内容 4.函数体 5.附注 其中2.3.5不是必须的，他们的作用是帮助读者理解函数 <strong>编写一个计算三角形面积的函数文件</strong> <img src="https://img-blog.csdnimg.cn/20191021210741368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> y为输出变量，triang_area为函数名，(a, b, c)为输入变量 结果： <img src="https://img-blog.csdnimg.cn/20191021210914923.png" alt="在这里插入图片描述" /></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Matlab基础02. 条件循环</title>
-    <link href="/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8002.%20%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
-    <url>/object-Object/MATLAB/Matlab%E5%9F%BA%E7%A1%8002.%20%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一.matlab条件语句">一.matlab条件语句</h2><p><strong>语法：</strong> <strong>1.if/end</strong> if 逻辑表达式 程序语句 end <strong>2.if/else/end</strong> if 逻辑表达式 程序语句 else 程序语句 end <strong>3.if/elseif.../else/end</strong> if 逻辑表达式 程序语句 elseif 逻辑表达式 程序语句 ... else 程序语句 end ## 二.matlab循环语句 <strong>语法</strong> <strong>1.for/end</strong> for 变量 = 起点:增量:终点 程序语句 end 例如，用for/end语句编写一个求n的阶乘的函数 <img src="https://img-blog.csdnimg.cn/20191022161614701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> <strong>2.while/end</strong> while 逻辑表达式 程序语句 end 例如，用while/end语句编写一个Fibonacci函数 <img src="https://img-blog.csdnimg.cn/20191022160112673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p><h2 id="matlab开关语句-switchend">matlab开关语句 switch/end</h2><p><strong>语法</strong> switch 表达式 case value1 程序语句 case value2 程序语句 case value3 程序语句 ... otherwise 程序语句 end 在有些情况下，switch语句可以用条件分支语句来代替 例如，编写一个判断一个二次方程根的情况的程序 <img src="https://img-blog.csdnimg.cn/20191022163832423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>MATLAB</category>
-      
-      <category>[object Object]</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Matlab</tag>
-      
-    </tags>
     
   </entry>
   

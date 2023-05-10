@@ -16,23 +16,31 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linear Regression Softmax Classification Multilayer Perceptron Text Prepare Language Model Recurrent Neural Network">
+    <meta name="description" content="一.三维线性图plot(X, Y, Z) 二维正态分布：   二.三维表面图surf    三.简易表面图ezsurf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dive into DL">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/DL/Dive%20into%20DL/index.html">
+<meta property="og:title" content="Matlab基础08.三维图">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/MATLAB/MATLAB/Matlab%E5%9F%BA%E7%A1%8008.%E4%B8%89%E7%BB%B4%E5%9B%BE/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="Linear Regression Softmax Classification Multilayer Perceptron Text Prepare Language Model Recurrent Neural Network">
+<meta property="og:description" content="一.三维线性图plot(X, Y, Z) 二维正态分布：   二.三维表面图surf    三.简易表面图ezsurf">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/diveintodl.jpg">
-<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-09T03:25:04.830Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019102918402924.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029184037616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029184210495.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029184302638.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029184307303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019102918464416.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029185051367.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191029185056942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-10-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T09:55:22.055Z">
 <meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/diveintodl.jpg">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019102918402924.png">
   
   
   
-  <title>Dive into DL - chenxindaaa</title>
+  <title>Matlab基础08.三维图 - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,13 +191,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Dive into DL"></span>
+            <span id="subtitle" data-typed-text="Matlab"></span>
           
         </div>
 
@@ -205,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-02-14 00:00" pubdate>
-          February 14, 2020 am
+        <time datetime="2019-10-29 00:00" pubdate>
+          October 29, 2019 am
         </time>
       </span>
     
@@ -217,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          103 words
+          49 words
         
       </span>
     
@@ -266,18 +274,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Dive into DL</h1>
+            <h1 style="display: none">Matlab</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer"/>
-<p><a href="https://chenxindaaa.com/Programming/DL/PyTorch/Dive%20into%20DL/Dive%20into%20DL-Linear%20Regression/">Linear Regression</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Softmax%20Classification/">Softmax Classification</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/CV/Dive%20into%20DL/Dive%20into%20DL-Multilayer%20Perceptron/">Multilayer Perceptron</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Text%20Prepare/">Text Prepare</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Language%20Model/">Language Model</a></p>
-<p><a href="https://chenxindaaa.com/Programming/DL/NLP/Dive%20into%20DL/Dive%20into%20DL-Recurrent%20Neural%20Network/">Recurrent Neural Network</a></p>
+<h2 id="一.三维线性图plotx-y-z">一.三维线性图plot(X, Y, Z)</h2>
+<p>二维正态分布： <img src="https://img-blog.csdnimg.cn/2019102918402924.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029184037616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h2 id="二.三维表面图surf">二.三维表面图surf</h2>
+<p><img src="https://img-blog.csdnimg.cn/20191029184210495.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029184302638.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029184307303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h2 id="三.简易表面图ezsurf">三.简易表面图ezsurf</h2>
+<p><img src="https://img-blog.csdnimg.cn/2019102918464416.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029185051367.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191029185056942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
 
                 
               </div>
@@ -301,7 +309,7 @@
   
     <span>></span>
     
-  <a href="/categories/Programming/DL/" class="category-chain-item">DL</a>
+  <a href="/categories/Programming/MATLAB/" class="category-chain-item">MATLAB</a>
   
   
 
@@ -315,6 +323,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Matlab/">#Matlab</a>
+      
+    </div>
+  
 </div>
 
 
@@ -323,8 +338,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Dive into DL</div>
-      <div>http://chenxindaaa.com/Programming/DL/Dive into DL/</div>
+      <div>Matlab基础08.三维图</div>
+      <div>http://chenxindaaa.com/Programming/MATLAB/MATLAB/Matlab基础08.三维图/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +351,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 14, 2020</div>
+          <div>October 29, 2019</div>
         </div>
       
       
@@ -363,23 +378,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/Programming/ML/ML/" title="Machine Learning">
-                        <span class="hidden-mobile">Machine Learning</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
