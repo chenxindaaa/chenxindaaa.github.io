@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、FP-growth介绍 从大规模的数据集中，寻找不同特征或者物品之间的隐含关系，称为关联分析（association analysis），或者关联规则学习（association rule learning）。 在 Apriori 算法中，寻找频繁项集，需要对每一个可能的频繁项扫描一遍数据集计算支持度，计算量庞大。 在 FP-growth 算法中，寻找频繁项集，只需要扫描两遍数据集，将数据存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MachineLearning_FP-growth">
+<meta property="og:url" content="http://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_FP-growth/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="一、FP-growth介绍 从大规模的数据集中，寻找不同特征或者物品之间的隐含关系，称为关联分析（association analysis），或者关联规则学习（association rule learning）。 在 Apriori 算法中，寻找频繁项集，需要对每一个可能的频繁项扫描一遍数据集计算支持度，计算量庞大。 在 FP-growth 算法中，寻找频繁项集，只需要扫描两遍数据集，将数据存">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191231164503907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191231164854510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-12-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-30T12:22:12.917Z">
+<meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191231164503907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+  
+  
+  
+  <title>MachineLearning_FP-growth - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Publications/">
+                <i class="iconfont icon-book"></i>
+                Publications
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="FP-growth"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-12-31 00:00" pubdate>
+          December 31, 2019 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">FP-growth</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <meta name="referrer" content="no-referrer"/>
+<h2 id="一fp-growth介绍">一、FP-growth介绍</h2>
+<p>从大规模的数据集中，寻找不同特征或者物品之间的隐含关系，称为关联分析（association analysis），或者关联规则学习（association rule learning）。 在 Apriori 算法中，寻找频繁项集，需要对每一个可能的频繁项扫描一遍数据集计算支持度，计算量庞大。 在 FP-growth 算法中，寻找频繁项集，只需要扫描两遍数据集，将数据存储在FP树的结构上，然后在FP树上挖掘频繁项集。</p>
+<ul>
+<li>优点：速度一般要快于 Apriori。</li>
+<li>缺点：实现比较困难，在某些数据集上性能会下降。</li>
+<li>适用数据类型：标称型数据。</li>
+</ul>
+<p>例如在下述例子中，下图是一颗FP树：</p>
+<table>
+<thead>
+<tr class="header">
+<th>事务ID</th>
+<th>事务中的元素项</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>001</td>
+<td>r, z, h, j, p</td>
+</tr>
+<tr class="even">
+<td>002</td>
+<td>z, y, x, w, v, u, t, s</td>
+</tr>
+<tr class="odd">
+<td>003</td>
+<td>z</td>
+</tr>
+<tr class="even">
+<td>004</td>
+<td>r, x, n, o, s</td>
+</tr>
+<tr class="odd">
+<td>005</td>
+<td>y, r, x, z, q, t, p</td>
+</tr>
+<tr class="even">
+<td>006</td>
+<td>y, z, x, e, q, s, t, m</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://img-blog.csdnimg.cn/20191231164503907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> FP代表频繁模式（Frequent Pattern），一个元素项可以在一颗FP树上出现多次。</p>
+<p>树节点上给出了当前节点的路径在数据集中的出现次数，例如｛z:5｝表示元素｛z｝在数据集中出现了5次；｛y:3｝表示路径｛y, x, z｝在数据集中出现了3次；｛s:2｝表示路径｛s, y, x, z｝在数据集中出现了2次。</p>
+<p>左侧为头指针表，给出了每个元素在数据集中出现的次数，并由链表通过节点链接（node link）依次链接每个元素。部分元素因为不满足最小支持度的要求，所以不储存在FP树中。</p>
+<p>在 FP-growth 算法中，同样采用了 Apriori 算法的思想，如果某个项是非频繁的，那么这个项的所有超集也是非频繁的。</p>
+<h2 id="二构建fp树">二、构建FP树</h2>
+<p>构建FP树的过程只需要扫描两遍数据集。 第一遍扫描，计算每个单个元素的频率，并根据最小支持度，滤除不满足的元素。 第二遍扫描，首先对数据集进行处理，每一条数据按照元素的绝对出现频率排序，并滤除不满足最小支持度的元素。 例如根据上述的头指针表，元素排序为｛z:5, x:4, y:3, s:3, r:3, t:3｝，所以处理后的数据为：</p>
+<table>
+<thead>
+<tr class="header">
+<th>事务ID</th>
+<th>事务中的元素项</th>
+<th>过滤及重排序后的事务</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>001</td>
+<td>r, z, h, j, p</td>
+<td>z,r</td>
+</tr>
+<tr class="even">
+<td>002</td>
+<td>z, y, x, w, v, u, t, s</td>
+<td>z, x, y, s, t</td>
+</tr>
+<tr class="odd">
+<td>003</td>
+<td>z</td>
+<td>z</td>
+</tr>
+<tr class="even">
+<td>004</td>
+<td>r, x, n, o, s</td>
+<td>x, s, r</td>
+</tr>
+<tr class="odd">
+<td>005</td>
+<td>y, r, x, z, q, t, p</td>
+<td>z, x, y, r, t</td>
+</tr>
+<tr class="even">
+<td>006</td>
+<td>y, z, x, e, q, s, t, m</td>
+<td>z, x, y, s, t</td>
+</tr>
+</tbody>
+</table>
+<p>处理后，遍历数据集，将每一条数据插入FP树中，从根节点开始递归添加路径，存在则将数值增加，不存在则创建新的节点。</p>
+<p>例如下图所示，① 根节点不存在子节点｛z｝，所以创建新的子节点｛z｝，递归节点｛z｝，因不存在子节点｛r｝，所以创建新的子节点｛r｝，② 根节点存在子节点｛z｝，所以数值增加，递归节点｛z｝，因不存在子节点｛x｝，所以创建新的子节点｛x｝，递归节点｛x｝，......，如此递归。</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20191231164854510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="三代码实现">三、代码实现</h2>
+<h4 id="fp树的类定义">3.1 FP树的类定义</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">treeNode</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, nameValue, numOccur, parentNode</span>):<br>        self.name = nameValue<br>        self.count = numOccur<br>        self.nodeLink = <span class="hljs-literal">None</span><br>        self.parent = parentNode      <span class="hljs-comment">#needs to be updated</span><br>        self.children = &#123;&#125; <br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">inc</span>(<span class="hljs-params">self, numOccur</span>):<br>        self.count += numOccur<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">disp</span>(<span class="hljs-params">self, ind=<span class="hljs-number">1</span></span>):<br>        <span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;  &#x27;</span>*ind, self.name, <span class="hljs-string">&#x27; &#x27;</span>, self.count<br>        <span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> self.children.values():<br>            child.disp(ind+<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<h4 id="fp树的构建函数">3.2 FP树的构建函数</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">createTree</span>(<span class="hljs-params">dataSet, minSup=<span class="hljs-number">1</span></span>): <span class="hljs-comment">#create FP-tree from dataset but don&#x27;t mine</span><br>    headerTable = &#123;&#125;<br>    <span class="hljs-comment">#go over dataSet twice</span><br>    <span class="hljs-keyword">for</span> trans <span class="hljs-keyword">in</span> dataSet:<span class="hljs-comment">#first pass counts frequency of occurance</span><br>        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> trans:<br>            headerTable[item] = headerTable.get(item, <span class="hljs-number">0</span>) + dataSet[trans]<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> headerTable.keys():  <span class="hljs-comment">#remove items not meeting minSup</span><br>        <span class="hljs-keyword">if</span> headerTable[k] &lt; minSup: <br>            <span class="hljs-keyword">del</span>(headerTable[k])<br>    freqItemSet = <span class="hljs-built_in">set</span>(headerTable.keys())<br>    <span class="hljs-comment">#print &#x27;freqItemSet: &#x27;,freqItemSet</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(freqItemSet) == <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>, <span class="hljs-literal">None</span>  <span class="hljs-comment">#if no items meet min support --&gt;get out</span><br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> headerTable:<br>        headerTable[k] = [headerTable[k], <span class="hljs-literal">None</span>] <span class="hljs-comment">#reformat headerTable to use Node link </span><br>    <span class="hljs-comment">#print &#x27;headerTable: &#x27;,headerTable</span><br>    retTree = treeNode(<span class="hljs-string">&#x27;Null Set&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-literal">None</span>) <span class="hljs-comment">#create tree</span><br>    <span class="hljs-keyword">for</span> tranSet, count <span class="hljs-keyword">in</span> dataSet.items():  <span class="hljs-comment">#go through dataset 2nd time</span><br>        localD = &#123;&#125;<br>        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> tranSet:  <span class="hljs-comment">#put transaction items in order</span><br>            <span class="hljs-keyword">if</span> item <span class="hljs-keyword">in</span> freqItemSet:<br>                localD[item] = headerTable[item][<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(localD) &gt; <span class="hljs-number">0</span>:<br>            orderedItems = [v[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(localD.items(), key=<span class="hljs-keyword">lambda</span> p: p[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)]<br>            updateTree(orderedItems, retTree, headerTable, count)<span class="hljs-comment">#populate tree with ordered freq itemset</span><br>    <span class="hljs-keyword">return</span> retTree, headerTable <span class="hljs-comment">#return tree and header table</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">updateTree</span>(<span class="hljs-params">items, inTree, headerTable, count</span>):<br>    <span class="hljs-keyword">if</span> items[<span class="hljs-number">0</span>] <span class="hljs-keyword">in</span> inTree.children:<span class="hljs-comment">#check if orderedItems[0] in retTree.children</span><br>        inTree.children[items[<span class="hljs-number">0</span>]].inc(count) <span class="hljs-comment">#incrament count</span><br>    <span class="hljs-keyword">else</span>:   <span class="hljs-comment">#add items[0] to inTree.children</span><br>        inTree.children[items[<span class="hljs-number">0</span>]] = treeNode(items[<span class="hljs-number">0</span>], count, inTree)<br>        <span class="hljs-keyword">if</span> headerTable[items[<span class="hljs-number">0</span>]][<span class="hljs-number">1</span>] == <span class="hljs-literal">None</span>: <span class="hljs-comment">#update header table </span><br>            headerTable[items[<span class="hljs-number">0</span>]][<span class="hljs-number">1</span>] = inTree.children[items[<span class="hljs-number">0</span>]]<br>        <span class="hljs-keyword">else</span>:<br>            updateHeader(headerTable[items[<span class="hljs-number">0</span>]][<span class="hljs-number">1</span>], inTree.children[items[<span class="hljs-number">0</span>]])<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(items) &gt; <span class="hljs-number">1</span>:<span class="hljs-comment">#call updateTree() with remaining ordered items</span><br>        updateTree(items[<span class="hljs-number">1</span>::], inTree.children[items[<span class="hljs-number">0</span>]], headerTable, count)<br>        <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">updateHeader</span>(<span class="hljs-params">nodeToTest, targetNode</span>):   <span class="hljs-comment">#this version does not use recursion</span><br>    <span class="hljs-keyword">while</span> (nodeToTest.nodeLink != <span class="hljs-literal">None</span>):    <span class="hljs-comment">#Do not use recursion to traverse a linked list!</span><br>        nodeToTest = nodeToTest.nodeLink<br>    nodeToTest.nodeLink = targetNode<br></code></pre></td></tr></table></figure>
+<h4 id="简单数据集及数据包装器">3.3 简单数据集及数据包装器</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">loadSimpDat</span>():<br>    simpDat = [[<span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-string">&#x27;h&#x27;</span>, <span class="hljs-string">&#x27;j&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>],<br>               [<span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, <span class="hljs-string">&#x27;v&#x27;</span>, <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-string">&#x27;t&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span>],<br>               [<span class="hljs-string">&#x27;z&#x27;</span>],<br>               [<span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;n&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span>],<br>               [<span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-string">&#x27;q&#x27;</span>, <span class="hljs-string">&#x27;t&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>],<br>               [<span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;q&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span>, <span class="hljs-string">&#x27;t&#x27;</span>, <span class="hljs-string">&#x27;m&#x27;</span>]]<br>    <span class="hljs-keyword">return</span> simpDat<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">createInitSet</span>(<span class="hljs-params">dataSet</span>):<br>    retDict = &#123;&#125;<br>    <span class="hljs-keyword">for</span> trans <span class="hljs-keyword">in</span> dataSet:<br>        retDict[<span class="hljs-built_in">frozenset</span>(trans)] = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> retDict<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Artificial-Intelligence/ML/" class="category-chain-item">ML</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MachineLearning/">#MachineLearning</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MachineLearning_FP-growth</div>
+      <div>http://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_FP-growth/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 31, 2019</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

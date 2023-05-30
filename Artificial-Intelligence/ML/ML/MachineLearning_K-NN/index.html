@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="什么是机器学习？ 在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。 机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论。简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MachineLearning_K-NN">
+<meta property="og:url" content="http://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_K-NN/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="什么是机器学习？ 在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。 机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论。简">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191115203142896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191115210034273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191115211815605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2019-11-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-30T12:22:12.917Z">
+<meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="MachineLearning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191115203142896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
+  
+  
+  
+  <title>MachineLearning_K-NN - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Publications/">
+                <i class="iconfont icon-book"></i>
+                Publications
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="K-NN"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-11-15 00:00" pubdate>
+          November 15, 2019 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">K-NN</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <meta name="referrer" content="no-referrer"/>
+<h2 id="什么是机器学习">什么是机器学习？</h2>
+<p>在我们刚出生时，可以说我们对周围的事物一无所知，当我们第一次吃完苹果和梨后，下次吃时并不能分辨出两种水果的种类，但当我们吃过很多次后，再见到苹果和梨我们就能轻易地判断出来。</p>
+<p>机器学习简单来说可以理解成计算机认知的过程，但是计算机认知过程和人类认知过程有本质性的区别，人类是通过一次次不断实践来认知事物的，而计算机则是通过把大量无序的数据转换成有用的信息后总结出规律然后得出结论。简单的一句话：==机器学习就是让机器从大量的数据集中学习，进而得到一个更加符合现实规律的模型，通过对模型的使用使得机器比以往表现的更好。==</p>
+<h2 id="k-近邻算法">k-近邻算法：</h2>
+<p>==k-近邻算法就是采用测量不同特征值之间的距离进行分类，其实本质就是我们初中学的两点间距离== <strong>举一个二维的例子：</strong> 比如我们用一条小狗每天的摄入量与睡觉时间来判断一条小狗是胖狗还是瘦狗，在判断之前，我们必须要有一定数量的样本来作为依据 设小狗a每天摄入1.5g食物，睡8小时，是瘦狗，即(1.5， 7， ‘yes’) 小狗b每天摄入1.6g食物，睡9小时，是瘦狗，即(1.7,， 9， ‘yes’) 小狗c每天摄入2.3g食物，睡12小时，是胖狗，即(2.3， 12， ‘no’) 小狗d每天摄入2.5g食物，睡10小时，是胖狗，即(2.5， 10. ‘no’) <img src="https://img-blog.csdnimg.cn/20191115203142896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" />现在我们用k-近邻法来判断小狗e(2.4, 11)是胖狗还是瘦狗 <img src="https://img-blog.csdnimg.cn/20191115210034273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" />k为离目标点距离最近的点的数目， 这里我们选定k = 2，由图可知，离目标点e最近的两点为c点和d点，而c、d都是胖狗，所以e也是胖狗</p>
+<h2 id="k-近邻算法的流程">k-近邻算法的流程</h2>
+<p>1.此时算法 2.准备数据 3.分析数据 4.测试算法（计算错误率） 5.使用算法</p>
+<h2 id="python实现k-近邻算法">python实现k-近邻算法</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> operator<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">kNN</span>():<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">createDataSet</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># 创建数据集</span><br>        group = np.array([[<span class="hljs-number">1.0</span>, <span class="hljs-number">1.1</span>], [<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>]])<br>        lables = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>]<br>        <span class="hljs-keyword">return</span> group, lables<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">classify0</span>(<span class="hljs-params">self, inX, dataSet, labels, k</span>):<br>        dataSetSize = dataSet.shape[<span class="hljs-number">0</span>] <span class="hljs-comment"># 样本数</span><br>        diffMat = np.tile(inX, (dataSetSize, <span class="hljs-number">1</span>)) - dataSet <span class="hljs-comment">#　对inX的行重复dataSetSize次，列重复一次</span><br>        sqDiffMat = diffMat  ** <span class="hljs-number">2</span><br>        sqDistances = sqDiffMat.<span class="hljs-built_in">sum</span>(axis=<span class="hljs-number">1</span>)<br>        distances = sqDistances ** <span class="hljs-number">0.5</span><br>        sortedDistIndicies = distances.argsort() <span class="hljs-comment">#　返回排序后的下标　</span><br>        classCount = &#123;&#125;<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k):<br>            voteIlabel = labels[sortedDistIndicies[i]] <span class="hljs-comment"># 取得距离最短的前k个样本的标签</span><br>            classCount[voteIlabel] = classCount.get(voteIlabel, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span> <span class="hljs-comment"># 对应标签的样本数</span><br>        sortedClassCount = <span class="hljs-built_in">sorted</span>(classCount.items(), key=operator.itemgetter(<span class="hljs-number">1</span>), reverse=<span class="hljs-literal">True</span>) <span class="hljs-comment"># 对标签书倒序排序</span><br>        <span class="hljs-keyword">return</span> sortedClassCount[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
+<p><strong>测试</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    inX = [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>]<br>    c = kNN()<br>    group, lables = c.createDataSet()<br>    <span class="hljs-built_in">print</span>(c.classify0(inX, group, lables, <span class="hljs-number">3</span>))<br>&gt;&gt;&gt;B    <br></code></pre></td></tr></table></figure>
+<h2 id="实例利用k-近邻算法实现约会网站的配对">实例：利用k-近邻算法实现约会网站的配对</h2>
+<p>我们通过三个属性：每年获得的飞行常客里程数， 每天花在游戏和视频上的百分比， 每周消费的冰淇淋公斤数来判断对一个人的好感度'not at all', 'in small doses', 'in large doses' 数据集： <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1YPFLYOLoBv2caL2P0dq5Dg">百度网盘链接</a> 提取码: zkf7 <strong>从文本文件中解析数据：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">file2matrix</span>(<span class="hljs-params">self, filename</span>): <span class="hljs-comment"># 文件操作</span><br>    fr = <span class="hljs-built_in">open</span>(filename)<br>    arrayOLines = fr.readlines()<br>    numberOfLines = <span class="hljs-built_in">len</span>(arrayOLines)<br>    returnMat = np.zeros((numberOfLines, <span class="hljs-number">3</span>)) <span class="hljs-comment"># 初始化矩阵</span><br>    classLabelVector = []<br>    index = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> arrayOLines:<br>        line = line.strip()<br>        listFromLine = line.split(<span class="hljs-string">&#x27;\t&#x27;</span>)<br>        returnMat[index, :] = listFromLine[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>] <span class="hljs-comment"># 填充矩阵</span><br>        classLabelVector.append(<span class="hljs-built_in">int</span>(listFromLine[-<span class="hljs-number">1</span>])) <span class="hljs-comment"># 标签向量</span><br>        index += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> returnMat, classLabelVector<br></code></pre></td></tr></table></figure>
+<p><strong>分析数据</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dataVisible</span>(<span class="hljs-params">self, datingDataMat,datingLabels</span>):<br>    fig = plt.figure(figsize=(<span class="hljs-number">5</span>, <span class="hljs-number">4</span>), dpi=<span class="hljs-number">500</span>)<br>    ax = fig.add_subplot(<span class="hljs-number">111</span>) <span class="hljs-comment"># 1×1网格的第一个图</span><br>    ax.scatter(datingDataMat[:, <span class="hljs-number">0</span>], datingDataMat[:, <span class="hljs-number">1</span>], <span class="hljs-number">15.0</span>*np.array(datingLabels), <span class="hljs-number">15.0</span>*np.array(datingLabels)) <span class="hljs-comment"># 第三个参数是尺寸，第四个参数是色彩</span><br>    plt.show()<br></code></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191115211815605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><strong>归一化数值</strong> 由于数字差直大的属性对计算结果影响大，所以需要将数据归一化 newValue = (oldValue - min)/(max - min)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">autoNorm</span>(<span class="hljs-params">self, dataSet</span>): <span class="hljs-comment"># 归一化new = old - min/max - min</span><br>    minVals = dataSet.<span class="hljs-built_in">min</span>(<span class="hljs-number">0</span>) <span class="hljs-comment"># 每列最小的元素</span><br>    maxVals = dataSet.<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>) <span class="hljs-comment"># 每列最大的元素</span><br>    ranges = maxVals - minVals<br>    <span class="hljs-comment"># normDataSet = np.zeros(dataSet.shape) # 初始化矩阵</span><br>    m = dataSet.shape[<span class="hljs-number">0</span>]<br>    normDataSet = dataSet - np.tile(minVals, (m, <span class="hljs-number">1</span>)) <span class="hljs-comment"># old - min</span><br>    normDataSet = normDataSet / np.tile(ranges, (m, <span class="hljs-number">1</span>)) <span class="hljs-comment">#old - min/max - min</span><br>    <span class="hljs-keyword">return</span> normDataSet, ranges, minVals<br></code></pre></td></tr></table></figure>
+<p><strong>测试算法，计算错误率</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">datingClassTest</span>(<span class="hljs-params">self</span>): <span class="hljs-comment"># test</span><br>    hoRatio = <span class="hljs-number">0.10</span> <span class="hljs-comment"># 抽取百分之十的样本作为测试集</span><br>    datingDataMat, datingLabels = self.file2matrix(<span class="hljs-string">&#x27;/home/cxd/下载/machinelearninginaction/Ch02/datingTestSet2.txt&#x27;</span>)<br>    normMat, ranges, minVals = self.autoNorm(datingDataMat) <span class="hljs-comment"># 归一化</span><br>    m = normMat.shape[<span class="hljs-number">0</span>] <span class="hljs-comment"># m组样本</span><br>    numTestVecs = <span class="hljs-built_in">int</span>(m * hoRatio)<br>    errorCount = <span class="hljs-number">0.0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numTestVecs):<br>        classifierResult = kNN().classify0(normMat[i, :], normMat[numTestVecs:m, :], datingLabels[numTestVecs:m], <span class="hljs-number">3</span>) <span class="hljs-comment"># 前百分之十作为测试集</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;分类结果是 %d ,正确答案是 %d &#x27;</span> % (classifierResult, datingLabels[i]))<br>        <span class="hljs-keyword">if</span> classifierResult != datingLabels[i] : errorCount += <span class="hljs-number">1.0</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;总的错误率是: %f&#x27;</span> % (errorCount/<span class="hljs-built_in">float</span>(numTestVecs)))<br></code></pre></td></tr></table></figure>
+<p><strong>使用算法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">classifyPerson</span>(<span class="hljs-params">self</span>):<br>    resultList = [<span class="hljs-string">&#x27;not at all&#x27;</span>, <span class="hljs-string">&#x27;in small doses&#x27;</span>, <span class="hljs-string">&#x27;in large doses&#x27;</span>]<br>    percentTats = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;pecentage of time spent playing video games?&#x27;</span>))<br>    ffMiles = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;frequent flier miles earned per year?&#x27;</span>))<br>    iceCream = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;liters of ice cream consumed per year?&#x27;</span>))<br>    datingDataMat, datingLabels = self.file2matrix(<span class="hljs-string">&#x27;/home/cxd/下载/machinelearninginaction/Ch02/datingTestSet2.txt&#x27;</span>)<br>    normMat, ranges, minVals = self.autoNorm(datingDataMat)<br>    inArr = np.array([ffMiles, percentTats, iceCream])<br>    classifierResult = kNN().classify0((inArr - minVals)/ranges, normMat, datingLabels, <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;You will probably like this person:&#x27;</span>, resultList[classifierResult - <span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    a = Appointment()<br>    a.classifyPerson()<br>&gt;&gt;&gt;<br>pecentage of time spent playing video games?<span class="hljs-number">10</span><br>frequent flier miles earned per year?<span class="hljs-number">10000</span><br>liters of ice cream consumed per year?<span class="hljs-number">0.4</span><br>You will probably like this person: <span class="hljs-keyword">in</span> small doses    <br><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Artificial-Intelligence/ML/" class="category-chain-item">ML</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MachineLearning/">#MachineLearning</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MachineLearning_K-NN</div>
+      <div>http://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_K-NN/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 15, 2019</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
