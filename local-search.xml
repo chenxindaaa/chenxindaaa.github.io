@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>VSCode Configuration</title>
-    <link href="/Programming/Python/VSCode%20Configuration/"/>
-    <url>/Programming/Python/VSCode%20Configuration/</url>
+    <title>Vim Cheat Sheet</title>
+    <link href="/Programming/Python/Vim%20Cheat%20sheet/"/>
+    <url>/Programming/Python/Vim%20Cheat%20sheet/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>h:</strong> move cursor left</p>]]></content>
     
     
     <categories>
@@ -25,11 +25,11 @@
   
   
   <entry>
-    <title>Vim Cheat Sheet</title>
-    <link href="/Programming/Python/Vim%20Cheat%20sheet/"/>
-    <url>/Programming/Python/Vim%20Cheat%20sheet/</url>
+    <title>VSCode Configuration</title>
+    <link href="/Programming/Python/VSCode%20Configuration/"/>
+    <url>/Programming/Python/VSCode%20Configuration/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>h:</strong> move cursor left</p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
     
     
     <categories>
