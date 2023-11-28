@@ -4,6 +4,48 @@
   
   
   <entry>
+    <title>Vim Cheat Sheet</title>
+    <link href="/Programming/Python/Vim%20Cheat%20sheet/"/>
+    <url>/Programming/Python/Vim%20Cheat%20sheet/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>h:</strong> move cursor left</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Boost</title>
+    <link href="/Programming/C-C/C++%20Cookbook/Boost/"/>
+    <url>/Programming/C-C/C++%20Cookbook/Boost/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="boostsplit">boost::split</h2><p>#include &lt;boost/algorithm/string.hpp&gt;</p><p><strong>Description:</strong> boost::split()函数用于切割string字符串，将切割之后的字符串放到一个std::vector<std::string> 之中。</p><p>有4个参数：</p><p>boost::split(type, select_list, boost::is_any_of(","), boost::token_compress_on);</p><p>(1)、type类型是std::vector<std::string>，用于存放切割之后的字符串</p><p>(2)、select_list：传入的字符串，可以为空。</p><p>(3)、boost::is_any_of(",")：设定切割符为,(逗号)</p><p>(4)、 boost::token_compress_on：将连续多个分隔符当一个，默认没有打开，当用的时候一般是要打开的。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>C/C++</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>强化学习中的off-line, on-line, off policy, on policy傻傻分不清</title>
     <link href="/Artificial-Intelligence/RL/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84off-line,%20on-line,%20off%20policy,%20on%20policy%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85/"/>
     <url>/Artificial-Intelligence/RL/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84off-line,%20on-line,%20off%20policy,%20on%20policy%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85/</url>
@@ -132,7 +174,7 @@
   
   
   <entry>
-    <title>C++ Cookbook</title>
+    <title>C/C++ Cookbook</title>
     <link href="/Programming/C-C/C++%20Cookbook/"/>
     <url>/Programming/C-C/C++%20Cookbook/</url>
     
@@ -144,27 +186,6 @@
       <category>Programming</category>
       
       <category>C/C++</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Python Cookbook</title>
-    <link href="/Programming/Python/Python%20Cookbook/"/>
-    <url>/Programming/Python/Python%20Cookbook/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>Python</category>
       
     </categories>
     
@@ -186,6 +207,27 @@
       <category>Artificial Intelligence</category>
       
       <category>ML</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python Cookbook</title>
+    <link href="/Programming/Python/Python%20Cookbook/"/>
+    <url>/Programming/Python/Python%20Cookbook/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>Python</category>
       
     </categories>
     

@@ -16,23 +16,21 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="PCA AdaBoost FP-growth K-NN Logistics Regression Noive Bayes Regression Apriori Cluster Decision Tree SVM Analytic Hierarchy Process Fuzzy Comprehension Evaluation">
+    <meta name="description" content="boost::split #include &lt;boost&#x2F;algorithm&#x2F;string.hpp&gt; Description: boost::split()函数用于切割string字符串，将切割之后的字符串放到一个std::vector 之中。 有4个参数： boost::split(type, select_list, boost::is_any_of(&quot;,&quot;), boost::t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning">
-<meta property="og:url" content="http://chenxindaaa.com/Artificial-Intelligence/ML/ML/index.html">
+<meta property="og:title" content="Boost">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/C-C/C++%20Cookbook/Boost/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="PCA AdaBoost FP-growth K-NN Logistics Regression Noive Bayes Regression Apriori Cluster Decision Tree SVM Analytic Hierarchy Process Fuzzy Comprehension Evaluation">
+<meta property="og:description" content="boost::split #include &lt;boost&#x2F;algorithm&#x2F;string.hpp&gt; Description: boost::split()函数用于切割string字符串，将切割之后的字符串放到一个std::vector 之中。 有4个参数： boost::split(type, select_list, boost::is_any_of(&quot;,&quot;), boost::t">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/ml.jpg">
-<meta property="article:published_time" content="2019-12-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-31T02:48:55.187Z">
+<meta property="article:published_time" content="2023-11-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-28T07:27:22.528Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/ml.jpg">
   
   
   
-  <title>Machine Learning - chenxindaaa</title>
+  <title>Boost - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Machine Learning"></span>
+            <span id="subtitle" data-typed-text="Boost"></span>
           
         </div>
 
@@ -205,8 +203,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2019-12-14 00:00" pubdate>
-          December 14, 2019 am
+        <time datetime="2023-11-28 00:00" pubdate>
+          November 28, 2023 am
         </time>
       </span>
     
@@ -217,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          144 words
+          368 words
         
       </span>
     
@@ -228,7 +226,7 @@
         
         
         
-          2 mins
+          4 mins
         
       </span>
     
@@ -266,25 +264,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Machine Learning</h1>
+            <h1 style="display: none">Boost</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer"/>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLeaning_PCA/">PCA</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_AdaBoost/">AdaBoost</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_FP-growth/">FP-growth</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_K-NN/">K-NN</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_LogisticsRegression/">Logistics Regression</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_NoiveBayes/">Noive Bayes</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_Regression/">Regression</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachinLearning_Apriori/">Apriori</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachinLearning_Cluster/">Cluster</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachinLearning_DecisionTree/">Decision Tree</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachinLearning_SVM/">SVM</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_AHP/">Analytic Hierarchy Process</a></p>
-<p><a href="https://chenxindaaa.com/Artificial-Intelligence/ML/ML/MachineLearning_FCE/">Fuzzy Comprehension Evaluation</a></p>
+<h2 id="boostsplit">boost::split</h2>
+<p>#include &lt;boost/algorithm/string.hpp&gt;</p>
+<p><strong>Description:</strong> boost::split()函数用于切割string字符串，将切割之后的字符串放到一个std::vector<std::string> 之中。</p>
+<p>有4个参数：</p>
+<p>boost::split(type, select_list, boost::is_any_of(","), boost::token_compress_on);</p>
+<p>(1)、type类型是std::vector<std::string>，用于存放切割之后的字符串</p>
+<p>(2)、select_list：传入的字符串，可以为空。</p>
+<p>(3)、boost::is_any_of(",")：设定切割符为,(逗号)</p>
+<p>(4)、 boost::token_compress_on：将连续多个分隔符当一个，默认没有打开，当用的时候一般是要打开的。</p>
 
                 
               </div>
@@ -303,12 +297,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
+  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
   
   
     <span>></span>
     
-  <a href="/categories/Artificial-Intelligence/ML/" class="category-chain-item">ML</a>
+  <a href="/categories/Programming/C-C/" class="category-chain-item">C/C++</a>
   
   
 
@@ -330,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Machine Learning</div>
-      <div>http://chenxindaaa.com/Artificial-Intelligence/ML/ML/</div>
+      <div>Boost</div>
+      <div>http://chenxindaaa.com/Programming/C-C/C++ Cookbook/Boost/</div>
     </div>
     <div class="license-meta">
       
@@ -343,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 14, 2019</div>
+          <div>November 28, 2023</div>
         </div>
       
       
@@ -375,21 +369,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Programming/C-C/C++%20Cookbook/" title="C/C++ Cookbook">
+                      <a href="/Programming/Python/Vim%20Cheat%20sheet/" title="Vim Cheat Sheet">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C/C++ Cookbook</span>
+                        <span class="hidden-mobile">Vim Cheat Sheet</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/Programming/Python/Python%20Cookbook/" title="Python Cookbook">
-                        <span class="hidden-mobile">Python Cookbook</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
