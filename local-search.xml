@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>Vim Cheat Sheet</title>
-    <link href="/Programming/Python/Vim%20Cheat%20sheet/"/>
-    <url>/Programming/Python/Vim%20Cheat%20sheet/</url>
+    <title>VSCode Configuration</title>
+    <link href="/Programming/Python/VSCode%20Configuration/"/>
+    <url>/Programming/Python/VSCode%20Configuration/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>h:</strong> move cursor left</p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
     
     
     <categories>
@@ -25,11 +25,11 @@
   
   
   <entry>
-    <title>VSCode Configuration</title>
-    <link href="/Programming/Python/VSCode%20Configuration/"/>
-    <url>/Programming/Python/VSCode%20Configuration/</url>
+    <title>Vim Cheat Sheet</title>
+    <link href="/Programming/Python/Vim%20Cheat%20sheet/"/>
+    <url>/Programming/Python/Vim%20Cheat%20sheet/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>h:</strong> move cursor left</p>]]></content>
     
     
     <categories>
@@ -216,27 +216,6 @@
   
   
   <entry>
-    <title>Python Cookbook</title>
-    <link href="/Programming/Python/Python%20Cookbook/"/>
-    <url>/Programming/Python/Python%20Cookbook/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>Python</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Machine Learning</title>
     <link href="/Artificial-Intelligence/ML/ML/"/>
     <url>/Artificial-Intelligence/ML/ML/</url>
@@ -249,6 +228,27 @@
       <category>Artificial Intelligence</category>
       
       <category>ML</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python Cookbook</title>
+    <link href="/Programming/Python/Python%20Cookbook/"/>
+    <url>/Programming/Python/Python%20Cookbook/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>Python</category>
       
     </categories>
     
