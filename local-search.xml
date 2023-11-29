@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>Vim Cheat Sheet</title>
-    <link href="/Programming/Python/Vim%20Cheat%20sheet/"/>
-    <url>/Programming/Python/Vim%20Cheat%20sheet/</url>
+    <title>My Vim Cheat Sheet</title>
+    <link href="/Programming/Python/Vim%20Cheat%20Sheet/"/>
+    <url>/Programming/Python/Vim%20Cheat%20Sheet/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>h:</strong> move cursor left</p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>i:</strong> move cursor up</p><p><strong>k:</strong> move cursor down</p><p><strong>j:</strong> move cursor left</p><p><strong>l:</strong> move cursor right</p><p><strong>I:</strong> move cursor up 5 lines</p><p><strong>K:</strong> move cursor down 5 lines</p><p><strong>J:</strong> move cursor left 5 characters</p><p><strong>L:</strong> move cursor right 5 characters</p>]]></content>
     
     
     <categories>
@@ -29,7 +29,7 @@
     <link href="/Programming/Python/VSCode%20Configuration/"/>
     <url>/Programming/Python/VSCode%20Configuration/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><!-- TOC --><ul><li><a href="#hotkey">Hotkey</a><ul><li><a href="#general">General</a></li><li><a href="#basic-editing">Basic editing</a></li><li><a href="#editor-management">Editor management</a></li><li><a href="#file-management">File management</a></li><li><a href="#display">Display</a></li><li><a href="#debug">Debug</a></li><li><a href="#display">Display</a></li></ul></li><li><a href="#cc">C/C++</a></li><li><a href="#vim">Vim</a></li></ul><!-- /TOC --><h1 id="hotkey">Hotkey</h1><h2 id="general">General</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+P</td><td>Show command palette</td></tr><tr class="even"><td>Ctrl+P</td><td>Quick Open</td></tr><tr class="odd"><td>Ctrl+Shift+N</td><td>New window</td></tr><tr class="even"><td>Ctrl+Shift+W</td><td>Close window</td></tr></tbody></table><h2 id="basic-editing">Basic editing</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+[</td><td>Fold region</td></tr><tr class="even"><td>Ctrl+Shift+]</td><td>Unfold region</td></tr><tr class="odd"><td>Ctrl+K+Ctrl+[</td><td>Fold all subregions</td></tr><tr class="even"><td>Ctrl+K+Ctrl+]</td><td>Unfold all subregions</td></tr></tbody></table><h2 id="editor-management">Editor management</h2><table><tbody><tr class="odd"><td>Ctrl+W</td><td>Close editor</td></tr><tr class="even"><td>Ctrl+\</td><td>Split editor</td></tr><tr class="odd"><td>Ctrl+1/2/3</td><td>Focus into 1st, 2nd or 3rd editor group</td></tr><tr class="even"><td>Ctrl+K+Ctrl+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Focus into previous/next editor group</td></tr><tr class="odd"><td>Ctrl+Shift+PgUp/PgDown</td><td>Move editor left/right</td></tr><tr class="even"><td>Ctrl+K+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Move active editor group</td></tr></tbody></table><h2 id="file-management">File management</h2><table><tbody><tr class="odd"><td>Ctrl+Tab</td><td>Open next</td></tr><tr class="even"><td>Ctrl+Shift+Tab</td><td>Open previous</td></tr><tr class="odd"><td>Ctrl+K+P</td><td>Copy path of active file</td></tr></tbody></table><h2 id="display">Display</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+E</td><td>Show Explorer</td></tr><tr class="even"><td>Ctrl+Shift+F</td><td>Show Search</td></tr><tr class="odd"><td>Ctrl+Shift+G</td><td>Show Git</td></tr><tr class="even"><td>Ctrl+Shift+D</td><td>Show Debug</td></tr><tr class="odd"><td>Ctrl+K+V</td><td>Open Markdown preview to the side</td></tr></tbody></table><h2 id="debug">Debug</h2><table><tbody><tr class="odd"><td>F9</td><td>Toggle breakpoint</td></tr><tr class="even"><td>F5</td><td>Continue</td></tr><tr class="odd"><td>Shift+F5</td><td>Stop</td></tr><tr class="even"><td>F11/Shift F11</td><td>Step into/out</td></tr><tr class="odd"><td>F10</td><td>Step over</td></tr></tbody></table><h2 id="integrated-terminal">Integrated terminal</h2><table><tbody><tr class="odd"><td>Ctrl+<code>|Show integrated terminal| |Ctrl+Shift+</code></td><td>Create new terminal</td></tr></tbody></table><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
     
     
     <categories>
