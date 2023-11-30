@@ -4,11 +4,34 @@
   
   
   <entry>
-    <title>VSCode Configuration</title>
-    <link href="/Programming/Python/VSCode%20Configuration/"/>
-    <url>/Programming/Python/VSCode%20Configuration/</url>
+    <title>CentOS</title>
+    <link href="/Programming/C-C/CMake/CentOS%20Key%20Bindings/"/>
+    <url>/Programming/C-C/CMake/CentOS%20Key%20Bindings/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><!-- TOC --><ul><li><a href="#hotkey">Hotkey</a><ul><li><a href="#general">General</a></li><li><a href="#basic-editing">Basic editing</a></li><li><a href="#editor-management">Editor management</a></li><li><a href="#rich-languages-editing">Rich languages editing</a></li><li><a href="#file-management">File management</a></li><li><a href="#display">Display</a></li><li><a href="#debug">Debug</a></li><li><a href="#integrated-terminal">Integrated terminal</a></li></ul></li><li><a href="#cc">C/C++</a></li><li><a href="#vim">Vim</a></li></ul><!-- /TOC --><!-- /TOC --><h1 id="hotkey">Hotkey</h1><h2 id="general">General</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+P</td><td>Show command palette</td></tr><tr class="even"><td>Ctrl+P</td><td>Quick Open</td></tr><tr class="odd"><td>Ctrl+Shift+N</td><td>New window</td></tr><tr class="even"><td>Ctrl+Shift+W</td><td>Close window</td></tr></tbody></table><h2 id="basic-editing">Basic editing</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+[</td><td>Fold region</td></tr><tr class="even"><td>Ctrl+Shift+]</td><td>Unfold region</td></tr><tr class="odd"><td>Ctrl+K+Ctrl+[</td><td>Fold all subregions</td></tr><tr class="even"><td>Ctrl+K+Ctrl+]</td><td>Unfold all subregions</td></tr></tbody></table><h2 id="editor-management">Editor management</h2><table><tbody><tr class="odd"><td>Ctrl+W</td><td>Close editor</td></tr><tr class="even"><td>Ctrl+\</td><td>Split editor</td></tr><tr class="odd"><td>Ctrl+1/2/3</td><td>Focus into 1st, 2nd or 3rd editor group</td></tr><tr class="even"><td>Ctrl+K+Ctrl+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Focus into previous/next editor group</td></tr><tr class="odd"><td>Ctrl+Shift+PgUp/PgDown</td><td>Move editor left/right</td></tr><tr class="even"><td>Ctrl+K+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Move active editor group</td></tr></tbody></table><h2 id="rich-languages-editing">Rich languages editing</h2><table><tbody><tr class="odd"><td>Shift+Alt+F</td><td>Format document</td></tr></tbody></table><h2 id="file-management">File management</h2><table><tbody><tr class="odd"><td>Ctrl+Tab</td><td>Open next</td></tr><tr class="even"><td>Ctrl+Shift+Tab</td><td>Open previous</td></tr><tr class="odd"><td>Ctrl+K+P</td><td>Copy path of active file</td></tr><tr class="even"><td>Ctrl+N</td><td>New file</td></tr><tr class="odd"><td>Ctrl+O</td><td>Open file</td></tr></tbody></table><h2 id="display">Display</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+E</td><td>Show Explorer</td></tr><tr class="even"><td>Ctrl+Shift+F</td><td>Show Search</td></tr><tr class="odd"><td>Ctrl+Shift+G</td><td>Show Git</td></tr><tr class="even"><td>Ctrl+Shift+D</td><td>Show Debug</td></tr><tr class="odd"><td>Ctrl+K+V</td><td>Open Markdown preview to the side</td></tr></tbody></table><h2 id="debug">Debug</h2><table><tbody><tr class="odd"><td>F9</td><td>Toggle breakpoint</td></tr><tr class="even"><td>F5</td><td>Continue</td></tr><tr class="odd"><td>Shift+F5</td><td>Stop</td></tr><tr class="even"><td>F11/Shift F11</td><td>Step into/out</td></tr><tr class="odd"><td>F10</td><td>Step over</td></tr></tbody></table><h2 id="integrated-terminal">Integrated terminal</h2><table><tbody><tr class="odd"><td>Ctrl+`</td><td>Show integrated terminal</td></tr><tr class="even"><td>Ctrl+Shift+`</td><td>Create new terminal</td></tr></tbody></table><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p>settings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['']"</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>C/C++</category>
+      
+      <category>CMake</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>My Vim Cheat Sheet</title>
+    <link href="/Programming/Python/Vim%20Cheat%20Sheet/"/>
+    <url>/Programming/Python/Vim%20Cheat%20Sheet/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>i:</strong> move cursor up</p><p><strong>k:</strong> move cursor down</p><p><strong>j:</strong> move cursor left</p><p><strong>l:</strong> move cursor right</p><p><strong>I:</strong> move cursor up 5 lines</p><p><strong>K:</strong> move cursor down 5 lines</p><p><strong>J:</strong> move cursor left 5 characters</p><p><strong>L:</strong> move cursor right 5 characters</p>]]></content>
     
     
     <categories>
@@ -25,11 +48,11 @@
   
   
   <entry>
-    <title>My Vim Cheat Sheet</title>
-    <link href="/Programming/Python/Vim%20Cheat%20Sheet/"/>
-    <url>/Programming/Python/Vim%20Cheat%20Sheet/</url>
+    <title>VSCode Configuration</title>
+    <link href="/Programming/Python/VSCode%20Configuration/"/>
+    <url>/Programming/Python/VSCode%20Configuration/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>i:</strong> move cursor up</p><p><strong>k:</strong> move cursor down</p><p><strong>j:</strong> move cursor left</p><p><strong>l:</strong> move cursor right</p><p><strong>I:</strong> move cursor up 5 lines</p><p><strong>K:</strong> move cursor down 5 lines</p><p><strong>J:</strong> move cursor left 5 characters</p><p><strong>L:</strong> move cursor right 5 characters</p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><!-- TOC --><ul><li><a href="#hotkey">Hotkey</a><ul><li><a href="#general">General</a></li><li><a href="#basic-editing">Basic editing</a></li><li><a href="#editor-management">Editor management</a></li><li><a href="#rich-languages-editing">Rich languages editing</a></li><li><a href="#file-management">File management</a></li><li><a href="#display">Display</a></li><li><a href="#debug">Debug</a></li><li><a href="#integrated-terminal">Integrated terminal</a></li></ul></li><li><a href="#cc">C/C++</a></li><li><a href="#vim">Vim</a></li></ul><!-- /TOC --><!-- /TOC --><h1 id="hotkey">Hotkey</h1><h2 id="general">General</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+P</td><td>Show command palette</td></tr><tr class="even"><td>Ctrl+P</td><td>Quick Open</td></tr><tr class="odd"><td>Ctrl+Shift+N</td><td>New window</td></tr><tr class="even"><td>Ctrl+Shift+W</td><td>Close window</td></tr></tbody></table><h2 id="basic-editing">Basic editing</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+[</td><td>Fold region</td></tr><tr class="even"><td>Ctrl+Shift+]</td><td>Unfold region</td></tr><tr class="odd"><td>Ctrl+K+Ctrl+[</td><td>Fold all subregions</td></tr><tr class="even"><td>Ctrl+K+Ctrl+]</td><td>Unfold all subregions</td></tr></tbody></table><h2 id="navigation">Navigation</h2><table><tbody><tr class="odd"><td>Alt+<span class="math inline">\(\leftarrow\)</span></td><td>Navigate back</td></tr><tr class="even"><td>Alt+<span class="math inline">\(\rightarrow\)</span></td><td>Navigate forward</td></tr></tbody></table><h2 id="editor-management">Editor management</h2><table><tbody><tr class="odd"><td>Ctrl+W</td><td>Close editor</td></tr><tr class="even"><td>Ctrl+\</td><td>Split editor</td></tr><tr class="odd"><td>Ctrl+1/2/3</td><td>Focus into 1st, 2nd or 3rd editor group</td></tr><tr class="even"><td>Ctrl+K+Ctrl+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Focus into left/right editor group</td></tr><tr class="odd"><td>Ctrl+Alt+Z</td><td>Focus into next editor group</td></tr><tr class="even"><td>Ctrl+Shift+PgUp/PgDown</td><td>Move editor left/right</td></tr><tr class="odd"><td>Ctrl+K+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Move active editor group</td></tr><tr class="even"><td>Ctrl+Alt+<span class="math inline">\(\rightarrow\)</span></td><td>Move to next editor group</td></tr><tr class="odd"><td>Ctrl+Alt+<span class="math inline">\(\leftarrow\)</span></td><td>Move to previous editor group</td></tr></tbody></table><h2 id="rich-languages-editing">Rich languages editing</h2><table><tbody><tr class="odd"><td>Shift+Alt+F</td><td>Format document</td></tr></tbody></table><h2 id="file-management">File management</h2><table><tbody><tr class="odd"><td>Ctrl+Tab</td><td>Open next</td></tr><tr class="even"><td>Ctrl+Shift+Tab</td><td>Open previous</td></tr><tr class="odd"><td>Ctrl+K+P</td><td>Copy path of active file</td></tr><tr class="even"><td>Ctrl+N</td><td>New file</td></tr><tr class="odd"><td>Ctrl+O</td><td>Open file</td></tr></tbody></table><h2 id="display">Display</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+Q</td><td>Show Explorer</td></tr><tr class="even"><td>Ctrl+Shift+F</td><td>Show Search</td></tr><tr class="odd"><td>Ctrl+Shift+G</td><td>Show Git</td></tr><tr class="even"><td>Ctrl+Shift+D</td><td>Show Debug</td></tr><tr class="odd"><td>Ctrl+K+V</td><td>Open Markdown preview to the side</td></tr></tbody></table><h2 id="debug">Debug</h2><table><tbody><tr class="odd"><td>F9</td><td>Toggle breakpoint</td></tr><tr class="even"><td>F5</td><td>Continue</td></tr><tr class="odd"><td>Shift+F5</td><td>Stop</td></tr><tr class="even"><td>F11/Shift F11</td><td>Step into/out</td></tr><tr class="odd"><td>F10</td><td>Step over</td></tr></tbody></table><h2 id="integrated-terminal">Integrated terminal</h2><table><tbody><tr class="odd"><td>Ctrl+`</td><td>Show integrated terminal</td></tr><tr class="even"><td>Ctrl+Shift+`</td><td>Create new terminal</td></tr></tbody></table><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
     
     
     <categories>
@@ -216,27 +239,6 @@
   
   
   <entry>
-    <title>Python Cookbook</title>
-    <link href="/Programming/Python/Python%20Cookbook/"/>
-    <url>/Programming/Python/Python%20Cookbook/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>Python</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Machine Learning</title>
     <link href="/Artificial-Intelligence/ML/ML/"/>
     <url>/Artificial-Intelligence/ML/ML/</url>
@@ -249,6 +251,27 @@
       <category>Artificial Intelligence</category>
       
       <category>ML</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python Cookbook</title>
+    <link href="/Programming/Python/Python%20Cookbook/"/>
+    <url>/Programming/Python/Python%20Cookbook/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>Python</category>
       
     </categories>
     
