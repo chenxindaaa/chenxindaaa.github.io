@@ -1,0 +1,762 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chenxindaaa">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、面向对象设计原则 依赖倒置原则（DIP）  高层模块（稳定）不应该依赖（编译时依赖）于底层模块（变化），二者都应该依赖于抽象（稳定）。 抽象（稳定）不应该依赖于实现细节（变化），实现细节应该依赖于抽象（稳定）。  开放封闭原则  对拓展开放，对更改封闭 类模块是可扩展的，但是不可修改。  单一职责原则（SRP）  一个类应该仅有一个引起它变化的原因。 变化的方向隐含着类的责任。  Lisko">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern">
+<meta property="og:url" content="http://chenxindaaa.com/Programming/Python/Design%20Pattern/index.html">
+<meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="一、面向对象设计原则 依赖倒置原则（DIP）  高层模块（稳定）不应该依赖（编译时依赖）于底层模块（变化），二者都应该依赖于抽象（稳定）。 抽象（稳定）不应该依赖于实现细节（变化），实现细节应该依赖于抽象（稳定）。  开放封闭原则  对拓展开放，对更改封闭 类模块是可扩展的，但是不可修改。  单一职责原则（SRP）  一个类应该仅有一个引起它变化的原因。 变化的方向隐含着类的责任。  Lisko">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-03T14:49:03.414Z">
+<meta property="article:author" content="chenxindaaa">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Design Pattern - chenxindaaa</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"chenxindaaa.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>chenxindaaa&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Publications/">
+                <i class="iconfont icon-book"></i>
+                Publications
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Design Pattern"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        chenxindaaa
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-02 00:00" pubdate>
+          December 2, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          88 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Design Pattern</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <meta name="referrer" content="no-referrer"/>
+<h1 id="一面向对象设计原则">一、面向对象设计原则</h1>
+<h2 id="依赖倒置原则dip">依赖倒置原则（DIP）</h2>
+<ul>
+<li>高层模块（稳定）不应该依赖（编译时依赖）于底层模块（变化），二者都应该依赖于抽象（稳定）。</li>
+<li>抽象（稳定）不应该依赖于实现细节（变化），实现细节应该依赖于抽象（稳定）。</li>
+</ul>
+<h2 id="开放封闭原则">开放封闭原则</h2>
+<ul>
+<li>对拓展开放，对更改封闭</li>
+<li>类模块是可扩展的，但是不可修改。</li>
+</ul>
+<h2 id="单一职责原则srp">单一职责原则（SRP）</h2>
+<ul>
+<li>一个类应该仅有一个引起它变化的原因。</li>
+<li>变化的方向隐含着类的责任。</li>
+</ul>
+<h2 id="liskov替换原则lsp">Liskov替换原则（LSP）</h2>
+<ul>
+<li>子类必须能够替换它们的基类（IS-A）。</li>
+<li>继承表达类型抽象</li>
+</ul>
+<h2 id="接口隔离原则isp">接口隔离原则（ISP）</h2>
+<ul>
+<li>不应该强迫客户程序依赖它们不用的方法。</li>
+<li>接口应该小而完备。</li>
+</ul>
+<h2 id="优先使用组合而不是继承">优先使用组合而不是继承</h2>
+<ul>
+<li>类继承通常为“白箱复用”，对象组合通常为“黑箱复用”。</li>
+<li>继承在某种程度上破坏了封装性，子类父类耦合度高。</li>
+<li>对象组合则只要求被组合的对象具有良好的定义的接口，耦合度低。</li>
+</ul>
+<h2 id="封装变化点">封装变化点</h2>
+<ul>
+<li>使用封装来创建对象之间的分界层，让设计者可以对分界层的一侧进行修改，而不会对另一侧产生不良的影响，从而实现层次间的松耦合。</li>
+</ul>
+<h2 id="针对接口编程而不是针对实现编程">针对接口编程，而不是针对实现编程</h2>
+<ul>
+<li>不将变量类型声明为某个特定的具体类，而是声明为某个接口。</li>
+<li>客户程序无需获知对象的具体类型，只需要知道对象所具有的接口。</li>
+<li>减少系统中各部分的依赖关系，从而实现“高内聚、松耦合”的类型设计方案。</li>
+</ul>
+<h1 id="二模板方法">二、模板方法</h1>
+<p><strong>Motivation：</strong> 如何在确定稳定操作结构的前提下，灵活应对各个子步骤的变化或者晚期实现需求？</p>
+<p><strong>Definition：</strong> 定义一个操作中的算法骨架（稳定），而将一些步骤延迟（变化）到子类中。Template Method使得子类可以不改变（复用）一个算法的结构即可重定义overeide该算法的某些特定步骤。</p>
+<p>Case1:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Lib</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step1</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step3</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step5</span><span class="hljs-params">()</span></span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">App</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">step2</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step4</span><span class="hljs-params">()</span></span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">Lib <span class="hljs-title">lib</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function">App <span class="hljs-title">app</span><span class="hljs-params">()</span></span>;<br>    lib.<span class="hljs-built_in">step1</span>();<br>    <span class="hljs-keyword">if</span>(app.<span class="hljs-built_in">step2</span>()) &#123;<br>        lib.<span class="hljs-built_in">step3</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; ++ i) &#123;<br>        app.<span class="hljs-built_in">step4</span>();<br>    &#125;<br>        lib.<span class="hljs-built_in">step5</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>Case2:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Lib</span>&#123;<br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-comment">// Stable template method</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-built_in">step1</span>();<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">step2</span>()) &#123;  <span class="hljs-comment">// Support for changes due to Polymorphism</span><br>            <span class="hljs-built_in">step3</span>();<br>        &#125;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; ++ i) &#123;<br>            <span class="hljs-built_in">step4</span>();  <span class="hljs-comment">// Support for changes due to Polymorphism</span><br>        &#125;<br>            <span class="hljs-built_in">step5</span>();<br>    &#125;<br>    <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">Lib</span>()&#123;&#125;<br><br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step1</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step3</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">step5</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">bool</span> <span class="hljs-title">step2</span><span class="hljs-params">()</span></span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">step4</span><span class="hljs-params">()</span></span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">App</span> : <span class="hljs-keyword">public</span> Lib&#123;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">bool</span> <span class="hljs-title">step2</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">step4</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    Lib* lib = <span class="hljs-keyword">new</span> <span class="hljs-built_in">App</span>();<br>    lib-&gt;<span class="hljs-built_in">run</span>();<br>    <span class="hljs-keyword">delete</span> lib;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><strong>Conclution:</strong><br />
+- Make it a habit to recognize which function is variable and which is stable.<br />
+- Template method is common. - The virtual functions are often set to protected.</p>
+<h1 id="三策略模式">三、策略模式</h1>
+<p><strong>Motivaiton：</strong> 某些对象的算法可能多种多样，经常改变，如果将这些算法都编码到对象中，将会使的对象很复杂。</p>
+<p><strong>Definition:</strong> 定义一系列算法，把它们一个个封装起来，并且使它们可以互相替换（变化）。该模式使得算法可以独立于使用它的客户程序（稳定）而变化（拓展，子类化）。</p>
+<p><strong>Case1</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">TaxBase</span> &#123;<br>    CN_Tax,<br>    US_Tax,<br>    DE_Tax,<br>    <span class="hljs-comment">// change: TR_Tax</span><br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SalesOrder</span>&#123;<br>    TaxBase tax;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">CalculateTax</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (tax == CN_Tax) &#123;&#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tax == US_Tax) &#123;&#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tax == DE_Tax) &#123;&#125;<br>        <span class="hljs-comment">// change: else if (tax == FR_Tax) &#123;&#125;</span><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><strong>Case2</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TaxStrategy</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">double</span> <span class="hljs-title">Calculate</span><span class="hljs-params">(<span class="hljs-type">const</span> Context&amp; context)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">TaxStrategy</span>() &#123;&#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CNTax</span> : <span class="hljs-keyword">public</span> TaxStrategy &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">double</span> <span class="hljs-title">Calculate</span><span class="hljs-params">(<span class="hljs-type">const</span> Context&amp; context)</span> </span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">USTax</span> : <span class="hljs-keyword">public</span> TaxStrategy &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">double</span> <span class="hljs-title">Calculate</span><span class="hljs-params">(<span class="hljs-type">const</span> Context&amp; context)</span> </span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">DETax</span> : <span class="hljs-keyword">public</span> TaxStrategy &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">double</span> <span class="hljs-title">Calculate</span><span class="hljs-params">(<span class="hljs-type">const</span> Context&amp; context)</span> </span>&#123;&#125;<br>&#125;;<br><br><span class="hljs-comment">// extend:</span><br><span class="hljs-comment">// class FRTax : public TaxStrategy &#123;</span><br><span class="hljs-comment">// public:</span><br><span class="hljs-comment">//     virtual double Calculate(const Context&amp; context) &#123;&#125;</span><br><span class="hljs-comment">// &#125;;</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SalesOrder</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    TaxStrategy* strategy;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">SalesOrder</span>(StrategyFactory* strategyFactory) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;strategy = strategyFactory-&gt;<span class="hljs-built_in">NewStrategy</span>();<br>    &#125;<br>    ~<span class="hljs-built_in">SalesOrder</span>()&#123;<br>        <span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>-&gt;strategy;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">CalculateTax</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-function">Context <span class="hljs-title">conttext</span><span class="hljs-params">()</span></span>;<br>        <br>        <span class="hljs-type">double</span> val = strategy-&gt;<span class="hljs-built_in">Calculate</span>(context);<br>    &#125; <br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li>Strategy pattern provides a series of re-used algorithms to make switching alogrithms more convenient.</li>
+<li>Strategy pattern can substitude condition statement unless the conditions are countable.</li>
+<li>Single instance pattern can be used to reduce overhead</li>
+</ul>
+<h1 id="四观察者模式">四、观察者模式</h1>
+<p><strong>Motivation：</strong> - 为某些对象简历通知依赖关系，即，一个对象的状态发生改变，所有的依赖对象都将得到通知。如果这样的依赖关系过于紧密，将使软件不能很好地抵御变化。 - 使用面向对象技术，可以将这种依赖关系弱化，并形成一种稳定的依赖关系，从而实现软件体系结构的松耦合。</p>
+<p><strong>Definition:</strong> 定义对象间的一对多（变化）的依赖关系，以便当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并自动更新。</p>
+<p><strong>Case1:</strong> Betray DIP, and the progressBar might be changed with aternaltive form in the future.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FileSplitter</span> &#123;<br>    string m_filePath;<br>    <span class="hljs-type">int</span> m_fileNumber;<br>    ProgressBar* m_progressBar;  <span class="hljs-comment">// New requirement</span><br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">FileSplitter</span>(<span class="hljs-type">const</span> string &amp; filePath, <span class="hljs-type">int</span> fileNumber, ProgressBar* progressBar) :<br>        <span class="hljs-built_in">m_filePath</span>(filePath),<br>        <span class="hljs-built_in">m_fileNumber</span>(fileNumber),<br>        <span class="hljs-built_in">m_progressBar</span>(progressBar) &#123;&#125;<br>        <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">split</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// 1. 读取大文件</span><br><br>        <span class="hljs-comment">// 2.分批次向小文件写入</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m_fileNumber; ++i) &#123;<br>            <span class="hljs-comment">// ...</span><br>            <span class="hljs-keyword">if</span> (m_progressBar) &#123;<br>                m_progressBar-&gt;<span class="hljs-built_in">setValue</span>((i + <span class="hljs-number">1</span>) / m_fileNumber);  <span class="hljs-comment">// Update progressbar</span><br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainForm</span> : <span class="hljs-keyword">public</span> Form<br>&#123;<br>    TextBox* txtFilePath;<br>    TextBox* txtFileNumber;<br>    ProgressBar* progressBar;  <span class="hljs-comment">// New requirement</span><br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Button1_Click</span><span class="hljs-params">()</span> </span>&#123;<br>        string filePath = txtFilePath-&gt;<span class="hljs-built_in">getText</span>();<br>        <span class="hljs-type">int</span> number = <span class="hljs-built_in">atoi</span>(txtFileNumber-&gt;<span class="hljs-built_in">getText</span>().<span class="hljs-built_in">c_str</span>());<br><br>        <span class="hljs-function">FileSplitter <span class="hljs-title">splitter</span><span class="hljs-params">(filePath, number, progressBar)</span></span>;<br>        splitter.<span class="hljs-built_in">split</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Case2:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-comment">// Observer</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">IProgress</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">DoProgress</span><span class="hljs-params">(<span class="hljs-type">float</span> value)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">IProgress</span>()&#123;&#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FileSplitter</span> &#123;<br>    string m_filePath;<br>    <span class="hljs-type">int</span> m_fileNumber;<br>    <span class="hljs-comment">// ProgressBar* m_progressBar;  </span><br>    list&lt;IProgress*&gt;  m_iprogressList;  <span class="hljs-comment">// 抽象通知机制，支持多个观察者</span><br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">FileSplitter</span>(<span class="hljs-type">const</span> string &amp; filePath, <span class="hljs-type">int</span> fileNumber) :<br>        <span class="hljs-built_in">m_filePath</span>(filePath),<br>        <span class="hljs-built_in">m_fileNumber</span>(fileNumber) &#123;&#125;<br>        <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_IProgress</span><span class="hljs-params">(IProgress* iprogress)</span> </span>&#123;<br>        m_iprogressList.<span class="hljs-built_in">add</span>(iprogress);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">remove_IProgress</span><span class="hljs-params">(IProgress* iprogress)</span> </span>&#123;<br>        m_iprogressList.<span class="hljs-built_in">remove</span>(iprogress);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">split</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// 1. 读取大文件</span><br><br>        <span class="hljs-comment">// 2.分批次向小文件写入</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m_fileNumber; ++i) &#123;<br>                <span class="hljs-comment">// ...</span><br>                <span class="hljs-type">float</span> progressValue = m_fileNumber;<br>                progressValue = (i + <span class="hljs-number">1</span>) / progressValue;<br>                <span class="hljs-built_in">onProgress</span>(progressValue);  <span class="hljs-comment">// 发送通知</span><br>            &#125;<br>        &#125;<br>        <br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">onProgress</span><span class="hljs-params">(<span class="hljs-type">float</span> value)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;iter : m_iprogressList) &#123;<br>            iter-&gt;<span class="hljs-built_in">DoProgress</span>(progressValue);  <span class="hljs-comment">// Update progressbar</span><br>        &#125;<br>    &#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MainForm</span> : <span class="hljs-keyword">public</span> Form, <span class="hljs-keyword">public</span> IProgress  <span class="hljs-comment">// C++ 多继承一般第一个是父类，其他的是接口</span><br>&#123;<br>    TextBox* txtFilePath;<br>    TextBox* txtFileNumber;<br>    ProgressBar* progressBar;  <span class="hljs-comment">// New requirement</span><br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Button1_Click</span><span class="hljs-params">()</span> </span>&#123;<br>        string filePath = txtFilePath-&gt;<span class="hljs-built_in">getText</span>();<br>        <span class="hljs-type">int</span> number = <span class="hljs-built_in">atoi</span>(txtFileNumber-&gt;<span class="hljs-built_in">getText</span>().<span class="hljs-built_in">c_str</span>());<br><br>        ConsoleNotifier cn;<br>        <br>        <span class="hljs-function">FileSplitter <span class="hljs-title">splitter</span><span class="hljs-params">(filePath, number)</span></span>;<br><br>        splitter.<span class="hljs-built_in">addIProgress</span>(<span class="hljs-keyword">this</span>);  <span class="hljs-comment">// 订阅通知</span><br>        splitter.<span class="hljs-built_in">addIProgress</span>(&amp;cn);  <span class="hljs-comment">// 订阅通知</span><br><br>        splitter.<span class="hljs-built_in">split</span>();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">DoProgress</span><span class="hljs-params">(<span class="hljs-type">float</span> value)</span> </span>&#123;<br>        progressBar-&gt;<span class="hljs-built_in">setValue</span>(value);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConsoleNotifier</span> : <span class="hljs-keyword">public</span> IProgress &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">DoProgress</span><span class="hljs-params">(<span class="hljs-type">float</span> value)</span> </span>&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;.&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li>We can change objective and observer separately with observer pattern to loosen coupling of objective and observer.</li>
+<li>目标发送通知时，无需指定观察者，通知会自动传播。</li>
+<li>观察者自己决定是否需要订阅通知，目标对象对此一无所知。</li>
+</ul>
+<h1 id="五装饰模式">五、装饰模式</h1>
+<p><strong>Motivation：</strong>过度使用继承来拓展对象的功能，由于继承为类型引入的静态特质，使得这种扩展方式缺乏灵活性；并且随着子类的增多，各种子类的组合会导致更多子类的膨胀。</p>
+<p><strong>Definition:</strong>动态（组合）地给一个对象增加一些额外的职责。就增加功能而言，Decorator模式比生成子类（继承）更为灵活（消除重复代码，减少子类个数）。</p>
+<p><strong>Case1:</strong> <span class="math inline">\(1 + n + n * (2^m - 1)\)</span></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stream</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span> </span>= <span class="hljs-number">0</span>;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FileStream</span> : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">char</span> data)</span> </span>&#123;&#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">NetworkStream</span> : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">char</span> data)</span> </span>&#123;&#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryStream</span> : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">char</span> data)</span> </span>&#123;&#125;<br>&#125;; <br><br><span class="hljs-comment">// 拓展操作</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CryptoFileStream</span> : <span class="hljs-keyword">public</span> FileStream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        FileStream::<span class="hljs-built_in">Read</span>(number);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;<br>        FileStream::<span class="hljs-built_in">Seek</span>(position);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(byte data)</span> </span>&#123;<br>        FileStream::<span class="hljs-built_in">Write</span>(data);<br>    &#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CryptoNetworkStream</span> : <span class="hljs-keyword">public</span> NetworkStream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        NetworkStream::<span class="hljs-built_in">Read</span>(number);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;<br>        NetworkStream::<span class="hljs-built_in">Seek</span>(position);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(byte data)</span> </span>&#123;<br>        NetworkStream::<span class="hljs-built_in">Write</span>(data);<br>    &#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CryptoMemoryStream</span> : <span class="hljs-keyword">public</span> MemoryStream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        MemoryStream::<span class="hljs-built_in">Read</span>(number);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;<br>        MemoryStream::<span class="hljs-built_in">Seek</span>(position);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(byte data)</span> </span>&#123;<br>        MemoryStream::<span class="hljs-built_in">Write</span>(data);<br>    &#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BufferedFileStream</span> : <span class="hljs-keyword">public</span> FileStream &#123;&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BufferedNetworkStream</span> : <span class="hljs-keyword">public</span> NetworkStream &#123;&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BufferedMemoryStream</span> : <span class="hljs-keyword">public</span> MemoryStream &#123;&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CryptoBufferedFileStream</span> : <span class="hljs-keyword">public</span> FileSstream &#123;<br><span class="hljs-keyword">public</span>: <br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        FileStream::<span class="hljs-built_in">Read</span>(number);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;<br>        FileStream::<span class="hljs-built_in">Seek</span>(position);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(byte data)</span> </span>&#123;<br>        FileStream::<span class="hljs-built_in">Write</span>(data);<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Process</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 编译时装配</span><br>    CryptoFileStream *fs1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">CryptoFileStream</span>();<br>    BufferedFileStream *fs2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">BufferedFileStream</span>();<br>    CryptoBufferedFileStream *fs3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">CryptoBufferedFileStream</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Case2:</strong> <span class="math inline">\(1 + n + 1 + m\)</span></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stream</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span> </span>= <span class="hljs-number">0</span>;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FileStream</span> : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">char</span> data)</span> </span>&#123;&#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">NetworkStream</span> : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">char</span> data)</span> </span>&#123;&#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryStream</span> : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(<span class="hljs-type">char</span> data)</span> </span>&#123;&#125;<br>&#125;; <br><br><span class="hljs-comment">// 拓展操作</span><br><br>DecoratorStream : <span class="hljs-keyword">public</span> Stream &#123;<br><span class="hljs-keyword">protected</span>:<br>    Stream* stream;<br><br>    <span class="hljs-built_in">DecoratorStream</span>(Stream * stm) : <span class="hljs-built_in">stream</span>(stm) &#123;&#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CryptoStream</span> : <span class="hljs-keyword">public</span> DecoratorStream &#123;  <span class="hljs-comment">// 继承为了接口规范</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">CryptoStream</span>(Stream *stm): <span class="hljs-built_in">DecoratorStream</span>(stm) &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        stream-&gt;<span class="hljs-built_in">Read</span>(number);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;<br>        stream-&gt;<span class="hljs-built_in">Seek</span>(position);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(byte data)</span> </span>&#123;<br>        stream-&gt;<span class="hljs-built_in">Write</span>(data);<br>    &#125;<br>&#125;; <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BufferedStream</span> : <span class="hljs-keyword">public</span> DecoratorStream &#123;  <span class="hljs-comment">// 继承为了接口规范</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">BufferedStream</span>(Stream *stm): <span class="hljs-built_in">DecoratorStream</span>(stm) &#123;&#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Read</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>        stream-&gt;<span class="hljs-built_in">Read</span>(number);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Seek</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> </span>&#123;<br>        stream-&gt;<span class="hljs-built_in">Seek</span>(position);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">char</span> <span class="hljs-title">Write</span><span class="hljs-params">(byte data)</span> </span>&#123;<br>        stream-&gt;<span class="hljs-built_in">Write</span>(data);<br>    &#125;<br>&#125;; <br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Process</span><span class="hljs-params">()</span> </span>&#123;<br><br>    <span class="hljs-comment">// 运行时装配</span><br>    FileStream* s1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">FileStream</span>();<br>    CryptoStream* s2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">CryptoStream</span>(s1);<br>    BufferedSteam1* s3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">BufferedStream</span>(s1);<br>    BufferedSteam1* s4 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">BufferedStream</span>(s2);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Conclusion:</strong> - 通过组合而非继承的方法，实现了运行时动态扩展对象功能的能力</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Programming/Python/" class="category-chain-item">Python</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Design Pattern</div>
+      <div>http://chenxindaaa.com/Programming/Python/Design Pattern/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>chenxindaaa</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 2, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
