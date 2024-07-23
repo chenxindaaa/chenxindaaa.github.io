@@ -16,23 +16,28 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="STL GDB inline inline Lambda Expression">
+    <meta name="description" content="一、Karnaugh Map 1.1 最小项 最小项的定义：一个函数的某个乘积项包含了函数的全部变量，其中每个变量都以原变量或反变量的形式出现，且仅出现一次，则这个乘积项称为该函数的一个标准积项，通常称为最小项。 最小项的表示方法：通常用\(m_i\)来表示最小项。 下标i的确定方式：把最小项中原变量记为1，反变量记为0，当变量顺序确定后，可以按顺序排列成一个二进制数，则与这个二进制数相对应的十">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++ Cookbook">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/C-C/C++%20Cookbook/index.html">
+<meta property="og:title" content="Karnaugh Map">
+<meta property="og:url" content="http://chenxindaaa.com/Electronic-Design-Automation/Logic-Synthesis/Logic%20Synthesis/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="STL GDB inline inline Lambda Expression">
+<meta property="og:description" content="一、Karnaugh Map 1.1 最小项 最小项的定义：一个函数的某个乘积项包含了函数的全部变量，其中每个变量都以原变量或反变量的形式出现，且仅出现一次，则这个乘积项称为该函数的一个标准积项，通常称为最小项。 最小项的表示方法：通常用\(m_i\)来表示最小项。 下标i的确定方式：把最小项中原变量记为1，反变量记为0，当变量顺序确定后，可以按顺序排列成一个二进制数，则与这个二进制数相对应的十">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/C++.jpg">
-<meta property="article:published_time" content="2019-12-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-23T14:23:45.469Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306215730593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306220010596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306220704263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306221517963.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306222100667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190306224020999.png">
+<meta property="article:published_time" content="2024-04-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-23T14:23:45.488Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/C++.jpg">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190306215730593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70">
   
   
   
-  <title>C/C++ Cookbook - chenxindaaa</title>
+  <title>Karnaugh Map - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,13 +188,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/article_header/2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C/C++ Cookbook"></span>
+            <span id="subtitle" data-typed-text="Karnaugh Map"></span>
           
         </div>
 
@@ -205,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2019-12-14 00:00" pubdate>
-          December 14, 2019 am
+        <time datetime="2024-04-20 00:00" pubdate>
+          April 20, 2024 am
         </time>
       </span>
     
@@ -217,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34 words
+          1.9k words
         
       </span>
     
@@ -228,7 +233,7 @@
         
         
         
-          1 mins
+          16 mins
         
       </span>
     
@@ -266,17 +271,74 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C/C++ Cookbook</h1>
+            <h1 style="display: none">Karnaugh Map</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer"/>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/STL/">STL</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/GDB/">GDB</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/inline/">inline</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/Move/">inline</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/Lambda%20Expression/">Lambda Expression</a></p>
+<h1 id="一karnaugh-map">一、Karnaugh Map</h1>
+<h2 id="最小项">1.1 最小项</h2>
+<p>最小项的定义：一个函数的某个<strong>乘积项</strong>包含了函数的全部变量，其中每个变量都以原变量或反变量的形式出现，且仅出现一次，则这个乘积项称为该函数的一个标准积项，通常称为最小项。</p>
+<p>最小项的表示方法：通常用<span class="math inline">\(m_i\)</span>来表示最小项。</p>
+<p>下标i的确定方式：把最小项中原变量记为1，反变量记为0，当变量顺序确定后，可以按顺序排列成一个二进制数，则与这个二进制数相对应的十进制数，就是这个最小项的下标i。</p>
+<p><strong>Example:</strong></p>
+<p>函数<span class="math inline">\(L(A,B,C)\)</span>的最小项为：</p>
+<p><span class="math display">\[\overline{A}\overline{B}\overline{C}, \overline{A}\overline{B}C, \overline{A}B\overline{C}, \overline{A}BC, A\overline{B}\overline{C}, A\overline{B}C, AB\overline{C}, ABC\]</span></p>
+<p>分别对应：</p>
+<p><span class="math display">\[000, 001, 010, 011, 100, 101, 110, 111\]</span></p>
+<p><span class="math inline">\(m_i\)</span>的表达方式：</p>
+<p><span class="math display">\[m_0, m_1, m_2, m_3, m_4, m_5, m_6, m_7\]</span></p>
+<p>最小项的的相邻性：任何两个最小项如果他们只有一个因子不同，其余因子都相同，则称这两个最小项为相邻最小项。</p>
+<p><strong>Example</strong>：<span class="math inline">\(m_0\)</span>和<span class="math inline">\(m_1\)</span>具有相邻性，<span class="math inline">\(m_1\)</span>和<span class="math inline">\(m_2\)</span>却没有，因为他们有两个不同的因子。</p>
+<p>相邻的两个最小项之和可以合并一项，消去一个变量。如：</p>
+<p><span class="math display">\[m_0 + m_2 = \overline{A}\overline{B}\overline{C} + \overline{A}B\overline{C} = \overline{A}(\overline{B} + B)\overline{C} = \overline{A}\overline{C}\]</span></p>
+<h2 id="卡诺图">1.2 卡诺图</h2>
+<ul>
+<li>一种描述逻辑函数特殊方格图。</li>
+<li>每格代表一个最小项，上下左右相邻就具备相邻性。</li>
+<li>有n个变量，最小项就有<span class="math inline">\(2^n\)</span>且卡诺图也由<span class="math inline">\(2^n\)</span>个格子构成。</li>
+</ul>
+<p>两变量卡诺图：</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20190306215730593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="两变量卡诺图" /><figcaption>两变量卡诺图</figcaption>
+</figure>
+<p>三变量卡诺图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190306220010596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload /></p>
+<p>逻辑函数<span class="math inline">\(F(A, B, C, D) = \sum m (0,1,2,5,7,8,10,11,14,15)\)</span>的卡诺图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190306220704263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="逻辑函数的卡诺图化简法">1.3 逻辑函数的卡诺图化简法</h2>
+<p>诺图相邻性的特点保证了几何相邻两方格所代表的最小项只有一个变量不同。因此，若相邻的方格都为1（简称1格）时，则对应的最小项就可以合并。合并的结果是消去这个不同的变量，只保留相同的变量。这是图形化简法的依据。</p>
+<p>综上所述，卡诺图具备以下特性：</p>
+<ol type="1">
+<li>卡诺图中两个相邻1格的最小项可以合并成一个与（加）项，并消去一个变量。</li>
+<li>卡诺图中四个相邻1格的最小项可以合并成一个与（加）项，并消去两个变量。</li>
+<li>卡诺图中八个相邻1格的最小项可以合并成一个与（加）项，并消去三个变量。</li>
+</ol>
+<p>利用这3点特性来接着看下面的例子：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190306221517963.png" srcset="/img/loading.gif" lazyload /></p>
+<p>上图两个相邻1格的最小项可以合并成一个与项，并消去一个变量，化简式子如下：</p>
+<p><span class="math display">\[m_1 = m_5 = \overline{A}\overline{B}C + A\overline{B}C = (\overline{A} + A)\overline{B}C = \overline{B}C\]</span></p>
+<p>根据上面3个特性再来看几个例子加深理解，以下是4个相邻1格的： <img src="https://img-blog.csdnimg.cn/20190306222100667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhaGFzdXN1,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>Example:</strong></p>
+<p><span class="math display">\[F(A,B,C) = \sum(1,2,3,6,7)\]</span></p>
+<p>先画出卡诺图，然后转换十进制对应1,2,3,6,7的地方填入为1，其余填写为0（这个步骤有前面的知识点支撑，应该不难理解了。）</p>
+<p><img src="https://img-blog.csdnimg.cn/20190306224020999.png" srcset="/img/loading.gif" lazyload /></p>
+<p>然后获得式子：<span class="math inline">\(F = (m_1 + m_3) + (m_2 + m_3 + m_6 + m_7)\)</span></p>
+<p>即：</p>
+<p><span class="math display">\[F = \overline{A}C + B\]</span></p>
+<p>首先，有这么几点需要明确：</p>
+<ol type="1">
+<li>列出逻辑函数的最小项表达式，由最小项表达式确定变量的个数（如果最小项中缺少变量，应按例的方法补齐）。</li>
+<li>画出最小项表达式对应的卡诺图。</li>
+<li>将卡诺图中的1格画圈，一个也不能漏圈，否则最后得到的表达式就会与所给函数不等；1格允许被一个以上的圈所包围。</li>
+<li>圈的个数应尽可能得少。即在保证1格一个也不漏圈的前提下，圈的个数越少越好。因为一个圈和一个与项相对应，圈数越少，与或表达式的与项就越少。</li>
+<li>按照2k个方格来组合（即圈内的1格数必须为1，2，4，8等），圈的面积越大越好。因为圈越大，可消去的变量就越多，与项中的变量就越少。</li>
+<li>每个圈应至少包含一个新的1格，否则这个圈是多余的。</li>
+<li>用卡诺图化简所得到的最简与或式不是唯一的。</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hahasusu/article/details/88244155">https://blog.csdn.net/hahasusu/article/details/88244155</a></p>
 
                 
               </div>
@@ -295,12 +357,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  <a href="/categories/Electronic-Design-Automation/" class="category-chain-item">Electronic Design Automation</a>
   
   
     <span>></span>
     
-  <a href="/categories/Programming/C-C/" class="category-chain-item">C/C++</a>
+  <a href="/categories/Electronic-Design-Automation/Logic-Synthesis/" class="category-chain-item">Logic Synthesis</a>
   
   
 
@@ -322,8 +384,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C/C++ Cookbook</div>
-      <div>http://chenxindaaa.com/Programming/C-C/C++ Cookbook/</div>
+      <div>Karnaugh Map</div>
+      <div>http://chenxindaaa.com/Electronic-Design-Automation/Logic-Synthesis/Logic Synthesis/</div>
     </div>
     <div class="license-meta">
       
@@ -335,7 +397,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 14, 2019</div>
+          <div>April 20, 2024</div>
         </div>
       
       
@@ -370,12 +432,6 @@
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/Artificial-Intelligence/ML/ML/" title="Machine Learning">
-                        <span class="hidden-mobile">Machine Learning</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
