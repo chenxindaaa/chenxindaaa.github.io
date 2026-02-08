@@ -67,11 +67,11 @@
   
   
   <entry>
-    <title>VSCode Configuration</title>
-    <link href="/Programming/Python/VSCode%20Configuration/"/>
-    <url>/Programming/Python/VSCode%20Configuration/</url>
+    <title>My Vim Cheat Sheet</title>
+    <link href="/Programming/Python/Vim%20Cheat%20Sheet/"/>
+    <url>/Programming/Python/Vim%20Cheat%20Sheet/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><!-- TOC --><ul><li><a href="#hotkey">Hotkey</a><ul><li><a href="#general">General</a></li><li><a href="#basic-editing">Basic editing</a></li><li><a href="#navigation">Navigation</a></li><li><a href="#editor-management">Editor management</a></li><li><a href="#rich-languages-editing">Rich languages editing</a></li><li><a href="#file-management">File management</a></li><li><a href="#display">Display</a></li><li><a href="#debug">Debug</a></li><li><a href="#integrated-terminal">Integrated terminal</a></li><li><a href="#bookmark">BookMark</a></li></ul></li><li><a href="#cc">C/C++</a></li><li><a href="#vim">Vim</a></li></ul><!-- /TOC --><!-- /TOC --><!-- /TOC --><h1 id="hotkey">Hotkey</h1><h2 id="general">General</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+P</td><td>Show command palette</td></tr><tr class="even"><td>Ctrl+P</td><td>Quick Open</td></tr><tr class="odd"><td>Ctrl+Shift+N</td><td>New window</td></tr><tr class="even"><td>Ctrl+Shift+W</td><td>Close window</td></tr></tbody></table><h2 id="basic-editing">Basic editing</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+[</td><td>Fold region</td></tr><tr class="even"><td>Ctrl+Shift+]</td><td>Unfold region</td></tr><tr class="odd"><td>Ctrl+K+Ctrl+[</td><td>Fold all subregions</td></tr><tr class="even"><td>Ctrl+K+Ctrl+]</td><td>Unfold all subregions</td></tr></tbody></table><h2 id="navigation">Navigation</h2><table><tbody><tr class="odd"><td>Alt+<span class="math inline">\(\leftarrow\)</span></td><td>Navigate back</td></tr><tr class="even"><td>Alt+<span class="math inline">\(\rightarrow\)</span></td><td>Navigate forward</td></tr></tbody></table><h2 id="editor-management">Editor management</h2><table><tbody><tr class="odd"><td>Ctrl+W</td><td>Close editor</td></tr><tr class="even"><td>Ctrl+\</td><td>Split editor</td></tr><tr class="odd"><td>Ctrl+1/2/3</td><td>Focus into 1st, 2nd or 3rd editor group</td></tr><tr class="even"><td>Ctrl+K+Ctrl+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Focus into left/right editor group</td></tr><tr class="odd"><td>Ctrl+Alt+Z</td><td>Focus into next editor group</td></tr><tr class="even"><td>Ctrl+Shift+PgUp/PgDown</td><td>Move editor left/right</td></tr><tr class="odd"><td>Ctrl+K+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Move active editor group</td></tr><tr class="even"><td>Ctrl+Alt+<span class="math inline">\(\rightarrow\)</span></td><td>Move to next editor group</td></tr><tr class="odd"><td>Ctrl+Alt+<span class="math inline">\(\leftarrow\)</span></td><td>Move to previous editor group</td></tr></tbody></table><h2 id="rich-languages-editing">Rich languages editing</h2><table><tbody><tr class="odd"><td>Shift+Alt+F</td><td>Format document</td></tr></tbody></table><h2 id="file-management">File management</h2><table><tbody><tr class="odd"><td>Ctrl+Tab</td><td>Open next</td></tr><tr class="even"><td>Ctrl+Shift+Tab</td><td>Open previous</td></tr><tr class="odd"><td>Ctrl+K+P</td><td>Copy path of active file</td></tr><tr class="even"><td>Ctrl+N</td><td>New file</td></tr><tr class="odd"><td>Ctrl+O</td><td>Open file</td></tr><tr class="even"><td>Shift+Alt+C</td><td>Copy path of active file</td></tr></tbody></table><h2 id="display">Display</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+Q</td><td>Show Explorer</td></tr><tr class="even"><td>Ctrl+Shift+F</td><td>Show Search</td></tr><tr class="odd"><td>Ctrl+Shift+G G</td><td>Show Git</td></tr><tr class="even"><td>Ctrl+Shift+D</td><td>Show Debug</td></tr><tr class="odd"><td>Ctrl+K+V</td><td>Open Markdown preview to the side</td></tr><tr class="even"><td>Ctrl+Alt+X</td><td>Show Outline</td></tr></tbody></table><h2 id="debug">Debug</h2><table><tbody><tr class="odd"><td>F9</td><td>Toggle breakpoint</td></tr><tr class="even"><td>F5</td><td>Continue</td></tr><tr class="odd"><td>Shift+F5</td><td>Stop</td></tr><tr class="even"><td>F11/Shift F11</td><td>Step into/out</td></tr><tr class="odd"><td>F10</td><td>Step over</td></tr></tbody></table><h2 id="integrated-terminal">Integrated terminal</h2><table><tbody><tr class="odd"><td>Ctrl+`</td><td>Show integrated terminal</td></tr><tr class="even"><td>Ctrl+Shift+`</td><td>Create new terminal</td></tr><tr class="odd"><td>Ctrl+Shift+C</td><td>Copy selection</td></tr><tr class="even"><td>Ctrl+Shift+V</td><td>Paste into active terminal</td></tr><tr class="odd"><td>Ctrl+PgUp/PgDown</td><td>Focus on previous/next terminal group</td></tr><tr class="even"><td>Alt+Delete</td><td>Kill the active terminal instance</td></tr></tbody></table><h2 id="bookmark">BookMark</h2><table><tbody><tr class="odd"><td>Ctrl+ALT+K</td><td>Toggle</td></tr><tr class="even"><td>Ctrl+K Ctrl+ALT+K</td><td>Focus</td></tr></tbody></table><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>i:</strong> move cursor up</p><p><strong>k:</strong> move cursor down</p><p><strong>j:</strong> move cursor left</p><p><strong>l:</strong> move cursor right</p><p><strong>I:</strong> move cursor up 5 lines</p><p><strong>K:</strong> move cursor down 5 lines</p><p><strong>J:</strong> move cursor left 5 characters</p><p><strong>L:</strong> move cursor right 5 characters</p>]]></content>
     
     
     <categories>
@@ -88,11 +88,11 @@
   
   
   <entry>
-    <title>My Vim Cheat Sheet</title>
-    <link href="/Programming/Python/Vim%20Cheat%20Sheet/"/>
-    <url>/Programming/Python/Vim%20Cheat%20Sheet/</url>
+    <title>VSCode Configuration</title>
+    <link href="/Programming/Python/VSCode%20Configuration/"/>
+    <url>/Programming/Python/VSCode%20Configuration/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h1 id="cursor-movement">Cursor movement</h1><p><strong>i:</strong> move cursor up</p><p><strong>k:</strong> move cursor down</p><p><strong>j:</strong> move cursor left</p><p><strong>l:</strong> move cursor right</p><p><strong>I:</strong> move cursor up 5 lines</p><p><strong>K:</strong> move cursor down 5 lines</p><p><strong>J:</strong> move cursor left 5 characters</p><p><strong>L:</strong> move cursor right 5 characters</p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><!-- TOC --><ul><li><a href="#hotkey">Hotkey</a><ul><li><a href="#general">General</a></li><li><a href="#basic-editing">Basic editing</a></li><li><a href="#navigation">Navigation</a></li><li><a href="#editor-management">Editor management</a></li><li><a href="#rich-languages-editing">Rich languages editing</a></li><li><a href="#file-management">File management</a></li><li><a href="#display">Display</a></li><li><a href="#debug">Debug</a></li><li><a href="#integrated-terminal">Integrated terminal</a></li><li><a href="#bookmark">BookMark</a></li></ul></li><li><a href="#cc">C/C++</a></li><li><a href="#vim">Vim</a></li></ul><!-- /TOC --><!-- /TOC --><!-- /TOC --><h1 id="hotkey">Hotkey</h1><h2 id="general">General</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+P</td><td>Show command palette</td></tr><tr class="even"><td>Ctrl+P</td><td>Quick Open</td></tr><tr class="odd"><td>Ctrl+Shift+N</td><td>New window</td></tr><tr class="even"><td>Ctrl+Shift+W</td><td>Close window</td></tr></tbody></table><h2 id="basic-editing">Basic editing</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+[</td><td>Fold region</td></tr><tr class="even"><td>Ctrl+Shift+]</td><td>Unfold region</td></tr><tr class="odd"><td>Ctrl+K+Ctrl+[</td><td>Fold all subregions</td></tr><tr class="even"><td>Ctrl+K+Ctrl+]</td><td>Unfold all subregions</td></tr></tbody></table><h2 id="navigation">Navigation</h2><table><tbody><tr class="odd"><td>Alt+<span class="math inline">\(\leftarrow\)</span></td><td>Navigate back</td></tr><tr class="even"><td>Alt+<span class="math inline">\(\rightarrow\)</span></td><td>Navigate forward</td></tr></tbody></table><h2 id="editor-management">Editor management</h2><table><tbody><tr class="odd"><td>Ctrl+W</td><td>Close editor</td></tr><tr class="even"><td>Ctrl+\</td><td>Split editor</td></tr><tr class="odd"><td>Ctrl+1/2/3</td><td>Focus into 1st, 2nd or 3rd editor group</td></tr><tr class="even"><td>Ctrl+K+Ctrl+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Focus into left/right editor group</td></tr><tr class="odd"><td>Ctrl+Alt+Z</td><td>Focus into next editor group</td></tr><tr class="even"><td>Ctrl+Shift+PgUp/PgDown</td><td>Move editor left/right</td></tr><tr class="odd"><td>Ctrl+K+<span class="math inline">\(\leftarrow\)</span> / <span class="math inline">\(\rightarrow\)</span></td><td>Move active editor group</td></tr><tr class="even"><td>Ctrl+Alt+<span class="math inline">\(\rightarrow\)</span></td><td>Move to next editor group</td></tr><tr class="odd"><td>Ctrl+Alt+<span class="math inline">\(\leftarrow\)</span></td><td>Move to previous editor group</td></tr></tbody></table><h2 id="rich-languages-editing">Rich languages editing</h2><table><tbody><tr class="odd"><td>Shift+Alt+F</td><td>Format document</td></tr></tbody></table><h2 id="file-management">File management</h2><table><tbody><tr class="odd"><td>Ctrl+Tab</td><td>Open next</td></tr><tr class="even"><td>Ctrl+Shift+Tab</td><td>Open previous</td></tr><tr class="odd"><td>Ctrl+K+P</td><td>Copy path of active file</td></tr><tr class="even"><td>Ctrl+N</td><td>New file</td></tr><tr class="odd"><td>Ctrl+O</td><td>Open file</td></tr><tr class="even"><td>Shift+Alt+C</td><td>Copy path of active file</td></tr></tbody></table><h2 id="display">Display</h2><table><tbody><tr class="odd"><td>Ctrl+Shift+Q</td><td>Show Explorer</td></tr><tr class="even"><td>Ctrl+Shift+F</td><td>Show Search</td></tr><tr class="odd"><td>Ctrl+Shift+G G</td><td>Show Git</td></tr><tr class="even"><td>Ctrl+Shift+D</td><td>Show Debug</td></tr><tr class="odd"><td>Ctrl+K+V</td><td>Open Markdown preview to the side</td></tr><tr class="even"><td>Ctrl+Alt+X</td><td>Show Outline</td></tr></tbody></table><h2 id="debug">Debug</h2><table><tbody><tr class="odd"><td>F9</td><td>Toggle breakpoint</td></tr><tr class="even"><td>F5</td><td>Continue</td></tr><tr class="odd"><td>Shift+F5</td><td>Stop</td></tr><tr class="even"><td>F11/Shift F11</td><td>Step into/out</td></tr><tr class="odd"><td>F10</td><td>Step over</td></tr></tbody></table><h2 id="integrated-terminal">Integrated terminal</h2><table><tbody><tr class="odd"><td>Ctrl+`</td><td>Show integrated terminal</td></tr><tr class="even"><td>Ctrl+Shift+`</td><td>Create new terminal</td></tr><tr class="odd"><td>Ctrl+Shift+C</td><td>Copy selection</td></tr><tr class="even"><td>Ctrl+Shift+V</td><td>Paste into active terminal</td></tr><tr class="odd"><td>Ctrl+PgUp/PgDown</td><td>Focus on previous/next terminal group</td></tr><tr class="even"><td>Alt+Delete</td><td>Kill the active terminal instance</td></tr></tbody></table><h2 id="bookmark">BookMark</h2><table><tbody><tr class="odd"><td>Ctrl+ALT+K</td><td>Toggle</td></tr><tr class="even"><td>Ctrl+K Ctrl+ALT+K</td><td>Focus</td></tr></tbody></table><h1 id="cc">C/C++</h1><h1 id="vim">Vim</h1>]]></content>
     
     
     <categories>
@@ -279,33 +279,6 @@
   
   
   <entry>
-    <title>Introduction</title>
-    <link href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/"/>
-    <url>/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/</url>
-    
-    <content type="html"><![CDATA[<h1 id="一cuda简介">一、CUDA简介</h1><h2 id="gpu硬件平台">1.1 GPU硬件平台</h2><ul><li><p>GPU 数据运算</p></li><li><p>CPU 逻辑运算</p></li><li><p>GPU性能指标</p><ol type="1"><li><p>核心数</p></li><li><p>GPU显存容量</p></li><li><p>GPU计算峰值</p></li><li><p>显存带宽</p></li></ol></li></ul><h2 id="cpugpu异构架构">1.2 CPU+GPU异构架构</h2><p>CPU起到控制作用，一般称为主机（host）</p><p>GPU可以看作是CPU的协处理器，一般称为设备（device）</p><p>主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO</p><h2 id="cuda介绍">1.3 CUDA介绍</h2><p>建立在GPU上的一个通用并行计算平台和编程模型</p><p>CUDA提供两层API接口，CUDA驱动（driver）API和CUDA运行时（runtime）API，两种API调用性能几乎无差异，runtime API对用户更友好（C/C++），driver API（汇编）</p><h1 id="二nvidia-smi">二、nvidia-smi</h1><figure><img src="https://i-blog.csdnimg.cn/direct/4c47d179b4da4ad8a9a8a298560b5db5.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><ol type="1"><li>nvidia-smi版本号</li><li>驱动版本</li><li>CUDA版</li><li>GPU型号及序号</li><li>风扇</li><li>温度</li><li>Perf：性能状态，P0~P12</li><li>Persistence-M：持续模式状态</li><li>Pwr：显卡功率</li><li>Bus-Id：显卡总线</li><li>Disp.A：Display Activate，表示GPU是否初始化</li><li>Memory-Usage：显存使用率</li><li>Volatile GPU-Util：GPU使用率</li><li>ECC：是否开启错误检查和纠错技术，0：disabled，1：enabled</li><li>Compute M：计算模式</li></ol><p>查询GPU详细信息：nvidia-smi -q</p><p>查询特定GPU详细信息：nvidia-smi -q -i 0</p><p>显示GPU特定信息：nvidia-smi -q -i 0 -d MEMORY</p><p>帮助命令：nvidia-smi -h</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Infra</category>
-      
-      <category>CUDA</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CUDA</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>GPU Hardware Resources</title>
     <link href="/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/"/>
     <url>/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/</url>
@@ -387,6 +360,33 @@
   
   
   <entry>
+    <title>Introduction</title>
+    <link href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/"/>
+    <url>/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一cuda简介">一、CUDA简介</h1><h2 id="gpu硬件平台">1.1 GPU硬件平台</h2><ul><li><p>GPU 数据运算</p></li><li><p>CPU 逻辑运算</p></li><li><p>GPU性能指标</p><ol type="1"><li><p>核心数</p></li><li><p>GPU显存容量</p></li><li><p>GPU计算峰值</p></li><li><p>显存带宽</p></li></ol></li></ul><h2 id="cpugpu异构架构">1.2 CPU+GPU异构架构</h2><p>CPU起到控制作用，一般称为主机（host）</p><p>GPU可以看作是CPU的协处理器，一般称为设备（device）</p><p>主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO</p><h2 id="cuda介绍">1.3 CUDA介绍</h2><p>建立在GPU上的一个通用并行计算平台和编程模型</p><p>CUDA提供两层API接口，CUDA驱动（driver）API和CUDA运行时（runtime）API，两种API调用性能几乎无差异，runtime API对用户更友好（C/C++），driver API（汇编）</p><h1 id="二nvidia-smi">二、nvidia-smi</h1><figure><img src="https://i-blog.csdnimg.cn/direct/4c47d179b4da4ad8a9a8a298560b5db5.png" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption></figure><ol type="1"><li>nvidia-smi版本号</li><li>驱动版本</li><li>CUDA版</li><li>GPU型号及序号</li><li>风扇</li><li>温度</li><li>Perf：性能状态，P0~P12</li><li>Persistence-M：持续模式状态</li><li>Pwr：显卡功率</li><li>Bus-Id：显卡总线</li><li>Disp.A：Display Activate，表示GPU是否初始化</li><li>Memory-Usage：显存使用率</li><li>Volatile GPU-Util：GPU使用率</li><li>ECC：是否开启错误检查和纠错技术，0：disabled，1：enabled</li><li>Compute M：计算模式</li></ol><p>查询GPU详细信息：nvidia-smi -q</p><p>查询特定GPU详细信息：nvidia-smi -q -i 0</p><p>显示GPU特定信息：nvidia-smi -q -i 0 -d MEMORY</p><p>帮助命令：nvidia-smi -h</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Infra</category>
+      
+      <category>CUDA</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CUDA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C/C++ Cookbook</title>
     <link href="/Programming/C-C/C++%20Cookbook/"/>
     <url>/Programming/C-C/C++%20Cookbook/</url>
@@ -408,27 +408,6 @@
   
   
   <entry>
-    <title>Python Cookbook</title>
-    <link href="/Programming/Python/Python%20Cookbook/"/>
-    <url>/Programming/Python/Python%20Cookbook/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Programming</category>
-      
-      <category>Python</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Machine Learning</title>
     <link href="/Artificial-Intelligence/ML/ML/"/>
     <url>/Artificial-Intelligence/ML/ML/</url>
@@ -441,6 +420,27 @@
       <category>Artificial Intelligence</category>
       
       <category>ML</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python Cookbook</title>
+    <link href="/Programming/Python/Python%20Cookbook/"/>
+    <url>/Programming/Python/Python%20Cookbook/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/Decorators/">Decorators</a></p><p><a href="https://chenxindaaa.com/Programming/Python/Python%20Cookbook/classmethod,staticmethod,property//">classmethod, staticmethod and property</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Programming</category>
+      
+      <category>Python</category>
       
     </categories>
     
