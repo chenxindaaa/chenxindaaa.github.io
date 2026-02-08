@@ -16,24 +16,51 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、CUDA简介 1.1 GPU硬件平台  GPU 数据运算 CPU 逻辑运算 GPU性能指标  核心数 GPU显存容量 GPU计算峰值 显存带宽   1.2 CPU+GPU异构架构 CPU起到控制作用，一般称为主机（host） GPU可以看作是CPU的协处理器，一般称为设备（device） 主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO 1.3 CUDA介">
+    <meta name="description" content="一、GPU硬件资源 1. 流多处理器--SM   串行和并发的区别：  硬件执行单元利用  串行执行：  流水线停顿（Pipeline Stall）：数据依赖导致流水线气泡 资源闲置：ALU、FPU等执行单元利用率低（通常&lt;30%） 冯·诺依曼瓶颈：单一指令流，顺序访问内存  并发执行： 多发射（Multiple Issue）：单周期发射多条指令 执行单元并行：多个ALU&#x2F;FPU同时工作 乱">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Introduction">
-<meta property="og:url" content="http://chenxindaaa.com/Infra/CUDA/infra/introduction/index.html">
+<meta property="og:title" content="GPU Hardware Resources">
+<meta property="og:url" content="http://chenxindaaa.com/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="一、CUDA简介 1.1 GPU硬件平台  GPU 数据运算 CPU 逻辑运算 GPU性能指标  核心数 GPU显存容量 GPU计算峰值 显存带宽   1.2 CPU+GPU异构架构 CPU起到控制作用，一般称为主机（host） GPU可以看作是CPU的协处理器，一般称为设备（device） 主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO 1.3 CUDA介">
+<meta property="og:description" content="一、GPU硬件资源 1. 流多处理器--SM   串行和并发的区别：  硬件执行单元利用  串行执行：  流水线停顿（Pipeline Stall）：数据依赖导致流水线气泡 资源闲置：ALU、FPU等执行单元利用率低（通常&lt;30%） 冯·诺依曼瓶颈：单一指令流，顺序访问内存  并发执行： 多发射（Multiple Issue）：单周期发射多条指令 执行单元并行：多个ALU&#x2F;FPU同时工作 乱">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/Infra/CUDA/infra/introduction/image.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/30bd72204f464210bd6f199724a5f67a.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/738ddcbb3f164c909521d03b63ad3ea2.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/ce38fe5f8ae449dd82a09e944be84945.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/e7a51ade40bd4071928297862890d4f8.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4ad50a5fcdfb4709b8ae696d9b8d0880.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/d6031c7b80d94cb5b4d71ca75b3327eb.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/7983564642044841b6f43a7021601ef0.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/80531f3276654d14ada23d59042fb4a1.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/8978e23664374323a51f35b9f95aec8e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/8480d859afce49ffb95aa18ad2e94ab7.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/c3739a8563444c73b30f4728743fe92d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/f867c5a30d60477bb1cea1fd9580b5dc.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/a45f28fefd494960aabe9c38d828eb70.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/bec8ff7c616541ae9a9a08c19fb653cc.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4074adce363b437fa32f39bc1e4f6263.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4c0fc8f3a9dd468fb79a3cf0ae2a0dcf.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/9e26e54fed834c26a4b43aabb5255686.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2ef0a4a3f4264af38f5489e8861e9ea7.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/69c727a855f14f069b0728e0c865c7ef.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/0b6a635cc7f7484eb5ae80c7b0813ee2.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/3fc4385dc1344efd9289874659c88430.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/c6e9d03bdce74144bc5bb28b1c0d7e69.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/85fa2b9f0716492b8aa3343419f03861.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/2a007e0cb22b446698223460d32db47d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/96acfa802fbd4d938849d8896f448e9e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/e2f6377654c94246b7de1ba3d244f63e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/271e11ad845c4fb091b1b1af5c087f88.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/f0af6148afdc4f6882bbbc6612dce13f.png">
 <meta property="article:published_time" content="2020-01-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-02-08T03:53:13.498Z">
+<meta property="article:modified_time" content="2026-02-08T15:58:14.826Z">
 <meta property="article:author" content="chenxindaaa">
 <meta property="article:tag" content="CUDA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/Infra/CUDA/infra/introduction/image.png">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/30bd72204f464210bd6f199724a5f67a.png">
   
   
   
-  <title>Introduction - chenxindaaa</title>
+  <title>GPU Hardware Resources - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          638 words
+          1.4k words
         
       </span>
     
@@ -229,7 +256,7 @@
         
         
         
-          6 mins
+          12 mins
         
       </span>
     
@@ -272,51 +299,142 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一cuda简介">一、CUDA简介</h1>
-<h2 id="gpu硬件平台">1.1 GPU硬件平台</h2>
-<ul>
-<li><p>GPU 数据运算</p></li>
-<li><p>CPU 逻辑运算</p></li>
-<li><p>GPU性能指标</p>
+                <h1 id="一gpu硬件资源">一、GPU硬件资源</h1>
+<h2 id="流多处理器--sm">1. 流多处理器--SM</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/30bd72204f464210bd6f199724a5f67a.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://i-blog.csdnimg.cn/direct/738ddcbb3f164c909521d03b63ad3ea2.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>串行和并发的区别：</strong></p>
 <ol type="1">
-<li><p>核心数</p></li>
-<li><p>GPU显存容量</p></li>
-<li><p>GPU计算峰值</p></li>
-<li><p>显存带宽</p></li>
-</ol></li>
-</ul>
-<h2 id="cpugpu异构架构">1.2 CPU+GPU异构架构</h2>
-<p>CPU起到控制作用，一般称为主机（host）</p>
-<p>GPU可以看作是CPU的协处理器，一般称为设备（device）</p>
-<p>主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO</p>
-<h2 id="cuda介绍">1.3 CUDA介绍</h2>
-<p>建立在GPU上的一个通用并行计算平台和编程模型</p>
-<p>CUDA提供两层API接口，CUDA驱动（driver）API和CUDA运行时（runtime）API，两种API调用性能几乎无差异，runtime API对用户更友好（C/C++），driver API（汇编）</p>
-<h1 id="二nvidia-smi">二、nvidia-smi</h1>
-<figure>
-<img src="./image.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
-</figure>
-<ol type="1">
-<li>nvidia-smi版本号</li>
-<li>驱动版本</li>
-<li>CUDA版</li>
-<li>GPU型号及序号</li>
-<li>风扇</li>
-<li>温度</li>
-<li>Perf：性能状态，P0~P12</li>
-<li>Persistence-M：持续模式状态</li>
-<li>Pwr：显卡功率</li>
-<li>Bus-Id：显卡总线</li>
-<li>Disp.A：Display Activate，表示GPU是否初始化</li>
-<li>Memory-Usage：显存使用率</li>
-<li>Volatile GPU-Util：GPU使用率</li>
-<li>ECC：是否开启错误检查和纠错技术，0：disabled，1：enabled</li>
-<li>Compute M：计算模式</li>
+<li>硬件执行单元利用</li>
 </ol>
-<p>查询GPU详细信息：nvidia-smi -q</p>
-<p>查询特定GPU详细信息：nvidia-smi -q -i 0</p>
-<p>显示GPU特定信息：nvidia-smi -q -i 0 -d MEMORY</p>
-<p>帮助命令：nvidia-smi -h</p>
+<p>串行执行：</p>
+<ul>
+<li><p>流水线停顿（Pipeline Stall）：数据依赖导致流水线气泡</p></li>
+<li><p>资源闲置：ALU、FPU等执行单元利用率低（通常&lt;30%）</p></li>
+<li><p>冯·诺依曼瓶颈：单一指令流，顺序访问内存</p></li>
+</ul>
+<p>并发执行：</p>
+<p>多发射（Multiple Issue）：单周期发射多条指令</p>
+<p>执行单元并行：多个ALU/FPU同时工作</p>
+<p>乱序执行（OoOE）：动态调度隐藏延迟</p>
+<ol start="2" type="1">
+<li>内存层次结构影响</li>
+</ol>
+<p>串行内存访问：</p>
+<p>CPU核心 → L1 Cache → L2 Cache → L3 Cache → 内存 → 磁盘 ↓ ↓ ↓ ↓ ↓ 命中延迟 命中延迟 命中延迟 100ns 10ms (1ns) (4ns) (10ns) │ │ └── 内存墙问题 ──┘</p>
+<p>并行访问：</p>
+<p>核心1 → L1 → L2 → L3 → 内存控制器 → DRAM Bank 1 核心2 → L1 → L2 → L3 → 内存控制器 → DRAM Bank 2 核心3 → L1 → L2 → L3 → 内存控制器 → DRAM Bank 3 核心4 → L1 → L2 → L3 → 内存控制器 → DRAM Bank 4 ↓ ↓ ↓ ↓ ↓ 并行访存 独立 共享但 交错访问 Bank并行 缓存 分区</p>
+<p><strong>关键差异：</strong></p>
+<ul>
+<li><p>行缓冲冲突：串行访问同一DRAM Bank导致频繁预充电</p></li>
+<li><p>总线竞争：单一线程无法饱和内存带宽</p></li>
+<li><p>预取效率：并发可隐藏预取延迟</p></li>
+</ul>
+<ol start="3" type="1">
+<li>现代CPU架构的并发支持</li>
+</ol>
+<p>多级并行体系</p>
+<p>指令级并行 (ILP) ├── 流水线 (Pipeline)：5-20级深 ├── 超标量 (Superscalar)：4-8路发射 ├── 乱序执行 (OoOE)：192条指令重排序窗口 └── 推测执行 (Speculation)：分支预测</p>
+<p>线程级并行 (TLP) ├── 同步多线程 (SMT/Hyper-Threading)：2-8线程/核心 ├── 多核心 (Multi-Core)：4-128个物理核心 └── 众核心 (Many-Core)：数千个简化核心</p>
+<p>数据级并行 (DLP) ├── SIMD (SSE/AVX)：256-512位向量 ├── GPU并行：数千个流处理器 └── 张量核心：专用矩阵运算</p>
+<p>3.2 资源冲突对比</p>
+<table>
+<thead>
+<tr class="header">
+<th>资源类型</th>
+<th>串行执行问题</th>
+<th>并发执行优势</th>
+<th>瓶颈风险</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>执行端口</td>
+<td>端口利用率低</td>
+<td>多端口同时使用</td>
+<td>端口竞争</td>
+</tr>
+<tr class="even">
+<td>重排序缓冲区</td>
+<td>窗口空闲</td>
+<td>多线程填充窗口</td>
+<td>ROB容量</td>
+</tr>
+<tr class="odd">
+<td>缓存</td>
+<td>局部性有限</td>
+<td>多工作集预热缓存</td>
+<td>缓存污染</td>
+</tr>
+<tr class="even">
+<td>内存带宽</td>
+<td>无法饱和</td>
+<td>聚合带宽利用</td>
+<td>控制器竞争</td>
+</tr>
+<tr class="odd">
+<td>TLB</td>
+<td>页表覆盖小</td>
+<td>多线程共享TLB</td>
+<td>TLB抖动</td>
+</tr>
+</tbody>
+</table>
+<h2 id="线程模型与物理结构">2. 线程模型与物理结构</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/ce38fe5f8ae449dd82a09e944be84945.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="线程数束">3. 线程数束</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/e7a51ade40bd4071928297862890d4f8.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<p><img src="https://i-blog.csdnimg.cn/direct/4ad50a5fcdfb4709b8ae696d9b8d0880.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>为了最大化GPU效率，线程块内的线程个数是32的整数倍</strong></p>
+<h1 id="二cuda内存模型概述">二、CUDA内存模型概述</h1>
+<h2 id="内存结构层次特点">1. 内存结构层次特点</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/d6031c7b80d94cb5b4d71ca75b3327eb.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="cuda内存模型">2. CUDA内存模型</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/7983564642044841b6f43a7021601ef0.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>共享内存是片上内存</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/direct/80531f3276654d14ada23d59042fb4a1.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> # 三、寄存器和本地内存</p>
+<h2 id="寄存器">1. 寄存器</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/8978e23664374323a51f35b9f95aec8e.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/8480d859afce49ffb95aa18ad2e94ab7.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="本地内存">2. 本地内存</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/c3739a8563444c73b30f4728743fe92d.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://i-blog.csdnimg.cn/direct/f867c5a30d60477bb1cea1fd9580b5dc.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h2 id="寄存器溢出">3. 寄存器溢出</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/a45f28fefd494960aabe9c38d828eb70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvcc --resource-usage registerNum.cu -o registerNum -<span class="hljs-built_in">arch</span>=sm_86 &amp;&amp; ./registerNum<br></code></pre></td></tr></table></figure>
+<p><img src="https://i-blog.csdnimg.cn/direct/bec8ff7c616541ae9a9a08c19fb653cc.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 全局内存使用为0，代表静态全局内存使用情况</p>
+<h1 id="四全局内存">四、全局内存</h1>
+<h2 id="全局内存">1. 全局内存</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/4074adce363b437fa32f39bc1e4f6263.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="全局内存初始化">2. 全局内存初始化</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/4c0fc8f3a9dd468fb79a3cf0ae2a0dcf.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <strong>静态全局变量必须在主机和设备函数外定义</strong></p>
+<h1 id="五共享内存">五、共享内存</h1>
+<h2 id="共享内存作用">1. 共享内存作用</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/9e26e54fed834c26a4b43aabb5255686.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://i-blog.csdnimg.cn/direct/2ef0a4a3f4264af38f5489e8861e9ea7.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://i-blog.csdnimg.cn/direct/69c727a855f14f069b0728e0c865c7ef.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h2 id="静态共享内存">2. 静态共享内存</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/0b6a635cc7f7484eb5ae80c7b0813ee2.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> cuda支持一维、二维和三维静态共享内存 ## 3. 动态共享内存 <img src="https://i-blog.csdnimg.cn/direct/3fc4385dc1344efd9289874659c88430.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
+<h1 id="六常量内存">六、常量内存</h1>
+<h2 id="常量内存的作用">1. 常量内存的作用</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/c6e9d03bdce74144bc5bb28b1c0d7e69.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="常量内存的使用">2. 常量内存的使用</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/85fa2b9f0716492b8aa3343419f03861.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> # 七、GPU缓存</p>
+<h2 id="gpu缓存种类">1. GPU缓存种类</h2>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/2a007e0cb22b446698223460d32db47d.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<h2 id="gpu缓存作用">2. GPU缓存作用</h2>
+<p><img src="https://i-blog.csdnimg.cn/direct/96acfa802fbd4d938849d8896f448e9e.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> ## 3. L1缓存查询与设置 <img src="https://i-blog.csdnimg.cn/direct/e2f6377654c94246b7de1ba3d244f63e.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> ## 4. L1缓存共享内存 <img src="https://i-blog.csdnimg.cn/direct/271e11ad845c4fb091b1b1af5c087f88.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://i-blog.csdnimg.cn/direct/f0af6148afdc4f6882bbbc6612dce13f.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></p>
 
                 
               </div>
@@ -369,8 +487,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Introduction</div>
-      <div>http://chenxindaaa.com/Infra/CUDA/infra/introduction/</div>
+      <div>GPU Hardware Resources</div>
+      <div>http://chenxindaaa.com/Infra/CUDA/infra/GPU硬件资源/</div>
     </div>
     <div class="license-meta">
       
@@ -414,9 +532,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/Infra/CUDA/infra/matrixAdd/" title="Matrix Plus">
+                      <a href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/" title="Introduction">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Matrix Plus</span>
+                        <span class="hidden-mobile">Introduction</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -424,8 +542,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Infra/CUDA/infra/programming/" title="CUDA Programming">
-                        <span class="hidden-mobile">CUDA Programming</span>
+                      <a href="/Infra/CUDA/infra/matrixAdd/" title="Matrix Plus">
+                        <span class="hidden-mobile">Matrix Plus</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

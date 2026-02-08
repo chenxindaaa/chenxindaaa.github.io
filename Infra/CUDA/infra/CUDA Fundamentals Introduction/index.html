@@ -16,23 +16,24 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="STL GDB inline inline Lambda Expression">
+    <meta name="description" content="一、CUDA简介 1.1 GPU硬件平台  GPU 数据运算 CPU 逻辑运算 GPU性能指标  核心数 GPU显存容量 GPU计算峰值 显存带宽   1.2 CPU+GPU异构架构 CPU起到控制作用，一般称为主机（host） GPU可以看作是CPU的协处理器，一般称为设备（device） 主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO 1.3 CUDA介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++ Cookbook">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/C-C/C++%20Cookbook/index.html">
+<meta property="og:title" content="Introduction">
+<meta property="og:url" content="http://chenxindaaa.com/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="STL GDB inline inline Lambda Expression">
+<meta property="og:description" content="一、CUDA简介 1.1 GPU硬件平台  GPU 数据运算 CPU 逻辑运算 GPU性能指标  核心数 GPU显存容量 GPU计算峰值 显存带宽   1.2 CPU+GPU异构架构 CPU起到控制作用，一般称为主机（host） GPU可以看作是CPU的协处理器，一般称为设备（device） 主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO 1.3 CUDA介">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://chenxindaaa.com/img/article_header/C++.jpg">
-<meta property="article:published_time" content="2019-12-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-23T14:23:45.469Z">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/4c47d179b4da4ad8a9a8a298560b5db5.png">
+<meta property="article:published_time" content="2020-01-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-08T15:50:41.174Z">
 <meta property="article:author" content="chenxindaaa">
+<meta property="article:tag" content="CUDA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/C++.jpg">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/4c47d179b4da4ad8a9a8a298560b5db5.png">
   
   
   
-  <title>C/C++ Cookbook - chenxindaaa</title>
+  <title>Introduction - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -183,13 +184,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C/C++ Cookbook"></span>
+            <span id="subtitle" data-typed-text="CUDA"></span>
           
         </div>
 
@@ -205,8 +206,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2019-12-14 00:00" pubdate>
-          December 14, 2019 am
+        <time datetime="2020-01-08 00:00" pubdate>
+          January 8, 2020 am
         </time>
       </span>
     
@@ -217,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34 words
+          640 words
         
       </span>
     
@@ -228,7 +229,7 @@
         
         
         
-          1 mins
+          6 mins
         
       </span>
     
@@ -266,17 +267,56 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C/C++ Cookbook</h1>
+            <h1 style="display: none">CUDA</h1>
             
             
               <div class="markdown-body">
                 
-                <meta name="referrer" content="no-referrer"/>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/STL/">STL</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/GDB/">GDB</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/inline/">inline</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/Move/">inline</a></p>
-<p><a href="https://chenxindaaa.com/Programming/C-C/C++%20Cookbook/Lambda%20Expression/">Lambda Expression</a></p>
+                <h1 id="一cuda简介">一、CUDA简介</h1>
+<h2 id="gpu硬件平台">1.1 GPU硬件平台</h2>
+<ul>
+<li><p>GPU 数据运算</p></li>
+<li><p>CPU 逻辑运算</p></li>
+<li><p>GPU性能指标</p>
+<ol type="1">
+<li><p>核心数</p></li>
+<li><p>GPU显存容量</p></li>
+<li><p>GPU计算峰值</p></li>
+<li><p>显存带宽</p></li>
+</ol></li>
+</ul>
+<h2 id="cpugpu异构架构">1.2 CPU+GPU异构架构</h2>
+<p>CPU起到控制作用，一般称为主机（host）</p>
+<p>GPU可以看作是CPU的协处理器，一般称为设备（device）</p>
+<p>主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO</p>
+<h2 id="cuda介绍">1.3 CUDA介绍</h2>
+<p>建立在GPU上的一个通用并行计算平台和编程模型</p>
+<p>CUDA提供两层API接口，CUDA驱动（driver）API和CUDA运行时（runtime）API，两种API调用性能几乎无差异，runtime API对用户更友好（C/C++），driver API（汇编）</p>
+<h1 id="二nvidia-smi">二、nvidia-smi</h1>
+<figure>
+<img src="https://i-blog.csdnimg.cn/direct/4c47d179b4da4ad8a9a8a298560b5db5.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+</figure>
+<ol type="1">
+<li>nvidia-smi版本号</li>
+<li>驱动版本</li>
+<li>CUDA版</li>
+<li>GPU型号及序号</li>
+<li>风扇</li>
+<li>温度</li>
+<li>Perf：性能状态，P0~P12</li>
+<li>Persistence-M：持续模式状态</li>
+<li>Pwr：显卡功率</li>
+<li>Bus-Id：显卡总线</li>
+<li>Disp.A：Display Activate，表示GPU是否初始化</li>
+<li>Memory-Usage：显存使用率</li>
+<li>Volatile GPU-Util：GPU使用率</li>
+<li>ECC：是否开启错误检查和纠错技术，0：disabled，1：enabled</li>
+<li>Compute M：计算模式</li>
+</ol>
+<p>查询GPU详细信息：nvidia-smi -q</p>
+<p>查询特定GPU详细信息：nvidia-smi -q -i 0</p>
+<p>显示GPU特定信息：nvidia-smi -q -i 0 -d MEMORY</p>
+<p>帮助命令：nvidia-smi -h</p>
 
                 
               </div>
@@ -295,12 +335,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  <a href="/categories/Infra/" class="category-chain-item">Infra</a>
   
   
     <span>></span>
     
-  <a href="/categories/Programming/C-C/" class="category-chain-item">C/C++</a>
+  <a href="/categories/Infra/CUDA/" class="category-chain-item">CUDA</a>
   
   
 
@@ -314,6 +354,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CUDA/">#CUDA</a>
+      
+    </div>
+  
 </div>
 
 
@@ -322,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C/C++ Cookbook</div>
-      <div>http://chenxindaaa.com/Programming/C-C/C++ Cookbook/</div>
+      <div>Introduction</div>
+      <div>http://chenxindaaa.com/Infra/CUDA/infra/CUDA Fundamentals Introduction/</div>
     </div>
     <div class="license-meta">
       
@@ -335,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 14, 2019</div>
+          <div>January 8, 2020</div>
         </div>
       
       
@@ -371,8 +418,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Programming/Python/Python%20Cookbook/" title="Python Cookbook">
-                        <span class="hidden-mobile">Python Cookbook</span>
+                      <a href="/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/" title="GPU Hardware Resources">
+                        <span class="hidden-mobile">GPU Hardware Resources</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
