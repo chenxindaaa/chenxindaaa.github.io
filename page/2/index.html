@@ -410,15 +410,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/" target="_self">
-          GPU Hardware Resources
+        <a href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/" target="_self">
+          Introduction
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/" target="_self">
         <div>
-          一、GPU硬件资源 1. 流多处理器--SM   串行和并发的区别：  硬件执行单元利用  串行执行：  流水线停顿（Pipeline Stall）：数据依赖导致流水线气泡 资源闲置：ALU、FPU等执行单元利用率低（通常&lt;30%） 冯·诺依曼瓶颈：单一指令流，顺序访问内存  并发执行： 多发射（Multiple Issue）：单周期发射多条指令 执行单元并行：多个ALU/FPU同时工作 乱
+          一、CUDA简介 1.1 GPU硬件平台  GPU 数据运算 CPU 逻辑运算 GPU性能指标  核心数 GPU显存容量 GPU计算峰值 显存带宽   1.2 CPU+GPU异构架构 CPU起到控制作用，一般称为主机（host） GPU可以看作是CPU的协处理器，一般称为设备（device） 主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO 1.3 CUDA介
         </div>
       </a>
 
@@ -546,15 +546,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/Infra/CUDA/infra/programming/" target="_self">
-          CUDA Programming
+        <a href="/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/" target="_self">
+          GPU Hardware Resources
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Infra/CUDA/infra/programming/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Infra/CUDA/infra/GPU%E7%A1%AC%E4%BB%B6%E8%B5%84%E6%BA%90/" target="_self">
         <div>
-          一、核函数  核函数在GPU上并行执行 注意  限定词__global__修饰 返回值必须是void  形式  1234__global__ void kernel_function(argument arg)&#123;    printf(&quot;hello world\n&quot;);&#125; 1234void __global__ kernel_function(argument
+          一、GPU硬件资源 1. 流多处理器--SM   串行和并发的区别：  硬件执行单元利用  串行执行：  流水线停顿（Pipeline Stall）：数据依赖导致流水线气泡 资源闲置：ALU、FPU等执行单元利用率低（通常&lt;30%） 冯·诺依曼瓶颈：单一指令流，顺序访问内存  并发执行： 多发射（Multiple Issue）：单周期发射多条指令 执行单元并行：多个ALU/FPU同时工作 乱
         </div>
       </a>
 
@@ -614,15 +614,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/" target="_self">
-          Introduction
+        <a href="/Infra/CUDA/infra/programming/" target="_self">
+          CUDA Programming
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Infra/CUDA/infra/CUDA%20Fundamentals%20Introduction/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/Infra/CUDA/infra/programming/" target="_self">
         <div>
-          一、CUDA简介 1.1 GPU硬件平台  GPU 数据运算 CPU 逻辑运算 GPU性能指标  核心数 GPU显存容量 GPU计算峰值 显存带宽   1.2 CPU+GPU异构架构 CPU起到控制作用，一般称为主机（host） GPU可以看作是CPU的协处理器，一般称为设备（device） 主机和设备之间内存访问一般通过PCIe总线链接，PCIe传输较慢，对于小任务瓶颈是IO 1.3 CUDA介
+          一、核函数  核函数在GPU上并行执行 注意  限定词__global__修饰 返回值必须是void  形式  1234__global__ void kernel_function(argument arg)&#123;    printf(&quot;hello world\n&quot;);&#125; 1234void __global__ kernel_function(argument
         </div>
       </a>
 
