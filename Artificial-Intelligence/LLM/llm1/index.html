@@ -16,43 +16,23 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Matlab基础06.第三章习题">
-<meta property="og:url" content="http://chenxindaaa.com/Programming/MATLAB/MATLAB/Matlab%E5%9F%BA%E7%A1%8006.%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%B9%A0%E9%A2%98/index.html">
+    <meta name="description" content="NLP 基础概念与核心术语学习笔记 1. 自然语言处理 (NLP) 概述 自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 来源: PDF Excerpts 1.1NLP 定义： NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Happy LLM task1">
+<meta property="og:url" content="http://chenxindaaa.com/Artificial-Intelligence/LLM/llm1/index.html">
 <meta property="og:site_name" content="chenxindaaa">
+<meta property="og:description" content="NLP 基础概念与核心术语学习笔记 1. 自然语言处理 (NLP) 概述 自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 来源: PDF Excerpts 1.1NLP 定义： NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026191817305.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026191722186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026191749960.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026192436738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026192637273.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026194415452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026194550382.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026200443678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026200524966.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026200534284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026200549660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026200604977.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026202153719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026202213707.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026202549817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026202618343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026203425614.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026205253230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026205302175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026205337155.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/201910262105361.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191026210546193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2019-10-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-29T15:15:20.140Z">
+<meta property="og:image" content="http://chenxindaaa.com/img/article_header/ml.jpg">
+<meta property="article:published_time" content="2026-02-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-01T10:06:56.287Z">
 <meta property="article:author" content="chenxindaaa">
-<meta property="article:tag" content="Matlab">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191026191817305.png">
+<meta name="twitter:image" content="http://chenxindaaa.com/img/article_header/ml.jpg">
   
   
   
-  <title>Matlab基础06.第三章习题 - chenxindaaa</title>
+  <title>Happy LLM task1 - chenxindaaa</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,13 +183,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/article_header/12.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Matlab"></span>
+            <span id="subtitle" data-typed-text="Happy LLM task1"></span>
           
         </div>
 
@@ -225,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2019-10-26 00:00" pubdate>
-          October 26, 2019 am
+        <time datetime="2026-03-01 00:00" pubdate>
+          March 1, 2026 am
         </time>
       </span>
     
@@ -237,7 +217,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          3.7k words
         
       </span>
     
@@ -248,7 +228,7 @@
         
         
         
-          1 mins
+          31 mins
         
       </span>
     
@@ -286,23 +266,195 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Matlab</h1>
+            <h1 style="display: none">Happy LLM task1</h1>
             
             
               <div class="markdown-body">
                 
-                <meta name="referrer" content="no-referrer"/>
-<ol type="1">
-<li><img src="https://img-blog.csdnimg.cn/20191026191817305.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026191722186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026191749960.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026192436738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026192637273.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026194415452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026194550382.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200443678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200524966.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200534284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026200549660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026200604977.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026202153719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026202213707.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026202549817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026202618343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload title="fig:" alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026203425614.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026205253230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026205302175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-<li><img src="https://img-blog.csdnimg.cn/20191026205337155.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/201910262105361.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> <img src="https://img-blog.csdnimg.cn/20191026210546193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /></li>
-</ol>
+                <h3 id="nlp-基础概念与核心术语学习笔记">NLP 基础概念与核心术语学习笔记</h3>
+<h4 id="自然语言处理-nlp-概述">1. 自然语言处理 (NLP) 概述</h4>
+<p>自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 来源: PDF Excerpts 1.1<strong>NLP 定义：</strong> NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于理解其背后的深层语义因素，包括语义、语境、情感，以及处理语言中的歧义性、抽象概念、隐喻和讽刺。 来源: PDF Excerpts 1.1NLP 是一个高度交叉的学科体系，其理论基础主要融合了以下四个领域：</p>
+<ul>
+<li><strong>计算机科学：</strong> 提供底层算力支撑与算法实现架构。<br />
+</li>
+<li><strong>人工智能：</strong> 提供机器学习与深度学习的建模范式。<br />
+</li>
+<li><strong>语言学：</strong> 提供语法、语义及语用学的规则与逻辑约束。<br />
+</li>
+<li><strong>心理学：</strong> 用于模拟人类在处理语言时的认知模拟与行为建模。 来源: PDF Excerpts 1.1</li>
+</ul>
+<h4 id="nlp-的发展历程与技术演进">2. NLP 的发展历程与技术演进</h4>
+<p>NLP 技术的演进经历了从规则到统计，再到深度学习与大语言模型（LLM）的范式转移。核心逻辑经历了从“序列依序计算”到“并行计算及注意力机制”的本质变革。 来源: PDF Excerpts 2.1.1<strong>关键技术节点时间线：</strong></p>
+<ul>
+<li><strong>2013 年：Word2Vec</strong><br />
+</li>
+<li><strong>主要贡献：</strong> 由 Tomas Mikolov 等提出，基于 NNLM 思想捕捉词与词间的上下文关系，生成稠密词嵌入。提供 <strong>CBOW</strong> （根据上下文预测目标词）和 <strong>Skip-gram</strong> （利用目标词预测上下文）两种架构。实践证明，Skip-gram 在大型语料库中表现更优。 来源: PDF Excerpts 1.4.3<br />
+</li>
+<li><strong>2017 年：Transformer</strong><br />
+</li>
+<li><strong>主要贡献：</strong> Vaswani 等提出完全基于注意力机制（Attention）的架构。解决了 RNN/LSTM 序列依序计算导致的 <strong>GPU 并行计算瓶颈</strong> ，以及难以捕捉长序列相关关系的缺陷（RNN 中距离越远，关系越难捕捉）。 来源: PDF Excerpts 2.1.1<br />
+</li>
+<li><strong>2018 年：GPT-1 &amp; BERT</strong><br />
+</li>
+<li><strong>主要贡献：</strong> GPT-1 坚持 Decoder-Only 路径；BERT 则利用双向 Transformer 编码器在理解任务上创下 SOTA。 来源: PDF Excerpts 2.2.3, 参考文献<br />
+</li>
+<li><strong>2020 年：GPT-3</strong><br />
+</li>
+<li><strong>主要贡献：</strong> 模型参数规模跃升至 175B，通过超大规模数据预训练触发了“涌现能力”，确立了 LLM 的领先地位。 来源: PDF Excerpts 2.2.3</li>
+</ul>
+<h4 id="nlp-核心任务详解">3. NLP 核心任务详解</h4>
+<p>根据处理深度的不同，NLP 任务可划分为从基础分词到复杂语义建模的多个层级。 来源: PDF Excerpts 1.1, 1.3</p>
+<h5 id="中文分词-cws">中文分词 (CWS)</h5>
+<p>由于中文词间缺乏明显分隔符（如空格），分词是中文处理的首要任务。</p>
+<ul>
+<li><strong>示例：</strong> “雍和宫的荷花开的很好。”<br />
+</li>
+<li><strong>正确路径：</strong> 雍和宫 | 的 | 荷花 | 开 | 的 | 很 | 好 | 。<br />
+</li>
+<li><strong>错误分析：</strong> 若切分为“雍 | 和 | 宫的”，将导致特定地名实体被拆解，破坏后续语义分析。 来源: PDF Excerpts 1.3.2</li>
+</ul>
+<h5 id="子词切分-subword-segmentation">子词切分 (Subword Segmentation)</h5>
+<p>介于字符和词之间，利用 BPE 或 WordPiece 等算法解决未登录词（OOV）问题。</p>
+<ul>
+<li><strong>示例：</strong> 对于 "unhappiness"：<br />
+</li>
+<li><strong>BPE (Byte Pair Encoding)：</strong> 可能切分为 "un", "happi", "ness"。 来源: PDF Excerpts 1.3.4, 5.2.3<br />
+</li>
+<li><strong>WordPiece (BERT)：</strong> 会使用特殊的 ## 标记，切分为 "un", "##happiness"，以表示该子词为后缀。 来源: PDF Excerpts 5.2.3</li>
+</ul>
+<h5 id="词性标注-pos-tagging">词性标注 (POS Tagging)</h5>
+<p>识别词汇的语法属性（如名词、动词）。经典模型包括隐马尔可夫模型 (HMM)、条件随机场 (CRF) 及深度学习模型 (RNN/LSTM)。 来源: PDF Excerpts 1.3.3</p>
+<h5 id="文本分类-text-classification">文本分类 (Text Classification)</h5>
+<p>将文本映射到预定义的标签。例如，“NBA 季后赛将开始”被分类为“体育”。 来源: PDF Excerpts 1.3.6</p>
+<h5 id="实体识别-ner-与-关系抽取-relation-extraction">实体识别 (NER) 与 关系抽取 (Relation Extraction)</h5>
+<p>两项任务是构建 <strong>知识图谱 (Knowledge Graph)</strong> 的基石：</p>
+<ul>
+<li><strong>作用 1：实体类别化 (Entity Categorization)</strong> ：如识别出 "李雷", "人名", "北京市", "地名"。 来源: PDF Excerpts 1.3.6<br />
+</li>
+<li><strong>作用 2：语义事实抽取 (Fact Extraction)</strong> ：抽取实体间的因果、亲属或地理关系（生成三元组 Triple），用于理解文本深层语义逻辑。 来源: PDF Excerpts 1.3.6</li>
+</ul>
+<h5 id="文本摘要机器翻译与自动问答">文本摘要、机器翻译与自动问答</h5>
+<ul>
+<li><strong>摘要：</strong> 包含抽取式和生成式，旨在压缩信息。 来源: PDF Excerpts 1.3.7<br />
+</li>
+<li><strong>翻译：</strong> 强调语义、风格和文化背景的对齐。 来源: PDF Excerpts 1.3.8<br />
+</li>
+<li><strong>问答：</strong> 模拟人类根据知识库或语境给出准确答案。 来源: PDF Excerpts 1.1</li>
+</ul>
+<h4 id="文本表示模型的演进">4. 文本表示模型的演进</h4>
+<p>文本表示经历了从高维离散到低维稠密、从静态到动态的演变。| 模型名称 | 核心思想 | 优点 | 局限性 || ------ | ------ | ------ | ------ || <strong>N-gram</strong> | 基于马尔可夫假设，预测当前词仅依赖前 N-1 个词。 | 实现简单，计算成本低。 | 数据稀疏，忽略长程依赖。 || <strong>TF-IDF</strong> | 评估词语对特定文件的重要程度。 | 反映词汇在语料库中的独特贡献。 | 无法捕捉语义及上下文。 || <strong>VSM</strong> | 将文档映射为特征项权重的向量。 | 奠定了信息检索的基础。 | 难以解决同义词及多义词。 || <strong>Word2Vec</strong> | 通过神经网络学习上下文关系。 | 生成语义关联的稠密向量。 | <strong>静态表示</strong> ：无法处理一词多义（Polysemy）。 || <strong>Transformer</strong> | 基于注意力机制的动态编码。 | 捕获双向复杂的动态语义。 | 计算资源需求大，硬件门槛高。 |<br />
+来源: PDF Excerpts 1.4.2, 1.4.3, 2.1.1, Glossary</p>
+<h4 id="大语言模型-llm-的兴起与特性">5. 大语言模型 (LLM) 的兴起与特性</h4>
+<p>相较于传统预训练模型 (PLM)，LLM 的本质区别在于其巨大的规模参数触发了显著的性能跃迁。 来源: PDF Excerpts 2.2.3</p>
+<h5 id="llm-的四大涌现能力">LLM 的四大涌现能力</h5>
+<ul>
+<li><strong>涌现能力 (Emergent Ability)：</strong> 规模跨越阈值后，非线性地获得小模型不具备的复杂能力。<br />
+</li>
+<li><strong>上下文学习 (In-Context Learning)：</strong> 无需参数更新，通过提示词中的示例即可习得新任务。<br />
+</li>
+<li><strong>指令遵循 (Instruction Following)：</strong> 准确理解并执行自然语言给出的复杂指令。<br />
+</li>
+<li><strong>逐步推理 (Step-by-Step Reasoning)：</strong> 借助 <strong>思维链 (CoT)</strong> 策略，解决多步骤逻辑推理任务。 来源: PDF Excerpts 5.1.1</li>
+</ul>
+<h5 id="主流大模型家族">主流大模型家族</h5>
+<ul>
+<li><strong>GPT 系列：</strong> GPT-3 拥有 175B 参数，确立了 <strong>Few-shot</strong> （加入 3~5 个示例）作为解决零样本 (Zero-shot) 表现不足的主流方案。算力开销极大，需 1024 张 A100 显卡训练约 1 个月。 来源: PDF Excerpts 2.2.3<br />
+</li>
+<li><strong>LLaMA 系列：</strong> LLaMA-3 采用 15T token 的海量预训练语料，并引入 <strong>分组查询注意力机制 (GQA)</strong> 优化性能。 来源: PDF Excerpts 3.1.1<br />
+</li>
+<li><strong>GLM 家族：</strong> ChatGLM-6B 为中文开源大模型里程碑；ChatGLM2 实现了 32K 上下文扩展，并在架构上回归 LLaMA 风格。 来源: PDF Excerpts 3.1.1</li>
+</ul>
+<h4 id="术语表-glossary">6. 术语表 (Glossary)</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">术语 (Term)</th>
+<th style="text-align: left;">简要解释 (Explanation)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NLP</td>
+<td style="text-align: left;">自然语言处理，使计算机理解、生成及模拟人类语言认知的技术。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CWS</td>
+<td style="text-align: left;">中文分词，将连续中文文本切分为有意义词汇序列的基础任务。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Subword Segmentation</td>
+<td style="text-align: left;">子词切分，通过合并高频字符对解决未登录词问题的策略。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POS Tagging</td>
+<td style="text-align: left;">词性标注，识别语法属性，常用模型包括 HMM、CRF 或 RNN。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NER</td>
+<td style="text-align: left;">命名实体识别，识别文本中人名、地名、组织等特定实体的过程。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Relation Extraction</td>
+<td style="text-align: left;">关系抽取，从文本中提取实体间的语义关联，用于知识图谱构建。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Text Classification</td>
+<td style="text-align: left;">文本分类，根据预定义标签对文本内容进行自动归类。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Text Summarization</td>
+<td style="text-align: left;">文本摘要，压缩长文本并提取核心信息的任务。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MT</td>
+<td style="text-align: left;">机器翻译，实现不同自然语言之间的自动转换。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QA</td>
+<td style="text-align: left;">自动问答，针对用户提问在文档或知识库中检索/生成答案。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VSM</td>
+<td style="text-align: left;">向量空间模型，利用特征权重向量表示文档。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TF-IDF</td>
+<td style="text-align: left;">词频-逆文档频率，衡量词汇在特定文档中的独特性与重要程度。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N-gram</td>
+<td style="text-align: left;">统计语言模型，假设词的概率仅依赖于其前 N-1 个词。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Word2Vec</td>
+<td style="text-align: left;">基于神经概率语言模型的词嵌入技术，生成语义稠密向量。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transformer</td>
+<td style="text-align: left;">基于全注意力机制的架构，解决了 RNN 并行计算与长程依赖问题。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLM</td>
+<td style="text-align: left;">预训练语言模型，在通用海量语料上预先训练的模型。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LLM</td>
+<td style="text-align: left;">大语言模型，通常指参数规模极大且具备涌现能力的神经网络。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Emergent Ability</td>
+<td style="text-align: left;">涌现能力，大模型规模剧增时表现出的能力突变现象。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SFT</td>
+<td style="text-align: left;">有监督微调，通过拟合指令/回复对（Prompt/Response）使模型对齐人类指令。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RAG</td>
+<td style="text-align: left;">检索增强生成，通过引入外部知识检索，缓解模型在医疗、金融等领域的“幻觉”问题。</td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -321,12 +473,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Programming/" class="category-chain-item">Programming</a>
+  <a href="/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
   
   
     <span>></span>
     
-  <a href="/categories/Programming/MATLAB/" class="category-chain-item">MATLAB</a>
+  <a href="/categories/Artificial-Intelligence/LLM/" class="category-chain-item">LLM</a>
   
   
 
@@ -340,13 +492,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Matlab/">#Matlab</a>
-      
-    </div>
-  
 </div>
 
 
@@ -355,8 +500,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Matlab基础06.第三章习题</div>
-      <div>http://chenxindaaa.com/Programming/MATLAB/MATLAB/Matlab基础06.第三章习题/</div>
+      <div>Happy LLM task1</div>
+      <div>http://chenxindaaa.com/Artificial-Intelligence/LLM/llm1/</div>
     </div>
     <div class="license-meta">
       
@@ -368,7 +513,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 26, 2019</div>
+          <div>March 1, 2026</div>
         </div>
       
       
@@ -395,6 +540,23 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Electronic-Design-Automation/Logic-Synthesis/Terminology/" title="Terminology">
+                        <span class="hidden-mobile">Terminology</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

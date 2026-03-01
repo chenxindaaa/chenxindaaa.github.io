@@ -459,7 +459,7 @@
 </table>
 <p>数据太多了，以至于看起来有些凌乱！也就是说，无法直接看出这组数据的主成分，因为在坐标系下这组数据分布的很散乱。究其原因，是因为无法拨开遮住肉眼的迷雾~如果把这些数据在相应的空间中表示出来，也许你就能换一个观察角度找出主成分。如下图所示：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200108195325534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200108195325534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>但是，对于更高维的数据，能想象其分布吗？就算能描述分布，如何精确地找到这些主成分的轴？如何衡量你提取的主成分到底占了整个数据的多少信息？所以，我们就要用到主成分分析的处理方法。</p>
 <p><strong>3.数据降维</strong> 　　</p>
@@ -607,7 +607,7 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
 <p><strong>1. 最大方差理论</strong> 　　 　　在信号处理中认为信号具有较大的方差，噪声有较小的方差，信噪比就是信号与噪声的方差比，越大越好。如前面的图，样本在u1上的投影方差较大，在u2上的投影方差较小，那么可认为u2上的投影是由噪声引起的。 　　因此我们认为，最好的k维特征是将n维样本点转换为k维后，每一维上的样本方差都很大。 　　比如我们将下图中的5个点投影到某一维上，这里用一条过原点的直线表示（数据已经中心化）： 　　<img src="https://img-blog.csdnimg.cn/20200108203543761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　假设我们选择两条不同的直线做投影，那么左右两条中哪个好呢？根据我们之前的方差最大化理论，左边的好，因为投影后的样本点之间方差最大（也可以说是投影的绝对值之和最大）。 　　计算投影的方法见下图5： 　　 <img src="https://img-blog.csdnimg.cn/20200108203611951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　图中，红色点表示样例，蓝色点表示在u上的投影，u是直线的斜率也是直线的方向向量，而且是单位向量。蓝色点是在u上的投影点，离原点的距离是&lt;x,u&gt;（即xTu或者uTx）。</p>
 <p><strong>２．最小二乘法</strong> 　　 　　我们使用最小二乘法来确定各个主轴（主成分）的方向。 　　对给定的一组数据（下面的阐述中，向量一般均指列向量）： <img src="https://img-blog.csdnimg.cn/20200108204054239.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 其数据中心位于:</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200108204111807.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200108204111807.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>数据中心化（将坐标原点移到样本点的中心点）：</p>
 <p><img src="https://img-blog.csdnimg.cn/20200108204141238.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　中心化后的数据在第一主轴u1方向上分布散的最开，也就是说在u1方向上的投影的绝对值之和最大（也可以说方差最大），计算投影的方法上面已经阐述，就是将x与u1做内积，由于只需要求u1的方向，所以设u1也是单位向量。 　　在这里，也就是最大化下式： <img src="https://img-blog.csdnimg.cn/20200108204205381.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　由矩阵代数相关知识可知，可以对绝对值符号项进行平方处理，比较方便。所以进而就是最大化下式： <img src="https://img-blog.csdnimg.cn/2020010820450178.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 　　两个向量做内积，可以转化成矩阵乘法：</p>
@@ -617,7 +617,7 @@ cov(z,x) &amp; cov(z,y) &amp; cov(z,z)
 <p><img src="https://img-blog.csdnimg.cn/20200108205251922.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 则：</p>
 <p><img src="https://img-blog.csdnimg.cn/20200108205303956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 所以：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200108205316647.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200108205316647.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>针对第二个问题，我们取上式中的<span class="math inline">\(x=u_1,A=X^T\)</span>，目标函数<span class="math inline">\(u_1^TXX^tu_1\)</span>取得最大值，也就是<span class="math inline">\(max(u_1^TXX^Tu_1)=max(||X^Tu_1||^2_2)=XX^T\)</span>的最大特征值时，对应的特征向量的方向，就是第一主成分u1的方向！（第二主成分的方向为<span class="math inline">\(XX^T\)</span>的第二大特征值对应的特征向量的方向，以此类推）。 证明完毕。 主成分所占整个信息的百分比可用下式计算： <img src="https://img-blog.csdnimg.cn/2020010820560282.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /> 式中分母为<span class="math inline">\(XX^T\)</span>所有奇异值平方和，分子为所选取的前k大奇异值平方和。 有些研究工作表明，所选的主轴总长度占所有主轴长度之和的大约85% 即可，其实，这只是一个大体的说法，具体选多少个，要看实际情况而定。</p>
 <h4 id="四代码">四、代码</h4>

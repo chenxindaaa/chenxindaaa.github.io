@@ -366,7 +366,7 @@
 <p>处理后，遍历数据集，将每一条数据插入FP树中，从根节点开始递归添加路径，存在则将数值增加，不存在则创建新的节点。</p>
 <p>例如下图所示，① 根节点不存在子节点｛z｝，所以创建新的子节点｛z｝，递归节点｛z｝，因不存在子节点｛r｝，所以创建新的子节点｛r｝，② 根节点存在子节点｛z｝，所以数值增加，递归节点｛z｝，因不存在子节点｛x｝，所以创建新的子节点｛x｝，递归节点｛x｝，......，如此递归。</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20191231164854510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20191231164854510.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MzE1OTg3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <h2 id="三代码实现">三、代码实现</h2>
 <h4 id="fp树的类定义">3.1 FP树的类定义</h4>

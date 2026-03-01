@@ -317,7 +317,11 @@ P(w_1, w_2, w_3, w_4)
 <p>$$</p>
 <p>当<span class="math inline">\(n\)</span>分别为1、2和3时，我们将其分别称作一元语法（unigram）、二元语法（bigram）和三元语法（trigram）。例如，长度为4的序列<span class="math inline">\(w_1, w_2, w_3, w_4\)</span>在一元语法、二元语法和三元语法中的概率分别为</p>
 <p>$$</p>
-<p>\begin{aligned} P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2) P(w_3) P(w_4) ,\ P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2 w_1) P(w_3 w_2) P(w_4 w_3) ,\ P(w_1, w_2, w_3, w_4) &amp;= P(w_1) P(w_2 w_1) P(w_3 w_1, w_2) P(w_4 w_2, w_3) . \end{aligned}</p>
+<span class="math display">\[\begin{aligned}
+P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2) P(w_3) P(w_4) ,\\
+P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_2) P(w_4 \mid w_3) ,\\
+P(w_1, w_2, w_3, w_4) &amp;=  P(w_1) P(w_2 \mid w_1) P(w_3 \mid w_1, w_2) P(w_4 \mid w_2, w_3) .
+\end{aligned}\]</span>
 <p>$$</p>
 <p>当<span class="math inline">\(n\)</span>较小时，<span class="math inline">\(n\)</span>元语法往往并不准确。例如，在一元语法中，由三个词组成的句子“你走先”和“你先走”的概率是一样的。然而，当<span class="math inline">\(n\)</span>较大时，<span class="math inline">\(n\)</span>元语法需要计算并存储大量的词频和多词相邻频率。</p>
 <p>思考：<span class="math inline">\(n\)</span>元语法可能有哪些缺陷？</p>

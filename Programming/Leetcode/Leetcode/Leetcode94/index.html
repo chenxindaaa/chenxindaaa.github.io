@@ -278,7 +278,7 @@
 <p>给定一个二叉树，返回它的中序 遍历。</p>
 <p><strong>示例</strong></p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200322191101393.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200322191101393.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p><strong>进阶</strong>: 递归算法很简单，你可以通过迭代算法完成吗？</p>
 <h2 id="算法实现递归">算法实现：递归</h2>
@@ -288,7 +288,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; res;<br>        stack&lt;TreeNode*&gt; sta;<br>        <span class="hljs-keyword">while</span> (!sta.<span class="hljs-built_in">empty</span>() || root) &#123;<br>            <span class="hljs-keyword">while</span> (root) &#123;<br>                sta.<span class="hljs-built_in">push</span>(root);<br>                root = root-&gt;left;<br>            &#125;<br>            root = sta.<span class="hljs-built_in">top</span>();<br>            sta.<span class="hljs-built_in">pop</span>();<br>            res.<span class="hljs-built_in">push_back</span>(root-&gt;val);<br>            root = root-&gt;right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br>&#125;;<br></code></pre></td></tr></table></figure>
 <h2 id="结果-1">结果</h2>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200322190931659.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200322190931659.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 
                 

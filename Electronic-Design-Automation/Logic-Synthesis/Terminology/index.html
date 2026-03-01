@@ -290,7 +290,7 @@
 <li>Boolean Satisfiability</li>
 </ul>
 <figure>
-<img src="image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>literals, variable, clauses</li>
@@ -298,38 +298,38 @@
 <li>cubes</li>
 </ul>
 <figure>
-<img src="image-11.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-11.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <p>bcd' = 1, b' + c' + d = 0, f(a, b, c, d) = 0</p>
 <ul>
 <li>Completely specified logic function</li>
 </ul>
 <figure>
-<img src="image-1.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-1.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>Incompletely specified logic function</li>
 </ul>
 <figure>
-<img src="image-2.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-2.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>onset</li>
 </ul>
 <figure>
-<img src="image-3.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-3.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>offset</li>
 </ul>
 <figure>
-<img src="image-4.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-4.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>DCset</li>
 </ul>
 <figure>
-<img src="image-5.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-5.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <h2 id="logic-network">1.2 logic network</h2>
 <ul>
@@ -340,28 +340,28 @@
 <li>Re-convergent paths</li>
 </ul>
 <figure>
-<img src="image.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>Cut</li>
 </ul>
 <figure>
-<img src="image-7.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-7.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <figure>
-<img src="image-8.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-8.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>Window</li>
 </ul>
 <figure>
-<img src="image-6.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-6.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>Bitwise Simulation</li>
 </ul>
 <figure>
-<img src="image-9.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-9.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <ul>
 <li>MFFC (a set of nodes which no paths to PO if target node is removed)</li>
@@ -373,18 +373,18 @@
 <li><p>Not practical for large functions</p></li>
 <li><p>Still good for functions up to 16 variables</p></li>
 </ul></li>
-<li>SOP is widely used in synthesis tools since 1980’s
+<li><p>SOP is widely used in synthesis tools since 1980’s</p>
 <ul>
 <li>More compact than TT, but not canonical</li>
 <li>Can be efficiently minimized (SOP minimization by Espresso, ISOP computation) and translated into multi-level forms (algebraic factoring)</li>
 </ul></li>
-<li>BDD is a useful representation discovered around 1986
+<li><p>BDD is a useful representation discovered around 1986</p>
 <ul>
 <li>Canonical (for a given function, there is only one BDD)</li>
 <li>Very good, but only if (a) it can be constructed, (b) it is not too large</li>
 <li>Unreliable (non-robust) for many industrial circuits</li>
 </ul></li>
-<li>AIG is an up-and-coming representation!
+<li><p>AIG is an up-and-coming representation!</p>
 <ul>
 <li>Compact, easy to construct, can be made “canonical” using a SAT solver</li>
 <li>Unifies the synthesis/mapping/verification flow</li>
@@ -392,7 +392,7 @@
 </ul></li>
 </ul>
 <figure>
-<img src="image-12.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption>alt text</figcaption>
+<img src="image-12.png" srcset="/img/loading.gif" lazyload alt="alt text" /><figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 <p>What Representation to Use? - For small functions (up to 16 inputs) - TT works the best (local transforms, decomposition, factoring, etc.) - For medium-sized functions (16-100 inputs) - In some cases, BDDs are still used (reachability analysis) - Typically, it is better to represent as AIGs - Translate AIG into CNF and use SAT solver for logic manipulation - Sometimes need interpolation or SAT assignment enumeration - For large industrial circuits (&gt;100 inputs, &gt;10,000 gates) - Traditional LN representation is not efficient - AIGs work remarkably well - Lead to efficient synthesis - Are a natural representation for technology mapping - Easy to translate into CNF for SAT solving - Etc</p>
 <p>What are Typical Transformations? - Typical transformations of representations - For SOP, minimize cubes/literals - For BDD, minimize nodes/width - For AIG, restructure, minimize nodes/levels - For LN, restructure, minimize area/delay</p>
@@ -487,6 +487,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/Artificial-Intelligence/LLM/llm1/" title="Happy LLM task1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Happy LLM task1</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
