@@ -16,15 +16,15 @@
   <meta name="author" content="chenxindaaa">
   <meta name="keywords" content="">
   
-    <meta name="description" content="NLP 基础概念与核心术语学习笔记 1. 自然语言处理 (NLP) 概述 自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 来源: PDF Excerpts 1.1NLP 定义： NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于">
+    <meta name="description" content="NLP 基础概念与核心术语学习笔记 1. 自然语言处理 (NLP) 概述 自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 NLP 定义： NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于理解其背后的深层语义因素，包括语义、语境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Happy LLM task1">
 <meta property="og:url" content="http://chenxindaaa.com/Artificial-Intelligence/LLM/llm1/index.html">
 <meta property="og:site_name" content="chenxindaaa">
-<meta property="og:description" content="NLP 基础概念与核心术语学习笔记 1. 自然语言处理 (NLP) 概述 自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 来源: PDF Excerpts 1.1NLP 定义： NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于">
+<meta property="og:description" content="NLP 基础概念与核心术语学习笔记 1. 自然语言处理 (NLP) 概述 自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 NLP 定义： NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于理解其背后的深层语义因素，包括语义、语境">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-02-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-01T10:10:14.458Z">
+<meta property="article:modified_time" content="2026-03-01T10:13:23.751Z">
 <meta property="article:author" content="chenxindaaa">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k words
+          3.1k words
         
       </span>
     
@@ -226,7 +226,7 @@
         
         
         
-          31 mins
+          27 mins
         
       </span>
     
@@ -271,7 +271,7 @@
                 
                 <h3 id="nlp-基础概念与核心术语学习笔记">NLP 基础概念与核心术语学习笔记</h3>
 <h4 id="自然语言处理-nlp-概述">1. 自然语言处理 (NLP) 概述</h4>
-<p>自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 来源: PDF Excerpts 1.1<strong>NLP 定义：</strong> NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于理解其背后的深层语义因素，包括语义、语境、情感，以及处理语言中的歧义性、抽象概念、隐喻和讽刺。 来源: PDF Excerpts 1.1NLP 是一个高度交叉的学科体系，其理论基础主要融合了以下四个领域：</p>
+<p>自然语言处理（Natural Language Processing, NLP）是人工智能领域中至关重要的研究方向，旨在探讨如何利用计算机程序模拟人类对语言的认知与使用。 <strong>NLP 定义：</strong> NLP 是一种让计算机理解、解释和生成人类语言的技术。其核心不仅在于识别处理语言的表层结构，更在于理解其背后的深层语义因素，包括语义、语境、情感，以及处理语言中的歧义性、抽象概念、隐喻和讽刺。 NLP 是一个高度交叉的学科体系，其理论基础主要融合了以下四个领域：</p>
 <ul>
 <li><strong>计算机科学：</strong> 提供底层算力支撑与算法实现架构。<br />
 </li>
@@ -279,29 +279,26 @@
 </li>
 <li><strong>语言学：</strong> 提供语法、语义及语用学的规则与逻辑约束。<br />
 </li>
-<li><strong>心理学：</strong> 用于模拟人类在处理语言时的认知模拟与行为建模。 来源: PDF Excerpts 1.1</li>
+<li><strong>心理学：</strong> 用于模拟人类在处理语言时的认知模拟与行为建模。</li>
 </ul>
 <h4 id="nlp-的发展历程与技术演进">2. NLP 的发展历程与技术演进</h4>
-<p>NLP 技术的演进经历了从规则到统计，再到深度学习与大语言模型（LLM）的范式转移。核心逻辑经历了从“序列依序计算”到“并行计算及注意力机制”的本质变革。 来源: PDF Excerpts 2.1.1<strong>关键技术节点时间线：</strong></p>
+<p>NLP 技术的演进经历了从规则到统计，再到深度学习与大语言模型（LLM）的范式转移。核心逻辑经历了从“序列依序计算”到“并行计算及注意力机制”的本质变革。</p>
 <ul>
 <li><strong>2013 年：Word2Vec</strong><br />
 </li>
-<li><strong>主要贡献：</strong> 由 Tomas Mikolov 等提出，基于 NNLM 思想捕捉词与词间的上下文关系，生成稠密词嵌入。提供 <strong>CBOW</strong> （根据上下文预测目标词）和 <strong>Skip-gram</strong> （利用目标词预测上下文）两种架构。实践证明，Skip-gram 在大型语料库中表现更优。 来源: PDF Excerpts 1.4.3<br />
-</li>
+<li><strong>主要贡献：</strong> 由 Tomas Mikolov 等提出，基于 NNLM 思想捕捉词与词间的上下文关系，生成稠密词嵌入。提供 <strong>CBOW</strong> （根据上下文预测目标词）和 <strong>Skip-gram</strong> （利用目标词预测上下文）两种架构。实践证明，Skip-gram 在大型语料库中表现更优。</li>
 <li><strong>2017 年：Transformer</strong><br />
 </li>
-<li><strong>主要贡献：</strong> Vaswani 等提出完全基于注意力机制（Attention）的架构。解决了 RNN/LSTM 序列依序计算导致的 <strong>GPU 并行计算瓶颈</strong> ，以及难以捕捉长序列相关关系的缺陷（RNN 中距离越远，关系越难捕捉）。 来源: PDF Excerpts 2.1.1<br />
-</li>
+<li><strong>主要贡献：</strong> Vaswani 等提出完全基于注意力机制（Attention）的架构。解决了 RNN/LSTM 序列依序计算导致的 <strong>GPU 并行计算瓶颈</strong> ，以及难以捕捉长序列相关关系的缺陷（RNN 中距离越远，关系越难捕捉）。</li>
 <li><strong>2018 年：GPT-1 &amp; BERT</strong><br />
 </li>
-<li><strong>主要贡献：</strong> GPT-1 坚持 Decoder-Only 路径；BERT 则利用双向 Transformer 编码器在理解任务上创下 SOTA。 来源: PDF Excerpts 2.2.3, 参考文献<br />
-</li>
+<li><strong>主要贡献：</strong> GPT-1 坚持 Decoder-Only 路径；BERT 则利用双向 Transformer 编码器在理解任务上创下 SOTA。</li>
 <li><strong>2020 年：GPT-3</strong><br />
 </li>
-<li><strong>主要贡献：</strong> 模型参数规模跃升至 175B，通过超大规模数据预训练触发了“涌现能力”，确立了 LLM 的领先地位。 来源: PDF Excerpts 2.2.3</li>
+<li><strong>主要贡献：</strong> 模型参数规模跃升至 175B，通过超大规模数据预训练触发了“涌现能力”，确立了 LLM 的领先地位。</li>
 </ul>
 <h4 id="nlp-核心任务详解">3. NLP 核心任务详解</h4>
-<p>根据处理深度的不同，NLP 任务可划分为从基础分词到复杂语义建模的多个层级。 来源: PDF Excerpts 1.1, 1.3</p>
+<p>根据处理深度的不同，NLP 任务可划分为从基础分词到复杂语义建模的多个层级。</p>
 <h5 id="中文分词-cws">中文分词 (CWS)</h5>
 <p>由于中文词间缺乏明显分隔符（如空格），分词是中文处理的首要任务。</p>
 <ul>
@@ -309,58 +306,91 @@
 </li>
 <li><strong>正确路径：</strong> 雍和宫 | 的 | 荷花 | 开 | 的 | 很 | 好 | 。<br />
 </li>
-<li><strong>错误分析：</strong> 若切分为“雍 | 和 | 宫的”，将导致特定地名实体被拆解，破坏后续语义分析。 来源: PDF Excerpts 1.3.2</li>
+<li><strong>错误分析：</strong> 若切分为“雍 | 和 | 宫的”，将导致特定地名实体被拆解，破坏后续语义分析。</li>
 </ul>
 <h5 id="子词切分-subword-segmentation">子词切分 (Subword Segmentation)</h5>
 <p>介于字符和词之间，利用 BPE 或 WordPiece 等算法解决未登录词（OOV）问题。</p>
 <ul>
 <li><strong>示例：</strong> 对于 "unhappiness"：<br />
 </li>
-<li><strong>BPE (Byte Pair Encoding)：</strong> 可能切分为 "un", "happi", "ness"。 来源: PDF Excerpts 1.3.4, 5.2.3<br />
-</li>
-<li><strong>WordPiece (BERT)：</strong> 会使用特殊的 ## 标记，切分为 "un", "##happiness"，以表示该子词为后缀。 来源: PDF Excerpts 5.2.3</li>
+<li><strong>BPE (Byte Pair Encoding)：</strong> 可能切分为 "un", "happi", "ness"。</li>
+<li><strong>WordPiece (BERT)：</strong> 会使用特殊的 ## 标记，切分为 "un", "##happiness"，以表示该子词为后缀。</li>
 </ul>
 <h5 id="词性标注-pos-tagging">词性标注 (POS Tagging)</h5>
-<p>识别词汇的语法属性（如名词、动词）。经典模型包括隐马尔可夫模型 (HMM)、条件随机场 (CRF) 及深度学习模型 (RNN/LSTM)。 来源: PDF Excerpts 1.3.3</p>
+<p>识别词汇的语法属性（如名词、动词）。经典模型包括隐马尔可夫模型 (HMM)、条件随机场 (CRF) 及深度学习模型 (RNN/LSTM)。</p>
 <h5 id="文本分类-text-classification">文本分类 (Text Classification)</h5>
-<p>将文本映射到预定义的标签。例如，“NBA 季后赛将开始”被分类为“体育”。 来源: PDF Excerpts 1.3.6</p>
+<p>将文本映射到预定义的标签。例如，“NBA 季后赛将开始”被分类为“体育”。</p>
 <h5 id="实体识别-ner-与-关系抽取-relation-extraction">实体识别 (NER) 与 关系抽取 (Relation Extraction)</h5>
 <p>两项任务是构建 <strong>知识图谱 (Knowledge Graph)</strong> 的基石：</p>
 <ul>
-<li><strong>作用 1：实体类别化 (Entity Categorization)</strong> ：如识别出 "李雷", "人名", "北京市", "地名"。 来源: PDF Excerpts 1.3.6<br />
-</li>
-<li><strong>作用 2：语义事实抽取 (Fact Extraction)</strong> ：抽取实体间的因果、亲属或地理关系（生成三元组 Triple），用于理解文本深层语义逻辑。 来源: PDF Excerpts 1.3.6</li>
+<li><strong>作用 1：实体类别化 (Entity Categorization)</strong> ：如识别出 "李雷", "人名", "北京市", "地名"。</li>
+<li><strong>作用 2：语义事实抽取 (Fact Extraction)</strong> ：抽取实体间的因果、亲属或地理关系（生成三元组 Triple），用于理解文本深层语义逻辑。</li>
 </ul>
 <h5 id="文本摘要机器翻译与自动问答">文本摘要、机器翻译与自动问答</h5>
 <ul>
-<li><strong>摘要：</strong> 包含抽取式和生成式，旨在压缩信息。 来源: PDF Excerpts 1.3.7<br />
-</li>
-<li><strong>翻译：</strong> 强调语义、风格和文化背景的对齐。 来源: PDF Excerpts 1.3.8<br />
-</li>
-<li><strong>问答：</strong> 模拟人类根据知识库或语境给出准确答案。 来源: PDF Excerpts 1.1</li>
+<li><strong>摘要：</strong> 包含抽取式和生成式，旨在压缩信息。</li>
+<li><strong>翻译：</strong> 强调语义、风格和文化背景的对齐。</li>
+<li><strong>问答：</strong> 模拟人类根据知识库或语境给出准确答案。</li>
 </ul>
 <h4 id="文本表示模型的演进">4. 文本表示模型的演进</h4>
-<p>文本表示经历了从高维离散到低维稠密、从静态到动态的演变。| 模型名称 | 核心思想 | 优点 | 局限性 || ------ | ------ | ------ | ------ || <strong>N-gram</strong> | 基于马尔可夫假设，预测当前词仅依赖前 N-1 个词。 | 实现简单，计算成本低。 | 数据稀疏，忽略长程依赖。 || <strong>TF-IDF</strong> | 评估词语对特定文件的重要程度。 | 反映词汇在语料库中的独特贡献。 | 无法捕捉语义及上下文。 || <strong>VSM</strong> | 将文档映射为特征项权重的向量。 | 奠定了信息检索的基础。 | 难以解决同义词及多义词。 || <strong>Word2Vec</strong> | 通过神经网络学习上下文关系。 | 生成语义关联的稠密向量。 | <strong>静态表示</strong> ：无法处理一词多义（Polysemy）。 || <strong>Transformer</strong> | 基于注意力机制的动态编码。 | 捕获双向复杂的动态语义。 | 计算资源需求大，硬件门槛高。 |<br />
-来源: PDF Excerpts 1.4.2, 1.4.3, 2.1.1, Glossary</p>
+<p>文本表示经历了从高维离散到低维稠密、从静态到动态的演变。</p>
+<table>
+<thead>
+<tr class="header">
+<th>模型名称</th>
+<th>核心思想</th>
+<th>优点</th>
+<th>局限性</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>N-gram</strong></td>
+<td>基于马尔可夫假设，预测当前词仅依赖前 N-1 个词。</td>
+<td>实现简单，计算成本低。</td>
+<td>数据稀疏，忽略长程依赖。</td>
+</tr>
+<tr class="even">
+<td><strong>TF-IDF</strong></td>
+<td>评估词语对特定文件的重要程度。</td>
+<td>反映词汇在语料库中的独特贡献。</td>
+<td>无法捕捉语义及上下文。</td>
+</tr>
+<tr class="odd">
+<td><strong>VSM</strong></td>
+<td>将文档映射为特征项权重的向量。</td>
+<td>奠定了信息检索的基础。</td>
+<td>难以解决同义词及多义词。</td>
+</tr>
+<tr class="even">
+<td><strong>Word2Vec</strong></td>
+<td>通过神经网络学习上下文关系。</td>
+<td>生成语义关联的稠密向量。</td>
+<td><strong>静态表示</strong> ：无法处理一词多义（Polysemy）。</td>
+</tr>
+<tr class="odd">
+<td><strong>Transformer</strong></td>
+<td>基于注意力机制的动态编码。</td>
+<td>捕获双向复杂的动态语义。</td>
+<td>计算资源需求大，硬件门槛高。</td>
+</tr>
+</tbody>
+</table>
 <h4 id="大语言模型-llm-的兴起与特性">5. 大语言模型 (LLM) 的兴起与特性</h4>
-<p>相较于传统预训练模型 (PLM)，LLM 的本质区别在于其巨大的规模参数触发了显著的性能跃迁。 来源: PDF Excerpts 2.2.3</p>
+<p>相较于传统预训练模型 (PLM)，LLM 的本质区别在于其巨大的规模参数触发了显著的性能跃迁。</p>
 <h5 id="llm-的四大涌现能力">LLM 的四大涌现能力</h5>
 <ul>
-<li><strong>涌现能力 (Emergent Ability)：</strong> 规模跨越阈值后，非线性地获得小模型不具备的复杂能力。<br />
-</li>
-<li><strong>上下文学习 (In-Context Learning)：</strong> 无需参数更新，通过提示词中的示例即可习得新任务。<br />
-</li>
-<li><strong>指令遵循 (Instruction Following)：</strong> 准确理解并执行自然语言给出的复杂指令。<br />
-</li>
-<li><strong>逐步推理 (Step-by-Step Reasoning)：</strong> 借助 <strong>思维链 (CoT)</strong> 策略，解决多步骤逻辑推理任务。 来源: PDF Excerpts 5.1.1</li>
-</ul>
-<h5 id="主流大模型家族">主流大模型家族</h5>
-<ul>
-<li><strong>GPT 系列：</strong> GPT-3 拥有 175B 参数，确立了 <strong>Few-shot</strong> （加入 3~5 个示例）作为解决零样本 (Zero-shot) 表现不足的主流方案。算力开销极大，需 1024 张 A100 显卡训练约 1 个月。 来源: PDF Excerpts 2.2.3<br />
-</li>
-<li><strong>LLaMA 系列：</strong> LLaMA-3 采用 15T token 的海量预训练语料，并引入 <strong>分组查询注意力机制 (GQA)</strong> 优化性能。 来源: PDF Excerpts 3.1.1<br />
-</li>
-<li><strong>GLM 家族：</strong> ChatGLM-6B 为中文开源大模型里程碑；ChatGLM2 实现了 32K 上下文扩展，并在架构上回归 LLaMA 风格。 来源: PDF Excerpts 3.1.1</li>
+<li><p><strong>涌现能力 (Emergent Ability)：</strong> 规模跨越阈值后，非线性地获得小模型不具备的复杂能力。<br />
+</p></li>
+<li><p><strong>上下文学习 (In-Context Learning)：</strong> 无需参数更新，通过提示词中的示例即可习得新任务。<br />
+</p></li>
+<li><p><strong>指令遵循 (Instruction Following)：</strong> 准确理解并执行自然语言给出的复杂指令。<br />
+</p></li>
+<li><p><strong>逐步推理 (Step-by-Step Reasoning)：</strong> 借助 <strong>思维链 (CoT)</strong> 策略，解决多步骤逻辑推理任务。 ##### 主流大模型家族</p></li>
+<li><p><strong>GPT 系列：</strong> GPT-3 拥有 175B 参数，确立了 <strong>Few-shot</strong> （加入 3~5 个示例）作为解决零样本 (Zero-shot) 表现不足的主流方案。算力开销极大，需 1024 张 A100 显卡训练约 1 个月。<br />
+</p></li>
+<li><p><strong>LLaMA 系列：</strong> LLaMA-3 采用 15T token 的海量预训练语料，并引入 <strong>分组查询注意力机制 (GQA)</strong> 优化性能。</p></li>
+<li><p><strong>GLM 家族：</strong> ChatGLM-6B 为中文开源大模型里程碑；ChatGLM2 实现了 32K 上下文扩展，并在架构上回归 LLaMA 风格。</p></li>
 </ul>
 <h4 id="术语表-glossary">6. 术语表 (Glossary)</h4>
 <table>
